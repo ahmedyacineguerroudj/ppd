@@ -1,0 +1,296 @@
+/* Ajout de la police Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+
+/* Réinitialisation des styles par défaut */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Style pour le corps de la page */
+html,body {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    place-items: center; /* Centre les éléments dans la page */
+    background-color: #161616; /* Couleur de fond */
+    font-family: 'Inter', sans-serif; /*Police Inter*/
+}
+
+/* Style pour la sélection de texte */
+::selection {
+    background: #ffffff; /* Couleur de fond lors de la sélection */
+    color: #161616; /* Couleur du texte lors de la sélection */
+}
+
+/* Style pour le conteneur principal */
+.wrapper {
+    overflow: hidden; /* Empêche le débordement du contenu hors du conteneur */
+    width: 35%; /* Largeur du conteneur */
+    height: 90%; /* Hauteur du conteneur */
+    background-color: rgba(255, 255, 255, 0); /* Couleur de fond transparente */
+    padding: 20px; /* Espacement intérieur du contenu par rapport aux bords du conteneur */
+    border-radius: 100px; /* Rayon de la bordure arrondie du conteneur */
+    box-shadow: 0 0 100px 50px rgba(255, 255, 255, 0.5) inset; /* Ombre intérieure pour créer un effet de profondeur */
+    position: relative; /* Position fixe par rapport à la fenêtre du navigateur */
+}
+
+
+/* Style pour le titre */
+.title {
+    display: flex;
+    justify-content: flex-end; /* Aligner à droite */
+    margin-right : 20px; /*définir marge gauche et droite du titre */
+    font-weight: bold; /* Mettre en gras */
+    font-size: 35px; /* Taille de police plus grande */
+    margin-top: 0; /* Réinitialiser la marge supérieure */
+    margin-bottom: 20px; /* Ajuster la marge inférieure */
+}
+
+/* Style pour "whales" */
+.title .whales {
+    color: #ffffff; /* Couleur pour "whales" */
+}
+
+
+/* Style pour "Cap" */
+.title .Cap {
+    color: #00FFFF; /* Couleur pour "Cap" */
+}
+
+
+
+
+/* Style pour les contrôles de diapositives */
+.wrapper .slide-controls {
+    position: relative;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 0 20px 0;
+    box-shadow: 0 0 100px 50px rgba(255, 255, 255, 0.5) inset;
+    border-radius: 15px;
+}
+
+
+/* Style pour les diapositives */
+.slide-controls .slide {
+    height: 100%;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 1000;
+    font-family: 'Inter',sans-serif;
+    text-align: center;
+    line-height: 50px;
+    z-index: 1;
+}
+
+/* Style pour le curseur de diapositive */
+.slide-controls .slider-tab {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    left: 0;
+    z-index: 0;
+    border-radius: 15px;
+    background-color: #161616;
+    transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+
+/* Style pour les boutons radio (cachés none) */
+input[type="radio"] {
+    display: none;
+}
+
+/* Style lorsque le bouton d'inscription est coché */
+#signup:checked ~ .slider-tab {
+    left: 50%;
+}
+
+#signup:checked ~ label.signup {
+    color: #00FFFF;
+    cursor: default;
+    user-select: none;
+}
+
+#signup:checked ~ label.login {
+    color: #161616;
+    user-select: none;
+}
+
+/* Style lorsque le bouton de connexion est coché */
+#login:checked ~ label.signup {
+    color: #161616;
+    user-select: none;
+}
+
+#login:checked ~ label.login {
+    color: #00FFFF;
+    cursor: default;
+    user-select: none;
+}
+
+/* Style pour le conteneur de formulaire */
+.wrapper .form-container {
+    width: 100%;
+    color : #ffffff;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Style pour le conteneur interne du formulaire */
+.form-container .form-inner {
+    display: flex;
+    width: 200%;
+    position: relative;
+}
+
+/* Style pour chaque formulaire */
+.form-container .form-inner form {
+    width: 50%;
+    transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+
+/* Style pour chaque champ de formulaire */
+.form-inner form .field {
+    height: 45px;
+    width: 100%;
+    margin-top: 3px;
+}
+
+/* Style pour chaque champ de saisie */
+.form-inner form .field input {
+    height: 80%;
+    width: 100%;
+    outline: none;
+    padding-left: 15px;
+    border-radius: 15px;
+    border: 1px solid lightgrey;
+    border-bottom-width: 2px;
+    font-size: 17px;
+    transition: all 0.3s ease;
+}
+
+/* Style lorsque le champ de saisie est en focus */
+.form-inner form .field input:focus {
+    border-color: #00FFFF;
+    border-width: 3px;
+    color : #161616;
+}
+
+/* Style pour le texte de l'attribut placeholder */
+.form-inner form .field input::placeholder {
+    color: #999;
+    transition: all 0.3s ease;
+}
+
+/* Style lorsque le champ de saisie est en focus */
+form .field input:focus::placeholder {
+    color: #ffffff;
+}
+
+/* Style pour le lien d'inscription */
+.form-inner form .signup-link {
+    text-align: center;
+    margin-top: 20px;
+}
+.form-inner form .pass-link a,
+.form-inner form .signup-link a {
+    color: #00FFFF;
+    text-decoration: none;
+    font-weight: 900;
+}
+
+.form-inner form .pass-link a:hover,
+.form-inner form .signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* Style pour le bouton */
+form .btn {
+    height: 50px;
+    width: 100%;
+    border-radius: 15px;
+    position: relative;
+}
+
+.form-container .form-inner form .field.btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Style pour le bouton */
+form .btn input[type="submit"] {
+    height: 100%;
+    width: 50%;
+    z-index: 1;
+    position: relative;
+    background: linear-gradient(135deg, #00FFFF, #161616); /* Dégradé de couleurs */
+    border: none; /* Supprimer la bordure */
+    padding: 10px 20px; /* Espacement interne */
+    border-radius: 5px; /* Bordure arrondie */
+    font-size: 16px; /* Taille de la police */
+    cursor: pointer; /* Curseur pointeur */
+    transition: background 0.3s ease; /* Transition de couleur */
+}
+
+/* Animation au survol */
+form .btn input[type="submit"]:hover {
+    background: linear-gradient(135deg, #999999, #161616); /* Nouveau couleurs au survol */
+    color: #fff; /* Couleur du texte */
+}
+
+/* Style pour le conteneur de la case à cocher */
+.form-inner form .field.checkbox,
+.form-inner form .field.terms-label {
+    text-align: center; /* Centrer le contenu */
+}
+
+/* Style pour la case à cocher */
+.form-inner form .field.checkbox input[type="checkbox"],
+.form-inner form .field.terms-label input[type="checkbox"] {
+    display: inline-block; /* Affichage en ligne */
+    vertical-align: middle; /* Alignement vertical au centre */
+    margin-right: 5px; /* Réduire la marge à droite */
+    appearance: none; /* Supprimer les styles par défaut du système */
+    width: 20px; /* Taille de la case à cocher */
+    height: 20px; /* Taille de la case à cocher */
+    border-radius: 3px; /* Ajouter une bordure arrondie */
+    border: 2px solid #00FFFF; /* Bordure de la case à cocher */
+    background-color: transparent; /* Fond transparent par défaut */
+}
+
+/* Style pour le texte de la case à cocher */
+.form-inner form .field.checkbox label,
+.form-inner form .field.terms-label label {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 13px;
+}
+
+/* Style pour la case à cocher cochée */
+.form-inner form .field.checkbox input[type="checkbox"]:checked,
+.form-inner form .field.terms-label input[type="checkbox"]:checked {
+    background-color: #00FFFF; /* Fond bleu lorsque cochée */
+}
+
+/* Style pour le lien "Terms of Service" */
+.form-inner form .terms-link,
+.form-inner form .privacy-link {
+    color: #00FFFF; /* Couleur du lien */
+    text-decoration: none; /* Supprimer le soulignement par défaut */
+    font-weight: bold; /* Mettre en gras */
+    cursor: pointer; /* Afficher le curseur comme un pointeur */
+    transition: color 0.3s ease; /* Animation de transition de couleur */
+}
+
+/* Style pour le lien "Terms of Service" au survol */
+.form-inner form .terms-link:hover,
+.form-inner form .privacy-link:hover {
+    color: #ffffff; /* Nouvelle couleur au survol */
+}

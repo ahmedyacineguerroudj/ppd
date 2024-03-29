@@ -1,0 +1,116 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'signin.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Signup Form</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Titre du formulaire -->
+    <div class="title">
+        <span class="whales">whales</span><span class="Cap">Cap</span>
+    </div>
+
+    <!-- Conteneur du formulaire -->
+    <div class="form-container">
+        <!-- Contrôles de diapositives pour basculer entre Login et Signup -->
+        <div class="slide-controls">
+            <input type="radio" name="slide" id="login" checked>
+            <input type="radio" name="slide" id="signup">
+            <label for="login" class="slide login">Login</label>
+            <label for="signup" class="slide signup">Signup</label>
+            <div class="slider-tab"></div>
+        </div>
+
+        <!-- Formulaire de connexion -->
+        <div class="form-inner">
+            <form action="#" class="login">
+                <!-- Champ Email -->
+                <div class="field">
+                    <label>
+                        <input type="text" placeholder="Email Address" required>
+                    </label>
+                </div>
+                <!-- Champ Mot de passe -->
+                <div class="field">
+                    <label>
+                        <input type="password" placeholder="Password" required>
+                    </label>
+                </div>
+                <!-- Checkbox "Remember me" -->
+                <div class="field checkbox">
+                    <label>
+                        <input type="checkbox" style="transform: scale(0.8); vertical-align: middle;"> Remember me
+                    </label>
+                </div>
+                <!-- Bouton de soumission -->
+                <div class="field btn">
+                    <div class="btn-layer"></div>
+                    <input type="submit" value="Login">
+                </div>
+                <!-- Lien vers la page d'inscription -->
+                <div class="signup-link">Not a member? <a href="#">Signup now</a></div>
+            </form>
+            <!-- Formulaire d'inscription -->
+            <form action="#" class="signup">
+                <!-- Champ Prénom -->
+                <div class="field">
+                    <label>
+                        <input type="text" placeholder="First Name" required>
+                    </label>
+                </div>
+                <!-- Champ Nom -->
+                <div class="field">
+                    <label>
+                        <input type="text" placeholder="Last Name" required>
+                    </label>
+                </div>
+                <!-- Champ Email -->
+                <div class="field">
+                    <label>
+                        <input type="email" placeholder="Email Address" required>
+                    </label>
+                </div>
+                <!-- Champ Mot de passe -->
+                <div class="field">
+                    <label>
+                        <input type="password" placeholder="Password" required>
+                    </label>
+                </div>
+                <!-- Champ Confirmation du mot de passe -->
+                <div class="field">
+                    <label>
+                        <input type="password" placeholder="Confirm password" required>
+                    </label>
+                </div>
+                <!-- Champ Date de naissance -->
+                <div class="field">
+                    <label>
+                        <input type="text" placeholder="Date of Birth" onfocus="(this.type='date')" onblur="(this.type='text')" readonly required>
+                    </label>
+                </div>
+                <!-- Checkbox "Terms of Service" et "Privacy Policy" -->
+                <div class="field terms-label">
+                    <label>
+                        <input type="checkbox" required> You agree to our <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="privacy-link">Privacy Policy</a>
+                    </label>
+                </div>
+                <!-- Bouton de soumission -->
+                <div class="field btn">
+                    <div class="btn-layer"></div>
+                    <input type="submit" value="Signup">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="login.js"></script>
+
+</body>
+</html>
