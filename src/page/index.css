@@ -1,0 +1,986 @@
+:root {
+  --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+  "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+  "Source Han Sans CN", sans-serif;
+}
+
+.main-container {
+  overflow: hidden;
+}
+
+.main-container,
+.main-container * {
+  box-sizing: border-box;
+}
+
+input,
+select,
+textarea,
+button {
+  outline: 0;
+}
+
+.main-container {
+  position: relative;
+  width: 1440px;
+  height: 1024px;
+  margin: 0 auto;
+  background: #161616;
+  overflow: hidden;
+}
+.flex-row {
+  position: relative;
+  width: 1420px;
+  height: 81px;
+  margin: 17px 0 0 16px;
+  z-index: 53;
+}
+.user-icon {
+  position: absolute;
+  width: 80px;
+  height: 72px;
+  top: 0;
+  left: 1340px;
+  background: url(../assets/images/019a1405383a6e702bee43bea0f5f715841c705a.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 45;
+}
+.capture-decran {
+  position: absolute;
+  width: 145px;
+  height: 76px;
+  top: 5px;
+  left: 0;
+  background: url(../assets/images/ded334d3e708bcefd545c8677ccc142ab7db1aa7.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 53;
+}
+.images {
+  position: absolute;
+  width: 47px;
+  height: 46px;
+  top: 18px;
+  left: 1295px;
+  background: url(../assets/images/notifications_FILL0_wght400_GRAD0_opsz24.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 51;
+}
+
+.whales-cap {
+  position: absolute;
+  width: 167px;
+  height: 36px;
+  top: 25px;
+  left: 120px;
+  font-family: Inter, var(--default-font-family);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 36px;
+  text-align: center;
+  text-overflow: initial;
+  white-space: nowrap;
+  z-index: 44;
+}
+.whales {
+  position: relative;
+  color: #ffffff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 36.307px;
+  text-align: center;
+  text-transform: capitalize;
+}
+.cap {
+  position: relative;
+  color: rgba(0, 255, 226, 0.68);
+  font-family: Inter, var(--default-font-family);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 36.307px;
+  text-align: center;
+  text-transform: capitalize;
+}
+.recherche {
+  position: absolute;
+  width: 35.278px;
+  height: 35.278px;
+  top: 26px;
+  left: 1250px;
+  background: url(../assets/images/f14fa487-06af-483a-b9a9-9057a66ba566.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 50;
+}
+.market {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 31px;
+  top: 26px;
+  left: 555px;
+  color: #ffffff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 30.8px;
+  text-align: left;
+  white-space: nowrap;
+  letter-spacing: -0.56px;
+  z-index: 46;
+}
+.trade {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: absolute;
+  width: 118px;
+  height: 33px;
+  top: 26.129px;
+  left: 684.13px;
+  color: #ffffff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 33px;
+  text-align: center;
+  text-transform: capitalize;
+  white-space: nowrap;
+  z-index: 49;
+}
+.buy-sell {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 31px;
+  top: 27px;
+  left: 382px;
+  color: #ffffff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 30.8px;
+  text-align: left;
+  white-space: nowrap;
+  letter-spacing: -0.56px;
+  z-index: 48;
+}
+.about-us {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: absolute;
+  width: 176px;
+  height: 25px;
+  top: 27px;
+  left: 795px;
+  color: #ffffff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 25px;
+  text-align: center;
+  text-transform: capitalize;
+  white-space: nowrap;
+  z-index: 47;
+}
+.flex-row-f {
+  position: relative;
+  width: 1366px;
+  height: 822px;
+  margin: 57px 0 0 31px;
+  z-index: 1;
+}
+.rectangle {
+  position: absolute;
+  width: 669px;
+  height: 822px;
+  top: 0;
+  left: 697px;
+  background: #1e1e1e;
+  border: 5px solid #424242;
+  z-index: 1;
+  border-radius: 10px;
+}
+.flex-row-ef {
+  position: relative;
+  width: 544px;
+  height: 86px;
+  margin: 45px 0 0 52px;
+  z-index: 42;
+}
+.line {
+  position: absolute;
+  width: 0.7px;
+  height: 84.5px;
+  top: 0px;
+  left: 286.65px;
+  background: url(../assets/images/dc14de11-cfe3-417a-bc99-c60d2db346e4.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 42;
+}
+.buy {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: absolute;
+  width: 222px;
+  height: 72px;
+  top: 14px;
+  left: 0;
+  color: rgba(0, 255, 226, 0.68);
+  font-family: Inter, var(--default-font-family);
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 48.409px;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  z-index: 32;
+}
+.sell {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: absolute;
+  width: 182px;
+  height: 40px;
+  top: 14px;
+  left: 362px;
+  color: white;
+  font-family: Inter, var(--default-font-family);
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0.3;
+  z-index: 23;
+}
+
+.button2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 8px;
+  position: relative;
+  width: 201px;
+  height: 10px;
+  top: 200px;
+  padding: 14px 20px 20px 24px;
+  cursor: pointer;
+  background: rgba(0, 255, 226, 0.68);
+  border: none;
+  z-index: 54;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+
+
+
+
+
+
+
+
+.buy-crypto {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  width: 109px;
+  height: 12px;
+  color: #000000;
+  font-family: Inter, var(--default-font-family);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  z-index: 55;
+}
+.rectangle-5 {
+  position: absolute;
+  width: 603px;
+  height: 455px;
+  top: 129px;
+  left: 0;
+  background: #1e1e1e;
+  border: 5px solid #424242;
+  border-radius: 10px;
+}
+.flex-column-ce {
+  position: absolute;
+  width: 225px;
+  height: 385px;
+  top: 21px;
+  left: -6px;
+  font-size: 0px;
+  z-index: 18;
+}
+.hot-cryptos {
+  display: block;
+  position: relative;
+  height: 32px;
+  margin: 0 0 0 17px;
+  color: #ffffff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 32px;
+  text-align: left;
+  text-transform: capitalize;
+  white-space: nowrap;
+  z-index: 18;
+}
+.line-10 {
+
+  background: url(../assets/images/353f52cb-7e60-43e7-8ab0-ef8ef0940422.png)
+  no-repeat center;
+  background-size: cover;
+  z-index: 38;
+}
+
+
+.horizontal-line {
+  position: absolute;
+  width: 1440px;
+  height: 11px;
+  top: 110px;
+  left: 0;
+  border: 0;
+  background-color: rgba(0, 255, 226, 0.68);
+}
+
+
+.line-d {
+  position: absolute;
+  width: 1461.5px;
+  height: 15.5px;
+  top: -208px;
+  left: 16px;
+  background: url(../assets/images/6855c99b-8fd0-4d66-86d5-751d01b54078.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 52;
+}
+
+
+.line-e {
+  position: absolute;
+  width: 1440px;
+  height: 11.961px;
+  top: 104px;
+  left: 0;
+  background: url(../assets/images/a1c68f4d-5c34-4697-967c-f28de09453df.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 56;
+}
+
+
+
+.input-container{
+  position: absolute;
+  top: 180px;
+  left: 322px;
+  transform: translateX(-50%);
+
+}
+
+
+
+
+
+
+
+.input-container input[type="number"]{
+  padding: 20px;
+  color: white;
+  width: 600px;
+  background-color: #1e1e1e;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+
+}
+
+
+
+.input-container input[type="number"]::placeholder{
+  color: #999;
+}
+
+.input-container input[type="number"]:focus{
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+
+
+
+
+
+
+
+
+
+
+.wrapper {
+  --input-focus: #00ffe2;
+  --font-color: #323232;
+  --font-color-sub: #666;
+  --bg-color: #ffffff;
+  --bg-color-alt: #666;
+  --main-color: rgba(0, 255, 226, 0.53);
+}
+
+.card-switch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  gap: 100px;
+  margin-bottom: 10px;
+  margin-left: 680px;
+  margin-top: 80px;
+}
+
+.button3,
+.button3 {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  border: 2px solid var(--main-color);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button3.active {
+  background-color: rgba(0, 255, 226, 0.8);
+  color: #fff;
+}
+.button3.active{
+  background-color: rgba(0, 255, 226, 0.75);
+  color: #fff;
+}
+
+.flip-card__inner {
+  width: 650px;
+  height: 850px;
+  position: relative;
+  background-color: transparent;
+  perspective: 1000px;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  transform-origin: right ;
+}
+
+.flip-card__inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-card__front,
+.flip-card__back {
+  padding: 70px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  left: 350px;
+
+  width: 100%;
+  height: 80%;
+  background: #1e1e1e;
+  gap: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  box-shadow: 2px 2px var(--main-color);
+}
+
+
+.flip-card__back {
+  width: 100%;
+  transform: rotateY(180deg);
+}
+
+.flip-card__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.title {
+  margin: -200px 0 20px 0;
+  font-size: 25px;
+  font-weight: 900;
+  text-align: center;
+  color: var(--main-color);
+}
+
+
+.flip-card__input:focus {
+  border: 2px solid var(--input-focus);
+}
+
+.flip-card__btn:active,
+.button-confirm:active {
+  box-shadow: 0px 0px var(--main-color);
+  transform: translate(3px, 3px);
+}
+
+
+
+
+
+.payment-label {
+  color: white;
+}
+
+.payment-select {
+  background-color: #1e1e1e;
+  color: white;
+  border-radius: 5px;
+  padding: 20px;
+  width: 600px;
+  top:100px;
+}
+
+.payment-option {
+  color: white;
+  background-color: #1e1e1e;
+}
+
+
+
+
+/* Other elements with hover effect */
+.market:hover,
+.trade:hover,
+.buy-sell:hover,
+.about-us:hover {
+  color: rgba(0, 255, 226, 0.68);
+  cursor: pointer;
+  transform: translateY(-14px);
+}
+
+
+
+
+
+
+
+
+
+
+
+.payment-container {
+  position: relative;
+  top: 150px;
+}
+
+.payment-label {
+  color: white;
+}
+
+.payment-select {
+  background-color: #1e1e1e;
+  color: white;
+  border-radius: 5px;
+  padding: 20px;
+  width: 600px;
+
+}
+
+.payment-option {
+  color: white;
+  background-color: #1e1e1e;
+}
+
+
+
+
+
+
+
+
+.button {
+  margin: 0;
+  height: auto;
+  background: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+/* button styling */
+.button {
+  --border-right: 0px;
+  --text-stroke-color: rgb(255, 255, 255);
+  --animation-color: rgba(0, 255, 226, 0.68);
+  --fs-size: 2em;
+  letter-spacing: 8px;
+  text-decoration: none;
+  font-size: var(--fs-size);
+  font-family: "Arial";
+  position: relative;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-stroke-color);
+  top: -180px;
+}
+
+.hover-text {
+  position: absolute;
+  box-sizing: border-box;
+  content: attr(data-text);
+  color: var(--animation-color);
+  width: 0%;
+  inset: 0;
+  border-right: var(--border-right) solid var(--animation-color);
+  overflow: hidden;
+  transition: 0.5s;
+  -webkit-text-stroke: 1px var(--animation-color);
+}
+
+.button:hover .hover-text {
+  width: 100%;
+  filter: drop-shadow(0 0 23px var(--animation-color))
+}
+
+
+.button3 {
+  font-size: 1.2rem;
+  padding: 1rem 2.5rem;
+  border: none;
+  outline: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: rgb(1, 97, 97);
+  color: rgb(234, 234, 234);
+  font-weight: 700;
+  transition: 0.6s;
+  box-shadow: 0px 0px 60px #1f4c65;
+
+}
+
+.button3:active {
+  scale: 0.92;
+}
+
+.button3:hover {
+  background: rgb(2,29,78);
+  background: linear-gradient(270deg, rgba(2, 29, 78, 0.681) 0%, rgba(0, 255, 226, 0.68) 60%);
+  color: rgb(4, 4, 38);
+}
+
+
+
+
+
+
+
+
+
+
+.button4 {
+  margin: 0;
+  height: auto;
+  background: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.button4 {
+  --border-right: 0px;
+  --text-stroke-color: rgb(255, 255, 255);
+  --animation-color: rgba(0, 255, 226, 0.73);
+  --fs-size: 2.25em;
+  letter-spacing: 18px;
+  font-size: var(--fs-size);
+  font-family: Inter, var(--default-font-family);
+  position: relative;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 3px var(--text-stroke-color);
+  top: 180px;
+}
+
+.hover-text {
+  position: absolute;
+
+
+  color: var(--animation-color);
+  width: 0%;
+  inset: 0;
+  border-right: var(--border-right) solid var(--animation-color);
+  overflow: hidden;
+  -webkit-text-stroke: 1px var(--animation-color);
+}
+
+
+
+
+
+
+
+
+.Hot_crypto {
+  padding: 70px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  left: 10px;
+  top: 310px;
+  width: 540px;
+  height: 490px;
+  background: #1e1e1e;
+  gap: 20px;
+  border-radius: 5px;
+
+  box-shadow:  2px 2px rgba(0, 255, 226, 0.68);
+}
+.Hot_crypto h4 {
+  color: rgba(0, 255, 226, 0.68); /* Text color for the h4 element */
+  font-size: 24px; /* Font size for the h4 element */
+  margin: 0; /* Remove default margin */
+  margin-top: -400px;
+  margin-left: -40px;
+}
+
+
+
+
+
+
+
+
+
+.input-container3 {
+  position: absolute;
+  top: 350px;
+  left: 325px;
+  transform: translateX(-50%);
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Align items vertically */
+}
+
+.input-container3 input[type="number"]{
+  padding: 20px;
+  color: white;
+  width: 450px;
+  background-color: #1e1e1e;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+
+
+}
+.input-container3 select {
+  padding: 20px;
+  color: white;
+  width: 140px;
+  background-color: #1e1e1e;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+
+.input-container3 input[type="number"]::placeholder,
+.input-container3 select::placeholder {
+  color: #999;
+}
+
+.input-container3 input[type="number"]:focus,
+.input-container3 select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.input-container3 select {
+  margin-left: 10px; /* Add some spacing between the input and select */
+}
+
+
+
+
+
+
+.input-container2 {
+  position: absolute;
+  top: 300px;
+  left: 325px;
+  transform: translateX(-50%);
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Align items vertically */
+}
+
+.input-container2 input[type="number"]{
+  padding: 20px;
+  color: white;
+  width: 450px;
+  background-color: #1e1e1e;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+
+
+}
+.input-container2 select {
+  padding: 20px;
+  color: white;
+  width: 140px;
+  background-color: #1e1e1e;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+
+.input-container2 input[type="number"]::placeholder,
+.input-container2 select::placeholder {
+  color: #999;
+}
+
+.input-container2 input[type="number"]:focus,
+.input-container2 select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.input-container2 select {
+  margin-left: 10px; /* Add some spacing between the input and select */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.input-container4 {
+  position: absolute;
+  top: 200px;
+  left: 325px;
+  transform: translateX(-50%);
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Align items vertically */
+}
+
+.input-container4 input[type="number"]{
+  padding: 20px;
+  color: white;
+  width: 450px;
+  background-color: #1e1e1e;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+
+
+}
+.input-container4 select {
+  padding: 20px;
+  color: white;
+  width: 140px;
+  background-color: #1e1e1e;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+
+.input-container4 input[type="number"]::placeholder,
+.input-container4 select::placeholder {
+  color: #999;
+}
+
+.input-container4 input[type="number"]:focus,
+.input-container4 select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.input-container4 select {
+  margin-left: 10px; /* Add some spacing between the input and select */
+}
+
+
+/* Add this to your index.css file */
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Close button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
