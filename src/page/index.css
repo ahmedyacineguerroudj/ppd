@@ -393,42 +393,6 @@ button {
 
 
 
-.input-container{
-  position: absolute;
-  top: 180px;
-  left: 322px;
-  transform: translateX(-50%);
-
-}
-
-
-
-
-
-
-
-.input-container input[type="number"]{
-  padding: 20px;
-  color: white;
-  width: 600px;
-  background-color: #1e1e1e;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  outline: none;
-
-}
-
-
-
-.input-container input[type="number"]::placeholder{
-  color: #999;
-}
-
-.input-container input[type="number"]:focus{
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
 
 
 
@@ -829,7 +793,7 @@ button {
 }
 
 .input-container3 select {
-  margin-left: 10px; /* Add some spacing between the input and select */
+  margin-left: 10px;
 }
 
 
@@ -839,7 +803,7 @@ button {
 
 .input-container2 {
   position: absolute;
-  top: 300px;
+  top: 350px;
   left: 325px;
   transform: translateX(-50%);
   display: flex; /* Use flexbox for layout */
@@ -932,20 +896,90 @@ button {
 }
 
 
-.input-container4 input[type="number"]::placeholder,
-.input-container4 select::placeholder {
+.input-container input[type="number"]::placeholder,
+.input-container select::placeholder {
   color: #999;
 }
 
-.input-container4 input[type="number"]:focus,
-.input-container4 select:focus {
+.input-container input[type="number"]:focus,
+.input-container select:focus {
   border-color: #007bff;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.input-container4 select {
+.input-container select {
   margin-left: 10px; /* Add some spacing between the input and select */
 }
+
+
+
+
+.input-container {
+  position: absolute;
+  top: 200px;
+  left: 325px;
+  transform: translateX(-50%);
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Align items vertically */
+}
+
+.input-container input[type="number"]{
+  padding: 20px;
+  color: white;
+  width: 450px;
+  background-color: #1e1e1e;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+
+
+}
+.input-container select {
+  padding: 20px;
+  color: white;
+  width: 140px;
+  background-color: #1e1e1e;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+
+.input-container input[type="number"]::placeholder,
+.input-container select::placeholder {
+  color: #999;
+}
+
+.input-container input[type="number"]:focus,
+.input-container select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.input-container select {
+  margin-left: 10px; /* Add some spacing between the input and select */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Add this to your index.css file */

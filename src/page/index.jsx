@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 export function Main2() {
     const [isFlipped, setIsFlipped] = useState(false);
-    const [paymentSelected, setPaymentSelected] = useState(false);
 
     const handleLoginClick = () => {
         setIsFlipped(false);
@@ -12,10 +11,6 @@ export function Main2() {
 
     const handleSignupClick = () => {
         setIsFlipped(true);
-    };
-
-    const handlePaymentChange = () => {
-        setPaymentSelected(true);
     };
 
     return (
@@ -62,17 +57,16 @@ export function Main2() {
                     <div className="buttons">
                         <button
                             className={`button3 ${!isFlipped ? 'active' : ''}`}
-                            onClick={handleLoginClick}
-                        >
+                            onClick={handleLoginClick}>
                             Buy
                         </button>
                         <button
                             className={`button3 ${isFlipped ? 'active' : ''}`}
-                            onClick={handleSignupClick}
-                        >
+                            onClick={handleSignupClick}>
                             Sell
                         </button>
                     </div>
+
 
                     <div className={`flip-card__inner ${isFlipped ? 'flipped' : ''}`}>
                         <div className="flip-card__front">
@@ -81,37 +75,41 @@ export function Main2() {
                                 <span aria-hidden="true" className="hover-text">&nbsp;BUY Crypto&nbsp;</span>
                             </button>
 
-                            <form className="flip-card__form" action="">
+                            <form method="POST" className="flip-card__form" action="">
+
+
+
                                 <div className="input-container">
-                                    <input type="number" name='amount' placeholder="Enter the amount" min="1"/>
-                                </div>
-                                <div className="input-container2">
-                                    <input type="number" className="form-input" placeholder="Enter the amount"  min="1" required/>
-                                    <select className="form-select">
+                                    <input type="number" name="fild1" className="form-input" placeholder="Enter the amount" min="1"
+                                           required/>
+                                    <select  name="select1" className="form-select">
                                         <optgroup label="Select The coin">
                                             <option> BTC</option>
                                             <option>THF</option>
                                         </optgroup>
                                     </select>
                                 </div>
-                                <div className="payment-container">
-                                    <label htmlFor="PAY WITH" className="payment-label">PAY WITH </label>
-                                    <select
-                                        id="select-transaction-method"
-                                        className="payment-select"
-                                        onChange={handlePaymentChange}
-                                    >
-                                        {!paymentSelected &&
-                                            <option value="" disabled selected hidden>Select Payment Method</option>}
-                                        <option className="payment-option">Visa</option>
-                                        <option className="payment-option">Master Card</option>
-                                        <option className="payment-option">Pyypl</option>
+
+
+                                <div className="input-container2">
+                                    <input type="number" name="fild2" className="form-input" placeholder="Enter the amount" min="1" required/>
+                                    <select name="select2" className="form-select">
+                                        <optgroup label="Select The coin">
+                                            <option> BTC</option>
+                                            <option>THF</option>
+                                        </optgroup>
                                     </select>
+
                                 </div>
+
+
+
                                 <button type="submit" className='button2'>
                                     <span className='buy-crypto'>Buy crypto</span>
                                 </button>
                             </form>
+
+
                         </div>
                         <div className="flip-card__back">
                             <button className="button" data-text="Awesome">
@@ -119,20 +117,21 @@ export function Main2() {
                                 <span aria-hidden="true" className="hover-text">&nbsp;SELL Crypto&nbsp;</span>
                             </button>
 
-                            <form className="flip-card__form" action="">
-                                <div className="input-container4">
-                                    <input type="number" className="form-input"
+                            <form method="POST" className="flip-card__form" action="">
+                                <div  className="input-container4">
+                                <input name="fild3" type="number" className="form-input"
                                            placeholder="Enter the amount you want to Sell" min="1" required/>
-                                    <select className="form-select">
+                                    <select name="select3" className="form-select">
                                         <optgroup label="Select The coin">
                                             <option> BTC</option>
                                             <option>THF</option>
                                         </optgroup>
                                     </select>
                                 </div>
+
                                 <div className="input-container3">
-                                    <input type="number" className="form-input" placeholder="0.00" min="1" required/>
-                                    <select className="form-select">
+                                    <input name="fild4" type="number" className="form-input" placeholder="0.00" min="1" required/>
+                                    <select name="select4" className="form-select">
                                         <optgroup label="Select The coin">
                                             <option> BTC</option>
                                             <option>THF</option>
@@ -147,7 +146,6 @@ export function Main2() {
                     </div>
                 </div>
             </div>
-
             <hr className="horizontal-line"/>
         </div>
     );
