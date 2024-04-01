@@ -14,7 +14,7 @@
     background-image: url("https://img.freepik.com/photos-gratuite/fond-ecran-abstrait-noir-grunge-photo-gratuit_1340-33848.jpg");
     background-position: center;
     background-size: 1000000px;
-    color: #ffffff;
+    color: white;
     background-size: cover; /* Utilisation de cover pour s'assurer que l'image de fond couvre tout le conteneur */
     overflow-x: scroll; /* Ajout du défilement horizontal */
 
@@ -57,12 +57,6 @@ a.active,a:hover{
     color: #00efff;
 
 }
-nav .btn:hover,
-nav .btn.active {
-    background: none;
-    transition: .5s;
-    color: #00efff;
-}
 
 
 nav .btn {
@@ -75,7 +69,33 @@ nav .btn {
     font-size: 14px; /* Réduire la taille du texte */
     margin-right: 10px; /* Ajouter une marge à droite pour séparer les boutons */
 }
+nav .btn:hover:active {
+    text-shadow: 0 0 5px #00ffff, /* Ajoute une ombre de texte bleue */
+    0 0 6px #00ffff, /* Ajoute une ombre de texte bleue plus prononcée */
+    0 0 7px #00ffff, /* Ajoute une ombre de texte bleue encore plus prononcée */
+    0 0 8px #00ffff, /* Ajoute une ombre de texte bleue très prononcée */
+    0 0 9px #00ffff, /* Ajoute une ombre de texte bleue extrêmement prononcée */
+    0 0 10px #00ffff; /* Ajoute une ombre de texte bleue extrêmement prononcée */
+}
+nav .btn:active {
+    background-color: #00efff; /* Changement de couleur de fond lors du clic */
+    color: black; /* Changement de couleur du texte lors du clic */
+}
+@keyframes neon-border {
+    0% {
+        box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
+    }
+    50% {
+        box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+    }
+    100% {
+        box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
+    }
+}
 
+nav .btn:hover {
+    animation: neon-border 1s ease-in-out infinite alternate;
+}
 
 /* Style pour le logo WhalesCap */
 .label logo {
@@ -532,7 +552,8 @@ nav .btn {
     padding: 0; /* Supprime le rembourrage par défaut */
     margin: 0; /* Supprime les marges par défaut */
     display: inline; /* Affiche le texte sur la même ligne que la question */
-}.content6 h2 {
+}
+.content6 h2 {
      color: #00ffff; /* Couleur du texte */
      cursor: pointer; /* Curseur indiquant qu'il s'agit d'un élément interactif */
      text-decoration: underline; /* Souligner le texte */
@@ -555,7 +576,7 @@ nav .btn {
     transition: text-shadow 0.3s ease; /* Ajoute une transition fluide */
 }
 
-.content6 h1 a:hover {
+.content6 h1 a:hover:active {
     text-shadow: 0 0 5px #00ffff, /* Ajoute une ombre de texte bleue */
     0 0 6px #00ffff, /* Ajoute une ombre de texte bleue plus prononcée */
     0 0 7px #00ffff, /* Ajoute une ombre de texte bleue encore plus prononcée */
@@ -563,7 +584,25 @@ nav .btn {
     0 0 9px #00ffff, /* Ajoute une ombre de texte bleue extrêmement prononcée */
     0 0 10px #00ffff; /* Ajoute une ombre de texte bleue extrêmement prononcée */
 }
+.content6 h1 a:active {
+    background-color: #00efff; /* Changement de couleur de fond lors du clic */
+    color: black; /* Changement de couleur du texte lors du clic */
+}
+@keyframes neon-border {
+    0% {
+        box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
+    }
+    50% {
+        box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+    }
+    100% {
+        box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
+    }
+}
 
+.content6 h1 a:hover {
+    animation: neon-border 1s ease-in-out infinite alternate;
+}
 
 .toggle-btn::after {
     content: "\25BE"; /* Code Unicode pour une flèche pointant vers le bas */
@@ -580,3 +619,140 @@ nav .btn {
 }
 
 
+.email-signup {
+    display: flex;
+    position: absolute; /* Permet de positionner les éléments enfants de manière absolue */
+
+}
+
+#email {
+    flex: 1; /* La case de l'e-mail occupera tout l'espace restant */
+    margin-right: 12px; /* Marge à droite pour séparer la case du bouton */
+    border: none;
+    border-radius: 50px;
+    position: absolute;
+    padding: 8px 20px; /* Ajouter un peu de remplissage sur les côtés */
+    color: grey;
+    bottom: 10%; /* Positionner la case de l'e-mail légèrement en dessous */
+    left: -6px; /* Décaler la case de l'e-mail de 50px à partir de la gauche */
+    transform: translateY(250%); /* Déplacer la case de l'e-mail vers le bas */
+}
+
+#signup-btn {
+    background-color: black; /* Couleur de fond du bouton */
+    color: #00efff; /* Couleur du texte du bouton */
+    border: 12px; /* Supprimer la bordure du bouton */
+    border-radius: 50px;
+    padding: 10px 20px; /* Ajouter un espacement interne au bouton */
+    cursor: pointer; /* Curseur indiquant que le bouton est cliquable */
+    position: absolute;
+    bottom: 10%; /* Positionner le bouton légèrement en dessous */
+    left: 200px; /* Décaler le bouton de 200px à partir de la gauche */
+    transform: translateY(227%); /* Déplacer le bouton vers le bas */
+    font-weight: bold;
+
+}
+
+#signup-btn:hover:active {
+    text-shadow: 0 0 5px #00ffff, /* Ajoute une ombre de texte bleue */
+    0 0 6px #00ffff, /* Ajoute une ombre de texte bleue plus prononcée */
+    0 0 7px #00ffff, /* Ajoute une ombre de texte bleue encore plus prononcée */
+    0 0 8px #00ffff, /* Ajoute une ombre de texte bleue très prononcée */
+    0 0 9px #00ffff, /* Ajoute une ombre de texte bleue extrêmement prononcée */
+    0 0 10px #00ffff; /* Ajoute une ombre de texte bleue extrêmement prononcée */
+}
+#signup-btn:active {
+    background-color: #00efff; /* Changement de couleur de fond lors du clic */
+    color: black; /* Changement de couleur du texte lors du clic */
+}
+@keyframes neon-border {
+    0% {
+        box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
+    }
+    50% {
+        box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+    }
+    100% {
+        box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
+    }
+}
+
+#signup-btn:hover {
+    animation: neon-border 1s ease-in-out infinite alternate;
+}
+
+.interaction-volume {
+    width: 240px; /* Définir la largeur souhaitée */
+     height: 290px;
+    font-family: Arial, sans-serif; /* Choisir la police de caractères souhaitée */
+    font-size: 25px; /* Taille de police */
+    color: white; /* Couleur de police par défaut */
+    background-color: black; /* Couleur de fond du cadre */
+    padding: 20px; /* Ajouter un espacement intérieur au cadre */
+    border-radius: 20px; /* Ajouter des coins arrondis */
+    border-color: #00efff;
+    border-style: double;
+    margin-top: -155px; /* Déplacer le cadre vers le haut de 10 pixels */
+    margin-left: 355px;
+}
+
+.interaction-volume p:first-child {
+    font-weight: bold; /* Texte en gras */
+    font-style: italic; /* Texte en italique */
+    color: #00ffff; /* Couleur du premier paragraphe */
+}
+
+
+.interaction-volume p:nth-child(3) {
+    font-weight: bold; /* Texte en gras */
+    font-style: italic; /* Texte en italique */
+    color: #00ffff; /* Couleur du premier paragraphe */
+}
+.interaction-volume p:nth-child(4) {
+    font-weight: normal; /* Texte en gras */
+    font-style: normal; /* Texte en italique */
+    color: grey; /* Couleur du premier paragraphe */
+    font-size: 12px;
+}
+.interaction-volume p:nth-child(5) {
+    font-weight: bold; /* Texte en gras */
+    font-style: italic; /* Texte en italique */
+    color: #00ffff; /* Couleur du premier paragraphe */
+}
+.interaction-volume p:nth-child(6) {
+    font-weight: normal; /* Texte en gras */
+    font-style: normal; /* Texte en italique */
+    color: grey; /* Couleur du premier paragraphe */
+    font-size: 12px;
+}
+.interaction-volume p:nth-child(7) {
+    font-weight: bold; /* Texte en gras */
+    font-style: italic; /* Texte en italique */
+    color: #00ffff; /* Couleur du premier paragraphe */
+}
+.interaction-volume p:nth-child(8) {
+    font-weight: normal; /* Texte en gras */
+    font-style: normal; /* Texte en italique */
+    color: grey; /* Couleur du premier paragraphe */
+    font-size: 12px;
+}
+/* Ajoute un espace entre le quatrième et le cinquième enfant */
+.interaction-volume p:nth-child(4) {
+    margin-bottom: 10px; /* Espacement de 10 pixels en bas */
+}
+
+/* Ajoute un espace entre le sixième et le septième enfant */
+.interaction-volume p:nth-child(6) {
+    margin-bottom: 10px; /* Espacement de 10 pixels en bas */
+}
+
+/* Style des liens */
+.button {
+    text-decoration: none; /* Retire le soulignement des liens */
+    color: inherit; /* Hérite la couleur du texte de son parent */
+}
+
+/* Style des liens au survol */
+.button:hover {
+    text-decoration: underline; /* Soulignement au survol */
+}
