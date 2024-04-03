@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login.WhalesCap</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<!-- Logo cryptomonnaie -->
+<img src="Images/background.png" alt="Background Image" class="background-image">
+
+<div class="wrapper">
+    <!-- Titre du formulaire avec le logo -->
+    <div class="title">
+        <!-- Logo whalesCap -->
+        <img src="Images/logo_whalesCap.png" alt="Logo">
+        <!-- Texte "whalesCap" -->
+        <span class="whales">whales</span><span class="Cap">Cap</span>
+    </div>
+    <!-- Conteneur du formulaire -->
+    <div class="form-container">
+        <!-- Contrôles de diapositives pour basculer entre Login et Signup -->
+        <div class="slide-controls">
+            <input type="radio" name="slide" id="login" checked>
+            <input type="radio" name="slide" id="signup">
+            <label for="login" class="slide login">Login</label>
+            <label for="signup" class="slide signup">Signup</label>
+            <div class="slider-tab"></div>
+        </div>
+
+        <!-- Formulaire de connexion -->
+        <div class="form-inner">
+            <form action="#" class="login">
+                <!-- Champ Email -->
+                <div class="field">
+                    <label>
+                        <input type="email" name="login_email" placeholder="Email Address" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address">
+                    </label>
+                </div>
+                <!-- Champ Mot de passe -->
+                <div class="field">
+                    <label>
+                        <input type="password" name="login_password" placeholder="Password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8}$" title="Password must be exactly 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character">
+                    </label>
+                </div>
+                <!-- Checkbox "Remember me" -->
+                <div class="field checkbox">
+                    <label>
+                        <input type="checkbox" name="login_remember" style="transform: scale(0.8); vertical-align: middle;"> Remember me
+                    </label>
+                </div>
+                <!-- Bouton de soumission -->
+                <div class="field btn">
+                    <div class="btn-layer"></div>
+                    <input type="submit" value="Login" name="login_submit">
+                </div>
+                <!-- Lien vers la page d'inscription -->
+                <div class="signup-link">Not a member? <a href="#">Signup now</a></div>
+            </form>
+
+            <!-- Formulaire d'inscription -->
+            <form action="#" class="signup">
+                <!-- Champ Prénom -->
+                <div class="field">
+                    <label>
+                        <input type="text" name="signup_first_name" placeholder="First Name" required pattern="[A-Za-z]{1,45}" title="Please enter a valid first name (up to 45 characters, letters only)">
+                    </label>
+                </div>
+                <!-- Champ Nom -->
+                <div class="field">
+                    <label>
+                        <input type="text" name="signup_last_name" placeholder="Last Name" required pattern="[A-Za-z]{1,45}" title="Please enter a valid last name (up to 45 characters, letters only)">
+                    </label>
+                </div>
+                <!-- Champ Email -->
+                <div class="field">
+                    <label>
+                        <input type="email" name="signup_email" placeholder="Email Address" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address">
+                    </label>
+                </div>
+                <!-- Champ Date de naissance -->
+                <div class="field">
+                    <label>
+                        <input type="text" id="birthdate" name="signup_birthdate" placeholder="Date of Birth" onfocus="(this.type='date')" onblur="(this.type='text')" max="2005-12-31" pattern="(19[4-9][0-9]|200[0-5])-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])" required title="Please enter a date before 2005">
+                    </label>
+                </div>
+                <!-- Champ Mot de passe -->
+                <div class="field">
+                    <label>
+                        <input type="password" name="signup_password" placeholder="Password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character">
+                    </label>
+                </div>
+                <!-- Champ Confirmation du mot de passe -->
+                <div class="field">
+                    <label>
+                        <input type="password" name="signup_confirm_password" placeholder="Confirm password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Passwords must match">
+                    </label>
+                </div>
+                <!-- Checkbox "Terms of Service" et "Privacy Policy" -->
+                <div class="field terms-label">
+                    <label>
+                        <input type="checkbox" name="signup_agree_terms" required> You agree to our <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="privacy-link">Privacy Policy</a>
+                    </label>
+                </div>
+                <!-- Bouton de soumission -->
+                <div class="field btn">
+                    <div class="btn-layer"></div>
+                    <input type="submit" value="Signup" name="signup_submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="login.js"></script>
+</body>
+</html>
