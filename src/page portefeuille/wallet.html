@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My wallet</title>
+    <link rel="stylesheet" href="wallet.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- Barre supérieure -->
+    <section class="top-bar">
+        <img src="Images/logo_whalesCap.png" alt="Logo">
+        <div class="platform-name">
+            <span class="whales">whales</span>
+            <span class="Cap">Cap</span>
+        </div>
+        <!-- Menu de navigation -->
+        <div class="menu">
+            <a href="#" class="menu-item">Home</a>
+            <a href="#" class="menu-item">Buy & Sell</a>
+            <a href="#" class="menu-item">Market</a>
+            <a href="#" class="menu-item">About Us</a>
+        </div>
+        <!-- Bouton de recherche -->
+        <div class="search-button">
+            <a href="#"><img src="Images/search_icon.png" alt="Recherche"></a>
+        </div>
+        <!-- Bouton de notifications -->
+        <div class="notification-button">
+            <a href="#"><img src="Images/notification_icon.png" alt="Notifications"></a>
+        </div>
+        <!-- Bouton d'utilisateur -->
+        <div class="user-button">
+            <a href="#"><img src="Images/user_icon.png" alt="Utilisateur"></a>
+        </div>
+    </section>
+
+
+    <!-- Titre de la page -->
+    <section class="title">
+        <h1>My Wallet</h1>
+    </section>
+
+    <!-- Section de solde -->
+    <section class="balance-section">
+        <div class="balance-header">
+            <h2>Balance</h2>
+            <!-- Boutons d'opérations sur le solde -->
+            <div class="balance-buttons">
+                <button>Deposit</button>
+                <button>Withdraw</button>
+                <button>Transfer</button>
+            </div>
+        </div>
+        <!-- Affichage du solde -->
+        <p class="balance-number"><span id="balance-value"></span>$</p>
+        <p class="balance-number-crypto">= <span id="balance-crypto-value"></span></p>
+    </section>
+
+    <!-- Liste d'actifs -->
+    <section class="asset-list">
+        <h2>My Assets</h2>
+        <table id="asset-table">
+            <thead>
+            <tr>
+                <th>Coin</th>
+                <th>Amount</th>
+                <th>Coin Price</th>
+            </tr>
+            </thead>
+            <tbody id="asset-items">
+            <!-- Les données seront ajoutées dynamiquement -->
+            </tbody>
+        </table>
+        <!-- Boutons de navigation pour la liste d'actifs -->
+        <div class="button-container">
+            <button id="previous" style="display: none;">< Previous</button>
+            <button id="show-more" style="display: none;">Show more ></button>
+        </div>
+    </section>
+
+    <!-- Section des transactions récentes -->
+    <section class="recent-transactions">
+        <h2>Recent Transactions</h2>
+        <ul id="transaction-list">
+            <!-- Les données des transactions seront ajoutées dynamiquement -->
+        </ul>
+        <!-- Boutons de navigation pour les transactions récentes -->
+        <div class="button-container">
+            <button id="previous-transactions" style="display: none;">Previous</button>
+            <button id="next-transactions" style="display: none;">Next</button>
+        </div>
+    </section>
+
+</div>
+
+<script src="wallet.js"></script>
+</body>
+</html>
