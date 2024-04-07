@@ -9,6 +9,7 @@
 <body>
 
 <div class="container">
+
     <!-- Barre supérieure -->
     <section class="top-bar">
         <img src="Images/logo_whalesCap.png" alt="Logo">
@@ -23,25 +24,86 @@
             <a href="#" class="menu-item">Market</a>
             <a href="#" class="menu-item">About Us</a>
         </div>
-        <!-- Bouton de recherche -->
-        <div class="search-button">
-            <a href="#"><img src="Images/search_icon.png" alt="Recherche"></a>
+
+
+        <!-- Bouton de globe -->
+        <div class="globe-button">
+            <a href="#"><img src="Images/globe.png" alt="Globe"></a>
         </div>
+
+
         <!-- Bouton de notifications -->
         <div class="notification-button">
-            <a href="#"><img src="Images/notification_icon.png" alt="Notifications"></a>
+            <a href="#" onclick="toggleNotificationModal()"><img src="Images/notification_icon.png" alt="Notifications"></a>
+            <div id="notificationModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close" onclick="toggleNotificationModal()">&times;</span>
+                    <h2>Your Notifications</h2>
+                    <!-- Tableau de notifications -->
+                    <table id="notificationTable">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Message</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Les notifications seront ajoutées dynamiquement -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
+
+
         <!-- Bouton d'utilisateur -->
         <div class="user-button">
-            <a href="#"><img src="Images/user_icon.png" alt="Utilisateur"></a>
+            <a href="#" onclick="toggleUserModal()"><img src="Images/user_icon.png" alt="Utilisateur"></a>
+            <div id="userModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close" onclick="toggleUserModal()">&times;</span>
+                    <h2 id="userName">User Information</h2>
+                    <div>
+                        <p><strong>First Name :</strong> <span id="firstName"></span></p>
+                        <p><strong>Last Name :</strong> <span id="lastName"></span></p>
+                        <p><strong>Email :</strong> <span id="email"></span></p>
+                        <p><strong>Date of Birth :</strong> <span id="dob"></span></p>
+                    </div>
+                    <div>
+                        <button class="settings-button">
+                            <img src="Images/parametre.png" alt="Settings" >
+                            Modify your information
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
+
 
 
     <!-- Titre de la page -->
     <section class="title">
         <h1>My Wallet</h1>
     </section>
+
+
+    <!-- Bare de recherche  -->
+    <section class="search-section">
+        <div class="search-box">
+            <label for="searchInput"></label>
+            <input type="text" id="searchInput" placeholder="Enter your search...">
+
+            <button class="search-button" onclick="search()">Search</button>
+        </div>
+        <div id="searchResults">
+            <!-- Search results  -->
+        </div>
+    </section>
+
+
+
 
     <!-- Section de solde -->
     <section class="balance-section">
@@ -58,6 +120,9 @@
         <p class="balance-number"><span id="balance-value"></span>$</p>
         <p class="balance-number-crypto">= <span id="balance-crypto-value"></span></p>
     </section>
+
+
+
 
     <!-- Liste d'actifs -->
     <section class="asset-list">
@@ -81,11 +146,14 @@
         </div>
     </section>
 
+
+
+
     <!-- Section des transactions récentes -->
     <section class="recent-transactions">
         <h2>Recent Transactions</h2>
         <ul id="transaction-list">
-            <!-- Les données des transactions seront ajoutées dynamiquement -->
+            <!-- Les données seront ajoutées dynamiquement -->
         </ul>
         <!-- Boutons de navigation pour les transactions récentes -->
         <div class="button-container">
