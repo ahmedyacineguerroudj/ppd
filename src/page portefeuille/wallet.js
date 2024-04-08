@@ -1,3 +1,15 @@
+function toggleNotificationModal() {
+    var modal = document.getElementById("notificationModal");
+    closeAllModalsExcept("notificationModal");
+    modal.style.display = "block";
+}
+
+function toggleUserModal() {
+    var modal = document.getElementById("userModal");
+    closeAllModalsExcept("userModal");
+    modal.style.display = "block";
+}
+
 function closeAllModalsExcept(modalId) {
     var modals = document.querySelectorAll('.modal');
     modals.forEach(function(modal) {
@@ -7,17 +19,22 @@ function closeAllModalsExcept(modalId) {
     });
 }
 
-function toggleNotificationModal() {
+function closeNotificationModal() {
     var modal = document.getElementById("notificationModal");
-    closeAllModalsExcept("notificationModal");
-    modal.style.display = modal.style.display === "block" ? "none" : "block";
+    modal.style.display = "none";
 }
 
-function toggleUserModal() {
+function closeUserModal() {
     var modal = document.getElementById("userModal");
-    closeAllModalsExcept("userModal");
-    modal.style.display = modal.style.display === "block" ? "none" : "block";
+    modal.style.display = "none";
 }
+
+// Gestionnaires d'événements pour le survol de souris
+document.getElementById("notificationModal").parentNode.addEventListener("mouseover", toggleNotificationModal);
+document.getElementById("notificationModal").parentNode.addEventListener("mouseout", closeNotificationModal);
+
+document.getElementById("userModal").parentNode.addEventListener("mouseover", toggleUserModal);
+document.getElementById("userModal").parentNode.addEventListener("mouseout", closeUserModal);
 
 
 
@@ -186,5 +203,3 @@ document.addEventListener('DOMContentLoaded', function() {
     // Afficher les transactions sur la première page lors du chargement de la page
     displayTransactions(currentPage);
 });
-
-

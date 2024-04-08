@@ -54,7 +54,6 @@ body {
 /* Style pour le nom de la plateforme */
 .platform-name {
     display: flex;
-    justify-content: flex-end;
     font-weight: bold;
     font-size: 20px;
     margin-top: 15px;
@@ -76,17 +75,15 @@ body {
 /* Style pour le menu */
 .menu {
     display: flex;
-    gap: 50px;
     margin-bottom: 3px;
     margin-left: 100px;
-    margin-right: 300px;
 }
 
 
 /* Style pour les éléments du menu */
 .menu-item {
     font-weight: bold;
-    margin-right: 30px;
+    margin-right: 50px;
     font-size: 22px;
     text-decoration: none;
     color: #ffffff;
@@ -107,7 +104,12 @@ body {
     height: auto;
     transition: opacity 0.3s;
 }
-
+.globe-button {
+    display: flex;
+    position: absolute;
+    right: 10.5%;
+    top: 20px;
+}
 
 /* Style pour le bouton de notification */
 .notification-button img {
@@ -116,7 +118,12 @@ body {
     margin-left: 20px;
     transition: opacity 0.3s;
 }
-
+.notification-button {
+    display: flex;
+    position: absolute;
+    right: 5.5%;
+    top: 20px;
+}
 
 /* Style pour le bouton d'utilisateur */
 .user-button img {
@@ -125,13 +132,32 @@ body {
     margin-left: 20px;
     transition: opacity 0.3s;
 }
-
-.notification-button,
 .user-button {
-    position: relative;
-    display: inline-block;
+    display: flex;
+    position: absolute;
+    right: 0.5%;
+    top: 20px;
 }
 
+
+/* Styles lorsque le bouton est survolé */
+.globe-button:hover img {
+    content: url('Images/globe2.png');
+}
+.notification-button:hover img {
+    content: url('Images/notification_icon2.png');
+}
+.user-button:hover img {
+    content: url('Images/user_icon2.png');
+}
+
+
+/* Styles pour les boutons de model */
+.globe-button,
+.notification-button,
+.user-button {
+    display: inline-block;
+}
 .notification-button .modal,
 .user-button .modal {
     position: absolute;
@@ -146,6 +172,7 @@ body {
     flex-direction: column;
     overflow-y: auto;
     overflow-x: auto;
+    z-index: 100;
 }
 
 
@@ -167,18 +194,7 @@ body {
 
 /* Style pour le bouton de fermeture de la boîte modale */
 .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 24px;
-    color: #ffffff;
-}
-
-
-/* Style pour le bouton de fermeture au survol */
-.close:hover {
-    color: #09f8f8;
+    display: none;
 }
 
 
@@ -190,18 +206,11 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
     display: flex;
+    font-weight: bold;
     align-items: center;
-    margin-left: 13px;
+    margin-left: 70px;
     padding:  10px;
     border: none;
-}
-
-
-/* Style pour l'icône */
-.settings-button img {
-    width: 20px;
-    height: 20px;
-    margin-right: 15px;
 }
 
 
@@ -209,7 +218,6 @@ body {
 .settings-button:hover {
     background-color: #3c3f41;
 }
-
 
 
 /* Style pour le tableau de notifications */
@@ -235,7 +243,12 @@ body {
 }
 
 
-
+/* Media query pour les petits écrans */
+@media only screen and (max-width: 1000px) {
+    .menu {
+        display: none;
+    }
+}
 
 
 .search-section {
@@ -267,11 +280,13 @@ body {
     border: none;
     border-radius: 15px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .search-button:hover {
     background-color: #504d4d;
 }
+
 
 
 
@@ -361,6 +376,13 @@ body {
     color: #ffffff;
 }
 
+
+/* Media query pour les petits écrans */
+@media only screen and (max-width: 700px) {
+    .balance-buttons button{
+        display: none;
+    }
+}
 
 
 
