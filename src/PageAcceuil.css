@@ -6,21 +6,23 @@
 
 }
 
-body {
 
-    font-family: 'Inter', sans-serif;
-    background-color: black;
-    color: #ffffff;
-    background-image: url("https://static.vecteezy.com/system/resources/previews/000/833/542/non_2x/abstract-black-background-with-blue-light-lines-crossing-vector.jpg");
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: 2400px 2400px; /* Étire l'image pour couvrir entièrement le conteneur */
-    background-repeat: no-repeat; /* Empêche la répétition de l'image */
-    bottom: 0;
-    z-index: -1;
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: black;
+        color: #ffffff;
+        background-image: url("https://static.vecteezy.com/system/resources/previews/000/833/542/non_2x/abstract-black-background-with-blue-light-lines-crossing-vector.jpg");
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: 1350px 1500px;
+        background-repeat: no-repeat;
+        background-attachment: fixed; /* Fixe l'image de fond par rapport à la fenêtre du navigateur */
+        z-index: -1;
+
 }
 
 
@@ -165,6 +167,10 @@ nav .btn:hover {
     border-color: #00FFFF;
     position: relative;
 }
+
+
+
+
 /*frequantly*/
 .content2 {
     margin-top: 5%;
