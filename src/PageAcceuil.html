@@ -7,28 +7,80 @@
     <link rel="stylesheet" href="PageAcceuil.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Home</title>
 
 </head>
 <body>
 
 <div class="container">
-    <nav>
-        <img src="images/image.png" class="logo">
-        <span class="whales">Whales</span><span class="cap">Cap</span>
-
-        <ul>
-            <li><a  href="#">Home</a></li>
-            <li><a href="#">Market</a></li>
-            <li><a href="#">Buy & Sell</a></li>
-            <li><a href="#">About us</a></li>
-
-        </ul>
-        <a href="#" class="btn">EN</a>
-        <a href="#" class="btn">SIGN UP</a>
-        <a href="#" class="btn">LOGIN</a>
 
 
-    </nav>
+
+
+
+    <div id="evaluationButton" class="video4">
+        <video autoplay loop muted plays-inline>
+            <source src="images/rating.mp4" type="video/mp4">
+        </video>
+    </div>
+
+
+    <div id="evaluationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Évaluation du site</h2>
+            <div id="ratingStars">
+                <span class="star" data-rating="1">&#x2605;</span>
+                <span class="star" data-rating="2">&#x2605;</span>
+                <span class="star" data-rating="3">&#x2605;</span>
+                <span class="star" data-rating="4">&#x2605;</span>
+                <span class="star" data-rating="5">&#x2605;</span>
+            </div>
+
+            <p id="ratingMessage">Merci d'évaluer notre site !</p>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <video autoplay loop muted plays-inline class="video2">
+        <source src="images/usercrypto.mp4" type="video/mp4">
+    </video>
+    <video autoplay loop muted plays-inline class="video">
+        <source src="images/trading.mp4" type="video/mp4">
+    </video>
+    <!-- Barre supérieure -->
+    <section class="top-bar">
+        <img src="images/image.png" alt="Logo">
+        <div class="platform-name">
+            <span class="whales">whales</span>
+            <span class="Cap">Cap</span>
+        </div>
+        <!-- Menu de navigation -->
+        <div class="menu">
+            <a href="#" class="menu-item">Home</a>
+            <a href="#" class="menu-item">Buy & Sell</a>
+            <a href="#" class="menu-item">Market</a>
+            <a href="#" class="menu-item">About Us</a>
+
+        </div>
+
+            <div class="butmenu">
+                <button class="menu-button">Login</button>
+                <button class="menu-button">Signup</button>
+                <button class="menu-button">En</button>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
 
     <div class="content">
         <h1>Trade 100+</h1>
@@ -38,85 +90,48 @@
 
 
 
-    <div class="coin-list1">
-        <div class="coin">
-            <img src="images/Bitcoin.png" class="coin">
-            <div>
-                <h3>$73,418.70</h3>
-                <p>Bitcoin</p>
-                <p2>+1,28%</p2>
 
-            </div>
+
+<!-- Ligne de couleur -->
+<div class="color-line"></div>
+
+
+
+
+
+
+<!-- Liste d'actifs -->
+
+
+    <div class="asset-list">
+        <table id="asset-table">
+            <thead>
+            <tr>
+
+            </tr>
+            </thead>
+            <tbody id="asset-items">
+            <!-- Les données seront ajoutées dynamiquement -->
+            </tbody>
+        </table>
+        <!-- Boutons de navigation pour la liste d'actifs -->
+        <div class="button-container">
+            <button id="show-more">Show more ></button>
+            <button id="previous" style="display: none;">< Previous</button>
         </div>
-
-        <div class="coin">
-            <img src="images/Ethereum.png" class="coin">
-            <div>
-                <h3>$3,989.69</h3>
-                <p>Ethereum</p>
-                <p2>− 0.45%</p2>
-
-            </div>
-        </div>
-
-        <div class="coin">
-            <img src="images/Tether.png" class="coin">
-            <div>
-                <h3>$1.00</h3>
-                <p>Tether</p>
-               <p2>+0,04%</p2>
-
-            </div>
-        </div>
-</div>
-
-    <div class="coin-list2">
-    <div class="coin">
-            <img src="images/USDC.png" class="coin">
-            <div>
-                <h3>$1.00</h3>
-                <p>USDC</p>
-                <p2>+0,01%</p2>
-
-            </div>
-        </div>
-
-        <div class="coin">
-            <img src="images/XRP.png" class="coin">
-            <div>
-                <h3>$0.69</h3>
-                <p>XRP</p>
-                <p2>+0,31%</p2>
-
-            </div>
-        </div>
-
-
-        <div class="coin">
-            <img src="images/Solana.png" class="coin">
-            <div>
-                <h3>$169.17</h3>
-                <p>Solana</p>
-                <p2>+11,75%</p2>
-
-            </div>
-        </div>
-
-</div>
+    </div>
 
     <div class="content2">
-        <h1>USDC: The Digital Dollar of the Global Crypto Economy</h1>
-        <p>Coinbase believes that crypto will be part of the solution to create an open financial system that is both more efficient and fairer. We co-founded the Centre Consortium in 2018 to invest in building USDC, and since then, it has become the second-largest stablecoin by market cap.</p>
+
     </div>
 
 
 
-    <div class="email-signup">
-        <input type="email" id="email" placeholder="Enter your email address@....">
-        <button id="signup-btn">SignUp</button>
-    </div>
 
+<div class="image2">
     <img src="images/image2.png" class="image2">
+</div>
+
 
 
 
@@ -177,11 +192,11 @@
 
     </div>
 
-
     <div class="wrapper">
         <a href="https://www.instagram.com/votre_compte_instagram" class="button">
             <div class="icon"><i class="fab fa-instagram"></i></div>
             <span>Instagram</span>
+
         </a>
 
         <a href="https://twitter.com/votre_compte_twitter" class="button">
@@ -200,7 +215,7 @@
         </a>
     </div>
 
-    <script src="PageAcceuil;js.js"></script> <!-- Incluez le fichier JavaScript -->
+<script src="PageAcceuil;js.js"></script> <!-- Incluez le fichier JavaScript -->
 
     <div class="content7">
         <h1>
@@ -226,14 +241,16 @@
     </div>
 
 
-
+<div class="new-content">
+    <h1>USDC: The Digital Dollar of the Global Crypto Economy</h1>
+    <p>Coinbase believes that crypto will be part of the solution to create an open financial system that is both more efficient and fairer. We co-founded the Centre Consortium in 2018 to invest in building USDC, and since then, it has become the second-largest stablecoin by market cap.</p>
 </div>
 
-<!-- Ligne personnalisée -->
-<div class="custom-line"></div>
-<div class="custom-line2"></div>
+<button class="crypto-button">
+    Check Crypto Prices <i class="fas fa-chart-line"></i>
+</button>
 
-
+</div>
 
 </body>
 </html>
