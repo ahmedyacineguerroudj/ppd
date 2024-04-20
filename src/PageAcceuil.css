@@ -693,16 +693,14 @@ nav .btn:hover {
 }
 
 #email {
-    flex: 1; /* La case de l'e-mail occupera tout l'espace restant */
-    margin-right: 12px; /* Marge à droite pour séparer la case du bouton */
     border: none;
     border-radius: 50px;
     position: absolute;
     padding: 8px 20px; /* Ajouter un peu de remplissage sur les côtés */
     color: grey;
     bottom: 10%; /* Positionner la case de l'e-mail légèrement en dessous */
-    left: -6px; /* Décaler la case de l'e-mail de 50px à partir de la gauche */
-    transform: translateY(250%); /* Déplacer la case de l'e-mail vers le bas */
+    transform: translateY(850%); /* Déplacer la case de l'e-mail vers le bas */
+    left: 88px;
 }
 
 #signup-btn {
@@ -713,9 +711,8 @@ nav .btn:hover {
     padding: 10px 20px; /* Ajouter un espacement interne au bouton */
     cursor: pointer; /* Curseur indiquant que le bouton est cliquable */
     position: absolute;
-    bottom: 10%; /* Positionner le bouton légèrement en dessous */
-    left: 200px; /* Décaler le bouton de 200px à partir de la gauche */
-    transform: translateY(227%); /* Déplacer le bouton vers le bas */
+    left: 300px; /* Décaler le bouton de 200px à partir de la gauche */
+    transform: translateY(660%); /* Déplacer le bouton vers le bas */
     font-weight: bold;
 
 }
@@ -1001,7 +998,7 @@ nav .btn:hover {
 
 /* Style pour les lignes du tableau */
 #asset-table tbody tr {
-    background-color: darkgrey;
+    background-color: #1E1E1E;
 }
 
 
@@ -1186,7 +1183,7 @@ nav .btn:hover {
     align-items: center; /* Centrer verticalement les éléments enfants */
     position: absolute;
     margin-left: 520px; /* Ajoute une marge à gauche de l'icône */
-    margin-top: -535px; /* Ajoute une marge à gauche de l'icône */
+    margin-top: -582px; /* Ajoute une marge à gauche de l'icône */
     margin-right: 10px; /* Ajoute une marge à droite du texte */
 }
 .crypto-button i {
