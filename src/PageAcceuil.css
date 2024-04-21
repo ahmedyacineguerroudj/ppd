@@ -162,13 +162,24 @@ nav .btn:hover {
     background-color: #00ffff; /* Couleur de la ligne */
     height: 2px; /* Hauteur de la ligne */
     width: 100%; /* Largeur de la ligne pour remplir toute la largeur de la page */
-    top: -30px;
     border-style: double;
     border-color: #00FFFF;
-    position: relative;
+    position: absolute;
+}
+
+.color-line {
+    right: 10px;
+}
+
+.color-line {
+    left: 1px;
+
 }
 
 
+.color-line {
+    top: 64px;
+}
 
 
 /*frequantly*/
@@ -278,6 +289,7 @@ nav .btn:hover {
     position: absolute;
     font-size: 14px;
     position: absolute;
+    color: white;
     margin-right: 666px;
     margin-left: 100px;
 
@@ -304,7 +316,7 @@ nav .btn:hover {
 .content{
     margin-top: 12%;
     font-size: 20px;
-
+    color: white;
     position: absolute;
     margin-left: 100px;
 }
@@ -489,6 +501,7 @@ nav .btn:hover {
 }
 
 .wrapper {
+    color: white;
     position: absolute;
     top: 2125px; /* Ajustez cette valeur selon votre besoin */
     left: 18%; /* Centrez horizontalement */
@@ -525,6 +538,10 @@ nav .btn:hover {
     position: absolute;
     top: 12px;
 
+}
+
+.wrapper .button .span {
+    color: white;
 }
 
 .wrapper .button .icon i{
@@ -697,22 +714,23 @@ nav .btn:hover {
     border-radius: 50px;
     position: absolute;
     padding: 8px 20px; /* Ajouter un peu de remplissage sur les côtés */
-    color: grey;
+    color: black;
     bottom: 10%; /* Positionner la case de l'e-mail légèrement en dessous */
-    transform: translateY(850%); /* Déplacer la case de l'e-mail vers le bas */
+    transform: translateY(890%); /* Déplacer la case de l'e-mail vers le bas */
     left: 88px;
 }
 
 #signup-btn {
     background-color: black; /* Couleur de fond du bouton */
     color: #00efff; /* Couleur du texte du bouton */
-    border: 12px; /* Supprimer la bordure du bouton */
+    border: 1px solid #00efff;
     border-radius: 50px;
+    border-color: #00FFFF;
     padding: 10px 20px; /* Ajouter un espacement interne au bouton */
     cursor: pointer; /* Curseur indiquant que le bouton est cliquable */
     position: absolute;
     left: 300px; /* Décaler le bouton de 200px à partir de la gauche */
-    transform: translateY(660%); /* Déplacer le bouton vers le bas */
+    transform: translateY(670%); /* Déplacer le bouton vers le bas */
     font-weight: bold;
 
 }
@@ -757,7 +775,7 @@ nav .btn:hover {
     border-color: #00efff;
     border-style: double;
     margin-top: -1650px; /* Déplacer le cadre vers le haut de 10 pixels */
-    margin-left: 180px;
+    margin-left: 120px;
 }
 
 .interaction-volume p:first-child {
@@ -845,13 +863,13 @@ nav .btn:hover {
 
 .video{
     position: absolute;
-    right: 975px;
+    right: 882px;
     bottom:0;
     z_index: -1;
     width: 13%; /* ou une valeur spécifique, par exemple: 500px */
     height: auto;
     border-radius: 300px; /* Valeur de rayon de bordure arrondie */
-    top: 67%;
+    top: 55%;
     mix-blend-mode: revert; /* Mélange la couleur de fond avec la vidéo */
     margin-left: 100px;
 }
@@ -981,15 +999,19 @@ nav .btn:hover {
 /* Style pour le tableau */
 #asset-table {
     margin-left: 720px;
-    top: -60%;
     width: 12px; /* Ajustez cette valeur en fonction de vos besoins */
 
+}
+
+#asset-table {
+    margin-top: 80px;
 }
 
 
 #asset-table td {
     padding: 30px; /* Ajoute de l'espace à l'intérieur des cellules */
     text-align: center;
+    color: white;
     width: 100px; /* Ajustez cette valeur en fonction de vos besoins */
     border-radius: 20px;
     border: 4px solid #000; /* Ajoute une bordure entre les cellules */
@@ -1074,6 +1096,7 @@ nav .btn:hover {
     align-items: center; /* Centrer verticalement les éléments et les boutons */
     margin-bottom: 3px;
     margin-left: 225px;
+    border-color: #00FFFF;
 }
 
 /* Style pour les éléments du menu */
@@ -1147,6 +1170,7 @@ nav .btn:hover {
 .new-content {
     margin-top: 40%;
     font-size: 20px;
+    color: white;
     text-align: center;
 }
 
@@ -1182,8 +1206,8 @@ nav .btn:hover {
     display: flex; /* Utiliser flexbox */
     align-items: center; /* Centrer verticalement les éléments enfants */
     position: absolute;
-    margin-left: 520px; /* Ajoute une marge à gauche de l'icône */
-    margin-top: -582px; /* Ajoute une marge à gauche de l'icône */
+    margin-left: 450px; /* Ajoute une marge à gauche de l'icône */
+    margin-top: -542px; /* Ajoute une marge à gauche de l'icône */
     margin-right: 10px; /* Ajoute une marge à droite du texte */
 }
 .crypto-button i {
@@ -1239,6 +1263,7 @@ nav .btn:hover {
     height: 100%;
     object-fit: cover;
 }
+
 
 
 
