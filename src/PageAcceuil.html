@@ -66,7 +66,6 @@
     <button id="signup-btn">SignUp</button>
 </div>
 
-
     <!-- Barre supérieure -->
     <section class="top-bar">
         <img src="images/image.png" alt="Logo">
@@ -76,11 +75,10 @@
         </div>
         <!-- Menu de navigation -->
         <div class="menu">
-            <a href="#" class="menu-item">Home</a>
-            <a href="#" class="menu-item">Buy & Sell</a>
-            <a href="#" class="menu-item">Market</a>
-            <a href="#" class="menu-item">About Us</a>
-
+            <a href="#" class="menu-item active" onclick="markActive(this)">Home</a>
+            <a href="#" class="menu-item" onclick="markActive(this)">Buy & Sell</a>
+            <a href="#" class="menu-item" onclick="markActive(this)">Market</a>
+            <a href="#" class="menu-item" onclick="markActive(this)">About Us</a>
         </div>
 
         <div class="butmenu">
@@ -88,9 +86,7 @@
             <button class="menu-button">Signup</button>
             <button class="menu-button">En</button>
         </div>
-
-</section>
-
+    </section>
 
 <!-- Liste d'actifs cryptos -->
     <div class="asset-list">
@@ -231,6 +227,32 @@
 </button>
 
 </div>
+
+<div class="book" id="book">
+    <div class="cover" id="cover">
+        <img src="images/vendre.png" class="book-image">
+        <img src="images/acheter.png" class="book-image2">
+        <h2> how to buy crypto ?<br></h2>
+    </div>
+
+    <div class="contentB" id="contentB">
+        <p><span class="done"></span>Enter the amount and select payment:
+            Enter the amount, select the available payment method and choose the payment account or link the payment card.</p>
+        <p><span class="done"></span>Confirm the order:
+            Detailed transaction information is confirmed, including trading pair quotes, fees and other explanatory tips.</p>
+        <p><span class="done"></span>Receive crypto:
+            Once payment is made, the purchased crypto will be transferred to the Spot wallet.</p>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
 
 </body>
 </html>

@@ -27,11 +27,11 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener('DOMContentLoaded', function() {
     // Données d'actifs (juste un exemple)
     const assets = [
-        { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'Images Crypto/BTC.png' },
+        { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'images/Bitcoin.png' },
         { coin: 'Ethereum', amount: 0.3, price: 3000, image: 'Images Crypto/ETH.png' },
-        { coin: 'Tether', amount: 100, price: 1, image: 'Images Crypto/USDT.png' },
+        { coin: 'Tether', amount: 100, price: 1, image: 'images/Tether.png' },
         { coin: 'Cardano', amount: 150, price: 2, image: 'Images Crypto/ADA.png' },
-        { coin: 'XRP', amount: 200, price: 0.5, image: 'Images Crypto/XRP.png' },
+        { coin: 'XRP', amount: 200, price: 0.5, image: 'images/XRP.png' },
         { coin: 'Solana', amount: 10, price: 150, image: 'Images Crypto/SOL.png' },
         { coin: 'Polkadot', amount: 5, price: 40, image: 'Images Crypto/DOT.png' },
         { coin: 'Dogecoin', amount: 1000, price: 0.2, image: 'Images Crypto/DOGE.png' },
@@ -245,3 +245,55 @@ function ajusterTaillePage() {
 window.addEventListener('load', ajusterTaillePage);
 window.addEventListener('resize', ajusterTaillePage);
 
+function markActive(element) {
+    // Supprime la classe 'active' de tous les éléments de menu
+    var menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach(item => {
+        item.classList.remove('active');
+    });
+
+    // Ajoute la classe 'active' à l'élément cliqué
+    element.classList.add('active');
+}
+function randomColor() {
+    // Générer des composantes de couleur aléatoires
+    var red = Math.floor(Math.random() * 256);
+    var green = Math.floor(Math.random() * 256);
+    var blue = Math.floor(Math.random() * 256);
+
+    // Combinaison avec la couleur #00efff (RGB(0,239,255))
+    var mixedRed = Math.floor((red + 0) / 2);
+    var mixedGreen = Math.floor((green + 239) / 2);
+    var mixedBlue = Math.floor((blue + 255) / 2);
+
+    // Conversion en format hexadécimal
+    var mixedColor = "#" +
+        mixedRed.toString(16).padStart(2, '0') +
+        mixedGreen.toString(16).padStart(2, '0') +
+        mixedBlue.toString(16).padStart(2, '0');
+
+    return mixedColor;
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    var book = document.querySelector('.book');
+    var randomMixedColor = randomColor();
+    book.style.backgroundColor = randomMixedColor;
+});
+
+
+
+// Sélectionnez le couvert du livre
+var cover = document.getElementById('cover');
+
+// Ajoutez un écouteur d'événements pour détecter le survol du couvert du livre
+cover.addEventListener('mouseenter', function() {
+    // Affichez le contenuB lorsque le couvert est survolé
+    document.getElementById('contentB').style.display = 'block';
+});
+
+// Ajoutez un écouteur d'événements pour détecter lorsque la souris quitte le couvert du livre
+cover.addEventListener('mouseleave', function() {
+    // Masquez le contenuB lorsque la souris quitte le couvert
+    document.getElementById('contentB').style.display = 'none';
+});

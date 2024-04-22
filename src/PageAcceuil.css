@@ -318,7 +318,7 @@ nav .btn:hover {
     font-size: 20px;
     color: white;
     position: absolute;
-    margin-left: 100px;
+    margin-left: 20px;
 }
 
 .coin-list1 .coin div p {
@@ -713,11 +713,12 @@ nav .btn:hover {
     border: none;
     border-radius: 50px;
     position: absolute;
+    width: 330px;
     padding: 8px 20px; /* Ajouter un peu de remplissage sur les côtés */
     color: black;
     bottom: 10%; /* Positionner la case de l'e-mail légèrement en dessous */
     transform: translateY(890%); /* Déplacer la case de l'e-mail vers le bas */
-    left: 88px;
+    left: -35px;
 }
 
 #signup-btn {
@@ -774,8 +775,8 @@ nav .btn:hover {
     border-radius: 20px; /* Ajouter des coins arrondis */
     border-color: #00efff;
     border-style: double;
-    margin-top: -1650px; /* Déplacer le cadre vers le haut de 10 pixels */
-    margin-left: 120px;
+    margin-top: -1500px; /* Déplacer le cadre vers le haut de 10 pixels */
+    margin-left: 70px;
 }
 
 .interaction-volume p:first-child {
@@ -863,7 +864,7 @@ nav .btn:hover {
 
 .video{
     position: absolute;
-    right: 882px;
+    right: 950px;
     bottom:0;
     z_index: -1;
     width: 13%; /* ou une valeur spécifique, par exemple: 500px */
@@ -871,7 +872,7 @@ nav .btn:hover {
     border-radius: 300px; /* Valeur de rayon de bordure arrondie */
     top: 55%;
     mix-blend-mode: revert; /* Mélange la couleur de fond avec la vidéo */
-    margin-left: 100px;
+    margin-left: -10px;
 }
 .video2{
     position: absolute;
@@ -1088,6 +1089,23 @@ nav .btn:hover {
     margin-top: 10px;
 
 }
+/* Style pour les éléments du menu */
+.menu-item.active {
+    font-weight: bold;
+    font-size: 22px;
+    margin-right: 50px;
+    text-decoration: none;
+    color: #00FFFF; /* Couleur pour l'élément actif */
+    transition: transform 0.2s ease, color 0.2s ease; /* Transition pour le zoom et la couleur */
+    margin-top: 10px;
+    transform: scale(1.2); /* Zoom initial */
+}
+
+/* Style pour le survol des éléments du menu */
+.menu-item:not(.active):hover {
+    transform: scale(1.2);
+    color: #00FFFF;
+}
 
 
 .butmenu {
@@ -1168,7 +1186,7 @@ nav .btn:hover {
 
 
 .new-content {
-    margin-top: 40%;
+    margin-top: 25%;
     font-size: 20px;
     color: white;
     text-align: center;
@@ -1206,9 +1224,9 @@ nav .btn:hover {
     display: flex; /* Utiliser flexbox */
     align-items: center; /* Centrer verticalement les éléments enfants */
     position: absolute;
-    margin-left: 450px; /* Ajoute une marge à gauche de l'icône */
-    margin-top: -542px; /* Ajoute une marge à gauche de l'icône */
-    margin-right: 10px; /* Ajoute une marge à droite du texte */
+    margin-left: 385px; /* Ajoute une marge à gauche de l'icône */
+    margin-top: -375px; /* Ajoute une marge à gauche de l'icône */
+    margin-right: 100px; /* Ajoute une marge à droite du texte */
 }
 .crypto-button i {
     margin-left: 5px; /* Ajoute une marge à gauche de l'icône */
@@ -1243,6 +1261,11 @@ nav .btn:hover {
 
 .crypto-button:hover {
     animation: neon-border 1s ease-in-out infinite alternate;
+    transition: 2s;
+}
+
+.crypto-button:hover {
+    transform: rotateY(180deg);
 }
 
 .video3 {
@@ -1266,4 +1289,102 @@ nav .btn:hover {
 
 
 
+/* Media query pour les petits écrans */
+@media only screen and (max-width: 1000px) {
+    .menu {
+        display: none;
+    }
+}
+.book {
+    background: linear-gradient(45deg, #00efff, #ffffff);
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 500px;
+    width: 200px;
+    height: 440px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 12px #000;
+    perspective: 2000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: black;
+}
 
+.contentB {
+    display: none;
+    color: black;
+    flex-direction: column;
+    align-items: normal;
+    justify-content: space-around;
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 10px;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 14px;
+}
+.contentB {
+    display: none;
+}
+.done::before {
+    content: "✔️ "; /* Caractère emoji représentant "done" */
+}
+
+.contentB p {
+    margin-bottom: 10px; /* Ajoute un espace de 10px entre chaque paragraphe */
+}
+
+.book:hover .contentB {
+    display: block;
+}
+
+.book .cover {
+    transform-origin: top right;
+    background-color: white;
+}
+
+.cover {
+    top: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transition: all 0.5s;
+    background: linear-gradient(45deg, rgba(0, 239, 255, 0.8), rgba(255, 255, 255, 0.8));
+}
+
+.cover h2 {
+    font-weight: bold;
+    position: absolute;
+    top: 170px;
+    left: 5px;
+    font-style: italic;
+    color: black;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    font-family: 'Cinzel Decorative';
+}
+
+.book:hover .cover {
+    transform: rotateY(180deg);
+    background-color: white;
+}
+
+/* Ajout de styles pour les images à l'intérieur du conteneur */
+.book-image,
+.book-image2 {
+    max-width: 35%;
+    max-height: 35%;
+    display: block;
+}
+
+.book-image2 {
+    top: 20px;
+}
