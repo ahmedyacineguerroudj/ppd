@@ -18,6 +18,7 @@ html,body {
     place-items: center;
     background-color: #161616;
     font-family: 'Inter', sans-serif;
+    color: #ffffff;
 }
 
 /* Style pour la sélection de texte */
@@ -39,11 +40,11 @@ html,body {
 .wrapper {
     overflow: hidden;
     width: 35vw;
-    height: 87vh;
+    height: 90vh;
     background-color: rgba(255, 255, 255, 0);
     padding: 20px;
     border-radius: 100px;
-    box-shadow: 0 0 100px 50px rgba(255, 255, 255, 0.35) inset;
+    box-shadow: 100px 100px 100px 300px rgba(255, 255, 255, 0.13) inset;
     position: fixed;
     top: 5vh;
     left: 50%;
@@ -53,7 +54,7 @@ html,body {
 
 /* Style pour la taille de l'image walesCap logo */
 .title img {
-    width: 90px;
+    width: 100px;
     height: auto;
 }
 
@@ -62,11 +63,10 @@ html,body {
 .title {
     display: flex;
     justify-content: flex-end;
-    margin-right : 60px;
-    font-weight: bold;
-    font-size: 35px;
+    margin-right : 80px;
+    font-size: 32px;
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 
@@ -74,6 +74,8 @@ html,body {
 .title .whales {
     color: #ffffff; /* Couleur pour "whales" */
     user-select: none;
+    margin-top: 10px
+
 }
 
 
@@ -81,6 +83,8 @@ html,body {
 .title .Cap {
     color: #00FFFF; /* Couleur pour "Cap" */
     user-select: none;
+    margin-top: 10px;
+    font-size: 30px;
 }
 
 
@@ -88,12 +92,10 @@ html,body {
 .wrapper .slide-controls {
     position: relative;
     display: flex;
-    height: 50px;
+    height: 30px;
     width: 100%;
     overflow: hidden;
-    margin: 0 0 20px 0;
-    box-shadow: 0 0 100px 50px rgba(255, 255, 255, 0.5) inset;
-    border-radius: 15px;
+    margin: 0 0 25px 0;
 }
 
 
@@ -101,10 +103,7 @@ html,body {
 .slide-controls .slide {
     height: 100%;
     width: 100%;
-    font-size: 18px;
-    font-weight: 1000;
     text-align: center;
-    line-height: 50px;
     z-index: 1;
 }
 
@@ -116,13 +115,11 @@ html,body {
     width: 50%;
     left: 0;
     z-index: 0;
-    border-radius: 15px;
-    background-color: #161616;
     transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
 }
 
 
-/* Style pour les boutons radio (cachés none) */
+/* Style pour les boutons radio */
 input[type="radio"] {
     display: none;
 }
@@ -133,32 +130,57 @@ input[type="radio"] {
     left: 50%;
 }
 #signup:checked ~ label.signup {
-    color: #00FFFF;
     cursor: default;
     user-select: none;
+    color: #0FF;
+    border-left: 2px solid #00FFFF;
+    text-align: center;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-transform: uppercase;
 }
 #signup:checked ~ label.login {
-    color: #161616;
     user-select: none;
+    color: rgba(0, 255, 255, 0.33);
+    text-align: center;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-transform: uppercase;
 }
 
 
 /* Style lorsque le bouton de connexion est coché */
 #login:checked ~ label.signup {
-    color: #161616;
     user-select: none;
+    color: rgba(0, 255, 255, 0.33);
+    text-align: center;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-transform: uppercase;
 }
 #login:checked ~ label.login {
     color: #00FFFF;
+    border-right: 2px solid #00FFFF;
     cursor: default;
     user-select: none;
+    text-align: center;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-transform: uppercase;
 }
 
 
 /* Style pour le conteneur de formulaire */
 .wrapper .form-container {
-    width: 100%;
-    color : #ffffff;
+    width: 99%;
     overflow: hidden;
     position: relative;
 }
@@ -183,7 +205,7 @@ input[type="radio"] {
 .form-inner form .field {
     height: 45px;
     width: 100%;
-    margin-top: 3px;
+    margin-top: 2px;
 }
 
 
@@ -193,19 +215,26 @@ input[type="radio"] {
     width: 100%;
     outline: none;
     padding-left: 15px;
-    border-radius: 15px;
-    border: 1px solid lightgrey;
-    border-bottom-width: 2px;
+    border-radius: 50px ;
     font-size: 17px;
     transition: all 0.3s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border:none;
+    border-bottom:  4px solid #161616;
+    border-right: 4px solid #161616;
+    color: #ffffff;
 }
 
 
 /* Style lorsque le champ de saisie est en focus */
 .form-inner form .field input:focus {
-    border-color: #00FFFF;
-    border-width: 4px;
-    color : #161616;
+    background: rgba(255, 255, 255, 0);
+    color : #ffffff;
+    border-bottom: 4px solid #09f8f8;
+    border-right: 4px solid #09f8f8;
 }
 
 
@@ -218,7 +247,7 @@ input[type="radio"] {
 
 /* Style lorsque le champ de saisie est en focus */
 form .field input:focus::placeholder {
-    color: #ffffff;
+    color: rgba(37, 189, 189, 0.02);
 }
 
 
@@ -245,11 +274,11 @@ form .btn {
     width: 100%;
     border-radius: 15px;
     position: relative;
+    margin:0;
 }
 .form-container .form-inner form .field.btn {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
 }
 form .btn input[type="submit"] {
     height: 100%;
@@ -272,7 +301,7 @@ form .btn input[type="submit"]:hover {
     font-weight: bold;
     font-size: 20px;
     background: linear-gradient(135deg, #999999, #161616);
-    color: #fff; /* Couleur du texte */
+    border:none;
 }
 
 
@@ -320,4 +349,22 @@ form .btn input[type="submit"]:hover {
 .form-inner form .terms-link:hover,
 .form-inner form .privacy-link:hover {
     color: #ffffff;
+}
+
+
+
+
+/* Chrome, Safari*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px rgba(101, 239, 222, 0.78) inset !important;
+}
+
+
+
+/* Style pour le texte du remplissage automatique */
+input:-webkit-autofill {
+    -webkit-text-fill-color: #161616 !important;
 }
