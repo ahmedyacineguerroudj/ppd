@@ -68,15 +68,37 @@ const notificationsData = [
     {date: '2024-04-06', message: 'Notification 2'},
     {date: '2024-04-05', message: 'Notification 3'},
 ];
-
 // Remplir le tableau avec les données de notification
 fillNotificationTable(notificationsData);
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Récupère tous les liens de la barre de navigation
+    const navbarLinks = document.querySelectorAll('#navbar a');
+    // Fonction pour déplacer la page jusqu'à la section correspondante
+    function scrollToSection(event) {
+        event.preventDefault();
+        const targetId = this.getAttribute('href').substring(1); // Récupère l'ID de la section cible
+        const targetSection = document.getElementById(targetId); // Sélectionne la section cible
+        const offset = targetSection.offsetTop; // Récupère la position verticale de la section par rapport au haut de la page
+        window.scrollTo({
+            top: offset,
+            behavior: 'smooth' // Défilement vers la section
+        });
+    }
+
+    // Ajoute un gestionnaire d'événements de clic à chaque lien de la barre de navigation
+    navbarLinks.forEach(link => {
+        link.addEventListener('click', scrollToSection);
+    });
+});
+
 
 
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Données d'actifs (juste un  exemple)
+    // Données d'actifs (juste un exemple)
     const assets = [
         { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'Images Crypto/BTC.png' },
         { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'Images Crypto/BTC.png' },
@@ -107,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Effacer le contenu de la table des actifs
         assetTable.innerHTML = '';
         // Afficher les actifs sur la page actuelle
-        assets.slice(startIndex, endIndex).forEach(asset => {
+        assets.slice(startIndex, endIndex).forEach((asset, index) => {
             const row = document.createElement('tr');
             const coinCell = document.createElement('td');
             const coinSpan = document.createElement('span');
@@ -129,25 +151,69 @@ document.addEventListener('DOMContentLoaded', function() {
             priceCell.textContent = asset.price;
             row.appendChild(priceCell);
             assetTable.appendChild(row);
+
+            // Ajouter un gestionnaire d'événements pour le double-clic sur une ligne d'actif
+            row.addEventListener('dblclick', function() {
+                showModalDeleteAsset(index + startIndex);
+            });
         });
+
         // Afficher ou masquer le bouton "Show more" en fonction du nombre d'éléments restants
         showMoreButton.style.display = endIndex < assets.length ? 'block' : 'none';
         // Afficher ou masquer le bouton "Previous" en fonction de la page actuelle
         previousButton.style.display = page > 1 ? 'block' : 'none';
+
+        // Vérifier si la liste d'actifs est vide et afficher l'image et le message "No records" en conséquence
+        const noRecordsAssets = document.getElementById('noRecordsAssets');
+        noRecordsAssets.style.display = assets.length === 0 ? 'block' : 'none';
     }
+
     // Ajouter un gestionnaire d'événement pour le clic sur le bouton "Show more"
     showMoreButton.addEventListener('click', function() {
         currentPage++;
         displayAssets(currentPage);
     });
+
     // Ajouter un gestionnaire d'événement pour le clic sur le bouton "Previous"
     previousButton.addEventListener('click', function() {
         currentPage--;
         displayAssets(currentPage);
     });
+
     // Afficher les actifs sur la première page lors du chargement de la page
     displayAssets(currentPage);
+
+    // Fonction pour afficher le modal de confirmation de suppression pour un actif spécifique
+    function showModalDeleteAsset(index) {
+        const modal = document.getElementById('deleteModal');
+        modal.style.display = 'block';
+
+        document.getElementById('confirmDelete').onclick = function() {
+            deleteAsset(index);
+            modal.style.display = 'none';
+        };
+
+        document.getElementById('cancelDelete').onclick = function() {
+            modal.style.display = 'none';
+        };
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        };
+    }
+
+    // Fonction pour supprimer un actif de la liste
+    function deleteAsset(index) {
+        assets.splice(index, 1);
+        displayAssets(currentPage); // Mettre à jour l'affichage des actifs
+        updatePaginationButtons(); // Mettre à jour les boutons de pagination si nécessaire
+    }
 });
+
+
+
 
 
 
@@ -155,27 +221,57 @@ document.addEventListener('DOMContentLoaded', function() {
 // Exemple (Données des transactions récentes)
 const recentTransactionsExample = [
     { date: '2024-04-01', type: 'Deposit', amount: 100, currency: 'USD' },
-    { date: '2024-03-30', type: 'Withdrawal', amount: 50, currency: 'EUR' },
-    { date: '2024-03-28', type: 'Transfer', amount: 200, currency: 'BTC' },
-    { date: '2024-04-01', type: 'Deposit', amount: 100, currency: 'USD' },
-    { date: '2024-03-30', type: 'Withdrawal', amount: 50, currency: 'EUR' },
-    { date: '2024-03-28', type: 'Transfer', amount: 200, currency: 'BTC' },
-    { date: '2024-04-01', type: 'Deposit', amount: 100, currency: 'USD' },
-    { date: '2024-03-30', type: 'Withdrawal', amount: 50, currency: 'EUR' },
-    { date: '2024-03-28', type: 'Transfer', amount: 200, currency: 'BTC' },
+
 ];
+
+// Variables globales
+const transactionList = document.getElementById('transaction-list');
+const transactionsPerPage = 5;
+let currentPage = 1;
+
 // Fonction pour afficher les transactions sur une page
 function displayTransactions(page) {
     const startIndex = (page - 1) * transactionsPerPage;
     const endIndex = startIndex + transactionsPerPage;
     transactionList.innerHTML = '';
-    recentTransactionsExample.slice(startIndex, endIndex).forEach(transaction => {
+
+    if (recentTransactionsExample.length === 0) {
+        document.getElementById('noRecordsTransactions').style.display = 'block'; // Afficher le message "No records"
+        document.getElementById('previous-transactions').style.display = 'none'; // Masquer le bouton "Previous"
+        document.getElementById('next-transactions').style.display = 'none'; // Masquer le bouton "Next"
+        return; // Sortir de la fonction si la liste est vide
+    } else {
+        document.getElementById('noRecordsTransactions').style.display = 'none'; // Masquer le message "No records"
+        document.getElementById('previous-transactions').style.display = 'block'; // Afficher le bouton "Previous"
+        document.getElementById('next-transactions').style.display = 'block'; // Afficher le bouton "Next"
+    }
+
+    recentTransactionsExample.slice(startIndex, endIndex).forEach((transaction, index) => {
         const listItem = document.createElement('li');
-        listItem.textContent = `${transaction.date} - ${transaction.type}: ${transaction.amount} ${transaction.currency}`;
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'delete-btn';
+        deleteButton.onclick = function(event) {
+            event.stopPropagation(); // Empêche l'événement de se propager au `li`
+            showModal(transaction, index + startIndex);
+        };
+
+        const textContent = document.createElement('span');
+        textContent.textContent = `${transaction.date} - ${transaction.type}: ${transaction.amount} ${transaction.currency}`;
+
+        listItem.appendChild(deleteButton);
+        listItem.appendChild(textContent);
+
+        listItem.addEventListener('dblclick', function() {
+            showModal(transaction, index + startIndex);
+        });
+
         transactionList.appendChild(listItem);
     });
+
     updatePaginationButtons();
 }
+
+
 // Fonction pour mettre à jour l'affichage des boutons de pagination
 function updatePaginationButtons() {
     const totalTransactions = recentTransactionsExample.length;
@@ -185,21 +281,92 @@ function updatePaginationButtons() {
     previousButton.style.display = currentPage > 1 ? 'block' : 'none';
     nextButton.style.display = currentPage < totalPages ? 'block' : 'none';
 }
-// Gestionnaire d'événements pour le clic sur le bouton "Next"
+
+// Gestionnaire d'événements pour le clic sur les boutons "Next" et "Previous"
 document.getElementById('next-transactions').addEventListener('click', function() {
     currentPage++;
     displayTransactions(currentPage);
 });
-// Gestionnaire d'événements pour le clic sur le bouton "Previous"
 document.getElementById('previous-transactions').addEventListener('click', function() {
     currentPage--;
     displayTransactions(currentPage);
 });
-// Variables globales
-const transactionList = document.getElementById('transaction-list');
-const transactionsPerPage = 5;
-let currentPage = 1;
+
+// Gestionnaire pour le chargement de la page
 document.addEventListener('DOMContentLoaded', function() {
-    // Afficher les transactions sur la première page lors du chargement de la page
     displayTransactions(currentPage);
 });
+
+// Fonctions pour la modal de suppression
+function showModal(transaction, index) {
+    const modal = document.getElementById('deleteModal');
+    modal.style.display = 'block';
+
+    document.getElementById('confirmDelete').onclick = function() {
+        deleteTransaction(index);
+        modal.style.display = 'none';
+    };
+
+    document.getElementById('cancelDelete').onclick = function() {
+        modal.style.display = 'none';
+    };
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    };
+}
+
+function deleteTransaction(index) {
+    recentTransactionsExample.splice(index, 1);
+    displayTransactions(currentPage);
+    updatePaginationButtons(); // Mise à jour de la pagination si nécessaire
+}
+
+
+
+
+// Informations de l'utilisateur (exemple)
+const userData = {
+    id: 12345,
+    firstName: "AAAA",
+    lastName: "AAAA",
+    email: "AAAA@gmail.com",
+    dob: "1 / 05 / 2000"
+};
+
+// Fonction pour mettre à jour les informations de l'utilisateur
+function updateUserDetails() {
+    // Mettre à jour chaque élément par son ID
+    document.getElementById('user-id').textContent = userData.id;
+    document.getElementById('user-first-name').textContent = userData.firstName;
+    document.getElementById('user-last-name').textContent = userData.lastName;
+    document.getElementById('user-email').textContent = userData.email;
+    document.getElementById('user-dob').textContent = userData.dob;
+}
+
+// Appeler la fonction pour mettre à jour les informations de l'utilisateur
+updateUserDetails();
+
+
+function updateCryptoValue() {
+    const cryptoSelect = document.getElementById('crypto-select');
+    const selectedCrypto = cryptoSelect.value;
+    const balanceCryptoValueSpan = document.getElementById('balance-crypto-value');
+
+    // Ici mettre en place la logique pour récupérer la valeur de la crypto-monnaie
+    // Par exemple
+    const cryptoValues = {
+        'BTC': '0.0123 ',
+        'USD': '1000 ',
+        'ETH': '0.4567 ',
+        'BNB': '2 '
+    };
+
+    // Mettre à jour la valeur de la crypto-monnaie affichée
+    balanceCryptoValueSpan.textContent = cryptoValues[selectedCrypto];
+}
+
+// Appeler la fonction une fois au chargement de la page pour afficher la valeur initiale
+updateCryptoValue();

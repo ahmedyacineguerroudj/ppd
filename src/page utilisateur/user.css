@@ -1,6 +1,5 @@
 /* Ajout de la police Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-
 /* Réinitialisation des styles par défaut */
 * {
     margin: 0;
@@ -12,7 +11,6 @@ body {
     background-color: #161616;
     color: #ffffff;
 }
-
 
 /* Style pour la sélection de texte */
 ::selection {
@@ -35,21 +33,21 @@ body {
 
 
 
-/***** Styles pour la première section *****/
+
+/***** Styles pour section topbar *****/
 /* Style pour le logo */
 .top-bar img {
     width: 80px;
     height: auto;
 }
 
-
 /* Style pour la barre supérieure */
 .top-bar {
     display: flex;
     background-color: #1E1E1E;
     padding: 15px 10px;
+    user-select: none;
 }
-
 
 /* Style pour le nom de la plateforme */
 .platform-name {
@@ -59,7 +57,6 @@ body {
     margin-top: 15px;
     margin-bottom: 3px;
 }
-
 
 /* Style pour les parties "whales" et "Cap" du nom de la plateforme */
 .platform-name .whales {
@@ -71,14 +68,12 @@ body {
     user-select: none;
 }
 
-
 /* Style pour le menu */
 .menu {
     display: flex;
     margin-bottom: 3px;
     margin-left: 100px;
 }
-
 
 /* Style pour les éléments du menu */
 .menu-item {
@@ -90,13 +85,11 @@ body {
     transition: transform 0.2s ease;
 }
 
-
 /* Style pour le survol des éléments du menu */
 .menu-item:hover {
     transform: scale(1.2);
     color: #00FFFF;
 }
-
 
 /* Style pour le bouton de globe */
 .globe-button img {
@@ -139,18 +132,13 @@ body {
     top: 20px;
 }
 
-
 /* Styles lorsque le bouton est survolé */
-.globe-button:hover img {
-    content: url('Images/globe2.png');
-}
 .notification-button:hover img {
     content: url('Images/notification_icon2.png');
 }
 .user-button:hover img {
     content: url('Images/user_icon2.png');
 }
-
 
 /* Styles pour les boutons de model */
 .globe-button,
@@ -175,57 +163,77 @@ body {
     z-index: 100;
 }
 
-
 /* Style pour le titre de la boîte modale */
 .modal-content h2 {
     font-size: 24px;
     color: #00FFFF;
     margin-bottom: 10px;
     text-align: center;
+    user-select: none;
+    font-family: 'Apple Chancery', cursive;
 }
-
-
-/* Style pour les informations de l'utilisateur */
-.modal-content p {
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-
 
 /* Style pour le bouton de fermeture de la boîte modale */
 .close {
     display: none;
 }
 
-
-/* Style pour le bouton paramétre */
-.settings-button {
-    background-color: rgba(0, 255, 255, 0.33);
-    color: #fff;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+/* Styles pour la barre de navigation */
+#navbar {
     display: flex;
-    font-weight: bold;
+    flex-direction: column;
     align-items: center;
-    margin-left: 70px;
-    padding:  10px;
+    margin-bottom: 20px;
+}
+#navbar a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 14px;
+    font-weight: bold;
+    position: relative;
+}
+#navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: transparent;
+    transition: width 0.3s ease;
+}
+#navbar a.active::after,
+#navbar a:hover::after {
+    width: 100%;
+    background-color: #09f8f8;
+}
+
+/* Style pour le bouton "Logout" */
+.logout-button {
+    background-color: #161616;
+    background-image: url("images/out.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    outline: none;
     border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
-
-
-/* Style pour le survol du bouton */
-.settings-button:hover {
-    background-color: #3c3f41;
+.logout-button:hover {
+    background-image: url("images/out2.png");
 }
-
 
 /* Style pour le tableau de notifications */
 #notificationTable {
     width: 100%;
     border-collapse: collapse;
 }
-
 
 /* Style pour les cellules du tableau */
 #notificationTable td {
@@ -234,14 +242,12 @@ body {
     word-wrap: break-word;
 }
 
-
 /* Style pour la première colonne du tableau */
 #notificationTable td:first-child {
     font-size: 10px;
     color: #00FFFF;
     text-align: center;
 }
-
 
 /* Media query pour les petits écrans */
 @media only screen and (max-width: 1000px) {
@@ -251,53 +257,17 @@ body {
 }
 
 
-.search-section {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.search-box {
-    display: flex;
-    align-items: center;
-    width: 50%;
-    height: auto;
-}
-
-#searchInput {
-    padding: 10px;
-    margin-right: 10px;
-    border-radius: 18px;
-    flex: 1;
-}
-
-#searchInput:focus {
-    outline: none;
-}
-
-.search-button {
-    padding: 10px 20px;
-    background: #00FFFF;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.search-button:hover {
-    background-color: #504d4d;
-}
 
 
 
-
-/***** Styles pour la deuxième section *****/
+/***** Styles pour la  section titre *****/
 /* Style pour le titre */
 .title h1 {
     color: #ffffff;
     font-weight: bold;
     font-size: 35px;
+    user-select: none;
 }
-
 
 /* Styles pour la section */
 .title {
@@ -306,22 +276,94 @@ body {
     margin-bottom: 20px;
     border-bottom: 5px solid #00FFFF;
     overflow: hidden;
+    user-select: none;
 }
 
 
 
 
-/***** Styles pour la troisième section *****/
+
+/***** Styles pour la section Profile *****/
+#profile-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 34px;
+    margin-left: 20px;
+}
+
+/* Styles pour la photo de l'utilisateur */
+.user-photo {
+    position: relative;
+    margin-left: 50px;
+    margin-right: 100px;
+    user-select: none;
+
+}
+.user-photo img {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+    user-select: none;
+}
+
+/* Styles pour le bouton "+" */
+.edit-photo-button {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 20px;
+    width: 20px;
+    border: none;
+    background-color: #25bdbd;
+    background-image: url("images/plus.png");
+    background-size: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+}
+
+
+/* Styles pour chaque élément d'information */
+.user-info p {
+    display: inline-block;
+    margin: 10px;
+    padding: 0 10px;
+    font-size: 17px;
+    color: #666666;
+    border-right: 2px solid #ccc;
+}
+
+/* Style pour le dernier élément pour supprimer la bordure de droite */
+.user-info p:last-child {
+    border-right: none;
+}
+
+/* Style pour les éléments forts  */
+.user-info p strong {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* Style pour les éléments de texte normal */
+.user-info p span {
+    color: #888888;
+}
+
+
+
+
+
+/***** Styles pour la section portefeuille *****/
 /* Style de section */
 .balance-section {
     border-radius: 15px;
     border: 5px solid #00FFFF;
     padding: 20px;
     margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 57px;
+    margin-right: 57px;
 }
-
 
 /* Styles pour l'en-tête de la balance */
 .balance-header {
@@ -331,19 +373,19 @@ body {
     margin-bottom: 10px;
 }
 
-
 /* Styles pour le titre "Balance" */
 .balance-header h2 {
     font-size: 40px;
     color: #ffffff;
     margin: 0;
+    user-select: none;
 }
-
 
 /* Styles pour les boutons de la balance */
 .balance-buttons {
     display: flex;
     gap: 35px;
+    user-select: none;
 }
 .balance-buttons button {
     padding: 10px 20px;
@@ -360,14 +402,12 @@ body {
     transform: translateY(-5px);
 }
 
-
 /* Styles pour le numéro de la balance */
 .balance-number {
     margin-left: 150px;
     font-size: 25px;
     color: #ffffff;
 }
-
 
 /* Styles pour le numéro de la crypto balance */
 .balance-number-crypto {
@@ -376,7 +416,61 @@ body {
     color: #ffffff;
 }
 
+/* Style pour les listes déroulantes */
+.crypto-select-container select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    user-select: none;
+}
+.crypto-select-container select option::-webkit-scrollbar-button,
+.crypto-select-container select option::-webkit-scrollbar-track-piece:start {
+    background-color: transparent;
+}
+.crypto-select-container select {
+    color: #ffffff;
+    padding: 10px 30px 10px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    background-color: #161616;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23555" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M7 10l5 5 5-5H7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    user-select: none;
+}
+.crypto-select-container select:focus {
+    outline: none;
+}
+.balance-details {
+    display: flex;
+    align-items: center;
+}
+.crypto-select-container select:focus {
+    outline: none;
+}
+.crypto-select-container {
+    margin-left: 10px;
+}
+.crypto-select-container select option:checked {
+    color: #25bdbd;
+    font-weight: bold;
+    background: none;
+}
+.crypto-select-container select::selection {
+    color: #ffffff;
+    background: transparent;
+}
 
+/* Style pour le texte du remplissage automatique */
+input:-webkit-autofill {
+    -webkit-text-fill-color: #161616 !important;
+}
 /* Media query pour les petits écrans */
 @media only screen and (max-width: 700px) {
     .balance-buttons button{
@@ -386,19 +480,21 @@ body {
 
 
 
-/***** Style pour quatrième section *****/
+
+
+/***** Style pour la section d'actifs*****/
 /* Styles pour la liste */
 .asset-list {
     margin-bottom: 25px;
+    min-height: 390px;
 }
-
 
 /* Style pour le titre "My Assets" */
 .asset-list h2 {
     margin-bottom: 20px;
     margin-left: 30px;
+    user-select: none;
 }
-
 
 /* Style pour le tableau */
 #asset-table {
@@ -407,31 +503,33 @@ body {
     margin-left: 30px;
 }
 
-
 /* Style pour les cellules du tableau */
 #asset-table th{
     padding: 10px;
     text-align: center;
     font-weight: bold;
+    user-select: none;
 }
 #asset-table td {
     padding: 10px;
     text-align: left;
 }
 
-
 /* Style pour les lignes du tableau */
 #asset-table tbody tr {
     background-color: rgba(0, 255, 255, 0.33);
 }
 
+/* Style pour les lignes du tableau au survol */
+#asset-table tbody tr:hover {
+    background-color: rgba(0, 255, 255, 0.5);
+}
 
 /* Styles pour le conteneur des boutons */
 .button-container {
     display: flex;
     margin-top: 15px;
 }
-
 
 /* Styles pour le bouton "Show more" */
 #show-more {
@@ -442,12 +540,12 @@ body {
     text-align: center;
     display: inline-block;
     font-size: 16px;
-    margin-left: 670px;
+    margin-left: 49%;
+    user-select: none;
 }
 #show-more:hover {
     color: #00FFFF;
 }
-
 
 /* Styles pour le bouton "Previous" */
 #previous{
@@ -461,6 +559,7 @@ body {
     font-size: 16px;
     margin-right: auto;
     margin-left: 20px;
+    user-select: none;
 }
 #previous:hover {
     color: #00FFFF;
@@ -469,21 +568,22 @@ body {
 
 
 
-/***** Style pour la cinquième section *****/
+
+/***** Style pour la section des transactions *****/
 .recent-transactions {
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
     margin: 30px 30px 40px 40px;
+    min-height: 400px;
 }
-
 
 /* Style pour le titre de la section */
 .recent-transactions h2 {
     color: #ffffff;
     margin-bottom: 20px;
+    user-select: none;
 }
-
 
 /* Style pour la liste des transactions */
 #transaction-list {
@@ -491,15 +591,15 @@ body {
     padding: 0;
 }
 
-
 /* Style pour chaque élément de la liste des transactions */
 #transaction-list li {
     background-color: rgba(202, 208, 208, 0.26);
     padding: 15px;
+    margin-left: 2%;
+    margin-right: 2%;
     margin-bottom: 10px;
     border-radius: 5px;
 }
-
 
 /* Styles pour le bouton "Show more" */
 #next-transactions {
@@ -511,12 +611,11 @@ body {
     display: inline-block;
     font-size: 16px;
     margin-left: auto;
-
+    user-select: none;
 }
 #next-transactions:hover {
     color: #00FFFF;
 }
-
 
 /* Styles pour le bouton "Previous" */
 #previous-transactions{
@@ -533,3 +632,116 @@ body {
 #previous-transactions:hover {
     color: #00FFFF;
 }
+
+/* Style pour chaque élément de la liste des transactions au survol */
+#transaction-list li:hover {
+    background-color: rgba(9, 248, 248, 0.53);
+    transition: background-color 0.5s;
+}
+
+/* Style pour le bouton de suppression */
+.delete-btn {
+    cursor: pointer;
+    padding: 5px 10px;
+    color: transparent;
+    font-weight: bold;
+    height: 20px;
+    background-color: transparent;
+    background-image: url('images/supp.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+    float: right;
+    user-select: none;
+}
+
+#noRecordsTransactions {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+    user-select: none;
+}
+#noRecordsAssets{
+    display: none;
+    text-align: left;
+    margin-left: 25%;
+    margin-top: 20px;
+    user-select: none;
+}
+#noRecordsAssets img,#noRecordsTransactions img {
+    width: 10%;
+    height: auto;
+    user-select: none;
+}
+
+#noRecordsAssets p,#noRecordsTransactions p {
+    font-weight: bold;
+    margin-top: 10px;
+    user-select: none;
+}
+
+/* Style pour le modal supprimer  */
+.modal1 {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    user-select: none;
+}
+.modal1-content {
+    background-color: #161616;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid rgba(0, 255, 255, 0.41);
+    border-radius: 17px;
+    width: 80%;
+    max-width: 40%;
+    text-align: center;
+}
+
+/* Style pour le paragraphe */
+.modal-content p {
+    color: #333;
+    font-size: 16px;
+}
+
+/* Style pour les boutons "Yes" et "No" */
+#confirmDelete, #cancelDelete {
+    padding: 10px 20px;
+    margin-top: 5%;
+    margin-right: 5%;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+/* Style spécifique pour le bouton "Yes" */
+#confirmDelete {
+    background-color: #09f8f8;
+    color: #161616;
+}
+
+/* Style spécifique pour le bouton "No" */
+#cancelDelete {
+    background-color: #616161;
+    color: #161616;
+}
+
+/* Hover pour les boutons */
+#confirmDelete:hover, #cancelDelete:hover {
+    opacity: 0.7;
+}
+
+
+
+
+
+
+
+
