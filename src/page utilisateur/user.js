@@ -152,10 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
             row.appendChild(priceCell);
             assetTable.appendChild(row);
 
-            // Ajouter un gestionnaire d'événements pour le double-clic sur une ligne d'actif
-            row.addEventListener('dblclick', function() {
-                showModalDeleteAsset(index + startIndex);
-            });
+
         });
 
         // Afficher ou masquer le bouton "Show more" en fonction du nombre d'éléments restants
@@ -184,25 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
     displayAssets(currentPage);
 
     // Fonction pour afficher le modal de confirmation de suppression pour un actif spécifique
-    function showModalDeleteAsset(index) {
-        const modal = document.getElementById('deleteModal');
-        modal.style.display = 'block';
 
-        document.getElementById('confirmDelete').onclick = function() {
-            deleteAsset(index);
-            modal.style.display = 'none';
-        };
-
-        document.getElementById('cancelDelete').onclick = function() {
-            modal.style.display = 'none';
-        };
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        };
-    }
 
     // Fonction pour supprimer un actif de la liste
     function deleteAsset(index) {
@@ -370,3 +349,58 @@ function updateCryptoValue() {
 
 // Appeler la fonction une fois au chargement de la page pour afficher la valeur initiale
 updateCryptoValue();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Fonction pour afficher ou masquer le modal de transfert
+function toggleTransferModal() {
+    var modal = document.getElementById('transferModal');
+    modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+}
+
+document.querySelector('.balance-buttons button:nth-child(3)').addEventListener('click', toggleTransferModal);
+
+// Liste des devises avec leur nom, valeur et montant maximal autorisé
+const currencies = [
+    { name: "BTC", value: "BTC", maxAmount: 10 },
+    { name: "ETH", value: "ETH", maxAmount: 20 },
+    { name: "BNB", value: "BNB", maxAmount: 30 }
+];
+// Sélectionner l'élément select pour la devise
+const currencySelect = document.getElementById('currency');
+// Générer les options de la liste déroulante
+currencies.forEach(currency => {
+    const option = document.createElement('option');
+    option.value = currency.value;
+    option.textContent = currency.name;
+    currencySelect.appendChild(option);
+});
+// Obtenir la valeur maximale autorisée pour la devise sélectionnée
+currencySelect.addEventListener('change', function() {
+    const selectedCurrency = currencies.find(currency => currency.value === this.value);
+    document.getElementById('amount').setAttribute('max', selectedCurrency.maxAmount);
+});
+// Valider et soumettre le formulaire de transfert
+document.getElementById('transferForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var destWalletId = document.getElementById('destWalletId').value;
+    var amount = document.getElementById('amount').value;
+    if (amount <= 0 || destWalletId.trim() === '') {
+        alert('Please enter valid destination and amount');
+    } else {
+        alert('Transfer successful to ' + destWalletId + ' for ' + amount + ' ' + document.getElementById('currency').value);
+        toggleTransferModal();
+    }
+});
+

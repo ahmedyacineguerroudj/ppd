@@ -741,7 +741,114 @@ input:-webkit-autofill {
 
 
 
-
-
-
-
+h4 {
+    color: cyan;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Apple Chancery', cursive;
+}
+.modalTransfer {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.4);
+    user-select: none;
+}
+.modalTransfer-content {
+    background-color: #161616;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid rgba(0, 255, 255, 0.41);
+    border-radius: 17px;
+    width: 80%;
+    max-width: 40%;
+    text-align: center;
+}
+.modalTransfer-content .close1 {
+    position: absolute;
+    top: 33%;
+    right: 30%;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 2;
+}
+.modalTransfer-content .close1:hover {
+    color: cyan;
+}
+.modalTransfer-content form {
+    margin-top: 20px;
+}
+.modalTransfer-content input,
+.modalTransfer-content select {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.modalTransfer-content button {
+    width: 95%;
+    padding: 10px;
+    font-weight: bold;
+    background-color: rgba(0, 255, 255, 0.41);
+    color: #161616;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Apple Chancery', cursive;
+}
+.modalTransfer-content button:hover {
+    background-color: #00bfbf;
+}
+.modalTransfer-content input[type="text"],
+.modalTransfer-content input[type="number"],
+.modalTransfer-content select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid rgb(9, 248, 248);
+    background-color: #161616;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+}
+.modalTransfer-content select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 30%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid rgb(9, 248, 248);
+    background-color: #161616;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+}
+.modalTransfer-content input[type="text"]::placeholder,
+.modalTransfer-content input[type="number"]::placeholder,
+.modalTransfer-content select::placeholder {
+    color: #ccc;
+}
+.modalTransfer-content input[type="text"]:focus,
+.modalTransfer-content input[type="number"]:focus,
+.modalTransfer-content select:focus {
+    border-color: cyan;
+}
+.modalTransfer-content input[type="text"]:hover,
+.modalTransfer-content input[type="number"]:hover,
+.modalTransfer-content select:hover {
+    border-color: cyan;
+}

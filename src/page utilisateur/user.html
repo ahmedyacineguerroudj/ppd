@@ -138,6 +138,10 @@
 
 
 
+
+
+
+
     <!-- Section d'actifs -->
     <section id="asset-list" class="section">
         <section class="asset-list">
@@ -197,6 +201,21 @@
     </div>
 
 
+    <!-- Modal de Transfert -->
+    <div id="transferModal" class="modalTransfer" style="display: none;">
+        <div class="modalTransfer-content">
+            <span class="close1" onclick="toggleTransferModal()">&times;</span>
+            <h4>Transfer Funds</h4>
+            <form id="transferForm">
+                <input type="text" id="destWalletId" placeholder="Destination Wallet ID" required>
+                <input type="number" id="amount" placeholder="Amount" required>
+                <select id="currency">
+                    <!-- Options seront ajoutées dynamiquement -->
+                </select>
+                <button type="submit">Confirm Transfer</button>
+            </form>
+        </div>
+    </div>
 
 
 
