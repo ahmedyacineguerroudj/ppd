@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Effacer le contenu de la table des actifs
         assetTable.innerHTML = '';
         // Afficher les actifs sur la page actuelle
-        assets.slice(startIndex, endIndex).forEach((asset, index) => {
+        assets.slice(startIndex, endIndex).forEach((asset) => {
             const row = document.createElement('tr');
             const coinCell = document.createElement('td');
             const coinSpan = document.createElement('span');
@@ -180,15 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Afficher les actifs sur la première page lors du chargement de la page
     displayAssets(currentPage);
 
-    // Fonction pour afficher le modal de confirmation de suppression pour un actif spécifique
 
-
-    // Fonction pour supprimer un actif de la liste
-    function deleteAsset(index) {
-        assets.splice(index, 1);
-        displayAssets(currentPage); // Mettre à jour l'affichage des actifs
-        updatePaginationButtons(); // Mettre à jour les boutons de pagination si nécessaire
-    }
 });
 
 
@@ -290,11 +282,7 @@ function showModal(transaction, index) {
         modal.style.display = 'none';
     };
 
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = 'none';
-        }
-    };
+
 }
 
 function deleteTransaction(index) {
