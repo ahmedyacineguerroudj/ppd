@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", function() {
         button.addEventListener("click", function() {
             const answer = this.nextElementSibling;
             this.classList.toggle("active");
-            if (answer.style.display === "block") {
+            const answerDisplayStyle = window.getComputedStyle(answer).display;
+            if (answerDisplayStyle === "block" || answerDisplayStyle === "") {
                 answer.style.display = "none";
             } else {
                 answer.style.display = "block";
@@ -13,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const contactUsLink = document.querySelector(".contact-us");
