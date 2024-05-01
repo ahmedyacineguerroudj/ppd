@@ -8,20 +8,20 @@
 
 
 
-    body {
-        font-family: 'Inter', sans-serif;
-        background-color: black;
-        color: #ffffff;
-        background-image: url("https://static.vecteezy.com/system/resources/previews/000/833/542/non_2x/abstract-black-background-with-blue-light-lines-crossing-vector.jpg");
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-size: 1350px 1501px;
-        background-repeat: no-repeat;
-        background-attachment: fixed; /* Fixe l'image de fond par rapport à la fenêtre du navigateur */
-        z-index: -1;
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: black;
+    color: #ffffff;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/000/833/542/non_2x/abstract-black-background-with-blue-light-lines-crossing-vector.jpg");
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 1350px 1501px;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Fixe l'image de fond par rapport à la fenêtre du navigateur */
+    z-index: -1;
 
 }
 
@@ -82,10 +82,10 @@ nav ul li{
 }
 nav ul li a{
     color: white;
-text-decoration: none;
-text-transform: uppercase;
-padding: 7px 13px;
-border-radius: 10px;}
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 7px 13px;
+    border-radius: 10px;}
 
 
 a.active,a:hover{
@@ -193,8 +193,8 @@ nav .btn:hover {
 }
 
 .content2 h1 {
-     margin-bottom: 20px; /* Réduit l'espacement en bas de chaque paragraphe */
- }
+    margin-bottom: 20px; /* Réduit l'espacement en bas de chaque paragraphe */
+}
 
 .content4{
     margin-top: 30%;
@@ -275,10 +275,10 @@ nav .btn:hover {
     font-style: italic;
 }
 .content2 h3{
-     font-size: 40px;
-     margin-bottom: 15px;
-     font-style: italic;
- }
+    font-size: 40px;
+    margin-bottom: 15px;
+    font-style: italic;
+}
 
 
 
@@ -313,13 +313,36 @@ nav .btn:hover {
     margin-right: 120px;
     margin-top: 45px;
 }
-.content{
+.content {
     margin-top: 12%;
     font-size: 20px;
-    color: white;
     position: absolute;
-    margin-left: 100px;
+    margin-left: 8px;
+    animation: moveUpDown 2s ease-in-out infinite alternate, changeColor 4s linear infinite; /* Utilisation de l'animation */
 }
+
+@keyframes moveUpDown {
+    0% {
+        transform: translateX(0); /* Début de l'animation */
+    }
+    100% {
+        transform: translateX(20px); /* Fin de l'animation */
+    }
+}
+
+@keyframes changeColor {
+    0% {
+        color: #00efff; /* Début de l'animation */
+    }
+    50% {
+        color: white; /* Milieu de l'animation */
+    }
+    100% {
+        color: #00efff; /* Fin de l'animation */
+    }
+}
+
+
 
 .coin-list1 .coin div p {
     color: white;
@@ -390,10 +413,10 @@ nav .btn:hover {
     bottom: -315px;
     border-radius: 100px; /* Bordures arrondies de 10 pixels */
 }
- .coin h3{
-     color: #00efff;
-     margin-bottom: 5px;
- }
+.coin h3{
+    color: #00efff;
+    margin-bottom: 5px;
+}
 .image3 {
     width: 80px; /* Largeur souhaitée */
     height: auto; /* Hauteur automatique pour maintenir les proportions */
@@ -419,9 +442,9 @@ nav .btn:hover {
 
 
 
- .footer:hover{
-     width: 200px;
- }
+.footer:hover{
+    width: 200px;
+}
 
 .footer a {
     margin: 0 10px; /* Espacement entre les icônes */
@@ -638,15 +661,15 @@ nav .btn:hover {
     display: inline; /* Affiche le texte sur la même ligne que la question */
 }
 .content6 h2 {
-     color: #00ffff; /* Couleur du texte */
-     cursor: pointer; /* Curseur indiquant qu'il s'agit d'un élément interactif */
-     text-decoration: underline; /* Souligner le texte */
-     font-size: inherit; /* Utilise la taille de police héritée */
-     background-color: transparent; /* Fond transparent */
-     border: none; /* Supprime la bordure par défaut */
-     padding: 0; /* Supprime le rembourrage par défaut */
-     margin: 0; /* Supprime les marges par défaut */
- }
+    color: #00ffff; /* Couleur du texte */
+    cursor: pointer; /* Curseur indiquant qu'il s'agit d'un élément interactif */
+    text-decoration: underline; /* Souligner le texte */
+    font-size: inherit; /* Utilise la taille de police héritée */
+    background-color: transparent; /* Fond transparent */
+    border: none; /* Supprime la bordure par défaut */
+    padding: 0; /* Supprime le rembourrage par défaut */
+    margin: 0; /* Supprime les marges par défaut */
+}
 .content6 h1 {
     color: white; /* Couleur du texte de la question */
     font-size: 20px; /* Taille de la police de la question */
@@ -713,11 +736,12 @@ nav .btn:hover {
     border: none;
     border-radius: 50px;
     position: absolute;
+    width: 330px;
     padding: 8px 20px; /* Ajouter un peu de remplissage sur les côtés */
     color: black;
     bottom: 10%; /* Positionner la case de l'e-mail légèrement en dessous */
     transform: translateY(890%); /* Déplacer la case de l'e-mail vers le bas */
-    left: 88px;
+    left: -35px;
 }
 
 #signup-btn {
@@ -765,7 +789,7 @@ nav .btn:hover {
 
 .interaction-volume {
     width: 888px; /* Définir la largeur souhaitée */
-     height: 120px;
+    height: 120px;
     font-family: Arial, sans-serif; /* Choisir la police de caractères souhaitée */
     font-size: 25px; /* Taille de police */
     color: white; /* Couleur de police par défaut */
@@ -774,8 +798,8 @@ nav .btn:hover {
     border-radius: 20px; /* Ajouter des coins arrondis */
     border-color: #00efff;
     border-style: double;
-    margin-top: -1650px; /* Déplacer le cadre vers le haut de 10 pixels */
-    margin-left: 120px;
+    margin-top: -1500px; /* Déplacer le cadre vers le haut de 10 pixels */
+    margin-left: 70px;
 }
 
 .interaction-volume p:first-child {
@@ -863,15 +887,15 @@ nav .btn:hover {
 
 .video{
     position: absolute;
-    right: 882px;
+    right: 180px;
     bottom:0;
     z_index: -1;
-    width: 13%; /* ou une valeur spécifique, par exemple: 500px */
+    width: 8%; /* ou une valeur spécifique, par exemple: 500px */
     height: auto;
     border-radius: 300px; /* Valeur de rayon de bordure arrondie */
-    top: 55%;
+    top: 630px;
     mix-blend-mode: revert; /* Mélange la couleur de fond avec la vidéo */
-    margin-left: 100px;
+    margin-left: 40px;
 }
 .video2{
     position: absolute;
@@ -1065,8 +1089,6 @@ nav .btn:hover {
 
 
 
-
-
 /* Style pour le menu */
 .menu {
     display: flex;
@@ -1081,14 +1103,29 @@ nav .btn:hover {
     font-weight: bold;
     font-size: 22px;
     margin-right: 50px;
-
     text-decoration: none;
     color: #ffffff;
     transition: transform 0.2s ease;
     margin-top: 10px;
-
 }
 
+/* Style pour l'élément actif du menu */
+.menu-item.active {
+    font-weight: bold;
+    font-size: 22px;
+    margin-right: 50px;
+    text-decoration: none;
+    color: #00FFFF; /* Couleur pour l'élément actif */
+    transition: transform 0.2s ease, color 0.2s ease; /* Transition pour le zoom et la couleur */
+    margin-top: 10px;
+    transform: scale(1.2); /* Zoom initial */
+}
+
+/* Style pour le survol des éléments du menu */
+.menu-item:not(.active):hover {
+    transform: scale(1.2);
+    color: #00FFFF;
+}
 
 .butmenu {
     display: flex;
@@ -1168,7 +1205,7 @@ nav .btn:hover {
 
 
 .new-content {
-    margin-top: 40%;
+    margin-top: 25%;
     font-size: 20px;
     color: white;
     text-align: center;
@@ -1206,9 +1243,9 @@ nav .btn:hover {
     display: flex; /* Utiliser flexbox */
     align-items: center; /* Centrer verticalement les éléments enfants */
     position: absolute;
-    margin-left: 450px; /* Ajoute une marge à gauche de l'icône */
-    margin-top: -542px; /* Ajoute une marge à gauche de l'icône */
-    margin-right: 10px; /* Ajoute une marge à droite du texte */
+    margin-left: 810px; /* Ajoute une marge à gauche de l'icône */
+    margin-top: -730px; /* Ajoute une marge à gauche de l'icône */
+    margin-right: 100px; /* Ajoute une marge à droite du texte */
 }
 .crypto-button i {
     margin-left: 5px; /* Ajoute une marge à gauche de l'icône */
@@ -1243,6 +1280,11 @@ nav .btn:hover {
 
 .crypto-button:hover {
     animation: neon-border 1s ease-in-out infinite alternate;
+    transition: 2s;
+}
+
+.crypto-button:hover {
+    transform: rotateY(180deg);
 }
 
 .video3 {
@@ -1266,4 +1308,111 @@ nav .btn:hover {
 
 
 
+/* Media query pour les petits écrans */
+@media only screen and (max-width: 1000px) {
+    .menu {
+        display: none;
+    }
+}
+:root {
+    --book-color: linear-gradient(45deg, #ffffff, #00efff); /* Définir une variable pour le dégradé de couleur */
+}
 
+.book {
+    background: var(--book-color); /* Utiliser la variable pour la couleur */
+    position: absolute;
+    margin-top: -990px;
+    margin-left: 50px;
+    width: 200px;
+    height: 440px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 12px #000;
+    perspective: 2000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white; /* Couleur du texte */
+}
+
+.contentB {
+    display: none;
+    color: black; /* Couleur du texte */
+    flex-direction: column;
+    align-items: normal;
+    justify-content: space-around;
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 10px;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.contentB {
+    display: none;
+}
+.done::before {
+    content: "✔️ "; /* Caractère emoji représentant "done" */
+}
+
+.contentB p {
+    margin-bottom: 10px; /* Ajoute un espace de 10px entre chaque paragraphe */
+}
+
+.book:hover .contentB {
+    display: block;
+}
+
+.book .cover {
+    transform-origin: top right;
+    background-color: white;
+}
+
+.cover {
+    top: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transition: all 0.5s;
+    background: var(--book-color); /* Utiliser la variable pour la couleur */
+}
+
+.cover h2 {
+    font-weight: bold;
+    position: absolute;
+    top: 170px;
+    left: 5px;
+    font-style: italic;
+    color: black;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    font-family: 'Cinzel Decorative';
+}
+
+.book:hover .cover {
+    transform: rotateY(180deg);
+    background-color: white;
+}
+
+/* Ajout de styles pour les images à l'intérieur du conteneur */
+.book-image,
+.book-image2 {
+    max-width: 35%;
+    max-height: 35%;
+    display: block;
+}
+
+.book-image2 {
+    top: 20px;
+}
+.contentB p:first-child {
+    font-weight: bold; /* Mettre en gras le premier paragraphe */
+    font-size: 20px;
+}

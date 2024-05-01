@@ -76,17 +76,16 @@
         </div>
         <!-- Menu de navigation -->
         <div class="menu">
-            <a href="#" class="menu-item">Home</a>
-            <a href="#" class="menu-item">Buy & Sell</a>
-            <a href="#" class="menu-item">Market</a>
-            <a href="#" class="menu-item">About Us</a>
-
+            <a href="#" class="menu-item" onclick="markActive(this)">Home</a>
+            <a href="#" class="menu-item" onclick="markActive(this)">Buy & Sell</a>
+            <a href="#" class="menu-item" onclick="markActive(this)">Market</a>
+            <a href="#" class="menu-item" onclick="markActive(this)">About Us</a>
         </div>
 
         <div class="butmenu">
-            <button class="menu-button">Login</button>
-            <button class="menu-button">Signup</button>
-            <button class="menu-button">En</button>
+            <button class="menu-button" onclick="showLoginPage()">Login</button>
+            <button class="menu-button" onclick="showSignupPage()">Signup</button>
+            <button class="menu-button" onclick="translateToFrench()">En</button>
         </div>
 
 </section>
@@ -230,6 +229,25 @@
     Check Crypto Prices <i class="fas fa-chart-line"></i>
 </button>
 
+
+    <!-- Placeholder HTML content for book -->
+    <div class="book">
+        <div class="cover">
+            <h2>How to buy crypto
+            ?</h2>
+            <img class="book-image" src="images/acheter.png" alt="Book Cover 1">
+            <img class="book-image" src="images/vendre.png" alt="Book Cover 2">
+        </div>
+        <div class="contentB">
+            <p>follow these steps:<span></span></p>
+            <p>1.Enter Amount & Select Payment
+                Enter the amount, select the available payment method, and choose the payment account or bind the payment card.<span class="done"></span></p>
+            <p>2.Confirm Order
+                Confirmation of transaction detail information, including trading pair quotes, fees, and other explanatory tips.<span class="done"></span></p>
+            <p>3.Receive Crypto
+                After successful payment, the purchased crypto to will reach Spot Wallet.<span class="done"></span></p>
+        </div>
+    </div>
 </div>
 
 </body>

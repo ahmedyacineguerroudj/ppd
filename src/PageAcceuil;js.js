@@ -245,3 +245,31 @@ function ajusterTaillePage() {
 window.addEventListener('load', ajusterTaillePage);
 window.addEventListener('resize', ajusterTaillePage);
 
+// Fonction pour marquer l'élément actif
+function markActive(clickedElement) {
+    // Supprimer la classe active de tous les éléments du menu
+    var menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach(function(item) {
+        item.classList.remove('active');
+    });
+
+    // Ajouter la classe active à l'élément cliqué
+    clickedElement.classList.add('active');
+}
+
+// Fonction pour afficher la page de connexion  """"remplir par backend """"
+function showLoginPage() {
+    // Redirection vers la page de connexion
+    window.location.href = "login.html";
+}
+
+// Fonction pour afficher la page d'inscription
+function showSignupPage() {
+    // Redirection vers la page d'inscription
+    window.location.href = "signup.html";
+}
+
+// Fonction pour traduire le site en français
+function translateToFrench() {
+    // Code pour utiliser l'API de traduction ici
+}
