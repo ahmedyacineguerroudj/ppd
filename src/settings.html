@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,19 +6,20 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Changa+One&display=swap">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Palanquin+Dark&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="settings.css">
+
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="settings.css">
     <title>Settings</title>
 
 </head>
 
 
 <body>
+<script src="settings.js"></script> <!-- Incluez le fichier JavaScript -->
 
 <div class="container">
-
-
-
 
 
     <!-- Ligne de couleur -->
@@ -38,7 +40,7 @@
             <a href="#" class="menu-item" onclick="markActive(this)">Market</a>
             <a href="#" class="menu-item" onclick="markActive(this)">About Us</a>
         </div>
-        <!-- Bouton de cloche -->
+        <!-- Bouton de notifications -->
         <div class="notification-button">
             <a href="#" onclick="toggleNotificationModal()"><img src="images/notification_icon.png" alt="Notifications"></a>
             <div id="notificationModal" class="modal" style="display: none;">
@@ -58,32 +60,32 @@
                         </tbody>
                     </table>
                 </div>
-            </div>        </div>
-
+            </div>
+        </div>
 
     </section>
 
     <div class="user-button">
-    <a href="#" onclick="toggleUserModal()"><img src="images/user_icon.png" alt="Utilisateur"></a>
-    <div id="userModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close" onclick="toggleUserModal()">&times;</span>
-            <h2 id="userName">User Information</h2>
-            <div>
-                <p><strong>First Name :</strong> <span id="firstName"></span></p>
-                <p><strong>Last Name :</strong> <span id="lastName"></span></p>
-                <p><strong>Email :</strong> <span id="email"></span></p>
-                <p><strong>Date of Birth :</strong> <span id="dob"></span></p>
-            </div>
-            <div>
-                <button class="settings-button">
-                    Modify your information
-                </button>
+        <a href="#" onclick="toggleUserModal()"><img src="images/user_icon.png" alt="Utilisateur"></a>
+        <div id="userModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close" onclick="toggleUserModal()">&times;</span>
+                <h2 id="userName">User Information</h2>
+                <div>
+                    <p><strong>First Name :</strong> <span id="firstName"></span></p>
+                    <p><strong>Last Name :</strong> <span id="lastName"></span></p>
+                    <p><strong>Email :</strong> <span id="email"></span></p>
+                    <p><strong>Date of Birth :</strong> <span id="dob"></span></p>
+                </div>
+                <div>
+                    <button class="settings-button">
+                        Modify your information
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-</section>
+
 
 
 
@@ -93,49 +95,149 @@
     <section class="title">
         <h1>Settings</h1>
     </section>
+    <img src="images/userimg.png" class="image3">
 
-
-
-    <script src="settings.js"></script> <!-- Incluez le fichier JavaScript -->
     <div class="rectangle">
         <h2>Profil</h2>
-        <div class="edit-button1">Edit</div>
+        <span>
         <h3>First name</h3>
-        <h4>Define a personalized first name for your profile. Real first names or those on social accounts are not recommended.</h4>
-        <div class="edit-button2">Edit</div>
+            <h5>Define a personalized first name for your profile. Real first names or those on social accounts are not recommended.</h5>
+    <button type="button" class="edit-button1" onclick="openPopup('popup1')">Edit</button>
+        </span>
+        <div class="popup" id="popup">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img src="images/achievement.png">
+            <input type="text" id="first-name" placeholder="Enter your first name">
+            <div class="buttons">
+                <button type="button" onclick="saveChanges()">Save</button>
+                <button onclick="cancelModal()">Cancel</button>
+            </div>
+            <!-- Message de validation -->
+            <div id="validation-message" class="validation-message"></div>
+            <!-- Icône d'erreur -->
+        </div>
+        <span>
+    <h3>Last name</h3>
+    <h5>Define a personalized last name for your profile. Real last names or those on social accounts are not recommended.</h5>
+    <button type="button" class="edit-button2" onclick="openPopup2()">Edit</button>
+</span>
 
-        <h3>Last name</h3>
-        <h5>Define a personalized first name for your profile. Real first names or those on social accounts are not recommended.</h5>
+        <!-- Popup for Last Name -->
+        <div class="popup2" id="popup2">
+            <span class="close" onclick="closeModal()">&times;</span> <!-- Ajout d'un bouton de fermeture -->
+            <img src="images/achievement.png">
+            <input type="text" id="last-name" placeholder="Enter your last name">
+            <div class="buttons">
+                <button type="button" onclick="saveChanges2('popup2')">Save</button>
+                <button onclick="cancelModal2()">Cancel</button>
+            </div>
+            <!-- Message de validation -->
+            <div id="validation-messagepopup2" class="validation-message"></div>
+            <!-- Icône d'erreur -->
+            <span id="error-icon2" class="error-icon" style="color: red;"></span>
+        </div>
 
-        <div class="edit-button3">Edit</div>
+        <span>
+        <h3>Email address</h3>
+        <h6>Define a real email address that will associate with your account.</h6>
+    <button type="button" class="edit-button3" onclick="openPopup3('popup3')">Edit</button>
+    </span>
+        <!-- Popup for Last Name -->
+        <div class="popup3" id="popup3">
+            <img src="images/achievement.png">
+            <input type="text" id="emaile" placeholder="Enter your email address">
+            <div class="buttons">
+                <button type="button" onclick="saveChanges3('popup3')">Save</button>
+                <button onclick="closeModal3('popup3')">Cancel</button>
+            </div>
 
-        <h3>Email adress</h3>
-        <h6>Define a real email address that will associate your account.</h6>
-        <div class="edit-button4">Edit</div>
+        </div>
 
-        <h3>Password</h3>
-        <h1>Changing your password changing your password requires you to remember it correctly</h1>
+
+        <span>
+    <h3>Password</h3>
+    <h1>Changing your password requires you to remember it correctly</h1>
+    <button type="button" class="edit-button4" onclick="openPopup4('popup4')">Edit</button>
+      </span>
+        <!-- Popup for Password -->
+        <div class="popup4" id="popup4">
+            <img src="images/achievement.png">
+            <input type="password" id="old-password" placeholder="Enter your old password">
+            <input type="password" id="new-password" placeholder="Enter your new password">
+            <input type="password" id="confirm-password" placeholder="Confirm your new password">
+            <div class="buttons">
+                <button type="button" onclick="saveChanges4('popup4')">Save</button>
+                <button onclick="closeModal4('popup4')">Cancel</button>
+            </div>
+
+
+            <script>
+                let popup = document.getElementById("popup");
+            </script>
+        </div>
     </div>
+
+
+
+
 
     <div class="rectangle2">
         <h2>Notification</h2>
         <label class="switch">
             <input type="checkbox" class="toggle-input">
-            <span class="slider"><i class="fas fa-moon"></i></span>
+            <span class="slider"><i class=""></i></span>
         </label>
         <h3>Notification preferences</h3>
         <h4>Once configured, you will receive relevant notifications in the inbox in the app and on the website.</h4>
         <h5>System Messages, News, Buy and Sell Notifications, Exchange, Activity</h5>
     </div>
 
+    <div class="containerC" id="cardContainer">
 
-    <video autoplay loop muted plays-inline class="video">
-        <source src="images/user.mp4" type="video/mp4">
-    </video>
+        <img src="images/visa.png" class="card-icon" alt="Icon">
+        <!-- Les cartes seront ajoutées dynamiquement ici -->
+    </div>
+
+
+
+    <div class="rectangle3">
+        <h2>Account Management</h2>
+        <label class="switch">
+            <input type="checkbox" class="toggle-input">
+        </label>
+        <h3>Disable Account</h3>
+        <h4>Once the account is deactivated most of your actions will remain, notably the connection, you can choose to reactivate the account at any time.</h4>
+        <button class="disable-button">Disable</button>
+        <h5>enable/disable</h5>
+    </div>
+
+
+
+
+    <div class="rectangle5">
+        <h2>Edit profil photo</h2>
+        <h3>User photo</h3>
+        <h4>Change your user photo to have a good profile that is well organized</h4>
+
+    </div>
+
+    <div class="user-img">
+        <img src="images/portrait.png" id="photo">
+        <input type="file" id="file">
+        <label for="file" id="uploadbtn"><i class="fas fa-camera"></i></label>
+    </div>
+
+    <div class="rectangle4">
+        <h2>My Credit Cards</h2>
+        <label class="switch">
+            <input type="checkbox" class="toggle-input">
+        </label>
+        <h3>Visa cards</h3>
+        <h4>use your visa card to buy and sell our cryptos via whalescap</h4>
+        <button class="show-cards-button" onclick="showCards()">Show Cards</button>
+
+    </div>
 </div>
-
-
-
 
 </body>
 </html>

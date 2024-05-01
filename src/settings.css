@@ -6,19 +6,17 @@
 
 }
 
-
-
 body {
     font-family: 'Inter', sans-serif;
     position: absolute;
-    background-color: black;
+    background-color: #1E1E1E;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-size: 1350px 1501px;
     background-attachment: fixed; /* Fixe l'image de fond par rapport à la fenêtre du navigateur */
-
+    backdrop-filter: blur(5px); /* Applique un flou au contenu derrière l'élément */
 }
 
 
@@ -27,7 +25,6 @@ body {
     background: #ffffff;
     color: #161616;
 }
-
 /* Style Pour la barre de défilement */
 ::-webkit-scrollbar {
     width: 10px;
@@ -60,7 +57,7 @@ body {
 
 
 .color-line {
-    top: 64px;
+    top: 10px;
 }
 
 
@@ -127,6 +124,111 @@ body {
     transform: scale(1.2);
     color: #00FFFF;
 }
+
+/* Style pour le bouton de notification */
+.notification-button img {
+    width: 30px;
+    height: auto;
+    margin-left: 20px;
+    transition: opacity 0.3s;
+}
+.notification-button {
+    display: flex;
+    position: absolute;
+    right: 5.5%;
+    top: 20px;
+}
+
+/* Style pour le bouton d'utilisateur */
+.user-button img {
+    width: 30px;
+    height: auto;
+    margin-left: 20px;
+    transition: opacity 0.3s;
+}
+.user-button {
+    display: flex;
+    position: absolute;
+    right: 0.5%;
+    top: 20px;
+}
+/* Styles lorsque le bouton est survolé */
+.notification-button:hover img {
+    content: url('Images/notification_icon2.png');
+}
+.user-button:hover img {
+    content: url('Images/user_icon2.png');
+}
+
+/* Styles pour les boutons de model */
+.globe-button,
+.notification-button,
+.user-button {
+    display: inline-block;
+}
+.notification-button .modal,
+.user-button .modal {
+    position: absolute;
+    left: -300px;
+    width: 300px;
+    max-height: 300px;
+    background-color: #161616;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 4px rgb(9, 248, 248);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: auto;
+    z-index: 100;
+}
+/* Style pour le bouton "Logout" */
+.logout-button {
+    background-color: #161616;
+    background-image: url("images/out.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.logout-button:hover {
+    background-image: url("images/out2.png");
+}
+
+/* Style pour le tableau de notifications */
+#notificationTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Style pour les cellules du tableau */
+#notificationTable td {
+    padding: 8px;
+    border: 1px  solid #ffffff;
+    word-wrap: break-word;
+}
+
+/* Style pour la première colonne du tableau */
+#notificationTable td:first-child {
+    font-size: 10px;
+    color: #00FFFF;
+    text-align: center;
+}
+
+/* Media query pour les petits écrans */
+@media only screen and (max-width: 1000px) {
+    .menu {
+        display: none;
+    }
+}
+
 
 
 /* Style pour la barre supérieure */
@@ -420,7 +522,7 @@ body {
     font-family: 'Palanquin Dark' ,sans-serif; /* Utilisation de la police Palanquin Dark */
     color: white;
     position: relative;
-    font-size: 35px;
+    font-size: 25px;
     left: 40px;
 }
 .rectangle h3{
@@ -465,18 +567,23 @@ body {
 .rectangle .edit-button3,
 .rectangle .edit-button4 {
     position: absolute;
-    margin: 10px; /* Ajoutez de la marge pour séparer du coin */
-    padding: 5px 10px; /* Ajoutez du rembourrage pour le bouton */
-    background-color: #D9D9D9; /* Couleur de fond du bouton */
     color: black; /* Couleur du texte du bouton */
     font-family: 'Changa One', sans-serif;
+    border-radius: 10px; /* Rayon des coins du bouton */
+    height: 30px;
+    width: 70px; /* Ajustez la largeur */
+    left: 90%;
+    padding: 2px 17px; /* Ajoutez du rembourrage pour le bouton */
+    background-color: #fff; /* Couleur de fond du bouton */
+    border: 0;
+    font-size-adjust: revert;
+    margin-top: -30px;
+    cursor: pointer;
+    font-size: 26px;
     font-weight: bold;
-    border: none; /* Supprimez la bordure */
-    border-radius: 5px; /* Rayon des coins du bouton */
-    cursor: pointer; /* Curseur pointeur */
-    text-align: center;
-    width: 80px; /* Ajustez la largeur */
-    right: 0; /* Alignez à droite */
+    text-align: center; /* Pour centrer le texte */
+    line-height: 30px; /* Pour centrer verticalement le texte */
+
 }
 
 .rectangle .edit-button1:hover,
@@ -487,9 +594,10 @@ body {
 }
 
 .title {
-    padding: 20px; /* Espacement intérieur */
-     position: relative;
+    padding: 50px; /* Espacement intérieur */
+    position: relative;
     top: 70px;
+    right: 50px;
 }
 
 
@@ -502,19 +610,14 @@ body {
     text-shadow: 2px 2px 2px rgb(255, 251, 251);
     font-size: 40px; /* Taille de la police */
 }
-.video{
+.image3 {
+    width: 15%; /* Définir la largeur */
+    height: 30%; /* Assurer le redimensionnement proportionnel */
     position: absolute;
-    right: 1010px;
-    bottom:0;
-    z_index: -1;
-    width: 13%; /* ou une valeur spécifique, par exemple: 500px */
-    height: auto;
-    border-radius: 300px; /* Valeur de rayon de bordure arrondie */
-    top: 45%;
-    mix-blend-mode: revert; /* Mélange la couleur de fond avec la vidéo */
-    margin-left: -10px;
+    margin-left: 10px;
+    margin-top: -458px;
+    margin-right: 80%;
 }
-
 .rectangle2 {
     width: 900px; /* Largeur du rectangle */
     height: 150px; /* Hauteur du rectangle */
@@ -532,7 +635,7 @@ body {
     font-family: 'Palanquin Dark' ,sans-serif; /* Utilisation de la police Palanquin Dark */
     color: white;
     position: relative;
-    font-size: 35px;
+    font-size: 25px;
     left: 40px;
 }
 .rectangle2 h3{
@@ -574,21 +677,16 @@ body {
     border: none; /* Supprimer la bordure */
     border-radius: 5px; /* Rayon des coins du bouton */
     cursor: pointer; /* Curseur pointeur */
-    transition: background-color 0.3s ease; /* Animation de transition */
+    transition: background-color 0.1s ease; /* Animation de transition */
 }
 
 
 .notification-toggle:hover {
     background-color: #00efff; /* Couleur de fond au survol */
 }
-
-
 .switch {
-    position: absolute; /* Changez la position en absolute */
-    top: 50%; /* Alignez le haut de l'interrupteur au milieu du rectangle */
-    transform: translateY(-50%); /* Déplacez l'interrupteur vers le haut de moitié de sa hauteur pour le centrer verticalement */
-    right: 20px; /* Déplacez l'interrupteur à droite du rectangle */
-    display: inline-block;
+    position: absolute;
+    margin-left: 810px;
     width: 60px;
     height: 34px;
 }
@@ -605,7 +703,6 @@ body {
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    -webkit-transition: .4s;
     transition: .4s;
     border-radius: 34px;
 }
@@ -618,9 +715,7 @@ body {
     left: 4px;
     bottom: 4px;
     background-color: black;
-    -webkit-transition: .4s;
     transition: .4s;
-    border: 12px;
     border-radius: 50%;
 }
 
@@ -629,10 +724,9 @@ body {
 }
 
 .switch .toggle-input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
     transform: translateX(26px);
 }
+
 .top-bar .edit-button5 {
     position: absolute;
     margin: 10px; /* Ajoutez de la marge pour séparer du coin */
@@ -842,4 +936,682 @@ body {
         display: none;
     }
 }
+.rectangle3 {
+    width: 900px; /* Largeur du rectangle */
+    height: 150px; /* Hauteur du rectangle */
+    background-color: #1E1E1E; /* Couleur de fond */
+    border: 1px solid #ccc; /* Bordure solide */
+    border-radius: 10px; /* Rayon des coins */
+    box-shadow: 5px 5px 5px #888888; /* Ombre */
+    transform: perspective(100px) ; /* Effet 3D */
+    margin-left: 245px;
+    margin-top: 30px;
+}
+.rectangle3 h2{
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Palanquin Dark' ,sans-serif; /* Utilisation de la police Palanquin Dark */
+    color: white;
+    position: relative;
+    font-size: 25px;
+    left: 40px;
+}
+.rectangle3 h3{
+    font-weight: normal;
+    font-style: normal;
+    margin-top: -20px;
+    font-family: 'Palanquin Dark'; /* Utilisation de la police Palanquin Dark */
+    color: white;
+    top: 30px;
+    position: relative;
+    left: 20px;
+}
+.rectangle3 h4{
+    font-style: normal;
+    color: #cccccc;
+    font-size: 12px;
+    top: 40px;
+    position: relative;
+    left: 20px;
+}
+.rectangle3 h5 {
+    position: absolute;
+    margin-top: -70px;
+    margin-left: 690px;
+    color: transparent; /* Rendre le texte transparent */
+    text-shadow: 1px 1px 2px darkgrey; /* Ajouter une ombre avec une couleur */
+    font-weight: bold;
+    font-family: 'Planquin Dark', sans-serif;
+}
 
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(50, 50, 50, 0.8); /* Gris foncé transparent */
+    width: 300px;
+    height: 180px;
+    z-index: 999;
+    border-radius: 6px;
+    text-align: center;
+    opacity: 0; /* Initiallement invisible */
+    visibility: hidden; /* Initiallement invisible */
+    transition: opacity 0.4s, visibility 0.4s; /* Ajoute une transition sur l'opacité et la visibilité */
+}
+
+.popup.active {
+    opacity: 1; /* Rend le popup visible */
+    visibility: visible; /* Rend le popup visible */
+}
+
+.open-popup{
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(1);
+
+}
+
+
+.popup img{
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+.popup h1{
+    font-size: 20px;
+    font-weight: 500;
+    font-style: italic;
+    color: black;
+    font-weight: bold;
+    position: absolute;
+    margin-top: 50px;
+    margin-right: 10px;
+    margin-left: 40px;
+}
+/* Styles pour le champ d'entrée */
+.input-message {
+    width: 100%; /* Définir la largeur */
+    padding: 1px; /* Ajouter de l'espace à l'intérieur du champ */
+    font-size: 16px; /* Taille de la police */
+    position: absolute;
+    margin-top: 50px;
+    border: 1px solid #ccc; /* Bordure */
+    border-radius: 5px; /* Arrondi des coins */
+    box-sizing: border-box; /* Inclure le padding et la bordure dans la largeur */
+}
+
+/* Styles pour le placeholder */
+.input-message::placeholder {
+    color: #aaa; /* Couleur du placeholder */
+}
+
+.popup .buttons {
+    text-align: justify-all;
+
+}
+
+.popup .buttons button {
+    width: 20%;
+    font-family: 'Changa One', sans-serif;
+    margin-top: 60px;
+    padding: 10px 0;
+    background: #4267B2;
+    color: #000000;
+    font-weight: bold;
+    border: 0;
+    outline: none;
+    font-size: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+
+/* Styles pour le champ d'entrée */
+#first-name {
+    width: 80%; /* Définir la largeur */
+    padding: 10px; /* Ajouter de l'espace à l'intérieur du champ */
+    font-size: 14px; /* Taille de la police */
+    width: 80%;
+    border: 3px solid #000000;
+    border-radius: 15px;
+    position: absolute;
+    margin-top: 50px;
+    color: white;
+    background-color: #000000;
+    margin-left: -170px;
+    margin-right: 500px;
+    box-sizing: border-box; /* Inclure le padding et la bordure dans la largeur */
+}
+
+/* Placeholder */
+#first-name::placeholder {
+    color: #999; /* Couleur du placeholder */
+}
+/* Style pour flouter le fond */
+.blur-background {
+    filter: blur(5px); /* Applique un flou au fond */
+}
+
+
+
+
+/* Ajout de flou au fond de la page lorsque le popup est ouvert */
+.blur-background {
+    filter: blur(5px); /* Applique un flou au fond */
+}
+
+.popup2 {
+    position: absolute;
+    top: 70%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(50, 50, 50, 0.8); /* Gris foncé transparent */
+    width: 300px;
+    height: 180px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    border-radius: 6px;
+    text-align: center;
+    opacity: 0; /* Initiallement invisible */
+    visibility: hidden; /* Initiallement invisible */
+    transition: opacity 0.4s, visibility 0.4s; /* Ajoute une transition sur l'opacité et la visibilité */
+}
+
+.popup2.active {
+    opacity: 1; /* Rend le popup visible */
+    visibility: visible; /* Rend le popup visible */
+}
+
+
+.popup2 .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.popup2 img {
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);}
+
+.popup2 input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 3px solid #000000;
+    border-radius: 15px;
+    color: white;
+    background-color: #000000;
+}
+
+.popup2 .buttons {
+    text-align: center;
+
+}
+
+.popup2 .buttons button {
+    width: 20%;
+    margin-top: 10px;
+    font-family: 'Changa One', sans-serif;
+    padding: 10px 0;
+    background: #4267B2;
+    color: #000000;
+    font-weight: bold;
+    border: 0;
+    outline: none;
+    font-size: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.popup2 .validation-icon {
+    display: none;
+    color: green;
+    margin-top: 10px;
+}
+
+.popup2.open {
+    display: block;
+}
+
+
+
+
+
+
+
+
+.popup3 {
+    position: absolute;
+    top: 70%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(50, 50, 50, 0.8); /* Gris foncé transparent */
+    width: 300px;
+    height: 180px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    border-radius: 6px;
+    text-align: center;
+    opacity: 0; /* Initiallement invisible */
+    visibility: hidden; /* Initiallement invisible */
+    transition: opacity 0.4s, visibility 0.4s; /* Ajoute une transition sur l'opacité et la visibilité */
+}
+
+.popup3.active {
+    opacity: 1; /* Rend le popup visible */
+    visibility: visible; /* Rend le popup visible */
+}
+.popup3 img {
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);}
+
+.popup3 input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 3px solid #000000;
+    border-radius: 15px;
+    color: white;
+    background-color: #000000;
+}
+
+.popup3 .buttons {
+    text-align: center;
+
+}
+
+.popup3 .buttons button {
+    width: 20%;
+    margin-top: 10px;
+    padding: 10px 0;
+    background: #4267B2;
+    color: #000000;
+    font-family: 'Changa One', sans-serif;
+    font-weight: bold;
+    border: 0;
+    outline: none;
+    font-size: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+.blur-background {
+    backdrop-filter: blur(1000px); /* Applique un flou à l'arrière-plan */
+}
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Couleur semi-transparente */
+    z-index: 999; /* Assurez-vous qu'il est au-dessus du reste de la page */
+    display: none; /* Initialement caché */
+}
+
+
+.popup4 {
+    position: absolute;
+    top: 70%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background-color: rgba(50, 50, 50, 0.8); /* Gris foncé transparent */
+    z-index: 999;
+    border-radius: 6px;
+    text-align: center;
+    opacity: 0; /* Initiallement invisible */
+    visibility: hidden; /* Initiallement invisible */
+    transition: opacity 0.4s, visibility 0.4s; /* Ajoute une transition sur l'opacité et la visibilité */
+}
+
+.popup4.active {
+    opacity: 1; /* Rend le popup visible */
+    visibility: visible; /* Rend le popup visible */
+}
+.popup4 img {
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);}
+
+.popup4 input[type="password"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 3px solid #000000;
+    border-radius: 15px;
+    color: white;
+    background-color: #000000;
+}
+
+.popup4 .buttons {
+    text-align: center;
+    color: #4267B2;
+}
+
+.popup4 .buttons button {
+    width: 20%;
+    font-family: 'Changa One', sans-serif;
+    margin-top: 10px;
+    padding: 10px 0;
+    background: #4267B2;
+    color: #000000;
+    font-weight: bold;
+    border: 0;
+    outline: none;
+    font-size: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+#error-icon::before {
+    content: 'X';
+}
+.blur-popup {
+    backdrop-filter: none; /* Annule le flou pour le contenu du popup */
+}
+.active {
+    opacity: 1; /* Rend le popup visible */
+    visibility: visible; /* Rend le popup visible */
+}
+.rectangle3 .disable-button {
+    background-color: #00efff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative; /* Changez la position en relative */
+    top: -45px; /* Utilisez top plutôt que margin-top */
+    left: 790px; /* Utilisez left plutôt que margin-left */
+}
+
+.rectangle3 .disable-button:hover {
+    background-color: #d32f2f;
+}
+
+.rectangle4 {
+    width: 900px; /* Largeur du rectangle */
+    height: 150px; /* Hauteur du rectangle */
+    background-color: #1E1E1E; /* Couleur de fond */
+    border: 1px solid #ccc; /* Bordure solide */
+    border-radius: 10px; /* Rayon des coins */
+    box-shadow: 5px 5px 5px #888888; /* Ombre */
+    transform: perspective(100px) ; /* Effet 3D */
+    margin-left: 245px;
+    margin-top: 30px;
+}
+.rectangle4 h2{
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Palanquin Dark' ,sans-serif; /* Utilisation de la police Palanquin Dark */
+    color: white;
+    position: relative;
+    font-size: 25px;
+    left: 40px;
+}
+.rectangle4 h3{
+    font-weight: normal;
+    font-style: normal;
+    margin-top: -20px;
+    font-family: 'Palanquin Dark'; /* Utilisation de la police Palanquin Dark */
+    color: white;
+    top: 30px;
+    position: relative;
+    left: 20px;
+}
+.rectangle4 h4{
+    font-style: normal;
+    color: #cccccc;
+    font-size: 12px;
+    top: 40px;
+    position: relative;
+    left: 20px;
+}
+.rectangle4 h5 {
+    position: absolute;
+    margin-top: -20px;
+    margin-left: 710px;
+    color: transparent; /* Rendre le texte transparent */
+    text-shadow: 1px 1px 2px darkgrey; /* Ajouter une ombre avec une couleur */
+    font-weight: bold;
+    font-family: 'Planquin Dark', sans-serif;
+}
+
+.show-cards-button {
+    background-color: #00efff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    position: absolute;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: -10px;
+    margin-left: 769px;
+}
+
+.show-cards-button:hover {
+    background-color: #00c7d4;
+}
+.containerC {
+    display: none; /* Par défaut, le conteneur est caché */
+    position: fixed; /* Position fixe pour centrer */
+    top: 195%; /* Centrer verticalement */
+    left: 12%; /* Centrer horizontalement */
+    transform: translate(-50%, -50%); /* Déplacer de moitié de la largeur et hauteur */
+    background-size: 2px;
+    border-radius: 15px; /* Coins arrondis */
+    width: 250px;
+    height: 300px;
+}
+
+
+
+/* Style pour chaque carte */
+/* Définition de l'animation de rotation */
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* Style pour chaque carte avec l'effet 3D */
+.card {
+    background-color: #000000; /* Couleur de fond */
+    border-radius: 15px; /* Coins arrondis */
+    width: 250px;
+    height: 80px;
+    padding: 20px; /* Espacement intérieur */
+    margin-bottom: 10px; /* Marge inférieure */
+    border: 1px solid #ddd; /* Bordure grise claire */
+    position: relative; /* Position relative pour le bouton de suppression */
+    box-shadow: 4px 15px 25px rgba(255, 255, 255, 0.2); /* Ombre douce en blanc pour l'effet de levitation */
+    /* Transition pour l'effet 3D */
+    transition: box-shadow 0.3s ease;
+}
+
+/* Au survol de la carte, changer l'effet 3D */
+.card:hover {
+    box-shadow: 4px 8px 15px rgba(255, 255, 255, 0.2); /* Ombre plus prononcée en blanc */
+}
+
+
+/* Définition de l'animation */
+@keyframes move {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(15px); } /* Aller */
+    100% { transform: translateX(0); } /* Revenir */
+}
+
+/* Style pour chaque carte */
+.card {
+    /* Vos styles de carte ici */
+    animation: move 2s ease infinite; /* Animation de va-et-vient toutes les 2 secondes */
+}
+
+
+/* Style pour chaque carte au survol */
+.card:hover {
+    transform: scale(1.05); /* Effet de zoom au survol */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
+}
+
+
+/* Style pour le numéro de carte */
+.card-number {
+    font-weight: bold; /* Texte en gras */
+    margin-bottom: 10px; /* Marge inférieure */
+}
+
+/* Style pour les informations de carte */
+.card-info {
+    margin-bottom: 10px; /* Marge inférieure */
+}
+
+/* Style pour le bouton de suppression */
+.delete-button {
+    position: absolute; /* Position absolue pour le bouton */
+    bottom: 10px; /* Distance par rapport au bas de la carte */
+    right: 10px; /* Distance par rapport à la droite de la carte */
+    padding: 3px 8px; /* Espacement intérieur */
+    background-color: #ff0000; /* Couleur de fond rouge */
+    color: #fff; /* Couleur du texte blanc */
+    border: none; /* Pas de bordure */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur pointer */
+}
+/* Style pour l'icône de chaque carte */
+.card-icon {
+    position: absolute; /* Position absolue pour l'icône */
+    top: 10px; /* Distance par rapport au haut de la carte */
+    right: 10px; /* Distance par rapport à la droite de la carte */
+    width: 35px; /* Largeur de l'icône */
+    height: 35px; /* Hauteur de l'icône */
+}
+
+#saveButton {
+    background-color: #00FFFF; /* Couleur de fond */
+    border: none; /* Pas de bordure */
+    color: white; /* Couleur du texte */
+    padding: 3px 8px; /* Espacement intérieur */
+    text-align: center; /* Alignement du texte */
+    text-decoration: none; /* Pas de décoration de texte */
+    display: inline-block; /* Affichage en ligne */
+    font-size: 13px; /* Taille de la police */
+    position: absolute;
+    cursor: pointer; /* Curseur de souris */
+    border-radius: 20px; /* Bordure arrondie */
+    animation: move 2s ease infinite; /* Animation de va-et-vient toutes les 2 secondes */
+}
+
+
+/* Définition de l'animation */
+@keyframes move {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(15px); } /* Aller */
+    100% { transform: translateX(0); } /* Revenir */
+}
+
+.rectangle5 {
+    width: 900px; /* Largeur du rectangle */
+    height: 150px; /* Hauteur du rectangle */
+    background-color: #1E1E1E; /* Couleur de fond */
+    border: 1px solid #ccc; /* Bordure solide */
+    border-radius: 10px; /* Rayon des coins */
+    box-shadow: 5px 5px 5px #888888; /* Ombre */
+    transform: perspective(100px) ; /* Effet 3D */
+    margin-left: 245px;
+    margin-top: 30px;
+}
+.rectangle5 h2{
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Palanquin Dark' ,sans-serif; /* Utilisation de la police Palanquin Dark */
+    color: white;
+    position: relative;
+    font-size: 25px;
+    left: 40px;
+}
+.rectangle5 h3{
+    font-weight: normal;
+    font-style: normal;
+    margin-top: -20px;
+    font-family: 'Palanquin Dark'; /* Utilisation de la police Palanquin Dark */
+    color: white;
+    top: 30px;
+    position: relative;
+    left: 20px;
+}
+.rectangle5 h4{
+    font-style: normal;
+    color: #cccccc;
+    font-size: 12px;
+    top: 40px;
+    position: relative;
+    left: 20px;
+}
+.rectangle5 h5 {
+    position: absolute;
+    margin-top: -20px;
+    margin-left: 350px;
+    color: transparent; /* Rendre le texte transparent */
+    text-shadow: 1px 1px 2px darkgrey; /* Ajouter une ombre avec une couleur */
+    font-weight: bold;
+    font-family: 'Planquin Dark', sans-serif;
+}
+.user-img {
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    margin-top: -120px;
+    margin-left: 1040px;
+
+}
+
+#photo {
+    width: 80px;
+    height: 80px;
+
+}
+
+#file {
+    display: none;
+}
+
+#uploadbtn {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    padding: 6px;
+    cursor: pointer;
+    transform: translateX(-90%);
+    color: #ffffff;
+    background-color: rgba(173, 172, 172, 0.80);
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.644);
+}
+.image3 {
+    width: 170px; /* Largeur de l'image */
+    height: 150px; /* Hauteur de l'image */
+    position: absolute;
+    margin-top: 50px;
+}
