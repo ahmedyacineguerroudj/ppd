@@ -1264,9 +1264,6 @@ nav .btn:hover {
     height: 100%;
     object-fit: cover;
 }
-
-
-
 /* Media query pour les petits écrans */
 @media only screen and (max-width: 1000px) {
     .menu {

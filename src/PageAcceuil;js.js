@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
 document.addEventListener("DOMContentLoaded", function() {
     const contactUsLink = document.querySelector(".contact-us");
 
