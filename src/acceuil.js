@@ -258,7 +258,6 @@ function showLoginPage() {
     // Redirection vers la page de connexion
     window.location.href = "login.html";
 }
-
 // Fonction pour marquer l'élément actif
 function markActive(clickedElement) {
     // Supprimer la classe active de tous les éléments du menu
