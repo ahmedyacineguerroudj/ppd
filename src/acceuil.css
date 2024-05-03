@@ -1169,7 +1169,6 @@ body {
     height: 50px;
     animation: spin 1s linear infinite; /* Animation de rotation */
 }
-
 /* Animation pour faire tourner le spinner */
 @keyframes spin {
     from { transform: translate(-50%, -50%) rotate(0deg); }

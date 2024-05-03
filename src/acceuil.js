@@ -35,10 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Données d'actifs (juste un exemple)
     const assets = [
         { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'images/BTC.png' },
-        { coin: 'Ethereum', amount: 0.3, price: 3000, image: 'images/ETH.png' },
+        { coin: 'Ethereum', amount: 0.3, price: -2, image: 'images/ETH.png' },
         { coin: 'Tether', amount: 100, price: 1, image: 'images/USDC.png' },
         { coin: 'Cardano', amount: 150, price: 2, image: 'images/ADA.png' },
-        { coin: 'XRP', amount: 200, price: 0.5, image: 'images/XRP.png' },
+        { coin: 'XRP', amount: 200, price: -0.5, image: 'images/XRP.png' },
         { coin: 'Solana', amount: 10, price: 150, image: 'images/SOL.png' },
 
     ];
@@ -67,17 +67,23 @@ document.addEventListener('DOMContentLoaded', function() {
             for (let j = i; j < Math.min(i + itemsPerRow, endIndex); j++) {
                 const asset = assets[j];
                 const cell = document.createElement('td');
+
                 const coinImage = document.createElement('img');
                 coinImage.src = asset.image || 'default_icon.png';
-                coinImage.alt = asset.coin;
                 coinImage.width = 20; // Taille de l'image
                 cell.appendChild(coinImage);
-                cell.innerHTML += `<br>${asset.coin}<br>Price: ${asset.price}<br>Amount: ${asset.amount}`;
+                // Ajout du prix en gras et avec la coloration
+                const priceText = document.createElement('span');
+                priceText.innerHTML = `<strong>Price:</strong> <span style="font-style: italic; color: ${asset.price >= 0 ? '#3bf503' : '#ff0505'}">${asset.price}</span>`;
+                cell.appendChild(priceText);
+                // Ajout du montant en italique
+                cell.innerHTML += `<br><em><strong>Amount:</strong></em> ${asset.amount}`;
+                // Ajout du nom de la pièce en italique
+                cell.innerHTML += `<br><strong></strong><em>${asset.coin}</em>`;
                 row.appendChild(cell);
             }
             // Ajouter la ligne à la table des actifs
             assetTable.appendChild(row);
-
         }
 
         // Afficher ou masquer le bouton "Previous" en fonction de la page actuelle
@@ -296,7 +302,6 @@ var joinUsSection = document.querySelector(".market-JoinUs");
 
 // Condition pour vérifier si l'utilisateur est un guest ou un user
 var isGuest = true;
-
 
 if (isGuest) {
     loginButton.style.display = "block";
