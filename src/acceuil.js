@@ -317,3 +317,15 @@ if (isGuest) {
     joinUsSection.style.display = "none";
 }
 
+// Fonction pour gérer l'inscription
+function signup() {
+    // Récupérer l'e-mail entré par l'utilisateur
+    var email = document.getElementById('searchInput').value;
+
+    // Vérifier si l'e-mail est valide (vous pouvez ajouter une validation ici si nécessaire)
+
+    // Faire quelque chose avec l'e-mail, comme l'envoyer à un serveur ou le stocker localement
+
+    // Redirection vers la page d'inscription (remplacez signup.html par votre page d'inscription réelle)
+    window.location.href = "signup.html";
+}

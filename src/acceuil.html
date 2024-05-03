@@ -32,10 +32,10 @@
 
 
         <div class="buttons">
-            <button class="signup-btn1">Sign up</button>
+            <button class="signup-button" onclick="showSignupPage()">Signup</button>
         </div>
         <div class="buttons1">
-            <button class="login-btn1">Login</button>
+            <button class="signup-button" onclick="showLoginPage()">Signup</button>
         </div>
 
 
@@ -50,21 +50,14 @@
 
 
 
-
-
-
-    <section class="search-section">
-        <div class="search-box">
+    <section class="signup-section">
+        <div class="signup-box">
             <label for="searchInput"></label>
-            <input type="text" id="searchInput" placeholder="Enter your email adress ..">
-
-            <button class="search-button" onclick="search()">Signup</button>
-        </div>
-        <div id="searchResults">
-            <!-- Search results  -->
+            <input type="text" id="searchInput" placeholder="Enter your email address..">
+            <!-- Utilisez onclick pour appeler la fonction signup() -->
+            <button class="signup-button" onclick="signup()">Signup</button>
         </div>
     </section>
-
 
 
     <video autoplay loop muted plays-inline class="video">
