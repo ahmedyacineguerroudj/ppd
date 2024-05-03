@@ -1615,3 +1615,36 @@ body {
     position: absolute;
     margin-top: 50px;
 }
+
+
+
+/* Style pour l'overlay de chargement */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond noir semi-transparent */
+    z-index: 9999; /* Assurez-vous que l'overlay est au-dessus de tout le contenu */
+}
+
+/* Style pour le spinner */
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #00efff; /* Bordure blanche */
+    border-top: 3px solid transparent; /* Bordure transparente pour la partie supérieure */
+    border-radius: 50%; /* Pour créer une forme de cercle */
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite; /* Animation de rotation */
+}
+
+/* Animation pour faire tourner le spinner */
+@keyframes spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}

@@ -1,5 +1,9 @@
 
-
+// Vous pouvez également utiliser JavaScript pour masquer le spinner une fois que la page est entièrement chargée
+window.addEventListener('load', function() {
+    var spinner = document.querySelector('.loading-overlay');
+    spinner.style.display = 'none';
+});
 
 document.addEventListener("DOMContentLoaded", function() {
     const toggleButtons = document.querySelectorAll(".toggle-btn");

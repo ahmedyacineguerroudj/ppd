@@ -448,7 +448,7 @@ body {
 /***** Styles pour la section JoinUs *****/
 .market-JoinUs {
     padding: 20px;
-    margin-top: -410px;
+    margin-top: -510px;
     min-height: 400px;
     text-align: left;
     background-size: cover;
@@ -902,9 +902,9 @@ body {
 .image3 {
     width: 100%; /* Largeur de l'image à 100% de la largeur de son conteneur */
     height: auto; /* Hauteur automatique pour maintenir les proportions de l'image */
-    display: block; /* Afficher l'image comme un bloc pour éviter les problèmes de mise en page */
     max-width: 135px; /* Largeur maximale de l'image */
-    margin-top: -243px;
+    position: absolute;
+    margin-top: -80%;
     margin-left: 300px;
     border-radius: 10px; /* Ajouter une bordure arrondie */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Ajouter une ombre à l'image */
@@ -1034,4 +1034,144 @@ body {
 }
 .star.selected {
     color: gold;
+}
+
+.socials-container {
+    width: auto;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    margin-left: 800px;
+    padding: 20px 40px;
+}
+
+
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.social {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgb(194, 194, 194);
+}
+
+
+.twitter:hover {
+    background: linear-gradient(45deg, #66757f, #00acee, #36daff, #dbedff);
+}
+.facebook:hover {
+    background: linear-gradient(45deg, #134ac0, #316ff6, #78a3ff);
+}
+.google-plus:hover {
+    background: linear-gradient(45deg, #872419, #db4a39, #ff7061);
+}
+.instagram:hover {
+    background: #f09433;
+    background: -moz-linear-gradient(
+            45deg,
+            #f09433 0%,
+            #e6683c 25%,
+            #dc2743 50%,
+            #cc2366 75%,
+            #bc1888 100%
+    );
+    background: -webkit-linear-gradient(
+            45deg,
+            #f09433 0%,
+            #e6683c 25%,
+            #dc2743 50%,
+            #cc2366 75%,
+            #bc1888 100%
+    );
+    background: linear-gradient(
+            45deg,
+            #f09433 0%,
+            #e6683c 25%,
+            #dc2743 50%,
+            #cc2366 75%,
+            #bc1888 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+}
+.social svg {
+    fill: white;
+    height: 20px;
+}
+
+
+.content {
+    position: absolute;
+    margin-top: -250px;
+    margin-left: 650px;
+
+}
+
+.content h2 {
+    position: absolute;
+    transform: translate(-50%,-50%);
+    font-size: 4em;
+
+}
+
+.content h2:nth-child(1) {
+    color: transparent;
+    -webkit-text-stroke: 2px #00efff;
+}
+
+    .content h2:nth-child(2){
+        color: snow;
+        animation: animate 4s ease-in-out infinite;
+    }
+
+    @keyframes animate {
+        0%,100%{
+    clip-path: polygon(0 42%, 16% 37%, 29% 45%, 40% 51%, 54% 56%, 70% 56%, 85% 52%, 100% 47%, 100% 100%, 0% 100%);
+}
+
+        50%{
+            clip-path: polygon(0 49%, 11% 53%, 25% 61%, 40% 60%, 56% 48%, 71% 42%, 88% 40%, 100% 39%, 100% 100%, 0% 100%);
+        }
+    }
+
+
+
+/* Style pour l'overlay de chargement */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond noir semi-transparent */
+    z-index: 9999; /* Assurez-vous que l'overlay est au-dessus de tout le contenu */
+}
+
+/* Style pour le spinner */
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #00efff; /* Bordure blanche */
+    border-top: 3px solid transparent; /* Bordure transparente pour la partie supérieure */
+    border-radius: 50%; /* Pour créer une forme de cercle */
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite; /* Animation de rotation */
+}
+
+/* Animation pour faire tourner le spinner */
+@keyframes spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
 }

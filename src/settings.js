@@ -1,3 +1,12 @@
+
+
+// Vous pouvez également utiliser JavaScript pour masquer le spinner une fois que la page est entièrement chargée
+window.addEventListener('load', function() {
+    var spinner = document.querySelector('.loading-overlay');
+    spinner.style.display = 'none';
+});
+
+
 function toggleNotificationModal() {
     var modal = document.getElementById("notificationModal");
     closeAllModalsExcept("notificationModal");
@@ -652,3 +661,26 @@ fileInput.addEventListener('change', function(event) {   //amelirer par backend/
         photoElement.src = newPhotoURL;
     }
 });
+
+
+// fonction pour activr et desactiver le compte //
+
+function toggleAccountStatus() {
+    var toggleInput = document.querySelector('.toggle-input');
+    var accountStatus = document.querySelector('.account-status');
+    var disableButton = document.querySelector('.disable-button');
+
+    if (toggleInput.checked) {
+        // Si le commutateur est activé (coché)
+        accountStatus.textContent = 'Enabled';
+        accountStatus.style.color = 'green';
+        disableButton.textContent = 'Disable';
+    } else {
+        // Si le commutateur est désactivé (non coché)
+        accountStatus.textContent = 'Disabled';
+        accountStatus.style.color = 'red';
+        disableButton.textContent = 'Enable';
+    }
+}
+// Ajouter un gestionnaire d'événement pour le changement d'état du commutateur
+document.querySelector('.toggle-input').addEventListener('change', toggleAccountStatus);
