@@ -93,7 +93,6 @@ function toggleNotifications2() {
         console.log("Notifications désactivées");
     }
 }
-
 function markActive(element) {
     // Supprimer la classe "active" de tous les éléments du menu
     var menuItems = document.getElementsByClassName('menu-item');
