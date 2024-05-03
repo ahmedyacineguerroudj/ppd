@@ -1,0 +1,1707 @@
+/* Ajout de la police Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+/* Réinitialisation des styles par défaut */
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #161616; /* Couleur de fond de secours */
+    color: #ffffff; /* Couleur du texte */
+    background-size: cover; /* Ajuster la taille de l'image pour couvrir toute la page */
+}
+
+
+
+/* Style pour la sélection de texte */
+::selection {
+    background: #ffffff;
+    color: #161616;
+}
+
+/* Style Pour la barre de défilement */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background-color: rgb(80, 77, 77);
+}
+::-webkit-scrollbar-thumb {
+    background-color: #007F7F;
+    border-radius: 5px;
+}
+
+
+/***** Styles pour section topbar *****/
+/* Style pour le logo */
+.top-bar img {
+    width: 80px;
+    height: auto;
+}
+
+/* Style pour la barre supérieure */
+.top-bar {
+    display: flex;
+    background-color: #1E1E1E;
+    padding: 15px 10px;
+    user-select: none;
+    border-bottom: 5px solid #00FFFF;
+}
+
+/* Style pour le nom de la plateforme */
+.platform-name {
+    display: flex;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 15px;
+    margin-bottom: 3px;
+}
+
+/* Style pour les parties "whales" et "Cap" du nom de la plateforme */
+.platform-name .whales {
+    color: #ffffff;
+    user-select: none;
+}
+.platform-name .Cap {
+    color: #00FFFF;
+    user-select: none;
+}
+
+/* Style pour le menu */
+.menu {
+    display: flex;
+    margin-bottom: 3px;
+    margin-left: 100px;
+}
+
+/* Style pour les éléments du menu */
+.menu-item {
+    font-weight: bold;
+    margin-right: 50px;
+    font-size: 22px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: transform 0.2s ease;
+}
+
+/* Style pour le survol des éléments du menu */
+.menu-item:hover {
+    transform: scale(1.2);
+    color: #00FFFF;
+}
+/* Style pour le bouton de notification */
+.notification-button img {
+    width: 30px;
+    height: auto;
+    margin-left: 20px;
+    transition: opacity 0.3s;
+}
+.notification-button {
+    display: flex;
+    position: absolute;
+    right: 5.5%;
+    top: 20px;
+}
+
+/* Style pour le bouton d'utilisateur */
+.user-button img {
+    width: 30px;
+    height: auto;
+    margin-left: 20px;
+    transition: opacity 0.3s;
+}
+.user-button {
+    display: flex;
+    position: absolute;
+    right: 0.5%;
+    top: 20px;
+}
+
+/* Styles lorsque le bouton est survolé */
+.notification-button:hover img {
+    content: url('Images/notification_icon2.png');
+}
+.user-button:hover img {
+    content: url('Images/user_icon2.png');
+}
+
+/* Styles pour les boutons de model */
+.notification-button,
+.user-button {
+    display: inline-block;
+}
+.notification-button .modal,
+.user-button .modal {
+    position: absolute;
+    left: -300px;
+    width: 300px;
+    max-height: 300px;
+    background-color: #161616;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 4px rgb(9, 248, 248);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: auto;
+    z-index: 100;
+}
+
+/* Style pour le titre de la boîte modale */
+.modal-content h2 {
+    font-size: 24px;
+    color: #00FFFF;
+    margin-bottom: 10px;
+    text-align: center;
+    user-select: none;
+    font-family: 'Apple Chancery', cursive;
+}
+
+/* Style pour le bouton de fermeture de la boîte modale */
+.close {
+    display: none;
+}
+
+
+/* Style pour le tableau de notifications */
+#notificationTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Style pour les cellules du tableau */
+#notificationTable td {
+    padding: 8px;
+    border: 1px  solid #ffffff;
+    word-wrap: break-word;
+}
+
+/* Style pour la première colonne du tableau */
+#notificationTable td:first-child {
+    font-size: 10px;
+    color: #00FFFF;
+    text-align: center;
+}
+
+/* Media query pour les petits écrans */
+@media only screen and (max-width: 1000px) {
+    .menu {
+        display: none;
+    }
+}
+
+/* Styles pour la barre de navigation */
+#navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+#navbar a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 14px;
+    font-weight: bold;
+    position: relative;
+}
+#navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: transparent;
+    transition: width 0.3s ease;
+}
+#navbar a.active::after,
+#navbar a:hover::after {
+    width: 100%;
+    background-color: #09f8f8;
+}
+
+
+/* Style pour le tableau de notifications */
+#notificationTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Style pour les cellules du tableau */
+#notificationTable td {
+    padding: 8px;
+    border: 1px  solid #ffffff;
+    word-wrap: break-word;
+}
+
+/* Style pour la première colonne du tableau */
+#notificationTable td:first-child {
+    font-size: 10px;
+    color: #00FFFF;
+    text-align: center;
+}
+
+/* Style pour les boutons */
+.
+/* Media query pour les petits écrans */
+@media only screen and (max-width: 1100px) {
+    .top-section {
+        display: none;
+    }
+    .menu {
+        display: none;
+    }
+}
+
+
+
+.market-insights h2 {
+    font-family: 'Apple Chancery', cursive;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    background-image: linear-gradient(to right, #09f8f8, #161616);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: changeColor 4s linear infinite; /* Ajout de l'animation de couleur */
+}
+
+.market-insights p {
+    font-size: 20px;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    line-height: 1.5;
+    color: rgb(255, 255, 255);
+    animation: changeColor 4s linear infinite; /* Ajout de l'animation de couleur */
+}
+
+/* Styles pour la classe content */
+.market-insights {
+    margin-top: 7%;
+    font-size: 20px;
+    position: absolute;
+    margin-left: 100px;
+    animation: moveUpDown 2s ease-in-out infinite alternate; /* Suppression de l'animation de couleur pour cette classe */
+}
+
+@keyframes moveUpDown {
+    0% {
+        transform: translateX(0); /* Début de l'animation */
+    }
+    100% {
+        transform: translateX(20px); /* Fin de l'animation */
+    }
+}
+
+@keyframes changeColor {
+    0% {
+        color: #00efff; /* Début de l'animation */
+    }
+    50% {
+        color: white; /* Milieu de l'animation */
+    }
+    100% {
+        color: #00efff; /* Fin de l'animation */
+    }
+}
+
+
+
+
+/***** Styles pour la troisième section *****/
+.table-section {
+    margin : 40px 15px 25px 15px;
+    max-width: 100%;
+    font-size: 20px;
+    min-height: 600px;
+}
+#cryptoTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+#cryptoTable td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 2px solid rgb(60, 63, 65);
+}
+#cryptoTable th {
+    font-family: 'Apple Chancery', cursive;
+    background-color: rgba(37, 189, 189, 0.69);
+    color: #ffffff;
+    user-select: none;
+    padding: 12px;
+}
+#cryptoTable tr:first-child th {
+    border-top: none;
+}
+
+#cryptoTable tr:hover {
+    background-color: #333131;
+}
+
+
+
+
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Apple Chancery', cursive;
+}
+.pagination button {
+    font-family: 'Apple Chancery', cursive;
+    background-color: rgba(37, 189, 189, 0.69);
+    color: #161616;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    font-size: 20px;
+    user-select: none;
+    padding: 5px 20px;
+}
+.pagination button:hover {
+    background: #325358;
+    font-family: 'Apple Chancery', cursive;
+}
+#currentPage {
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+
+
+
+
+/***** Styles pour la section JoinUs *****/
+.market-JoinUs {
+    padding: 20px;
+    margin-top: -510px;
+    min-height: 400px;
+    text-align: left;
+    background-size: cover;
+    background-position: left;
+}
+
+.market-JoinUs h2 {
+    margin-top: 20px;
+    -webkit-background-clip: text;
+    font-family: 'Apple Chancery', cursive;
+    font-size: 38px;
+    color: #00efff;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.market-JoinUs p {
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.socials-container {
+    width: auto;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    margin-left: 800px;
+    padding: 20px 40px;
+}
+
+
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.social {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgb(194, 194, 194);
+}
+
+
+.twitter:hover {
+    background: linear-gradient(45deg, #66757f, #00acee, #36daff, #dbedff);
+}
+.facebook:hover {
+    background: linear-gradient(45deg, #134ac0, #316ff6, #78a3ff);
+}
+.google-plus:hover {
+    background: linear-gradient(45deg, #872419, #db4a39, #ff7061);
+}
+.instagram:hover {
+    background: #f09433;
+    background: -moz-linear-gradient(
+            45deg,
+            #f09433 0%,
+            #e6683c 25%,
+            #dc2743 50%,
+            #cc2366 75%,
+            #bc1888 100%
+    );
+    background: -webkit-linear-gradient(
+            45deg,
+            #f09433 0%,
+            #e6683c 25%,
+            #dc2743 50%,
+            #cc2366 75%,
+            #bc1888 100%
+    );
+    background: linear-gradient(
+            45deg,
+            #f09433 0%,
+            #e6683c 25%,
+            #dc2743 50%,
+            #cc2366 75%,
+            #bc1888 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+}
+.social svg {
+    fill: white;
+    height: 20px;
+}
+
+
+
+/* Style pour l'overlay de chargement */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond noir semi-transparent */
+    z-index: 9999; /* Assurez-vous que l'overlay est au-dessus de tout le contenu */
+}
+
+/* Style pour le spinner */
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #00efff; /* Bordure blanche */
+    border-top: 3px solid transparent; /* Bordure transparente pour la partie supérieure */
+    border-radius: 50%; /* Pour créer une forme de cercle */
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite; /* Animation de rotation */
+}
+
+/* Animation pour faire tourner le spinner */
+@keyframes spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+
+
+
+
+
+
+
+
+.rectangle {
+    width: 900px; /* Largeur du rectangle */
+    height: 380px; /* Hauteur du rectangle */
+    background-color: black; /* Couleur de fond */
+    border: 1px solid #ccc; /* Bordure solide */
+    border-radius: 10px; /* Rayon des coins */
+    box-shadow: 5px 5px 5px #888888; /* Ombre */
+    transform: perspective(10000px) ; /* Effet 3D */
+    margin-left: 350px;
+    margin-top: -38px;
+}
+.rectangle h2{
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Palanquin Dark' ,sans-serif; /* Utilisation de la police Palanquin Dark */
+    color: white;
+    position: relative;
+    font-size: 25px;
+    left: 40px;
+}
+.rectangle h3{
+    font-weight: normal;
+    font-style: normal;
+    margin-top: 25px;
+    font-family: 'Palanquin Dark'; /* Utilisation de la police Palanquin Dark */
+    color: white;
+    position: relative;
+    left: 20px;
+}
+
+.rectangle h5{
+    font-style: normal;
+    color: #cccccc;
+    font-size: 12px; position: relative;
+    left: 20px;
+}
+.rectangle h4{
+    font-style: normal;
+    color: #cccccc;
+    font-size: 12px;
+    position: relative;
+    left: 20px;
+}
+.rectangle h6{
+    font-style: normal;
+    color: #cccccc;
+    font-size: 12px;
+    position: relative;
+    left: 20px;
+}
+.rectangle h1{
+    font-style: normal;
+    color: #cccccc;
+    font-size: 12px;
+    position: relative;
+    left: 20px;
+}
+.rectangle .edit-button1,
+.rectangle .edit-button2,
+.rectangle .edit-button3,
+.rectangle .edit-button4 {
+    position: absolute;
+    color: black; /* Couleur du texte du bouton */
+    font-family: 'Changa One', sans-serif;
+    border-radius: 10px; /* Rayon des coins du bouton */
+    height: 30px;
+    width: 70px; /* Ajustez la largeur */
+    left: 90%;
+    padding: 2px 17px; /* Ajoutez du rembourrage pour le bouton */
+    background-color: #fff; /* Couleur de fond du bouton */
+    border: 0;
+    font-size-adjust: revert;
+    margin-top: -30px;
+    cursor: pointer;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center; /* Pour centrer le texte */
+    line-height: 30px; /* Pour centrer verticalement le texte */
+
+}
+
+.rectangle .edit-button1:hover,
+.rectangle .edit-button2:hover,
+.rectangle .edit-button3:hover,
+.rectangle .edit-button4:hover {
+    background-color: #00efff; /* Couleur de fond au survol */
+}
+
+.title {
+    padding: 50px; /* Espacement intérieur */
+    position: relative;
+    top: 100px;
+    right: 10px;
+}
+
+
+.title h1 {
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Palanquin Dark'; /* Utilisation de la police Palanquin Dark */
+    margin: 0; /* Supprimer les marges par défaut */
+    color: #00efff;
+    text-shadow: 2px 2px 2px rgb(255, 251, 251);
+    font-size: 40px; /* Taille de la police */
+}
+.image3 {
+    width: 15%; /* Définir la largeur */
+    height: 30%; /* Assurer le redimensionnement proportionnel */
+    position: absolute;
+    margin-left: 45px;
+    margin-top: -400px;
+}
+.rectangle2 {
+    width: 900px; /* Largeur du rectangle */
+    height: 150px; /* Hauteur du rectangle */
+    background-color: black; /* Couleur de fond */
+    border: 1px solid #ccc; /* Bordure solide */
+    border-radius: 10px; /* Rayon des coins */
+    box-shadow: 5px 5px 5px #888888; /* Ombre */
+    transform: perspective(100px) ; /* Effet 3D */
+    margin-left: 350px;
+    margin-top: 30px;
+}
+.rectangle2 h2{
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Palanquin Dark' ,sans-serif; /* Utilisation de la police Palanquin Dark */
+    color: white;
+    position: relative;
+    font-size: 25px;
+    left: 40px;
+}
+.rectangle2 h3{
+    font-weight: normal;
+    font-style: normal;
+    margin-top: -20px;
+    font-family: 'Palanquin Dark'; /* Utilisation de la police Palanquin Dark */
+    color: white;
+    top: 30px;
+    position: relative;
+    left: 20px;
+}
+.rectangle2 h4{
+    font-style: normal;
+    color: #cccccc;
+    font-size: 12px;
+    top: 40px;
+    position: relative;
+    left: 20px;
+}
+.rectangle2 h5 {
+    position: absolute;
+    margin-top: -20px;
+    margin-left: 350px;
+    color: transparent; /* Rendre le texte transparent */
+    text-shadow: 1px 1px 2px darkgrey; /* Ajouter une ombre avec une couleur */
+    font-weight: bold;
+    font-family: 'Planquin Dark', sans-serif;
+}
+
+.notification-toggle {
+    float: right; /* Aligner le bouton à droite */
+    margin-top: 20px; /* Ajouter une marge pour l'espacement */
+    padding: 5px 10px; /* Ajouter du rembourrage au bouton */
+    background-color: #D9D9D9; /* Couleur de fond du bouton */
+    color: black; /* Couleur du texte du bouton */
+    font-weight: bold; /* Poids de la police */
+    margin-right: 35px;
+    border: none; /* Supprimer la bordure */
+    border-radius: 5px; /* Rayon des coins du bouton */
+    cursor: pointer; /* Curseur pointeur */
+    transition: background-color 0.1s ease; /* Animation de transition */
+}
+
+
+.notification-toggle:hover {
+    background-color: #00efff; /* Couleur de fond au survol */
+}
+.switch {
+    position: absolute;
+    margin-left: 810px;
+    width: 60px;
+    height: 34px;
+}
+
+.switch .toggle-input {
+    display: none;
+}
+
+.switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: black;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.switch .toggle-input:checked + .slider {
+    background-color: #00efff;
+}
+
+.switch .toggle-input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.top-bar .edit-button5 {
+    position: absolute;
+    margin: 10px; /* Ajoutez de la marge pour séparer du coin */
+    padding: 5px; /* Ajoutez du rembourrage pour le bouton */
+    background-color: #D9D9D9; /* Couleur de fond du bouton */
+    color: black; /* Couleur du texte du bouton */
+    font-family: 'Changa One', sans-serif;
+    font-weight: bold;
+    border: none; /* Supprimez la bordure */
+    border-radius: 50%; /* Rendre le bouton circulaire */
+    cursor: pointer; /* Curseur pointeur */
+    right: 100px; /* Ajoutez un espacement à droite */
+}
+
+.top-bar .edit-button5:hover {
+    background-color: #00efff; /* Couleur de fond au survol */
+}
+
+
+
+/* Style pour le bouton de notification */
+.notification-button img {
+    width: 30px;
+    height: auto;
+    margin-left: 20px;
+    transition: opacity 0.3s;
+}
+.notification-button {
+    display: flex;
+    position: absolute;
+    right: 5.5%;
+    top: 20px;
+}
+.notification-button:hover img {
+    content: url('images/notification_icon.png');
+}
+
+
+
+/* Styles pour les boutons de model */
+.globe-button,
+.notification-button,
+.user-button {
+    display: inline-block;
+}
+.notification-button .modal,
+.user-button .modal {
+    position: absolute;
+    left: -300px;
+    width: 300px;
+    max-height: 300px;
+    background-color: #161616;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 4px rgb(9, 248, 248);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: auto;
+    z-index: 100;
+}
+
+
+/* Style pour le bouton d'utilisateur */
+.user-button img {
+    width: 30px;
+    height: auto;
+    margin-left: 20px;
+    transition: opacity 0.3s;
+
+}
+.user-button {
+    display: flex;
+    position: absolute;
+    right: 0.5%;
+    top: 20px;
+}
+.notification-button:hover img {
+    content: url('images/notification_icon2.png');
+}
+.user-button:hover img {
+    content: url('images/user_icon2.png');
+}
+
+/* Style pour les informations de l'utilisateur */
+.modal-content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+
+/* Style pour le bouton de fermeture de la boîte modale */
+.close {
+    display: none;
+}
+
+
+/* Style pour le bouton paramétre */
+.settings-button {
+    background-color: rgba(0, 255, 255, 0.33);
+    color: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    margin-left: 70px;
+    padding:  10px;
+    border: none;
+}
+
+
+/* Style pour le survol du bouton */
+.settings-button:hover {
+    background-color: #3c3f41;
+}
+
+
+/* Style pour le tableau de notifications */
+#notificationTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+/* Style pour les cellules du tableau */
+#notificationTable td {
+    padding: 8px;
+    border: 1px  solid #ffffff;
+    word-wrap: break-word;
+}
+
+
+/* Style pour la première colonne du tableau */
+#notificationTable td:first-child {
+    font-size: 10px;
+    color: #00FFFF;
+    text-align: center;
+}
+
+
+/* Media query pour les petits écrans */
+@media only screen and (max-width: 1000px) {
+    .menu {
+        display: none;
+    }
+}
+
+/* Style pour le titre de la boîte modale */
+.modal-content h2 {
+    font-size: 24px;
+    color: #00FFFF;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+
+/* Style pour les informations de l'utilisateur */
+.modal-content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+
+/* Style pour le bouton de fermeture de la boîte modale */
+.close {
+    display: none;
+}
+
+
+/* Style pour le survol du bouton */
+.settings-button:hover {
+    background-color: #3c3f41;
+}
+
+
+/* Style pour le tableau de notifications */
+#notificationTable {
+    width: 100%;
+    color: white;
+    border-collapse: collapse;
+}
+
+
+/* Style pour les cellules du tableau */
+#notificationTable td {
+    padding: 8px;
+    border: 1px  solid #ffffff;
+    word-wrap: break-word;
+    color: white;
+}
+
+
+/* Style pour la première colonne du tableau */
+#notificationTable td:first-child {
+    font-size: 10px;
+    color: #00FFFF;
+    text-align: center;
+}
+
+
+/* Media query pour les petits écrans */
+@media only screen and (max-width: 1000px) {
+    .menu {
+        display: none;
+    }
+}
+.rectangle3 {
+    width: 900px; /* Largeur du rectangle */
+    height: 150px; /* Hauteur du rectangle */
+    background-color: black; /* Couleur de fond */
+    border: 1px solid #ccc; /* Bordure solide */
+    border-radius: 10px; /* Rayon des coins */
+    box-shadow: 5px 5px 5px #888888; /* Ombre */
+    transform: perspective(100px) ; /* Effet 3D */
+    margin-left: 350px;
+    margin-top: 30px;
+}
+.rectangle3 h2{
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Palanquin Dark' ,sans-serif; /* Utilisation de la police Palanquin Dark */
+    color: white;
+    position: relative;
+    font-size: 25px;
+    left: 40px;
+}
+.rectangle3 h3{
+    font-weight: normal;
+    font-style: normal;
+    margin-top: -20px;
+    font-family: 'Palanquin Dark'; /* Utilisation de la police Palanquin Dark */
+    color: white;
+    top: 30px;
+    position: relative;
+    left: 20px;
+}
+.rectangle3 h4{
+    font-style: normal;
+    color: #cccccc;
+    font-size: 12px;
+    top: 40px;
+    position: relative;
+    left: 20px;
+}
+.rectangle3 h5 {
+    position: absolute;
+    margin-top: -70px;
+    margin-left: 690px;
+    color: transparent; /* Rendre le texte transparent */
+    text-shadow: 1px 1px 2px darkgrey; /* Ajouter une ombre avec une couleur */
+    font-weight: bold;
+    font-family: 'Planquin Dark', sans-serif;
+}
+
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(50, 50, 50, 0.8); /* Gris foncé transparent */
+    width: 300px;
+    height: 180px;
+    z-index: 999;
+    border-radius: 6px;
+    text-align: center;
+    opacity: 0; /* Initiallement invisible */
+    visibility: hidden; /* Initiallement invisible */
+    transition: opacity 0.4s, visibility 0.4s; /* Ajoute une transition sur l'opacité et la visibilité */
+}
+
+.popup.active {
+    opacity: 1; /* Rend le popup visible */
+    visibility: visible; /* Rend le popup visible */
+}
+
+.open-popup{
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(1);
+
+}
+
+
+.popup img{
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+.popup h1{
+    font-size: 20px;
+    font-weight: 500;
+    font-style: italic;
+    color: black;
+    font-weight: bold;
+    position: absolute;
+    margin-top: 50px;
+    margin-right: 10px;
+    margin-left: 40px;
+}
+/* Styles pour le champ d'entrée */
+.input-message {
+    width: 100%; /* Définir la largeur */
+    padding: 1px; /* Ajouter de l'espace à l'intérieur du champ */
+    font-size: 16px; /* Taille de la police */
+    position: absolute;
+    margin-top: 50px;
+    border: 1px solid #ccc; /* Bordure */
+    border-radius: 5px; /* Arrondi des coins */
+    box-sizing: border-box; /* Inclure le padding et la bordure dans la largeur */
+}
+
+/* Styles pour le placeholder */
+.input-message::placeholder {
+    color: #aaa; /* Couleur du placeholder */
+}
+
+.popup .buttons {
+    text-align: justify-all;
+
+}
+
+.popup .buttons button {
+    width: 20%;
+    font-family: 'Changa One', sans-serif;
+    margin-top: 60px;
+    padding: 10px 0;
+    background: #4267B2;
+    color: #000000;
+    font-weight: bold;
+    border: 0;
+    outline: none;
+    font-size: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+/* Style pour le popup de validation */
+        #validation-popup {
+            position: fixed;
+            bottom: 10px;
+            left: 30%;
+            top: calc(100% - 40px); /* ajustez ce pourcentage selon votre préférence */
+            font-size: 10px;
+            font-weight: bold;
+            transform: translateX(-70%);
+            color: red;
+            background-color: white;
+            padding: 1px 15px; /* Réduire le padding en hauteur */
+            border-radius: 5px;
+            display: none;
+
+    }
+
+#popup-message {
+    position: fixed;
+    bottom: 10px;
+    left: 30%;
+    top: calc(100% - 40px); /* ajustez ce pourcentage selon votre préférence */
+    font-size: 10px;
+    font-weight: bold;
+    transform: translateX(-70%);
+    color: red;
+    background-color: white;
+    padding: 1px 15px; /* Réduire le padding en hauteur */
+    border-radius: 5px;
+    display: none;
+
+}
+
+#validation-popup2 {
+    position: fixed;
+    bottom: 10px;
+    left: 30%;
+    top: calc(100% - 40px); /* ajustez ce pourcentage selon votre préférence */
+    font-size: 10px;
+    font-weight: bold;
+    transform: translateX(-70%);
+    color: red;
+    background-color: white;
+    padding: 1px 15px; /* Réduire le padding en hauteur */
+    border-radius: 5px;
+    display: none;
+
+}
+
+/* Styles pour le champ d'entrée */
+#first-name {
+    width: 80%; /* Définir la largeur */
+    padding: 10px; /* Ajouter de l'espace à l'intérieur du champ */
+    font-size: 14px; /* Taille de la police */
+    width: 80%;
+    border: 3px solid #000000;
+    border-radius: 15px;
+    position: absolute;
+    margin-top: 50px;
+    color: white;
+    background-color: #000000;
+    margin-left: -170px;
+    margin-right: 500px;
+    box-sizing: border-box; /* Inclure le padding et la bordure dans la largeur */
+}
+
+/* Placeholder */
+#first-name::placeholder {
+    color: #999; /* Couleur du placeholder */
+}
+/* Style pour flouter le fond */
+.blur-background {
+    filter: blur(5px); /* Applique un flou au fond */
+}
+
+
+
+
+/* Ajout de flou au fond de la page lorsque le popup est ouvert */
+.blur-background {
+    filter: blur(5px); /* Applique un flou au fond */
+}
+
+.popup2 {
+    position: absolute;
+    top: 70%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(50, 50, 50, 0.8); /* Gris foncé transparent */
+    width: 300px;
+    height: 180px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    border-radius: 6px;
+    text-align: center;
+    opacity: 0; /* Initiallement invisible */
+    visibility: hidden; /* Initiallement invisible */
+    transition: opacity 0.4s, visibility 0.4s; /* Ajoute une transition sur l'opacité et la visibilité */
+}
+
+.popup2.active {
+    opacity: 1; /* Rend le popup visible */
+    visibility: visible; /* Rend le popup visible */
+}
+
+
+.popup2 .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.popup2 img {
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);}
+
+.popup2 input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 3px solid #000000;
+    border-radius: 15px;
+    color: white;
+    background-color: #000000;
+}
+
+.popup2 .buttons {
+    text-align: center;
+
+}
+
+.popup2 .buttons button {
+    width: 20%;
+    margin-top: 10px;
+    font-family: 'Changa One', sans-serif;
+    padding: 10px 0;
+    background: #4267B2;
+    color: #000000;
+    font-weight: bold;
+    border: 0;
+    outline: none;
+    font-size: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.popup2 .validation-icon {
+    display: none;
+    color: green;
+    margin-top: 10px;
+}
+
+.popup2.open {
+    display: block;
+}
+
+
+
+
+
+
+
+
+.popup3 {
+    position: absolute;
+    top: 70%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(50, 50, 50, 0.8); /* Gris foncé transparent */
+    width: 300px;
+    height: 180px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    border-radius: 6px;
+    text-align: center;
+    opacity: 0; /* Initiallement invisible */
+    visibility: hidden; /* Initiallement invisible */
+    transition: opacity 0.4s, visibility 0.4s; /* Ajoute une transition sur l'opacité et la visibilité */
+}
+
+.popup3.active {
+    opacity: 1; /* Rend le popup visible */
+    visibility: visible; /* Rend le popup visible */
+}
+.popup3 img {
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);}
+
+.popup3 input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 3px solid #000000;
+    border-radius: 15px;
+    color: white;
+    background-color: #000000;
+}
+
+.popup3 .buttons {
+    text-align: center;
+
+}
+
+.popup3 .buttons button {
+    width: 20%;
+    margin-top: 10px;
+    padding: 10px 0;
+    background: #4267B2;
+    color: #000000;
+    font-family: 'Changa One', sans-serif;
+    font-weight: bold;
+    border: 0;
+    outline: none;
+    font-size: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+.blur-background {
+    backdrop-filter: blur(1000px); /* Applique un flou à l'arrière-plan */
+}
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Couleur semi-transparente */
+    z-index: 999; /* Assurez-vous qu'il est au-dessus du reste de la page */
+    display: none; /* Initialement caché */
+}
+
+
+.popup4 {
+    position: absolute;
+    top: 70%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background-color: rgba(50, 50, 50, 0.8); /* Gris foncé transparent */
+    z-index: 999;
+    border-radius: 6px;
+    text-align: center;
+    opacity: 0; /* Initiallement invisible */
+    visibility: hidden; /* Initiallement invisible */
+    transition: opacity 0.4s, visibility 0.4s; /* Ajoute une transition sur l'opacité et la visibilité */
+}
+
+.popup4.active {
+    opacity: 1; /* Rend le popup visible */
+    visibility: visible; /* Rend le popup visible */
+}
+.popup4 img {
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);}
+
+.popup4 input[type="password"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 3px solid #000000;
+    border-radius: 15px;
+    color: white;
+    background-color: #000000;
+}
+
+.popup4 .buttons {
+    text-align: center;
+    color: #4267B2;
+}
+
+.popup4 .buttons button {
+    width: 20%;
+    font-family: 'Changa One', sans-serif;
+    margin-top: 10px;
+    padding: 10px 0;
+    background: #4267B2;
+    color: #000000;
+    font-weight: bold;
+    border: 0;
+    outline: none;
+    font-size: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+#error-icon::before {
+    content: 'X';
+}
+.blur-popup {
+    backdrop-filter: none; /* Annule le flou pour le contenu du popup */
+}
+.active {
+    opacity: 1; /* Rend le popup visible */
+    visibility: visible; /* Rend le popup visible */
+}
+.rectangle3 .disable-button {
+    background-color: #00efff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative; /* Changez la position en relative */
+    top: -45px; /* Utilisez top plutôt que margin-top */
+    left: 790px; /* Utilisez left plutôt que margin-left */
+}
+
+.rectangle3 .disable-button:hover {
+    background-color: #d32f2f;
+}
+
+.rectangle4 {
+    width: 900px; /* Largeur du rectangle */
+    height: 150px; /* Hauteur du rectangle */
+    background-color: black; /* Couleur de fond */
+    border: 1px solid #ccc; /* Bordure solide */
+    border-radius: 10px; /* Rayon des coins */
+    box-shadow: 5px 5px 5px #888888; /* Ombre */
+    transform: perspective(100px) ; /* Effet 3D */
+    margin-left: 350px;
+    margin-top: 30px;
+}
+.rectangle4 h2{
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Palanquin Dark' ,sans-serif; /* Utilisation de la police Palanquin Dark */
+    color: white;
+    position: relative;
+    font-size: 25px;
+    left: 40px;
+}
+.rectangle4 h3{
+    font-weight: normal;
+    font-style: normal;
+    margin-top: -20px;
+    font-family: 'Palanquin Dark'; /* Utilisation de la police Palanquin Dark */
+    color: white;
+    top: 30px;
+    position: relative;
+    left: 20px;
+}
+.rectangle4 h4{
+    font-style: normal;
+    color: #cccccc;
+    font-size: 12px;
+    top: 40px;
+    position: relative;
+    left: 20px;
+}
+.rectangle4 h5 {
+    position: absolute;
+    margin-top: -20px;
+    margin-left: 710px;
+    color: transparent; /* Rendre le texte transparent */
+    text-shadow: 1px 1px 2px darkgrey; /* Ajouter une ombre avec une couleur */
+    font-weight: bold;
+    font-family: 'Planquin Dark', sans-serif;
+}
+
+.show-cards-button {
+    background-color: #00efff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    position: absolute;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: -10px;
+    margin-left: 769px;
+}
+
+.show-cards-button:hover {
+    background-color: #00c7d4;
+}
+.containerC {
+    display: none; /* Par défaut, le conteneur est caché */
+    position: fixed; /* Position fixe pour centrer */
+    top: 50%; /* Centrer verticalement */
+    left: 10%; /* Centrer horizontalement */
+    transform: translate(-50%, -50%); /* Déplacer de moitié de la largeur et hauteur */
+    background-size: 2px;
+    border-radius: 15px; /* Coins arrondis */
+    width: 250px;
+    height: 300px;
+}
+
+
+
+/* Style pour chaque carte */
+/* Définition de l'animation de rotation */
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* Style pour chaque carte avec l'effet 3D */
+.card {
+    background-color: #000000; /* Couleur de fond */
+    border-radius: 15px; /* Coins arrondis */
+    width: 250px;
+    height: 80px;
+    padding: 20px; /* Espacement intérieur */
+    margin-bottom: 10px; /* Marge inférieure */
+    border: 1px solid #ddd; /* Bordure grise claire */
+    position: relative; /* Position relative pour le bouton de suppression */
+    box-shadow: 4px 15px 25px rgba(255, 255, 255, 0.2); /* Ombre douce en blanc pour l'effet de levitation */
+    /* Transition pour l'effet 3D */
+    transition: box-shadow 0.3s ease;
+}
+
+/* Au survol de la carte, changer l'effet 3D */
+.card:hover {
+    box-shadow: 4px 8px 15px rgba(255, 255, 255, 0.2); /* Ombre plus prononcée en blanc */
+}
+
+
+/* Définition de l'animation */
+@keyframes move {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(15px); } /* Aller */
+    100% { transform: translateX(0); } /* Revenir */
+}
+
+/* Style pour chaque carte */
+.card {
+    /* Vos styles de carte ici */
+    animation: move 2s ease infinite; /* Animation de va-et-vient toutes les 2 secondes */
+}
+
+
+/* Style pour chaque carte au survol */
+.card:hover {
+    transform: scale(1.05); /* Effet de zoom au survol */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
+}
+
+
+/* Style pour le numéro de carte */
+.card-number {
+    font-weight: bold; /* Texte en gras */
+    margin-bottom: 10px; /* Marge inférieure */
+}
+
+/* Style pour les informations de carte */
+.card-info {
+    margin-bottom: 10px; /* Marge inférieure */
+}
+
+/* Style pour le bouton de suppression */
+.delete-button {
+    position: absolute; /* Position absolue pour le bouton */
+    bottom: 10px; /* Distance par rapport au bas de la carte */
+    right: 10px; /* Distance par rapport à la droite de la carte */
+    padding: 3px 8px; /* Espacement intérieur */
+    background-color: #ff0000; /* Couleur de fond rouge */
+    color: #fff; /* Couleur du texte blanc */
+    border: none; /* Pas de bordure */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur pointer */
+}
+/* Style pour l'icône de chaque carte */
+.card-icon {
+    position: absolute; /* Position absolue pour l'icône */
+    top: 10px; /* Distance par rapport au haut de la carte */
+    right: 10px; /* Distance par rapport à la droite de la carte */
+    width: 35px; /* Largeur de l'icône */
+    height: 35px; /* Hauteur de l'icône */
+}
+
+#saveButton {
+    background-color: #00FFFF; /* Couleur de fond */
+    border: none; /* Pas de bordure */
+    color: white; /* Couleur du texte */
+    padding: 3px 8px; /* Espacement intérieur */
+    text-align: center; /* Alignement du texte */
+    text-decoration: none; /* Pas de décoration de texte */
+    display: inline-block; /* Affichage en ligne */
+    font-size: 13px; /* Taille de la police */
+    position: absolute;
+    cursor: pointer; /* Curseur de souris */
+    border-radius: 20px; /* Bordure arrondie */
+    animation: move 2s ease infinite; /* Animation de va-et-vient toutes les 2 secondes */
+}
+
+
+/* Définition de l'animation */
+@keyframes move {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(15px); } /* Aller */
+    100% { transform: translateX(0); } /* Revenir */
+}
+
+.rectangle5 {
+    width: 900px; /* Largeur du rectangle */
+    height: 150px; /* Hauteur du rectangle */
+    background-color: black; /* Couleur de fond */
+    border: 1px solid #ccc; /* Bordure solide */
+    border-radius: 10px; /* Rayon des coins */
+    box-shadow: 5px 5px 5px #888888; /* Ombre */
+    transform: perspective(100px) ; /* Effet 3D */
+    margin-left: 350px;
+    margin-top: 30px;
+}
+.rectangle5 h2{
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Palanquin Dark' ,sans-serif; /* Utilisation de la police Palanquin Dark */
+    color: white;
+    position: relative;
+    font-size: 25px;
+    left: 40px;
+}
+.rectangle5 h3{
+    font-weight: normal;
+    font-style: normal;
+    margin-top: -20px;
+    font-family: 'Palanquin Dark'; /* Utilisation de la police Palanquin Dark */
+    color: white;
+    top: 30px;
+    position: relative;
+    left: 20px;
+}
+.rectangle5 h4{
+    font-style: normal;
+    color: #cccccc;
+    font-size: 12px;
+    top: 40px;
+    position: relative;
+    left: 20px;
+}
+.rectangle5 h5 {
+    position: absolute;
+    margin-top: -20px;
+    margin-left: 350px;
+    color: transparent; /* Rendre le texte transparent */
+    text-shadow: 1px 1px 2px darkgrey; /* Ajouter une ombre avec une couleur */
+    font-weight: bold;
+    font-family: 'Planquin Dark', sans-serif;
+}
+.user-img {
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    margin-top: -120px;
+    margin-left: 1150px;
+
+}
+
+#photo {
+    width: 80px;
+    height: 80px;
+
+}
+
+#file {
+    display: none;
+}
+
+#uploadbtn {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    padding: 6px;
+    cursor: pointer;
+    transform: translateX(-90%);
+    color: #ffffff;
+    background-color: rgba(173, 172, 172, 0.80);
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.644);
+}
+.image3 {
+    width: 170px; /* Largeur de l'image */
+    height: 150px; /* Hauteur de l'image */
+    position: absolute;
+    margin-top: 50px;
+}
+
+
+
+/* Style pour l'overlay de chargement */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond noir semi-transparent */
+    z-index: 9999; /* Assurez-vous que l'overlay est au-dessus de tout le contenu */
+}
+
+/* Style pour le spinner */
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #00efff; /* Bordure blanche */
+    border-top: 3px solid transparent; /* Bordure transparente pour la partie supérieure */
+    border-radius: 50%; /* Pour créer une forme de cercle */
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite; /* Animation de rotation */
+}
+
+/* Animation pour faire tourner le spinner */
+@keyframes spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}

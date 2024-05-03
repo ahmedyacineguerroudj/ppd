@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Changa+One&display=swap">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Palanquin+Dark&display=swap" rel="stylesheet">
+    <title>Setting</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="setting.css">
+</head>
+<body>
+
+<div class="loading-overlay">
+    <div class="spinner"></div>
+</div>
+
+<div class="container">
+
+
+    <script src="setting.js"></script>
+    <!-- Barre supérieure -->
+    <section class="top-bar">
+        <img src="images/image.png" alt="Logo">
+        <div class="platform-name">
+            <span class="whales">whales</span>
+            <span class="Cap">Cap</span>
+        </div>
+        <!-- Menu de navigation -->
+        <div class="menu">
+            <a href="#" class="menu-item active" onclick="markActive(this)">Home</a>
+            <a href="#" class="menu-item" onclick="markActive(this)">Buy & Sell</a>
+            <a href="#" class="menu-item" onclick="markActive(this)">Market</a>
+            <a href="#" class="menu-item" onclick="markActive(this)">About Us</a>
+        </div>
+
+        <!-- Bouton de notifications -->
+        <div class="notification-button">
+            <a href="#" onclick="toggleNotificationModal()"><img src="images/notification_icon.png" alt="Notifications"></a>
+            <div id="notificationModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close" onclick="toggleNotificationModal()">&times;</span>
+                    <h2>Your Notifications</h2>
+                    <!-- Tableau de notifications -->
+                    <table id="notificationTable">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Message</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Les notifications seront ajoutées dynamiquement -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="user-button">
+            <a href="#" onclick="toggleUserModal()"><img src="images/user_icon.png" alt="Utilisateur"></a>
+            <div id="userModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close" onclick="toggleUserModal()">&times;</span>
+                    <h2 id="userName">User Information</h2>
+                    <div>
+                        <p><strong>First Name :</strong> <span id="firstName"></span></p>
+                        <p><strong>Last Name :</strong> <span id="lastName"></span></p>
+                        <p><strong>Email :</strong> <span id="email"></span></p>
+                        <p><strong>Date of Birth :</strong> <span id="dob"></span></p>
+                    </div>
+                    <div>
+                        <button class="settings-button">
+                            Modify your information
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+
+    <!-- Titre de la page -->
+    <section class="title">
+        <h1>Settings</h1>
+    </section>
+    <img src="images/userimg.png" class="image3">
+
+    <div class="rectangle">
+        <h2>Profil</h2>
+        <span>
+        <h3>First name</h3>
+            <h5>Define a personalized first name for your profile. Real first names or those on social accounts are not recommended.</h5>
+    <button type="button" class="edit-button1" onclick="openPopup('popup1')">Edit</button>
+        </span>
+        <div class="popup" id="popup">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img src="images/achievement.png">
+            <input type="text" id="first-name" placeholder="Enter your first name">
+            <div class="buttons">
+                <button type="button" onclick="saveChanges()">Save</button>
+                <button onclick="cancelModal()">Cancel</button>
+            </div>
+            <!-- Message de validation -->
+            <div id="validation-popup2" class="validation-popup2"></div>
+            <!-- Icône d'erreur -->
+        </div>
+        <span>
+    <h3>Last name</h3>
+    <h5>Define a personalized last name for your profile. Real last names or those on social accounts are not recommended.</h5>
+    <button type="button" class="edit-button2" onclick="openPopup2()">Edit</button>
+</span>
+
+        <!-- Popup for Last Name -->
+        <div class="popup2" id="popup2">
+            <span class="close" onclick="closeModal()">&times;</span> <!-- Ajout d'un bouton de fermeture -->
+            <img src="images/achievement.png">
+            <input type="text" id="last-name" placeholder="Enter your last name">
+            <div class="buttons">
+                <button type="button" onclick="saveChanges2('popup2')">Save</button>
+                <button onclick="cancelModal2()">Cancel</button>
+            </div>
+            <!-- Message de validation -->
+            <div id="validation-popup" class="validation-popup"></div>
+            <!-- Icône d'erreur -->
+            <span id="error-icon2" class="error-icon" style="color: red;"></span>
+        </div>
+
+        <span>
+        <h3>Email address</h3>
+        <h6>Define a real email address that will associate with your account.</h6>
+    <button type="button" class="edit-button3" onclick="openPopup3('popup3')">Edit</button>
+    </span>
+        <!-- Popup for Last Name -->
+        <div class="popup3" id="popup3">
+            <img src="images/achievement.png">
+            <input type="text" id="emaile" placeholder="Enter your email address">
+            <div class="buttons">
+                <button type="button" onclick="saveChanges3('popup3')">Save</button>
+                <button onclick="closeModal3('popup3')">Cancel</button>
+            </div>
+        </div>
+
+
+        <span>
+    <h3>Password</h3>
+    <h1>Changing your password requires you to remember it correctly</h1>
+    <button type="button" class="edit-button4" onclick="openPopup4('popup4')">Edit</button>
+      </span>
+        <!-- Popup for Password -->
+        <div class="popup4" id="popup4">
+            <img src="images/achievement.png">
+            <input type="password" id="old-password" placeholder="Enter your old password">
+            <input type="password" id="new-password" placeholder="Enter your new password">
+            <input type="password" id="confirm-password" placeholder="Confirm your new password">
+            <div class="buttons">
+                <button type="button" onclick="saveChanges4('popup4')">Save</button>
+                <button onclick="closeModal4('popup4')">Cancel</button>
+            </div>
+            <div id="popup-message" class="popup-message"></div>
+
+            <script>
+                let popup = document.getElementById("popup");
+            </script>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="rectangle2">
+        <h2>Notification</h2>
+        <label class="switch">
+            <input type="checkbox" class="toggle-input">
+            <span class="slider"><i class=""></i></span>
+        </label>
+        <h3>Notification preferences</h3>
+        <h4>Once configured, you will receive relevant notifications in the inbox in the app and on the website.</h4>
+        <h5>System Messages, News, Buy and Sell Notifications, Exchange, Activity</h5>
+    </div>
+
+    <div class="containerC" id="cardContainer">
+
+        <img src="images/visa.png" class="card-icon" alt="Icon">
+        <!-- Les cartes seront ajoutées dynamiquement ici -->
+    </div>
+
+
+
+    <div class="rectangle3">
+        <h2>Account Management</h2>
+        <label class="switch">
+            <input type="checkbox" class="toggle-input">
+        </label>
+        <h3>Disable Account</h3>
+        <h4>Once the account is deactivated most of your actions will remain, notably the connection, you can choose to reactivate the account at any time.</h4>
+        <button class="disable-button">Disable</button>
+        <h5>enable/disable</h5>
+    </div>
+
+
+
+
+    <div class="rectangle5">
+        <h2>Edit profil photo</h2>
+        <h3>User photo</h3>
+        <h4>Change your user photo to have a good profile that is well organized</h4>
+
+    </div>
+
+    <div class="user-img">
+        <img src="images/portrait.png" id="photo">
+        <input type="file" id="file">
+        <label for="file" id="uploadbtn"><i class="fas fa-camera"></i></label>
+    </div>
+
+    <div class="rectangle4">
+        <h2>My Credit Cards</h2>
+        <label class="switch">
+            <input type="checkbox" class="toggle-input">
+        </label>
+        <h3>Visa cards</h3>
+        <h4>use your visa card to buy and sell our cryptos via whalescap</h4>
+        <button class="show-cards-button" onclick="showCards()">Show Cards</button>
+    </div>
+
+
+    <section class="market-JoinUs">
+
+            <div class="socials-container">
+
+                <div class="social-icons">
+                    <a href="#" class="social twitter">
+                        <svg height="1em" viewBox="0 0 512 512">
+                            <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
+                        </svg>
+                    </a>
+
+                    <a href="#" class="social facebook">
+                        <svg height="1em" viewBox="0 0 320 512">
+                            <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path>
+                        </svg>
+                    </a>
+
+                    <a href="#" class="social google-plus">
+                        <svg height="1em" viewBox="0 0 640 512">
+                            <path d="M386.061 228.496c1.834 9.692 3.143 19.384 3.143 31.956C389.204 370.205 315.599 448 204.8 448c-106.084 0-192-85.915-192-192s85.916-192 192-192c51.864 0 95.083 18.859 128.611 50.292l-52.126 50.03c-14.145-13.621-39.028-29.599-76.485-29.599-65.484 0-118.92 54.221-118.92 121.277 0 67.056 53.436 121.277 118.92 121.277 75.961 0 104.513-54.745 108.965-82.773H204.8v-66.009h181.261zm185.406 6.437V179.2h-56.001v55.733h-55.733v56.001h55.733v55.733h56.001v-55.733H627.2v-56.001h-55.733z"></path>
+                        </svg>
+                    </a>
+
+                    <a href="#" class="social instagram">
+                        <svg height="1em" viewBox="0 0 448 512">
+                            <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+    </section>
+
+
+
+</div>
+
+</body>
+</html>
