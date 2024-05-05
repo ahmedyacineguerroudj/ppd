@@ -249,3 +249,160 @@ h1 {
     margin-left: 45px;
     margin-top: 10px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Crypto list */
+#searchCrypto {
+    padding: 10px 5px;
+    border: 2px solid #00efff;
+    border-radius: 5px;
+    flex: 1;
+    margin-right: 10px;
+}
+.crypto:hover {
+    border-bottom: 1px solid #00efff;
+}
+.crypto-container {
+    width: 80%;
+    min-height: 200px;
+    margin: 130px 200px;
+    background-color: black;
+    border: 1px solid #00efff;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #00efff;
+    transform: perspective(100px) ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.crypto {
+    margin-bottom: 20px;
+    display: flex;
+    color: white;
+    font-style: normal;
+    font-family: Amiri;
+    font-weight: bold;
+    margin-right: 500px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.3s ease;
+}
+.crypto:hover {
+    border-bottom: 1px solid #00efff;
+}
+.crypto button.delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.crypto button.info {
+    background-color: #00efff;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.crypto button.info:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+.crypto button.delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.crypto button.delete:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+#searchButton {
+    background-color: #00efff;
+    color: #161616;
+    border: none;
+    font-weight: bold;
+    padding: 6px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Amiri";
+}
+.crypto-info-content {
+    font-family: "Arial", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #aaa;
+}
+.crypto-info-content p {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+.crypto-info-content p::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #00efff;
+}
+#searchButton:hover {
+    background-color: #007f7f;
+}
+#cryptoInfoModal .modal-content {
+    color: white;
+    background-color: black;
+    margin: 15% auto;
+    padding: 20px;
+    border: 4px solid #00efff;
+    width: 50%;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#cryptoInfoModal .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+#cryptoInfoModal .close:hover,
+#cryptoInfoModal .close:focus {
+    color: #00efff;
+    text-decoration: none;
+    cursor: pointer;
+}
+#searchContainer {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+
