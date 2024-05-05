@@ -404,5 +404,31 @@ h1 {
     display: flex;
     align-items: center;
 }
-
-
+.search-container {
+    margin-bottom: 20px;
+    margin-left: 550px;
+    margin-top: -50px;
+}
+.search-container input[type=text] {
+    padding: 10px;
+    margin-right: 10px;
+    width: 200px;
+    border: 1px solid #000;
+    border-radius: 7px;
+    outline: none;
+    cursor: text;
+    background-color: #ccc;
+}
+.search-container button {
+    padding: 10px;
+    background: #00efff;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-style: italic;
+}
+.search-container button:hover {
+    background: #007F7F;
+}

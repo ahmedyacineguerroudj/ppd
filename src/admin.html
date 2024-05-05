@@ -41,14 +41,13 @@
 
 
 
-
 <div class="container">
     <h1>Cryptos List</h1>
-    <div id="searchContainer">
-        <input type="text" id="searchCrypto" placeholder="Search crypto...">
-        <button id="searchButton">Search</button>
+    <div class="search-container">
+        <input type="text" id="cryptoSearchInput" placeholder="Search by name...">
+        <button id="searchCryptoButton">Search</button>
     </div>
-    <div id="cryptoList" class="user-list">
+    <div id="cryptoList">
 
     </div>
 </div>
@@ -56,10 +55,11 @@
 <div id="cryptoInfoModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <img src="images/crypto-info.png" alt="Logo de la crypto" class="crypto-image" style="visibility: hidden;">
+        <img src="images/information.png" alt="Photo de l'utilisateur" class="user-image">
         <div id="cryptoInfoContent" class="crypto-info-content"></div>
     </div>
 </div>
+
 
 
 <script src="admin.js"></script>

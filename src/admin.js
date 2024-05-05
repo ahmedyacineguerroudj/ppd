@@ -1,3 +1,99 @@
+document.addEventListener('DOMContentLoaded', function() {
+    var cryptoModal = document.getElementById('cryptoInfoModal');
+    var cryptoCloseBtn = cryptoModal.querySelector('.close');
+    cryptoCloseBtn.addEventListener('click', function() {
+        cryptoModal.style.display = 'none';
+    });
+    displayCryptoList();
+    const searchCryptoBtn = document.getElementById('searchCryptoButton');
+    searchCryptoBtn.addEventListener('click', function() {
+        searchCrypto();
+    });
+});
+
+const cryptosData = [
+    { name: "crypto 1", price: "$42,000", availableSupply: "18.7M BTC", marketCap: "$787B", change24h: "+3.5%" },
+    { name: "crypto 2", price: "$3,000", availableSupply: "117M ETH", marketCap: "$350B", change24h: "+5.2%" },
+    { name: "crypto 3", price: "$1.50", availableSupply: "47B XRP", marketCap: "$70B", change24h: "-1.8%" },
+    { name: "crypto 4", price: "$200", availableSupply: "66M LTC", marketCap: "$13B", change24h: "+2.1%" }
+];
+
+function displayCryptoList() {
+    const cryptoListElement = document.getElementById('cryptoList');
+    cryptoListElement.innerHTML = ''; // Clear previous list
+    cryptosData.forEach(crypto => {
+        const cryptoElement = document.createElement('div');
+        cryptoElement.classList.add('crypto');
+
+        const cryptoName = document.createElement('span');
+        cryptoName.textContent = crypto.name;
+        cryptoElement.appendChild(cryptoName);
+
+        const infoButton = document.createElement('button');
+        infoButton.textContent = 'Info';
+        infoButton.classList.add('info');
+        infoButton.addEventListener('click', () => {
+            displayCryptoInfo(crypto);
+        });
+        cryptoElement.appendChild(infoButton);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.classList.add('delete');
+        deleteButton.addEventListener('click', () => {
+            deleteCrypto(crypto, cryptoElement);
+        });
+        cryptoElement.appendChild(deleteButton);
+
+        cryptoListElement.appendChild(cryptoElement);
+    });
+}
+
+function displayCryptoInfo(crypto) {
+    const modal = document.getElementById('cryptoInfoModal');
+    const cryptoInfoContent = document.getElementById('cryptoInfoContent');
+    cryptoInfoContent.innerHTML = `
+        <p><span class="info-label">Name:</span> <span class="info-value">${crypto.name}</span></p>
+        <p><span class="info-label">Price:</span> <span class="info-value">${crypto.price}</span></p>
+        <p><span class="info-label">Available Supply:</span> <span class="info-value">${crypto.availableSupply}</span></p>
+        <p><span class="info-label">Market Cap:</span> <span class="info-value">${crypto.marketCap}</span></p>
+        <p><span class="info-label">Change (24h):</span> <span class="info-value">${crypto.change24h}</span></p>
+    `;
+    modal.style.display = 'block';
+}
+
+function deleteCrypto(crypto, cryptoElement) {
+    const index = cryptosData.indexOf(crypto);
+    cryptosData.splice(index, 1);
+    cryptoElement.remove();
+}
+
+function searchCrypto() {
+    const input = document.getElementById("cryptoSearchInput");
+    const filter = input.value.toUpperCase();
+    const cryptoList = document.getElementById("cryptoList");
+    const cryptos = cryptoList.getElementsByClassName("crypto");
+    for (let i = 0; i < cryptos.length; i++) {
+        const txtValue = cryptos[i].textContent || cryptos[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            cryptos[i].style.display = "";
+        } else {
+            cryptos[i].style.display = "none";
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 // pour le chargement de la page
 window.addEventListener('load', function() {
@@ -95,107 +191,3 @@ function blockUser(user) {
 
 // Afficher la liste des utilisateurs lors du chargement de la page
 displayUserList();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// code pour crypto list
-document.addEventListener('DOMContentLoaded', function() {
-    var userModal = document.getElementById('userInfoModal');
-    var userCloseBtn = userModal.querySelector('.close');
-    userCloseBtn.addEventListener('click', function() {
-        userModal.style.display = 'none';
-    });
-    var cryptoModal = document.getElementById('cryptoInfoModal');
-    var cryptoCloseBtn = cryptoModal.querySelector('.close');
-    cryptoCloseBtn.addEventListener('click', function() {
-        cryptoModal.style.display = 'none';
-    });
-    window.addEventListener('click', (event) => {
-        if (event.target === cryptoModal) {
-            cryptoModal.style.display = 'none';
-        }
-    });
-});
-const cryptosData = [
-    { name: "crypto 1", price: "$42,000", availableSupply: "18.7M BTC", marketCap: "$787B", change24h: "+3.5%" },
-    { name: "crypto 2", price: "$3,000", availableSupply: "117M ETH", marketCap: "$350B", change24h: "+5.2%" },
-    { name: "crypto 3", price: "$1.50", availableSupply: "47B XRP", marketCap: "$70B", change24h: "-1.8%" },
-    { name: "crypto 4", price: "$200", availableSupply: "66M LTC", marketCap: "$13B", change24h: "+2.1%" }
-];
-function deleteCrypto(crypto, cryptoElement) {
-    const index = cryptosData.indexOf(crypto);
-    cryptosData.splice(index, 1);
-    cryptoElement.remove();
-}
-function displayCryptoList() {
-    const cryptoListElement = document.getElementById('cryptoList');
-    cryptoListElement.innerHTML = ''; // Clear previous list
-    cryptosData.forEach(crypto => {
-        const cryptoElement = document.createElement('div');
-        cryptoElement.classList.add('crypto');
-        // Ajout du nom de la crypto
-        const cryptoName = document.createElement('span');
-        cryptoName.textContent = crypto.name;
-        cryptoElement.appendChild(cryptoName);
-        const infoButton = document.createElement('button');
-        infoButton.textContent = 'Info';
-        infoButton.style.fontWeight = 'bold';
-        infoButton.style.fontStyle = 'italic';
-        infoButton.classList.add('info');
-        infoButton.addEventListener('click', () => {
-            displayCryptoInfo(crypto);
-        });
-        cryptoElement.appendChild(infoButton);
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete';
-        deleteButton.style.fontStyle = 'italic';
-        deleteButton.style.fontWeight = 'bold';
-        deleteButton.classList.add('delete');
-        deleteButton.addEventListener('click', () => {
-            deleteCrypto(crypto, cryptoElement);
-        });
-        cryptoElement.appendChild(deleteButton);
-        cryptoListElement.appendChild(cryptoElement);
-    });
-}
-
-function displayCryptoInfo(crypto) {
-    const modal = document.getElementById('cryptoInfoModal');
-    const cryptoInfoContent = document.getElementById('cryptoInfoContent');
-    cryptoInfoContent.innerHTML = `
-        <p><span class="info-label">Name:</span> <span class="info-value">${crypto.name}</span></p>
-        <p><span class="info-label">Price:</span> <span class="info-value">${crypto.price}</span></p>
-        <p><span class="info-label">Available Supply:</span> <span class="info-value">${crypto.availableSupply}</span></p>
-        <p><span class="info-label">Market Cap:</span> <span class="info-value">${crypto.marketCap}</span></p>
-        <p><span class="info-label">Change (24h):</span> <span class="info-value">${crypto.change24h}</span></p>
-    `;
-
-    modal.style.display = 'block';
-    const closeButton = document.querySelector('.close');
-    closeButton.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
-}
-displayCryptoList();
-
