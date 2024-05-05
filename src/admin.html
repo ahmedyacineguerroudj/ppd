@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="admin.css">
+    <title>Administration</title>
+</head>
+
+<body>
+
+<!-- pour le cerle du chargement de la page -->
+<div class="loading-overlay">
+    <div class="spinner"></div>
+</div>
+
+<!-- Titre de la page -->
+<section class="title">
+    <h1>Administration</h1>
+</section>
+
+<!-- image  -->
+<img src="images/support.png" class="image3">
+
+
+<!-- rectangle de la liste des utilisateurs -->
+<div class="container">
+    <h1>Users List</h1>
+    <div id="userList" class="user-list">
+        <!-- La liste des utilisateurs sera ajoutée dynamiquement ici -->
+    </div>
+</div>
+<!-- Modèle pour les informations détaillées de l'utilisateur -->
+<div id="userInfoModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <img src="images/information.png" alt="Photo de l'utilisateur" class="user-image">
+        <div id="userInfoContent" class="user-info-content"></div>
+    </div>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>

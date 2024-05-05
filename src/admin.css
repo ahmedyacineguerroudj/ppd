@@ -1,0 +1,251 @@
+/* Réinitialisation des styles par défaut */
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: black; /* Couleur de fond de secours */
+    color: #ffffff; /* Couleur du texte */
+    background-size: cover; /* Ajuster la taille de l'image pour couvrir toute la page */
+}
+
+/* Style pour la sélection de texte */
+::selection {
+    background: #ffffff;
+    color: #161616;
+}
+
+/* Style Pour la barre de défilement */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background-color: rgb(80, 77, 77);
+}
+::-webkit-scrollbar-thumb {
+    background-color: #007F7F;
+    border-radius: 5px;
+}
+
+/* rectangle de la liste des utilisateurs */
+.container {
+    width: 80%;
+    min-height: 200px; /* Hauteur minimale du conteneur */
+    margin: 130px 200px;
+    background-color: black; /* Couleur de fond */
+    border: 1px solid #00efff; /* Bordure solide */
+    border-radius: 10px; /* Rayon des coins */
+    box-shadow: 5px 5px 5px #00efff; /* Ombre */
+    transform: perspective(100px) ; /* Effet 3D */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* label utilisateur */
+.user {
+    margin-bottom: 20px; /* Réduire l'espace en bas de chaque utilisateur */
+    display: flex;
+    color: white;
+    font-style: normal;
+    font-family: Amiri;
+    font-weight: bold;
+    margin-right: 500px;
+    justify-content: space-between; /* Placer les boutons à droite */
+    align-items: center; /* Centrer verticalement les boutons */
+    width: 100%; /* Utilisateur prend toute la largeur */
+    border-bottom: 2px solid transparent; /* Bordure inférieure transparente par défaut */
+    transition: border-bottom 0.3s ease; /* Transition fluide pour l'effet de survol */
+}
+
+.user:hover {
+    border-bottom: 1px solid #00efff; /* Ajoute une bordure inférieure bleue au survol */
+}
+
+/* titre du rectangle */
+h1 {
+    margin-bottom: 20px; /* Ajouter de l'espace en bas du titre */
+    margin-left: 100px;
+    width: 100%; /* Titre prend toute la largeur */
+    font-style: italic;
+    font-family: "Amiri";
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5); /* Ajoute une ombre blanche au texte */
+}
+
+.user span {
+    margin-right: 10px;
+}
+
+/* le model des information */
+.modal {
+     display: none;
+     position: fixed;
+     z-index: 1;
+    border-radius: 15px;
+     left: 0px;
+     top: 0;
+     width: 100%;
+     height: 100%;
+     overflow: auto;
+    background-color: rgba(50, 50, 50, 0.8); /* Gris foncé transparent */
+ }
+
+.modal-content {
+    color: white;
+    background-color: black;
+    margin: 15% auto;
+    padding: 20px;
+    border: 4px solid #00efff;
+    width: 50%;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #00efff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* les bouttons info et delete */
+.user button.info {
+    background-color: #00efff;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Ombre pour l'effet 3D */
+}
+
+.user button.info:hover {
+    transform: translateY(-3px); /* Légèrement déplacer vers le haut lorsqu'il est survolé */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Renforcer l'effet d'ombre */
+}
+.user button.delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Ombre pour l'effet 3D */
+}
+
+.user button.delete:hover {
+    transform: translateY(-3px); /* Légèrement déplacer vers le haut lorsqu'il est survolé */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Renforcer l'effet d'ombre */
+}
+
+/* contenu de model */
+.user-info-content {
+    font-family: "Arial", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #aaa;
+}
+
+.info-label {
+    font-weight: bold;
+    font-style: italic;
+    color: white; /* Couleur pour les libellés */
+}
+
+.user-info-content p {
+    position: relative;
+    padding-left: 20px; /* Ajoute un espace à gauche pour la puce */
+    margin-bottom: 10px;
+}
+
+.user-info-content p::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #00efff; /* Couleur de la puce */
+}
+/* CSS pour l'image de l'utilisateur */
+.user-image {
+    margin-left: 300px;
+    display: block; /* Assurez-vous que l'image est affichée en tant que bloc */
+    max-width: 7%; /* La largeur maximale de l'image est égale à la largeur du conteneur parent */
+    height: auto; /* Assurez-vous que la hauteur s'ajuste automatiquement pour conserver les proportions de l'image */
+}
+
+
+/* Style pour l'overlay de chargement */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond noir semi-transparent */
+    z-index: 9999; /* Assurez-vous que l'overlay est au-dessus de tout le contenu */
+}
+
+/* Style pour le spinner */
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #00efff; /* Bordure blanche */
+    border-top: 3px solid transparent; /* Bordure transparente pour la partie supérieure */
+    border-radius: 50%; /* Pour créer une forme de cercle */
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite; /* Animation de rotation */
+}
+
+/* Animation pour faire tourner le spinner */
+@keyframes spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+
+/* titre de la page */
+.title {
+    padding: 50px; /* Espacement intérieur */
+    position: absolute;
+    top: 1px;
+    margin-left: 3px;
+}
+
+
+.title h1 {
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Palanquin Dark'; /* Utilisation de la police Palanquin Dark */
+    margin: 0; /* Supprimer les marges par défaut */
+    color: #00efff;
+    text-shadow: 2px 2px 2px black, 2px 2px 2px #00efff;
+    font-size: 40px; /* Taille de la police */
+}
+
+
+/* l'image */
+.image3 {
+    width: 10%; /* Définir la largeur */
+    height: 25%; /* Assurer le redimensionnement proportionnel */
+    position: absolute;
+    margin-left: 45px;
+    margin-top: 10px;
+}

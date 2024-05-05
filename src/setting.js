@@ -571,3 +571,15 @@ function stopAnimation() {
         card.classList.add('paused'); // Ajouter la classe 'paused' pour arrêter l'animation
     });
 }
+
+
+function adjustPageHeight() {
+    var windowHeight = window.innerHeight;
+    document.body.style.height = windowHeight + 'px';
+}
+
+// Appel de la fonction pour ajuster la hauteur de la page lors du chargement initial de la page
+adjustPageHeight();
+
+// Écouteur d'événement pour ajuster la hauteur de la page lorsque la fenêtre est redimensionnée
+window.addEventListener('resize', adjustPageHeight);
