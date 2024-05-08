@@ -115,24 +115,46 @@
         </div>
 
         <span>
-        <h3>Email address</h3>
-        <h6>Define a real email address that will associate with your account.</h6>
-        <button type="button" class="edit-button3" onclick="openPopup3('popup3')">Edit</button>
-    </span>
+<h3>Email address</h3>
+<h6>Define a real email address that will be associated with your account.</h6>
+<button type="button" class="edit-button1" onclick="openPopup10('edit-email-popup')">Edit</button>
 
-        <!-- Popup for Email Address -->
-        <div class="popup3" id="popup3">
-            <img src="images/achievement.png">
-            <input type="text" id="emaile" placeholder="Enter your email address">
-            <div class="buttons">
-                <button type="button" onclick="saveChanges3('popup3')">Save</button>
-                <button onclick="closeModal3('popup3')">Cancel</button>
-            </div>
-            <div id="validation-popup3" class="validation-popup"></div>
+<div class="edit-email-popup" id="edit-email-popup">
+    <img src="images/achievement.png">
+    <input type="email" id="old-email" placeholder="Enter your old email address">
+    <div class="buttons">
+        <button type="button" id="next-email-button" onclick="checkOldEmail()">Next</button>
+        <button onclick="closePopup10('edit-email-popup')">Cancel</button>
+    </div>
+    <div id="edit-email-popup-message" class="popup-message"></div>
+</div>
 
-        </div>
+            <!-- Popup pour saisir le code de confirmation -->
+<div class="confirmation-popup" id="confirmation-popup">
+    <img src="images/achievement.png">
+    <h1>*####*</h1>
+    <input type="text" id="confirmation-codeC" placeholder="Enter confirmation code">
+    <div class="buttons">
+        <button type="button" onclick="verifyConfirmationCode()">Confirm</button>
+        <button onclick="closePopup10('confirmation-popup')">Cancel</button>
+    </div>
+    <div id="confirmation-popup-message" class="popup-message"></div>
+</div>
 
-        <span>
+            <!-- Popup pour saisir le nouveau mot de passe -->
+<div class="new-email-popup" id="new-email-popup">
+    <h3>New Email</h3>
+    <img src="images/achievement.png">
+    <input type="email" id="new-email" placeholder="Enter your new email">
+    <input type="email" id="confirm-new-email" placeholder="Confirm your new email">
+    <div class="buttons">
+        <button type="button" onclick="saveNewEmail()">Save</button>
+        <button onclick="closePopup10('new-email-popup')">Cancel</button>
+    </div>
+    <div id="new-email-popup-message" class="popup-message"></div>
+</div>
+
+
             <h3>Last name</h3>
     <h5>Define a personalized last name for your profile. Real last names or those on social accounts are not recommended.</h5>
     <button type="button" class="edit-button2" onclick="openPopup2()">Edit</button>

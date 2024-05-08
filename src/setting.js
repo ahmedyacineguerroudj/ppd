@@ -1,8 +1,7 @@
-
 //
 //
 // Vous pouvez également utiliser JavaScript pour masquer le spinner une fois que la page est entièrement chargée
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     var spinner = document.querySelector('.loading-overlay');
     spinner.style.display = 'none';
 });
@@ -93,6 +92,7 @@ function toggleNotifications2() {
         console.log("Notifications désactivées");
     }
 }
+
 function markActive(element) {
     // Supprimer la classe "active" de tous les éléments du menu
     var menuItems = document.getElementsByClassName('menu-item');
@@ -129,6 +129,7 @@ function validateFirstName(firstName) {
     // Vérifie si le prénom ne dépasse pas 45 caractères et contient uniquement des lettres
     return firstName.length <= 45 && lettersOnly.test(firstName);
 }
+
 function displayValidationMessage(isValid, popupId) {
     var validationMessage = document.getElementById('validation-popup2');
     if (isValid) {
@@ -142,10 +143,11 @@ function displayValidationMessage(isValid, popupId) {
     // Afficher le message de validation
     validationMessage.style.display = 'block';
     // Masquer le message de validation après quelques secondes
-    setTimeout(function() {
+    setTimeout(function () {
         validationMessage.style.display = 'none';
     }, 3000); // 3 secondes
 }
+
 function cancelModal() {
     closeModal(); // Ferme la modal
 }
@@ -172,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Afficher le message de validation
     validationMessage.style.display = 'block';
     // Masquer le message de validation après quelques secondes
-    setTimeout(function() {
+    setTimeout(function () {
         validationMessage.style.display = 'none';
     }, 3000); // 3 secondes
     firstNameInput.focus();
@@ -196,6 +198,7 @@ function toggleErrorIcon(isValid) {
     var errorIcon = document.getElementById('error-icon');
     errorIcon.style.visibility = isValid ? 'hidden' : 'visible';
 }
+
 // Fonction appelée lorsque vous cliquez sur le bouton "Save"
 function saveChanges2() {
     var lastNameInput = document.getElementById('last-name').value;
@@ -229,7 +232,7 @@ function displayValidationMessage2(isValid) {
     // Afficher le message de validation
     validationMessage.style.display = 'block';
     // Masquer le message de validation après quelques secondes
-    setTimeout(function() {
+    setTimeout(function () {
         validationMessage.style.display = 'none';
     }, 3000); // 3 secondes
 }
@@ -259,6 +262,7 @@ function closeModal3() {
 function generateConfirmationCode() {
     return Math.floor(1000 + Math.random() * 9000); // Génère un nombre aléatoire entre 1000 et 9999
 }
+
 // Importer le module SendGrid
 const sgMail = require('@sendgrid/mail');
 
@@ -288,7 +292,6 @@ function verifyConfirmationCode() {
         popupMessage.style.display = 'block';
     }
 }
-
 
 
 function checkOldPassword() {
@@ -338,6 +341,13 @@ function openPopup4() {
     popup.classList.add('active');
 }
 
+// Fonction pour ouvrir le popup de modification du mot de passe
+function openPopup44() {
+    var popup = document.getElementById('popup44');
+    popup.classList.add('active');
+}
+
+
 // Fonction pour fermer le popup de modification du mot de passe
 function closeModal4() {
     var popup = document.getElementById('popup4');
@@ -349,6 +359,7 @@ function openPopup5() {
     var popup = document.getElementById('popup5');
     popup.classList.add('active');
 }
+
 
 // Fonction pour fermer le popup de saisie du code de confirmation
 function closeModal5() {
@@ -381,11 +392,6 @@ function saveChanges3(popupId) {
 }// Fonction pour sauvegarder les changements
 
 
-
-
-
-
-
 function cancelModal2() {
     var popup = document.getElementById('popup2');
     popup.classList.remove('active'); // Supprime la classe "active" pour rendre le popup invisible
@@ -396,8 +402,8 @@ function cancelModal2() {
 var fileInput = document.getElementById('file');
 
 // Écouteur d'événement pour détecter les changements dans le fichier sélectionné
-fileInput.addEventListener('change', function(event) {   //amelirer par backend//
-                                                         // Sélection de l'élément img où la nouvelle photo sera affichée
+fileInput.addEventListener('change', function (event) {   //amelirer par backend//
+    // Sélection de l'élément img où la nouvelle photo sera affichée
     var photoElement = document.getElementById('photo');
 
     // Vérification s'il y a des fichiers sélectionnés
@@ -432,9 +438,9 @@ function toggleAccountStatus() {
         disableButton.textContent = 'Enable';
     }
 }
+
 // Ajouter un gestionnaire d'événement pour le changement d'état du commutateur
 document.querySelector('.toggle-input').addEventListener('change', toggleAccountStatus);
-
 
 
 // Variable pour suivre l'état d'affichage des cartes
@@ -633,3 +639,54 @@ adjustPageHeight();
 
 // Écouteur d'événement pour ajuster la hauteur de la page lorsque la fenêtre est redimensionnée
 window.addEventListener('resize', adjustPageHeight);
+
+
+// JavaScript pour ouvrir un popup
+function openPopup10(popupId) {
+    document.getElementById(popupId).style.display = 'block';
+}
+
+// JavaScript pour fermer un popup
+function closePopup10(popupId) {
+    document.getElementById(popupId).style.display = 'none';
+}
+
+// Ajoutez ici d'autres fonctions JavaScript pour gérer les autres popups et les interactions.
+// Fonction pour vérifier si l'email entré correspond à l'email existant
+// Fonction pour vérifier si l'email entré correspond à l'email existant
+// Fonction pour vérifier si l'email entré correspond à l'email existant
+function checkOldEmail() {
+    var oldEmail = document.getElementById('old-email').value;
+    // Ici, vous devriez vérifier si l'email entré correspond à l'email existant
+    // Je vais simuler une vérification en comparant simplement avec une valeur statique
+    var existingEmail = "utilisateur@example.com"; // Remplacez ceci par l'email existant
+    if (oldEmail === existingEmail) {
+        // L'email est correct, fermer le popup précédent
+        closePopup10('edit-email-popup');
+        // Afficher le modèle de confirmation de code
+        openPopup10('confirmation-popup');
+        // Générez et envoyez le code de confirmation par e-mail à l'utilisateur
+        // Vous pouvez appeler ici une fonction pour générer et envoyer le code par e-mail
+        sendConfirmationCodeByEmail(existingEmail);
+    } else {
+        // L'email est incorrect, afficher un message d'erreur par exemple
+        document.getElementById('edit-email-popup-message').innerText = "Invalid email. Please enter the correct email.";
+    }
+}
+// Fonction pour générer et envoyer le code de confirmation par e-mail
+function sendConfirmationCodeByEmail(email) {
+    // Ici, vous pouvez implémenter la logique pour générer et envoyer le code de confirmation par e-mail
+    // Par exemple, vous pouvez utiliser une API pour envoyer des e-mails
+    // Je vais simuler l'envoi du code de confirmation ici
+    var confirmationCode = generateConfirmationCode();
+    // Vous pouvez remplacer cette console.log par une requête HTTP à un serveur pour envoyer l'e-mail
+    console.log("Confirmation code sent to " + email + ": " + confirmationCode);
+}
+
+// Fonction pour générer un code de confirmation aléatoire (simulée)
+function generateConfirmationCode() {
+    // Générez un code de confirmation aléatoire
+    // Dans cet exemple, je vais simplement générer un nombre aléatoire à 6 chiffres
+    var code = Math.floor(100000 + Math.random() * 900000);
+    return code;
+}
