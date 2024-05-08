@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
         searchCrypto();
     });
 });
-
 const cryptosData = [
     { name: "crypto 1", price: "$42,000", availableSupply: "18.7M BTC", marketCap: "$787B", change24h: "+3.5%" },
     { name: "crypto 2", price: "$3,000", availableSupply: "117M ETH", marketCap: "$350B", change24h: "+5.2%" },
