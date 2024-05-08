@@ -993,23 +993,7 @@ body {
 
 
 /* Style pour le popup de validation */
-        #validation-popup {
-            position: fixed;
-            bottom: 10px;
-            left: 30%;
-            top: calc(100% - 40px); /* ajustez ce pourcentage selon votre préférence */
-            font-size: 10px;
-            font-weight: bold;
-            transform: translateX(-70%);
-            color: red;
-            background-color: white;
-            padding: 1px 15px; /* Réduire le padding en hauteur */
-            border-radius: 5px;
-            display: none;
-
-    }
-
-#popup-message {
+#validation-popup {
     position: fixed;
     bottom: 10px;
     left: 30%;
@@ -1025,7 +1009,54 @@ body {
 
 }
 
+#popup-message {
+    position: fixed;
+    bottom: 10px;
+    left: 30%;
+    top: calc(100% - 40px); /* ajustez ce pourcentage selon votre préférence */
+    font-size: 10px;
+    font-weight: bold;
+    transform: translateX(-70%);
+    color: red;
+    background-color: white;
+    padding: 1px 15px; /* Réduire le padding en hauteur */
+    border-radius: 5px;
+    display: none;
+}
+
 #validation-popup2 {
+    position: fixed;
+    bottom: 10px;
+    left: 30%;
+    top: calc(100% - 40px); /* ajustez ce pourcentage selon votre préférence */
+    font-size: 10px;
+    font-weight: bold;
+    transform: translateX(-70%);
+    color: red;
+    background-color: white;
+    padding: 1px 15px; /* Réduire le padding en hauteur */
+    border-radius: 5px;
+    display: none;
+
+}
+
+#validation-popup3 {
+    position: fixed;
+    bottom: 10px;
+    left: 30%;
+    top: calc(100% - 40px); /* ajustez ce pourcentage selon votre préférence */
+    font-size: 10px;
+    font-weight: bold;
+    transform: translateX(-70%);
+    color: red;
+    background-color: white;
+    padding: 1px 15px; /* Réduire le padding en hauteur */
+    border-radius: 5px;
+    display: none;
+
+}
+
+#validation-popup4 {
     position: fixed;
     bottom: 10px;
     left: 30%;
@@ -1236,51 +1267,67 @@ body {
 }
 
 
-.popup4 {
+.popup4, .popup5, .popup6 {
+    /* Styles pour les popups */
     position: absolute;
-    top: 70%;
-    left: 75%;
+    top: 90%;
+    left: 80%;
+    height: 135px;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 300px;
-    background-color: rgba(50, 50, 50, 0.8); /* Gris foncé transparent */
-    z-index: 999;
+    background-color: rgba(50, 50, 50, 0.8);
+    width: 250px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 6px;
     text-align: center;
-    opacity: 0; /* Initiallement invisible */
-    visibility: hidden; /* Initiallement invisible */
-    transition: opacity 0.4s, visibility 0.4s; /* Ajoute une transition sur l'opacité et la visibilité */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0.4s;
 }
 
-.popup4.active {
-    opacity: 1; /* Rend le popup visible */
-    visibility: visible; /* Rend le popup visible */
+.popup4.active, .popup5.active, .popup6.active {
+    /* Rend les popups visibles */
+    opacity: 1;
+    visibility: visible;
 }
-.popup4 img {
-    width: 100px;
-    margin-top: -50px;
-    border-radius: 50px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);}
 
-.popup4 input[type="password"] {
-    width: 80%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 3px solid #000000;
-    border-radius: 15px;
+.popup-message, #popup-message-confirmation, #popup-message-new-password {
+    /* Styles pour les messages d'erreur/succès */
+    color: red;
+    margin-top: 10px;
+}
+
+.popup4 input[type="password"], .popup5 input[type="text"], .popup6 input[type="password"] {
+    /* Styles pour les champs de saisie */
+    width: 100%;
+    padding: 11px;
+    margin-top: 20px;
+    border: 1px solid black;
+    background-color: black;
     color: white;
-    background-color: #000000;
+    border-radius: 15px;
+    margin-left: -12px;
 }
 
-.popup4 .buttons {
-    text-align: center;
-    color: #4267B2;
+.popup4 .buttons, .popup5 .buttons, .popup6 .buttons {
+    /* Styles pour les boutons */
+    margin-top: 20px;
 }
 
-.popup4 .buttons button {
+.popup4 .buttons button, .popup5 .buttons button, .popup6 .buttons button {
+    /* Styles pour les boutons */
+    width: 100px;
+    padding: 10px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup4 .buttons button[type="button"], .popup5 .buttons button[type="button"], .popup6 .buttons button[type="button"], .popup4 .buttons button:last-child, .popup5 .buttons button:last-child, .popup6 .buttons button:last-child {
     width: 20%;
     font-family: 'Changa One', sans-serif;
-    margin-top: 10px;
+    margin-top: 5px;
     padding: 10px 0;
     background: #4267B2;
     color: #000000;
@@ -1292,17 +1339,18 @@ body {
     cursor: pointer;
 }
 
+.popup4 .buttons button[type="button"]:last-child:hover, .popup5 .buttons button[type="button"]:last-child:hover, .popup6 .buttons button[type="button"]:last-child:hover {
+    /* Styles pour le dernier bouton au survol */
+    background-color: #b3b3b3;
+}
 
-#error-icon::before {
-    content: 'X';
+.popup4 .buttons button[type="button"]:last-child, .popup5 .buttons button[type="button"]:last-child, .popup6 .buttons button[type="button"]:last-child {
+    background: #FFFFFF;
+    color: #4267B2;
+    margin-left: 5px;
 }
-.blur-popup {
-    backdrop-filter: none; /* Annule le flou pour le contenu du popup */
-}
-.active {
-    opacity: 1; /* Rend le popup visible */
-    visibility: visible; /* Rend le popup visible */
-}
+
+
 .rectangle3 .disable-button {
     background-color: #00efff;
     color: white;
@@ -1617,3 +1665,58 @@ body {
     from { transform: translate(-50%, -50%) rotate(0deg); }
     to { transform: translate(-50%, -50%) rotate(360deg); }
 }
+
+.popup4 img{
+    width: 100px;
+    margin-top: -350px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.popup5 img{
+    width: 100px;
+    margin-top: -300px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.popup6 img{
+    width: 100px;
+    margin-top: -350px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.popup5 h1 {
+    filter: blur(1px); /* Appliquer un flou */
+    font-size: 15px;
+    color: #00efff; /* Couleur du texte */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre portée */
+}
+#popup-message-confirmation {
+    position: fixed;
+    bottom: 10px;
+    left: 30%;
+    top: calc(100% - 40px); /* ajustez ce pourcentage selon votre préférence */
+    font-size: 10px;
+    font-weight: bold;
+    transform: translateX(-70%);
+    color: red;
+    background-color: white;
+    padding: 1px 15px; /* Réduire le padding en hauteur */
+    border-radius: 5px;
+    display: none;}
+
+
+#popup-message-new-password {
+    position: fixed;
+    bottom: 10px;
+    left: 30%;
+    top: calc(100% - 40px); /* ajustez ce pourcentage selon votre préférence */
+    font-size: 10px;
+    font-weight: bold;
+    transform: translateX(-70%);
+    color: red;
+    background-color: white;
+    padding: 1px 15px; /* Réduire le padding en hauteur */
+    border-radius: 5px;
+    display: none;}

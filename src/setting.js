@@ -133,7 +133,6 @@ function displayValidationMessage(isValid, popupId) {
     var validationMessage = document.getElementById('validation-popup2');
     if (isValid) {
         validationMessage.textContent = "First name changed";
-        validationMessage.style.backgroundColor = "rgba(0, 0, 0, 0.8)"; // Modifier la couleur de fond
     } else {
         validationMessage.textContent = "Invalid first name";
         validationMessage.style.backgroundColor = "white"; // Modifier la couleur de fond
@@ -163,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var firstNameInput = document.getElementById('first-name').value;
     if (validateFirstName(firstNameInput)) {
         validationMessage.textContent = "First name changed";
-        validationMessage.style.backgroundColor = "rgba(0, 0, 0, 0.8)"; // Modifier la couleur de fond
+
     } else {
         validationMessage.textContent = "Invalid first name";
         validationMessage.style.backgroundColor = "white"; // Modifier la couleur de fond
@@ -197,18 +196,17 @@ function toggleErrorIcon(isValid) {
     var errorIcon = document.getElementById('error-icon');
     errorIcon.style.visibility = isValid ? 'hidden' : 'visible';
 }
-
 // Fonction appelée lorsque vous cliquez sur le bouton "Save"
-function saveChanges2(popupId) {
+function saveChanges2() {
     var lastNameInput = document.getElementById('last-name').value;
-    if (validateLastName(lastNameInput)) {
-        // Le nom est valide, afficher le message de validation et fermer le popup
-        displayValidationMessage2(true, popupId);
-        closeModal(popupId);
+    var isValid = validateLastName(lastNameInput);
+    var validationMessage = document.getElementById('validation-popup');
+
+    if (isValid) {
+
+        displayValidationMessage2(true);
     } else {
-        // Le nom est invalide, afficher le message d'erreur et l'icône d'erreur
-        displayValidationMessage2(false, popupId);
-        toggleErrorIcon(true, popupId);
+        displayValidationMessage2(false);
     }
 }
 
@@ -219,17 +217,14 @@ function validateLastName(lastName) {
 }
 
 // Fonction pour afficher le message de validation ou d'erreur
-// Fonction pour afficher le message de validation flottant
-function displayValidationMessage2(isValid, popupId) {
+function displayValidationMessage2(isValid) {
     var validationMessage = document.getElementById('validation-popup');
     if (isValid) {
         validationMessage.textContent = "Last name changed";
-        validationMessage.style.backgroundColor = "rgba(0, 0, 0, 0.8)"; // Modifier la couleur de fond
     } else {
         validationMessage.textContent = "Invalid last name";
         validationMessage.style.backgroundColor = "white"; // Modifier la couleur de fond
         validationMessage.style.color = "red"; // Texte en blanc
-
     }
     // Afficher le message de validation
     validationMessage.style.display = 'block';
@@ -238,7 +233,6 @@ function displayValidationMessage2(isValid, popupId) {
         validationMessage.style.display = 'none';
     }, 3000); // 3 secondes
 }
-
 
 // Fonction pour ouvrir le popup correspondant
 function openPopup2() {
@@ -260,82 +254,138 @@ function closeModal3() {
     popup.classList.remove('active'); // Supprime la classe "active" pour rendre le popup invisible
 }
 
+
+// Fonction pour générer un code aléatoire à 4 chiffres
+function generateConfirmationCode() {
+    return Math.floor(1000 + Math.random() * 9000); // Génère un nombre aléatoire entre 1000 et 9999
+}
+// Importer le module SendGrid
+const sgMail = require('@sendgrid/mail');
+
+// Définir la clé API SendGrid
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+// Fonction pour envoyer l'email de confirmation
+function sendConfirmationEmail(email, confirmationCode) {
+    //implemanter par API backend
+}
+
+
+// Fonction pour vérifier le code de confirmation
+function verifyConfirmationCode() {
+    var inputCode = document.getElementById('confirmation-code').value; // Récupère le code saisi par l'utilisateur
+    var confirmationCode = generateConfirmationCode(); // Génère le même code de confirmation que celui envoyé (pour la démonstration)
+
+    // Vérifie si le code saisi correspond au code de confirmation
+    if (inputCode === confirmationCode.toString()) {
+        // Si le code est correct, ouvrir le popup6 pour que l'utilisateur puisse saisir le nouveau mot de passe
+        closeModal5(); // Ferme le popup5
+        openPopup6(); // Ouvre le popup6
+    } else {
+        // Si le code est incorrect, afficher un message d'erreur
+        var popupMessage = document.getElementById('popup-message-confirmation');
+        popupMessage.textContent = 'Incorrect confirmation code !';
+        popupMessage.style.display = 'block';
+    }
+}
+
+
+
+function checkOldPassword() {
+    var oldPasswordInput = document.getElementById('old-password');
+    var oldPassword = oldPasswordInput.value.trim();
+
+    // Vérifiez ici si l'ancien mot de passe est correct
+    if (oldPassword === 'ino') { // Remplacez 'motdepassecorrect' par le mot de passe correct
+        // Si l'ancien mot de passe est correct, débloquez le bouton "Next" et affichez le popup suivant
+        var nextButton = document.getElementById('next-button');
+        nextButton.removeAttribute('disabled');
+
+        // Masquer le popup actuel (popup4) et afficher le popup suivant (par exemple, popup5)
+        var currentPopup = document.getElementById('popup4');
+        currentPopup.classList.remove('active');
+
+        var nextPopup = document.getElementById('popup5');
+        nextPopup.classList.add('active');
+    } else {
+        // Si l'ancien mot de passe n'est pas correct, affichez un message d'erreur
+        var popupMessage = document.getElementById('popup-message');
+        popupMessage.textContent = 'Old password is incorrect.';
+        popupMessage.style.display = 'block';
+    }
+}
+
+
+function saveNewPassword() {
+    // Récupérez le nouveau mot de passe et effectuez des vérifications si nécessaire
+    var newPasswordInput = document.getElementById('new-password');
+    var newPassword = newPasswordInput.value.trim();
+
+    // Vous pouvez ajouter ici des vérifications supplémentaires sur le nouveau mot de passe
+
+    // Enregistrez le nouveau mot de passe si toutes les vérifications sont réussies
+    // Exemple de sauvegarde du nouveau mot de passe
+    var popupMessage = document.getElementById('popup-message');
+    popupMessage.textContent = 'Old password is incorrect.';
+    popupMessage.style.display = 'block';
+    console.log('New password saved successfully:', newPassword);
+}
+
+
+// Fonction pour ouvrir le popup de modification du mot de passe
+function openPopup4() {
+    var popup = document.getElementById('popup4');
+    popup.classList.add('active');
+}
+
+// Fonction pour fermer le popup de modification du mot de passe
+function closeModal4() {
+    var popup = document.getElementById('popup4');
+    popup.classList.remove('active');
+}
+
+// Fonction pour ouvrir le popup de saisie du code de confirmation
+function openPopup5() {
+    var popup = document.getElementById('popup5');
+    popup.classList.add('active');
+}
+
+// Fonction pour fermer le popup de saisie du code de confirmation
+function closeModal5() {
+    var popup = document.getElementById('popup5');
+    popup.classList.remove('active');
+}
+
+// Fonction pour ouvrir le popup de saisie du nouveau mot de passe
+function openPopup6() {
+    var popup = document.getElementById('popup6');
+    popup.classList.add('active');
+}
+
+// Fonction pour fermer le popup de saisie du nouveau mot de passe
+function closeModal6() {
+    var popup = document.getElementById('popup6');
+    popup.classList.remove('active');
+}
+
+
 // Fonction pour sauvegarder les changements
 function saveChanges3(popupId) {
     // Récupérer la valeur du last name depuis l'input
     var emailInput = document.getElementById('emaile');
     var lastNameValue = emailInput.value.trim();
-
     // Vous pouvez ajouter des vérifications ou des traitements supplémentaires ici
 
     // Fermer le popup
     closeModal3();
 }// Fonction pour sauvegarder les changements
-function saveChanges4(popupId) {
-    // Récupérer les valeurs des champs d'entrée
-    var oldPasswordInput = document.getElementById('old-password');
-    var newPasswordInput = document.getElementById('new-password');
-    var confirmPasswordInput = document.getElementById('confirm-password');
 
-    // Vider les messages précédents
-    hidePopupMessage();
 
-    // Vérifier si tous les champs sont remplis
-    if (oldPasswordInput.value.trim() === '' || newPasswordInput.value.trim() === '' || confirmPasswordInput.value.trim() === '') {
-        showPopupMessage('Please complete all fields.');
-        return;
-    }
 
-    // Vérifier si les nouveaux mots de passe correspondent
-    if (newPasswordInput.value.trim() !== confirmPasswordInput.value.trim()) {
-        showPopupMessage('New passwords do not match.');
-        return;
-    }
 
-    // Vérifier si l'ancien mot de passe est correct
-    var oldPassword = 'ino'; // Remplacez ceci par le vrai mot de passe dynamiquement
-    if (oldPasswordInput.value.trim() !== oldPassword) {
-        showPopupMessage('Old password is incorrect.');
-        return;
-    }
 
-    // Si toutes les vérifications sont réussies, afficher un message de réussite
-    showPopupMessage('Changes saved successfully.');
 
-    // Fermer le popup après un court délai
-    setTimeout(function () {
-        hidePopupMessage(popupId);
-    }, 3000);
-}
 
-// Fonction pour afficher un popup avec un message
-function showPopupMessage(message) {
-    var popupMessage = document.getElementById('popup-message');
-    popupMessage.textContent = message;
-    popupMessage.style.display = 'block';
-}
-
-// Fonction pour cacher le popup
-function hidePopupMessage() {
-    var popupMessage = document.getElementById('popup-message');
-    popupMessage.textContent = '';
-    popupMessage.style.display = 'none';
-}
-
-// Fonction pour fermer le popup
-// Fonction pour ouvrir le popup
-function openPopup4() {
-    var popup = document.getElementById('popup4');
-    popup.classList.add('active'); // Ajoute la classe "active" pour rendre le popup visible
-}
-
-// Fonction pour fermer le popup
-function closeModal4() {
-    var popup = document.getElementById('popup4');
-    popup.classList.remove('active'); // Supprime la classe "active" pour rendre le popup invisible
-}
-
-// Fonction pour fermer le popup
 function cancelModal2() {
     var popup = document.getElementById('popup2');
     popup.classList.remove('active'); // Supprime la classe "active" pour rendre le popup invisible
@@ -347,7 +397,7 @@ var fileInput = document.getElementById('file');
 
 // Écouteur d'événement pour détecter les changements dans le fichier sélectionné
 fileInput.addEventListener('change', function(event) {   //amelirer par backend//
-    // Sélection de l'élément img où la nouvelle photo sera affichée
+                                                         // Sélection de l'élément img où la nouvelle photo sera affichée
     var photoElement = document.getElementById('photo');
 
     // Vérification s'il y a des fichiers sélectionnés
