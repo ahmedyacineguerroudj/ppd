@@ -83,6 +83,53 @@ function searchCrypto() {
 }
 
 
+function searchUser() {
+    var input, filter, userList, user, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    userList = document.getElementById("userList");
+    user = userList.getElementsByClassName("user");
+    // Créer la flèche de retour
+    const backButton = document.createElement('button');
+    backButton.textContent = '←';
+    backButton.innerHTML = '<strong>←</strong>';
+    backButton.id = 'backButton';
+    backButton.style.fontWeight = 'bold'; // Police en gras pour le texte de la flèche
+    backButton.style.backgroundColor = '#00efff'; // Couleur de fond de la flèche
+    backButton.style.color = 'black'; // Couleur du texte de la flèche
+    backButton.style.border = 'none'; // Supprimer la bordure du bouton
+    backButton.style.borderRadius = '50%'; // Rendre le bouton rond
+    backButton.style.width = '30px'; // Largeur de la flèche
+    backButton.style.height = '30px'; // Hauteur de la flèche
+    backButton.style.position = 'fixed'; // Position fixe pour rester en haut de la fenêtre
+    backButton.style.top = '10px'; // Distance par rapport au haut de la fenêtre
+    backButton.style.left = '10px'; // Distance par rapport à la gauche de la fenêtre
+    backButton.style.fontSize = '20px'; // Taille de la police de la flèche
+    backButton.style.cursor = 'pointer'; // Curseur de la souris en pointeur lorsqu'il survole la flèche
+
+
+    // Ajouter un événement de clic pour revenir à la première page
+    backButton.addEventListener('click', function() {
+        displayUserList();
+        window.scrollTo(0, 0); // Faire défiler jusqu'au haut de la page
+
+        backButton.style.display = 'none';
+    });
+
+    // Ajouter la flèche au début de la liste des utilisateurs
+    userList.insertBefore(backButton, userList.firstChild);
+
+    for (i = 0; i < user.length; i++) {
+        txtValue = user[i].textContent || user[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            user[i].style.display = "";
+        } else {
+            user[i].style.display = "none";
+        }
+    }
+}
+
+// Sélectionner le bouton de recherche
 
 
 
