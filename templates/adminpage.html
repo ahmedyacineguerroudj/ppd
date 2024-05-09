@@ -1,0 +1,52 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'adminpage.css' %}">
+    <title>Administration</title>
+</head>
+
+<body>
+
+<!-- pour le cerle du chargement de la page -->
+<div class="loading-overlay">
+    <div class="spinner"></div>
+</div>
+
+<!-- Titre de la page -->
+<section class="title">
+    <h1>Administration</h1>
+</section>
+
+
+<!-- image  -->
+<img src="images/support.png" class="image3">
+
+<!-- rectangle de la liste des utilisateurs -->
+<div class="container">
+    {% csrf_token %}
+    <h1>Users List</h1>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search by ID...">
+        <button onclick="searchUser()">Search</button>
+    </div>
+    <div id="userList" class="user-list">
+        {% csrf_token %}
+        <!-- La liste des utilisateurs sera ajoutée dynamiquement ici -->
+    </div>
+</div>
+<!-- Modèle pour les informations détaillées de l'utilisateur -->
+<div id="userInfoModal" class="modal">
+    {% csrf_token %}
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <img src="images/information.png" alt="Photo de l'utilisateur" class="user-image">
+        <div id="userInfoContent" class="user-info-content"></div>
+    </div>
+</div>
+
+<script src="{% static 'adminpage.js' %}?v={{ version_number }}"></script>
+</body>
+</html>

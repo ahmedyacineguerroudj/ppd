@@ -1,0 +1,1194 @@
+.top-bar img {
+    width: 80px;
+    height: auto;
+}
+
+/* Style pour la barre supérieure */
+.top-bar {
+    display: flex;
+    background-color: #1E1E1E;
+    padding: 15px 10px;
+    user-select: none;
+    border-bottom: 5px solid #00FFFF;
+}
+
+/* Style pour le nom de la plateforme */
+.platform-name {
+    display: flex;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 15px;
+    margin-bottom: 3px;
+}
+
+/* Style pour les parties "whales" et "Cap" du nom de la plateforme */
+.platform-name .whales {
+    color: #ffffff;
+    user-select: none;
+}
+.platform-name .Cap {
+    color: #00FFFF;
+    user-select: none;
+}
+
+/* Style pour le menu */
+.menu {
+    display: flex;
+    margin-bottom: 3px;
+    margin-left: 100px;
+}
+
+/* Style pour les éléments du menu */
+.menu-item {
+    font-weight: bold;
+    margin-right: 50px;
+    font-size: 22px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: transform 0.2s ease;
+}
+
+/* Style pour le survol des éléments du menu */
+.menu-item:hover {
+    transform: scale(1.2);
+    color: #00FFFF;
+}
+
+/* Style pour le bouton de notification */
+.notification-button img {
+    width: 30px;
+    height: auto;
+    margin-left: 20px;
+    transition: opacity 0.3s;
+}
+.notification-button {
+    display: flex;
+    position: absolute;
+    right: 5.5%;
+    top: 20px;
+}
+
+/* Style pour le bouton d'utilisateur */
+.user-button img {
+    width: 30px;
+    height: auto;
+    margin-left: 20px;
+    transition: opacity 0.3s;
+}
+.user-button {
+    display: flex;
+    position: absolute;
+    right: 0.5%;
+    top: 20px;
+}
+
+/* Styles lorsque le bouton est survolé */
+.notification-button:hover img {
+    content: url('Images/notification_icon2.png');
+}
+.user-button:hover img {
+    content: url('Images/user_icon2.png');
+}
+
+/* Styles pour les boutons de model */
+.notification-button,
+.user-button {
+    display: inline-block;
+}
+.notification-button .modal,
+.user-button .modal {
+    position: absolute;
+    left: -300px;
+    width: 300px;
+    max-height: 300px;
+    background-color: #161616;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 4px rgb(9, 248, 248);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: auto;
+    z-index: 100;
+}
+
+/* Style pour le titre de la boîte modale */
+.modal-content h2 {
+    font-size: 24px;
+    color: #00FFFF;
+    margin-bottom: 10px;
+    text-align: center;
+    user-select: none;
+    font-family: 'Apple Chancery', cursive;
+}
+
+/* Style pour le bouton de fermeture de la boîte modale */
+.close {
+    display: none;
+}
+
+/* Style pour les boutons */
+.buttons {
+    position: absolute;
+    right: 10px;
+}
+.buttons1 {
+    position: absolute;
+    right: 120px;
+}
+.signup-btn1,
+.login-btn1 {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #09f8f8;
+    background-color: transparent;
+    border: 1px solid #00FFFF;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-weight: bold;
+    transition: transform 0.6s ease;
+}
+.signup-btn1:hover,
+.login-btn1:hover {
+    color: #161616;
+    background-color: #09f8f8;
+    font-weight: bold;
+}
+
+/* Media query pour les petits écrans */
+@media only screen and (max-width: 1100px) {
+    .top-section {
+        display: none;
+    }
+    .menu {
+        display: none;
+    }
+
+}
+
+
+
+
+
+/***** Styles pour la deuxième section *****/
+.signup-section {
+    margin-top: 250px;
+    margin-bottom: 5px;
+    margin-left: 60px;
+}
+
+.signup-box {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    height: auto;
+}
+
+#searchInput {
+    padding: 10px;
+    margin-right: 15px;
+    border-radius: 18px;
+    flex: 1;
+}
+
+#searchInput:focus {
+    outline: none;
+}
+
+.signup-button {
+    padding: 10px 20px;
+    background: #00FFFF;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Apple Chancery', cursive;
+}
+
+.signup-button:hover {
+    background-color: rgba(9, 248, 248, 0.79);
+}
+
+.market-insights h2 {
+    font-family: 'Apple Chancery', cursive;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    background-image: linear-gradient(to right, #09f8f8, #161616);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: changeColor 4s linear infinite; /* Ajout de l'animation de couleur */
+}
+
+.market-insights p {
+    font-size: 20px;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    line-height: 1.5;
+    color: rgb(255, 255, 255);
+    animation: changeColor 4s linear infinite; /* Ajout de l'animation de couleur */
+}
+
+/* Styles pour la classe content */
+.market-insights {
+    margin-top: 7%;
+    font-size: 20px;
+    position: absolute;
+    margin-left: 100px;
+    animation: moveUpDown 2s ease-in-out infinite alternate; /* Suppression de l'animation de couleur pour cette classe */
+}
+
+@keyframes moveUpDown {
+    0% {
+        transform: translateX(0); /* Début de l'animation */
+    }
+    100% {
+        transform: translateX(20px); /* Fin de l'animation */
+    }
+}
+
+@keyframes changeColor {
+    0% {
+        color: #00efff; /* Début de l'animation */
+    }
+    50% {
+        color: white; /* Milieu de l'animation */
+    }
+    100% {
+        color: #00efff; /* Fin de l'animation */
+    }
+}
+
+
+
+
+/***** Styles pour la troisième section *****/
+.table-section {
+    margin : 40px 15px 25px 15px;
+    max-width: 100%;
+    font-size: 20px;
+    min-height: 600px;
+}
+#cryptoTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+#cryptoTable td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 2px solid rgb(60, 63, 65);
+}
+#cryptoTable th {
+    font-family: 'Apple Chancery', cursive;
+    background-color: rgba(37, 189, 189, 0.69);
+    color: #ffffff;
+    user-select: none;
+    padding: 12px;
+}
+#cryptoTable tr:first-child th {
+    border-top: none;
+}
+
+#cryptoTable tr:hover {
+    background-color: #333131;
+}
+
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #161616;
+    color: #ffffff;
+}
+.button2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 8px;
+    position: relative;
+    width: 201px;
+    height: 10px;
+    top: 200px;
+    padding: 14px 20px 20px 24px;
+    cursor: pointer;
+    background: rgb(4, 170, 109);
+    border: none;
+    z-index: 54;
+    left: 0;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.button12{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 8px;
+    position: relative;
+    width: 201px;
+    height: 10px;
+    top: 200px;
+    left: 0;
+    padding: 14px 20px 20px 24px;
+    cursor: pointer;
+    background: rgb(255, 0, 0);
+    border: none;
+    z-index: 54;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+
+
+
+.button8{
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+.button8.active {
+    background-color: rgb(255, 0, 0);
+    color: #fff;
+}
+
+
+
+.button3 {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.button3.active {
+    background-color: rgb(4, 170, 109);
+    color: #fff;
+}
+
+
+
+
+.button {
+    margin: 0;
+    height: auto;
+    background: transparent;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+
+
+.button {
+    --border-right: 0px;
+    --text-stroke-color: rgb(255, 255, 255);
+    --animation-color: rgba(0, 255, 226, 0.68);
+    --fs-size: 2em;
+    letter-spacing: 8px;
+    text-decoration: none;
+    font-size: var(--fs-size);
+    font-family: Arial;
+    position: relative;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+    top: -190px;
+
+}
+
+.hover-text {
+    position: absolute;
+    box-sizing: border-box;
+    content: attr(data-text);
+    color: var(--animation-color);
+    width: 0;
+    inset: 0;
+    border-right: var(--border-right) solid var(--animation-color);
+    overflow: hidden;
+    transition: 0.5s;
+    -webkit-text-stroke: 1px var(--animation-color);
+}
+
+.button:hover .hover-text {
+    width: 100%;
+    filter: drop-shadow(0 0 23px var(--animation-color))
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.input-container3 {
+    position: absolute;
+    top: 350px;
+    left: 180px;
+    transform: translateX(-50%);
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically */
+}
+
+.input-container3 input[type="float"]{
+    padding: 20px;
+    color: white;
+    width: 250px;
+    height: auto;
+    background-color: #1e1e1e;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+
+
+}
+.input-container3 select {
+    padding: 20px;
+    color: white;
+    width: 40px;
+    background-color: #1e1e1e;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+
+.input-container3 input[type="float"]::placeholder,
+.input-container3 select::placeholder {
+    color: #999;
+}
+
+.input-container3 input[type="float"]:focus,
+.input-container3 select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.input-container3 select {
+    margin-left: 10px;
+}
+
+
+
+
+
+
+.input-container4 {
+    position: absolute;
+    top: 200px;
+    left: 180px;
+    transform: translateX(-50%);
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically */
+}
+
+.input-container4 input[type="float"]{
+    padding: 20px;
+    color: white;
+    width: 250px;
+    height: auto;
+    background-color: #1e1e1e;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+
+
+}
+.input-container4 select {
+    padding: 20px;
+    color: white;
+    width: 140px;
+    background-color: #1e1e1e;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+
+.input-container4 input[type="float"]::placeholder,
+.input-container4 select::placeholder {
+    color: #999;
+}
+
+.input-container4 input[type="float"]:focus,
+.input-container4 select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.input-container4 select {
+    margin-left: 10px;
+}
+
+
+
+/*//--------------------------------//*/
+
+
+
+.input-container1 {
+    position: absolute;
+    top: 200px;
+    left: 180px;
+    transform: translateX(-50%);
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically */
+}
+
+.input-container1 input[type="float"]{
+    padding: 20px;
+    color: white;
+    width: 250px;
+    height: auto;
+    background-color: #1e1e1e;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+
+
+}
+.input-container1 select {
+    padding: 20px;
+    color: white;
+    width: 140px;
+    background-color: #1e1e1e;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+
+.input-container1 input[type="float"]::placeholder,
+.input-container1 select::placeholder {
+    color: #999;
+}
+
+.input-container1 input[type="float"]:focus,
+.input-container1 select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.input-container1 select {
+    margin-left: 10px;
+}
+
+
+
+
+
+
+
+.input-container2 {
+    position: absolute;
+    top: 350px;
+    left: 180px;
+    transform: translateX(-50%);
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically */
+}
+
+.input-container2 input[type="float"]{
+    padding: 20px;
+    color: white;
+    width: 250px;
+    height: auto;
+    background-color: #1e1e1e;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+
+
+}
+.input-container2 select {
+    padding: 20px;
+    color: white;
+    width: 140px;
+    background-color: #1e1e1e;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+
+.input-container2 input[type="float"]::placeholder,
+.input-container2 select::placeholder {
+    color: #999;
+}
+
+.input-container2 input[type="float"]:focus,
+.input-container2 select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.input-container2 select {
+    margin-left: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Style pour le titre */
+.title h1 {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+
+/* Styles pour la section */
+.title {
+    padding: 0px;
+    margin-bottom: 20px;
+    border-bottom: 5px solid #00FFFF;
+    overflow: hidden;
+
+}
+
+
+
+
+
+/* Style de section */
+.balance-section {
+    border-radius: 15px;
+    border: 5px solid #00FFFF;
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+/* Styles pour l'en-tête de la balance */
+.balance-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+
+/* Styles pour le titre "Balance" */
+.balance-header h2 {
+    font-size: 40px;
+    color: #ffffff;
+    margin: 0;
+}
+
+
+/* Styles pour les boutons de la balance */
+.balance-buttons {
+    display: flex;
+    gap: 35px;
+}
+.balance-buttons button {
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #161616;
+    border: 2px solid #00FFFF;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.balance-buttons button:hover {
+    background-color: #007F7F;
+    transform: translateY(-5px);
+}
+
+
+/* Styles pour le numéro de la balance */
+.balance-number {
+    margin-left: 150px;
+    font-size: 25px;
+    color: #ffffff;
+}
+
+
+/* Styles pour le numéro de la crypto balance */
+.balance-number-crypto {
+    margin-left: 155px;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+.wrapper {
+    --input-focus: #00ffe2;
+    --font-color: #00ffe2;
+    --font-color-sub: #00ffe2;
+    --bg-color: #00ffe2;
+    --bg-color-alt: #00ffe2;
+    --main-color: #00ffe2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.toggle {
+    opacity: 100%;
+    width: 0;
+    height: 0;
+}
+
+.toggle:checked + .slider {
+    background-color: var(--input-focus);
+}
+
+.toggle:checked + .slider:before {
+    transform: translateX(30px);
+}
+
+.toggle:checked ~ .card-side:before {
+    text-decoration: none;
+}
+
+.toggle:checked ~ .card-side:after {
+    text-decoration: underline;
+}
+
+.toggle:checked ~ .flip-card__inner {
+    transform: rotateY(180deg);
+}
+
+.toggle:checked ~ .flip-card__front {
+    box-shadow: none;
+}
+
+.flip-card__inner {
+    width: 200px;
+    height: 800px;
+    position: absolute;
+    background-color: transparent;
+    perspective: 1000px;
+    text-align: center;
+    transition: transform 0.00004s ease;
+    transform-style: preserve-3d;
+    transform-origin: center;
+    right: 0;
+    bottom: 0;
+    margin-right: 150px; /* Adjust the margin as needed */
+    top: 200px;
+}
+
+
+/*.card-switch{*/
+/*    position: absolute;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*    -webkit-backface-visibility: hidden;*/
+/*    backface-visibility: hidden;*/
+/*    width: 100%;*/
+/*    height: 55%;*/
+/*    background: #1e1e1e;*/
+/*    gap: 20px;*/
+/*    border-radius: 5px;*/
+/*}*/
+.flip-card__front {
+    padding: 70px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    width: 100%;
+    height: 55%;
+    background: #1e1e1e;
+    gap: 20px;
+    border-radius: 5px;
+
+
+
+}
+
+.flip-card__back {
+    padding: 70px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    width: 100%;
+    height: 55%;
+    background: #1e1e1e;
+    gap: 20px;
+    border-radius: 5px;
+
+
+    right: 0px;
+}
+
+
+.flip-card__back {
+    transform: rotateY(180deg);
+}
+
+
+.button8 {
+    font-size: 1.2rem;
+    padding: 1rem 0.5rem;
+    border: none;
+    outline: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: rgb(45, 45, 45);
+    color: rgb(234, 234, 234);
+    font-weight:700;
+    transition: 0.6s;
+    box-shadow: 0 0 60px #161616;
+    position: absolute;
+
+    left: -160px;
+    top: -60px;
+}
+
+.button8:active {
+    scale: 0.92;
+}
+
+
+
+
+.button3 {
+    font-size: 1.2rem;
+    padding: 1rem 0.5rem;
+    border: none;
+    outline: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: rgb(45, 45, 45);
+    color: rgb(234, 234, 234);
+    font-weight:700;
+    transition: 0.6s;
+    box-shadow: 0 0 60px #161616;
+    position: absolute;
+    left: -320px;
+    top: -60px;
+}
+
+.button3:active {
+    scale: 0.92;
+}
+
+
+.recent-transactions {
+    padding: 20px;
+    border-radius: 15px;
+    margin: 23px -400px 0 0;
+    width: 290px;
+    height: 540px;
+    float: right;
+    background: #1E1E1E;
+}
+
+/* Style pour le titre de la section */
+.recent-transactions h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+    user-select: none;
+    text-align: left; /* Align title text to the left */
+}
+
+/* Style pour la liste des transactions */
+#transaction-list {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+}
+
+/* Style pour chaque élément de la liste des transactions */
+#transaction-list li {
+    background-color: rgb(45, 45, 45);
+    padding: 15px;
+    margin-right: 2%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.topnav {
+    overflow: hidden;
+    background-color: #1E1E1E;
+    width: 1160px; /* Adjust the width as needed */
+    height: 70px;
+    margin-top: 15px;
+}
+
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 19px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+
+
+.dropbtn {
+    background-color: rgba(4, 170, 109, 0);
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    z-index: 2;
+    left: 160px;
+    top: 6px;
+}
+
+
+.dropbtn2 {
+    background-color: rgba(4, 170, 109, 0);
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 95px;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: rgba(62, 142, 65, 0);
+}
+
+#myInput {
+    box-sizing: border-box;
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {outline: 3px solid #ddd;}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 5;
+}
+
+.dropdown-content {
+    display: none;
+    border-radius: 5px;
+    background-color: #1E1E1E;
+    width: 250px;
+    height: 100px;
+    overflow: auto;
+    border: 1px solid #161616;
+    position: fixed;
+    z-index: 5;
+    left: 0px;
+    top: 60px;
+    text-align: left;
+}
+.dropdown-content3 {
+    display: none;
+    border-radius: 5px;
+    background-color: #1E1E1E;
+    width: 300px;
+    height: 300px;
+    overflow: auto;
+    border: 1px solid #161616;
+    position: absolute;
+    z-index: 5;
+    left: 0px;
+    top: 160px;
+    text-align: left;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+
+}
+.dropdown-content3 a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+
+}
+
+
+.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content3 a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+.search-bar {
+    /* Add your styling properties here */
+    /* For example: */
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 0px solid #1E1E1E;
+    color: white;
+    background: #1E1E1E;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    z-index: 5;
+}
+
+
+
+.dropdown-content2 {
+    display: none;
+    border-radius: 5px;
+    background-color: #1E1E1E;
+    width: 250px;
+    height: 100px;
+    overflow: auto;
+    border: 1px solid #161616;
+    position: fixed;
+    z-index: 5;
+    left: 0px;
+    top: 60px;
+    text-align: left;
+}
+.dropdown-content2 a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    z-index: 1;
+}
+
+.dropdown-content2 a:hover {background-color: #ddd;}
+
+.show {display: block;
+}
+
+menu {
+    list-style-type: none;
+    padding: 0;
+    position: absolute;
+    left: 250px;
+}
+menu ul {
+    margin-bottom: 15px;
+    margin-top: 10px;
+    margin-left: 25px;
+}
+menu li {
+    display: inline-block;
+    margin-right: 15px;
+    vertical-align: top;
+}
+menu li p {
+    margin: 0;
+}
+menu li button {
+    text-decoration: none;
+    color: #e0d7d7;
+    padding: 5px 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    display: block;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    left: 650px;
+    top: 20px;
+}
+menu li button:hover {
+    background-color: #333;
+    color: #fff;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(214, 238, 238, 0);
+}
+
