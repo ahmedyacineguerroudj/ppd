@@ -77,13 +77,12 @@ body {
 .menu-item {
     font-weight: bold;
     margin-right: 50px;
-    margin-top: 15px;
+    margin-top: 20px;
     font-size: 22px;
     text-decoration: none;
     color: #ffffff;
     transition: transform 0.2s ease;
 }
-
 /* Style pour le survol des éléments du menu */
 .menu-item:hover {
     transform: scale(1.2);
@@ -437,7 +436,7 @@ body {
     box-shadow: 5px 5px 5px #888888; /* Ombre */
     transform: perspective(10000px) ; /* Effet 3D */
     margin-left: 350px;
-    margin-top: -38px;
+    margin-top: -90px;
 }
 .rectangle h2{
     font-weight: bold;
@@ -493,8 +492,8 @@ body {
     color: black; /* Couleur du texte du bouton */
     font-family: 'Changa One', sans-serif;
     border-radius: 10px; /* Rayon des coins du bouton */
-    height: 30px;
-    width: 70px; /* Ajustez la largeur */
+    height: 25px;
+    width: 60px; /* Ajustez la largeur */
     left: 90%;
     padding: 2px 17px; /* Ajoutez du rembourrage pour le bouton */
     background-color: #fff; /* Couleur de fond du bouton */
@@ -502,10 +501,10 @@ body {
     font-size-adjust: revert;
     margin-top: -30px;
     cursor: pointer;
-    font-size: 26px;
+    font-size: 20px;
     font-weight: bold;
-    text-align: center; /* Pour centrer le texte */
-    line-height: 30px; /* Pour centrer verticalement le texte */
+    text-align: left; /* Pour centrer le texte */
+    line-height: 20px; /* Pour centrer verticalement le texte */
 
 }
 
@@ -924,8 +923,8 @@ body {
 }
 
 .popup.active {
-    opacity: 1;
-    visibility: visible; ]
+    opacity: 1; /* Rend le popup visible */
+    visibility: visible; /* Rend le popup visible */
 }
 
 .open-popup{
@@ -1271,8 +1270,8 @@ body {
 .popup4, .popup5, .popup6 {
     /* Styles pour les popups */
     position: absolute;
-    top: 50%;
-    left: 80%;
+    top: 70%;
+    left: 65%;
     height: 135px;
     transform: translate(-50%, -50%);
     background-color: rgba(50, 50, 50, 0.8);
@@ -1721,3 +1720,156 @@ body {
     padding: 1px 15px; /* Réduire le padding en hauteur */
     border-radius: 5px;
     display: none;}
+
+
+/* CSS pour les popups */
+.edit-email-popup,
+.confirmation-popup,
+.new-email-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(50, 50, 50, 0.8);
+    padding: 20px;
+    z-index: 9999;
+    width: 250px;
+    height: 140px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    text-align: center;
+
+}
+
+.popup-message {
+    position: fixed;
+    bottom: 10px;
+    left: 30%;
+    top: calc(100% - 40px); /* ajustez ce pourcentage selon votre préférence */
+    font-size: 10px;
+    font-weight: bold;
+    transform: translateX(-70%);
+    color: red;
+    background-color: white;
+    padding: 1px 15px; /* Réduire le padding en hauteur */
+    border-radius: 5px;
+    display: none;
+}
+
+.buttons {
+    margin-top: 10px;
+}
+
+/* CSS pour les boutons */
+.edit-button1,
+.buttons button {
+    width: 20%;
+    font-family: 'Changa One', sans-serif;
+    margin-top: 5px;
+    padding: 10px 0;
+    background: #4267B2;
+    color: #000000;
+    font-weight: bold;
+    border: 0;
+    outline: none;
+    font-size: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.confirmation-popup img{
+    width: 100px;
+    margin-top: -350px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+.new-email-popup img{
+    width: 100px;
+    margin-top: -350px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+.edit-email-popup img{
+    width: 100px;
+    margin-top: -350px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Styles pour les champs de saisie */
+.edit-email-popup input[type="email"],
+.confirmation-popup input[type="text"],
+.new-email-popup input[type="email"],
+.new-email-popup input[type="password"] {
+    width: calc(100% - 22px); /* ajustement de la largeur pour compenser le padding */
+    padding: 11px;
+    margin-top: 20px;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    margin-left: -12px;
+    box-sizing: border-box; /* inclure le padding dans la largeur */
+}
+
+/* Style supplémentaire pour les champs de mot de passe dans le modèle de nouveau email */
+.new-email-popup input[type="password"] {
+    margin-top: 10px; /* réduire légèrement l'espacement par rapport aux autres champs */
+}
+
+
+.confirmation-popup h1 {
+    filter: blur(1px); /* Appliquer un flou */
+    font-size: 15px;
+    position: absolute;
+    margin-left: 100px;
+    color: #00efff; /* Couleur du texte */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre portée */
+}
+#navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+#navbar a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 14px;
+    font-weight: bold;
+    position: relative;
+}
+#navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: transparent;
+    transition: width 0.3s ease;
+}
+#navbar a.active::after,
+#navbar a:hover::after {
+    width: 100%;
+    background-color: #09f8f8;
+}
+.user-photo {
+    position: relative;
+    margin-left: 50px;
+    margin-right: 1px;
+    user-select: none;
+
+}
+.user-photo img {
+    width: 55px;
+    height: auto;
+    border-radius: 50%;
+    user-select: none;
+}

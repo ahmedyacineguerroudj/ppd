@@ -1,7 +1,17 @@
 
+        document.getElementById("userimage").src=userinfo.image;
 
 
 
+
+
+    } catch (error) {
+        console.error('Error sending data to backend:', error);
+    }
+}
+
+
+getuserimage()
 let recentTransactions=[]
 
 var confirm = document.getElementById('confirm');
@@ -19,6 +29,46 @@ var amount = document.getElementById('amount');
 var amount2 = document.getElementById('amount2');
 var WithdrawSubmit = document.getElementById('WithdrawSubmit');
 var myBtn3 = document.getElementById('myBtn3');
+
+WithdrawSubmit.addEventListener('click', function(event) {
+    event.preventDefault();
+    var data = {
+        amount: amount2.value,
+        operation: WithdrawSubmit.value,
+    };
+
+    if(isUsed)
+    {
+        if(isFormFilled2()) {
+            sendtobackend(data);
+        }else
+        {
+            alert("Please enter the amount")
+        }
+    }else
+    {
+        alert("Please choose a payment card")
+    }
+});
+myBtn3.addEventListener('click', function(event) {
+    event.preventDefault();
+    var data = {
+        amount: amount.value,
+        operation: myBtn3.value,
+    };
+    if(isUsed)
+    {
+        if(isFormFilled1()) {
+            sendtobackend(data);
+        }else
+        {
+            alert("Please enter the amount")
+        }
+    }else
+    {
+        alert("Please choose a payment card")
+    }
+});
 
 function sendtobackend(data) {
 
@@ -47,24 +97,6 @@ function sendtobackend(data) {
             console.error('Error sending data to backend:', error);
         });
 }
-WithdrawSubmit.addEventListener('click', function(event) {
-    event.preventDefault();
-    var data = {
-        amount: amount2.value,
-        operation: WithdrawSubmit.value,
-    };
-    sendtobackend(data);
-});
-myBtn3.addEventListener('click', function(event) {
-    event.preventDefault();
-    var data = {
-        amount: amount.value,
-        operation: myBtn3.value,
-    };
-    sendtobackend(data);
-});
-
-
 confirm.addEventListener('click', function() {
     var data = {
         firstName: firstName.value,
@@ -101,8 +133,17 @@ function sendcardinfo(data) {
             return response.json();
         })
         .then(data => {
-
-
+            var containerDiv = document.getElementById("container");
+            containerDiv.style.display = "block"; // Ensure container is displayed
+            var currentCardCount = containerDiv.getElementsByClassName("card").length;
+            if (currentCardCount < 3) {
+                for (var i = 0; i < 3 - currentCardCount; i++) {
+                    createCard(currentCardCount + i);
+                }
+            }
+          alert(
+              data.message
+          )
         })
         .catch(error => {
             // Handle errors
@@ -126,6 +167,29 @@ async function recivetransction() {
         const data = await response.json();
         recentTransactions=JSON.stringify(data.transactions)
         recentTransactions = JSON.parse(recentTransactions)
+
+    } catch (error) {
+        console.error('Error sending data to backend:', error);
+    }
+}
+let visacardes=[]
+async function recivevisacard() {
+    try {
+        var csrftoken = getCookie('csrftoken');
+        const response = await fetch('http://localhost:8000/sendallvisacard/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify({ data: "outtransctuins" })
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        visacardes=JSON.stringify(data.visacads)
+        visacardes = JSON.parse(visacardes)
 
     } catch (error) {
         console.error('Error sending data to backend:', error);
@@ -245,9 +309,10 @@ function updateCardLayout() {
     }
 }
 
-function toggleAddCardButton(cards) {
+async function toggleAddCardButton() {
+    await recivevisacard()
     const addButton = document.getElementById('myBtn');
-    if (cardInfoArray.length >= 3) {
+    if (visacardes.length >= 3) {
         addButton.style.display = 'none';
     } else {
         addButton.style.display = 'block';
@@ -256,20 +321,19 @@ function toggleAddCardButton(cards) {
 
 // Define constant with card information
 // Function to update card layout
-const cardInfoArray = [
-    {
-        number: "**** **** **** 1320",
-        owner: "Jhon D."
-    },
-    {
-        number: "**** **** **** 5678",
-        owner: "Jane S."
-    }
-];
+function isFormFilled1() {
 
 
+    return (amount.value !== ''  );
+}
+function isFormFilled2() {
+
+
+    return (amount2.value !== ''  );
+}
 // Function to create card and append it to container
-function createCard(index) {
+async function createCard(index) {
+    await recivevisacard()
     var containerDiv = document.getElementById("container");
     var currentCardCount = containerDiv.getElementsByClassName("card").length;
 
@@ -277,7 +341,7 @@ function createCard(index) {
         return;
     }
 
-    var cardInfo = cardInfoArray[index]; // Get card information at specified index
+    var cardInfo = visacardes[index]; // Get card information at specified index
 
     var cardDiv = document.createElement("div");
     cardDiv.classList.add("card");
@@ -294,7 +358,8 @@ function createCard(index) {
 
     var numberSpan = document.createElement("span");
     numberSpan.classList.add("number");
-    numberSpan.textContent = cardInfo.number;
+    var lastFourDigits = cardInfo.number.substring(cardInfo.number.length - 4);
+    numberSpan.textContent = '**** **** **** ' + lastFourDigits;
 
     var ownerSpan = document.createElement("span");
     ownerSpan.classList.add("owner");
@@ -304,17 +369,24 @@ function createCard(index) {
     var addButton = document.createElement("button");
     addButton.classList.add("Btn");
     addButton.textContent = "Use";
+    isUsed = false
 
-    // Initialize the boolean variable
 
-    var addButton = document.createElement("button");
-    addButton.classList.add("Btn");
-    addButton.textContent = "Use";
 
 // Add click event listener to the "Use" button
     addButton.addEventListener("click", function() {
-        isUsed = true;
-        modal2.style.display = "none";
+
+        if (addButton.textContent == "Use")
+        {
+            isUsed = true;
+            addButton.textContent="Unuse"
+           modal2.style.display = "none";
+        }else
+        {
+            isUsed = false;
+            addButton.textContent="Use"
+        }
+
     });
 
 
@@ -358,12 +430,12 @@ function createCard(index) {
         containerDiv.removeChild(cardDiv); // Remove the card from the container
 
         // Remove the corresponding card information from the array
-        cardInfoArray.splice(index, 1);
+        visacardes.splice(index, 1);
 
-        // Update the layout after removing the card
+
         updateCardLayout();
 
-        // Toggle add card button visibility
+
         toggleAddCardButton();
     });
 
@@ -483,12 +555,14 @@ function toggleNotificationModal() {
 }
 
 function toggleUserModal() {
+    getuserimage()
     var modal = document.getElementById("userModal");
     closeAllModalsExcept("userModal");
     modal.style.display = "block";
 }
 
 function closeAllModalsExcept(modalId) {
+    getuserimage()
     var modals = document.querySelectorAll('.modal');
     modals.forEach(function(modal) {
         if (modal.id !== modalId) {
@@ -497,14 +571,19 @@ function closeAllModalsExcept(modalId) {
     });
 }
 
-
+function closeNotificationModal() {
+    var modal = document.getElementById("notificationModal");
+    modal.style.display = "none";
+}
 
 function closeUserModal() {
     var modal = document.getElementById("userModal");
     modal.style.display = "none";
 }
 
-
+// Gestionnaires d'événements pour le survol de souris
+document.getElementById("notificationModal").parentNode.addEventListener("mouseover", toggleNotificationModal);
+document.getElementById("notificationModal").parentNode.addEventListener("mouseout", closeNotificationModal);
 
 document.getElementById("userModal").parentNode.addEventListener("mouseover", toggleUserModal);
 document.getElementById("userModal").parentNode.addEventListener("mouseout", closeUserModal);
@@ -512,22 +591,131 @@ document.getElementById("userModal").parentNode.addEventListener("mouseout", clo
 
 
 
+// Fonction pour remplir le tableau de notifications
+function fillNotificationTable(notifications) {
+    const tableBody = document.querySelector('#notificationTable tbody');
+    tableBody.innerHTML = '';
+    // Parcourir les notifications et ajouter chaque entrée au tableau
+    notifications.forEach(function(notification) {
+        var row = '<tr>';
+        row += '<td>' + notification.date + '</td>';
+        row += '<td>' + notification.message + '</td>';
+        row += '</tr>';
+        tableBody.innerHTML += row;
+    });
+}
+
+
+const notificationsData = [
+    {date: '2024-04-07', message: 'Notification 1 '},
+    {date: '2024-04-06', message: 'Notification 2'},
+    {date: '2024-04-05', message: 'Notification 3'},
+    {date: '2024-04-07', message: 'Notification 1 '},
+    {date: '2024-04-06', message: 'Notification 2'},
+    {date: '2024-04-05', message: 'Notification 3'},
+    {date: '2024-04-07', message: 'Notification 1 '},
+    {date: '2024-04-06', message: 'Notification 2'},
+    {date: '2024-04-05', message: 'Notification 3'},
+    {date: '2024-04-07', message: 'Notification 1 '},
+    {date: '2024-04-06', message: 'Notification 2'},
+    {date: '2024-04-05', message: 'Notification 3'},
+];
+
+
+fillNotificationTable(notificationsData);
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Données d'actifs (juste un  exemple)
+    const assets = [
+        { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'Images Crypto/BTC.png' },
+        { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'Images Crypto/BTC.png' },
+        { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'Images Crypto/BTC.png' },
+        { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'Images Crypto/BTC.png' },
+        { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'Images Crypto/BTC.png' },
+        { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'Images Crypto/BTC.png' },
+        { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'Images Crypto/BTC.png' },
+        { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'Images Crypto/BTC.png' },
+    ];
+
+
+    const assetTable = document.getElementById('asset-items');
+
+
+    const showMoreButton = document.getElementById('show-more');
+    const previousButton = document.getElementById('previous');
+
+
+    const itemsPerPage = 5;
+    let currentPage = 1;
+
+
+    function displayAssets(page) {
+
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+
+        assetTable.innerHTML = '';
+
+        assets.slice(startIndex, endIndex).forEach(asset => {
+            const row = document.createElement('tr');
+            const coinCell = document.createElement('td');
+            const coinSpan = document.createElement('span');
+            const coinImage = document.createElement('img');
+            coinImage.src = asset.image || 'default_icon.png';
+            coinImage.alt = asset.coin;
+            coinImage.width = 20;
+            const coinText = document.createTextNode(asset.coin);
+            coinSpan.style.display = 'inline-block';
+            coinSpan.appendChild(coinImage);
+            coinSpan.appendChild(document.createTextNode(' '));
+            coinSpan.appendChild(coinText);
+            coinCell.appendChild(coinSpan);
+            row.appendChild(coinCell);
+            const amountCell = document.createElement('td');
+            amountCell.textContent = asset.amount;
+            row.appendChild(amountCell);
+            const priceCell = document.createElement('td');
+            priceCell.textContent = asset.price;
+            row.appendChild(priceCell);
+            assetTable.appendChild(row);
+        });
+
+        showMoreButton.style.display = endIndex < assets.length ? 'block' : 'none';
+
+        previousButton.style.display = page > 1 ? 'block' : 'none';
+    }
+
+    showMoreButton.addEventListener('click', function() {
+        currentPage++;
+        displayAssets(currentPage);
+    });
+
+    previousButton.addEventListener('click', function() {
+        currentPage--;
+        displayAssets(currentPage);
+    });
+
+    displayAssets(currentPage);
+});
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+const recentTransactionsExample = [
+    { date: '2024-04-01', type: 'Deposit', amount: 100, currency: 'USD' },
+    { date: '2024-03-30', type: 'Withdrawal', amount: 50, currency: 'EUR' },
+    { date: '2024-03-28', type: 'Transfer', amount: 200, currency: 'BTC' },
+    { date: '2024-04-01', type: 'Deposit', amount: 100, currency: 'USD' },
+    { date: '2024-03-30', type: 'Withdrawal', amount: 50, currency: 'EUR' },
+    { date: '2024-03-28', type: 'Transfer', amount: 200, currency: 'BTC' },
+    { date: '2024-04-01', type: 'Deposit', amount: 100, currency: 'USD' },
+    { date: '2024-03-30', type: 'Withdrawal', amount: 50, currency: 'EUR' },
+    { date: '2024-03-28', type: 'Transfer', amount: 200, currency: 'BTC' },
+];
 
 function updatePaginationButtons() {
 

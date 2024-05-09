@@ -72,7 +72,9 @@
             </div>
 
             <div class="user-button">
-                <a href="#" onclick="toggleUserModal()"><img src="{% static '019a1405383a6e702bee43bea0f5f715841c705a.png' %}" alt="Utilisateur"></a>
+                <div class="user-photo">
+                    <img  id="userimage" >
+                </div>
                 <div id="userModal" class="modal" style="display: none;">
                     <div class="modal-content">
                         <span class="close" onclick="toggleUserModal()">&times;</span>
@@ -83,11 +85,7 @@
                             <a href="{% url 'settings' %}">settings</a>
                             <a href="{% url 'signout' %}">signout</a>
                         </div>
-                        <div>
-                            <button
-                                    class="logout-button">
-                            </button>
-                        </div>
+                      
                     </div>
                 </div>
             </div>
@@ -143,15 +141,13 @@
     <h5>Swap your TetherUS to other currencies easily in one go!</h5>
     <div class="logos">
         <div class="logos-slide">
-            <!-- Buttons will be dynamically added here -->
+           
         </div>
     </div>
 </div>
 
 
-
-
-
+    
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 <h2 class="FAQ">FAQ</h2>
 <div class="container12">

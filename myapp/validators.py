@@ -9,10 +9,6 @@ from django.core.validators import RegexValidator
 from datetime import datetime
 
 class LuhnValidator(RegexValidator):
-    """
-    Validator to check if a credit or debit card number is valid using the Luhn algorithm.
-    """
-
     def __init__(self, message=None):
         super().__init__(regex=r'^[0-9]{13,19}$', message=message or 'Invalid card number format.')
 
@@ -39,8 +35,6 @@ class CVCValidator(RegexValidator):
         super().__init__(regex=r'^[0-9]{3,4}$', message=message or 'Invalid CVC.')
 
 class ExpiryDateValidator:
-
-
     def __call__(self, value):
         if not value:
             raise ValidationError('Expiration date is required.')
@@ -57,9 +51,5 @@ class ExpiryDateValidator:
             raise ValidationError(str(e))
 
 class CardholderNameValidator(RegexValidator):
-    """
-    Validator to check if a cardholder's name is valid.
-    """
-
     def __init__(self, message=None):
         super().__init__(regex=r'^[a-zA-Z ]+$', message=message or 'Invalid cardholder name format.')

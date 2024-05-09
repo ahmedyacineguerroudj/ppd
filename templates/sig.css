@@ -1,0 +1,426 @@
+/* Ajout de la police Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+
+/* Réinitialisation des styles par défaut */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Style pour le corps de la page */
+html,body {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    place-items: center;
+    background-color: #161616;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+}
+
+/* Style pour la sélection de texte */
+::selection {
+    background: #ffffff;
+    color: #161616;
+}
+
+.background-image {
+    position: fixed;
+    left: 50%;
+    width: 60%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* Style pour le conteneur principal */
+.wrapper {
+    overflow: hidden;
+    width: 35vw;
+    height: 90vh;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 20px;
+    border-radius: 100px;
+    box-shadow: 100px 100px 100px 300px rgba(255, 255, 255, 0.13) inset;
+    position: fixed;
+    top: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* Style pour la taille de l'image walesCap logo */
+.title img {
+    width: 100px;
+    height: auto;
+
+}
+
+
+/* Style pour le titre */
+.title {
+    display: flex;
+    justify-content: flex-end;
+    margin-right : 160px;
+    font-size: 32px;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+
+/* Style pour "whales" */
+.title .whales {
+    color: #ffffff; /* Couleur pour "whales" */
+    user-select: none;
+    margin-top: 10px
+
+}
+
+
+/* Style pour "Cap" */
+.title .Cap {
+    color: #00FFFF; /* Couleur pour "Cap" */
+    user-select: none;
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+
+/* Style pour les contrôles de diapositives */
+.wrapper .slide-controls {
+    position: relative;
+    display: flex;
+    height: 30px;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 0 25px 0;
+}
+
+
+/* Style pour les diapositives */
+.slide-controls .slide {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+}
+
+
+/* Style pour le curseur de diapositive */
+.slide-controls .slider-tab {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    left: 0;
+    z-index: 0;
+    transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+
+
+/* Style pour les boutons radio */
+input[type="radio"] {
+    display: none;
+}
+
+
+/* Style lorsque le bouton d'inscription est coché */
+#signup:checked ~ .slider-tab {
+    left: 50%;
+}
+#signup:checked ~ label.signup {
+    cursor: default;
+    user-select: none;
+    color: #0FF;
+    border-left: 2px solid #00FFFF;
+    text-align: center;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-transform: uppercase;
+}
+#signup:checked ~ label.login {
+    user-select: none;
+    color: rgba(0, 255, 255, 0.33);
+    text-align: center;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+
+/* Style lorsque le bouton de connexion est coché */
+#login:checked ~ label.signup {
+    user-select: none;
+    color: rgba(0, 255, 255, 0.33);
+    text-align: center;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-transform: uppercase;
+}
+#login:checked ~ label.login {
+    color: #00FFFF;
+    border-right: 2px solid #00FFFF;
+    cursor: default;
+    user-select: none;
+    text-align: center;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+
+/* Style pour le conteneur de formulaire */
+.wrapper .form-container {
+    width: 99%;
+    overflow: hidden;
+    position: relative;
+}
+
+
+/* Style pour le conteneur interne du formulaire */
+.form-container .form-inner {
+    display: flex;
+    width: 200%;
+    position: relative;
+}
+
+
+/* Style pour chaque formulaire */
+.form-container .form-inner form {
+    width: 50%;
+    transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+
+
+/* Style pour chaque champ de formulaire */
+.form-inner form .field {
+    height: 45px;
+    width: 100%;
+    margin-top: 2px;
+}
+
+
+/* Style pour chaque champ de saisie */
+.form-inner form .field input {
+    height: 80%;
+    width: 100%;
+    outline: none;
+    padding-left: 15px;
+    border-radius: 50px ;
+    font-size: 17px;
+    transition: all 0.3s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border:none;
+    border-bottom:  4px solid #161616;
+    border-right: 4px solid #161616;
+    color: #ffffff;
+}
+
+
+/* Style lorsque le champ de saisie est en focus */
+.form-inner form .field input:focus {
+    background: rgba(255, 255, 255, 0);
+    color : #ffffff;
+    border-bottom: 4px solid #09f8f8;
+    border-right: 4px solid #09f8f8;
+}
+
+
+/* Style pour le texte de l'attribut placeholder */
+.form-inner form .field input::placeholder {
+    color: #999;
+    transition: all 0.3s ease;
+}
+
+
+/* Style lorsque le champ de saisie est en focus */
+form .field input:focus::placeholder {
+    color: rgba(37, 189, 189, 0.02);
+}
+
+
+/* Style pour le lien d'inscription */
+.form-inner form .signup-link {
+    text-align: center;
+    margin-top: 20px;
+}
+.form-inner form .pass-link a,
+.form-inner form .signup-link a {
+    color: #00FFFF;
+    text-decoration: none;
+    font-weight: 900;
+}
+.form-inner form .pass-link a:hover,
+.form-inner form .signup-link a:hover {
+    text-decoration: underline;
+}
+
+
+/* Style pour le bouton */
+form .btn {
+    height: 50px;
+    width: 100%;
+    border-radius: 15px;
+    position: relative;
+    margin:0;
+}
+.form-container .form-inner form .field.btn {
+    display: flex;
+    justify-content: center;
+}
+form .btn input[type="button"] {
+    height: 100%;
+    width: 50%;
+    z-index: 1;
+    position: relative;
+    background: linear-gradient(135deg, #00FFFF, #161616);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+
+/* Animation au survol */
+form .btn input[type="submit"]:hover {
+    font-weight: bold;
+    font-size: 20px;
+    background: linear-gradient(135deg, #999999, #161616);
+    border:none;
+
+}
+
+
+/* Style pour le conteneur de la case à cocher */
+.form-inner form .field.checkbox,
+.form-inner form .field.terms-label {
+    text-align: center;
+}
+.form-inner form .field.checkbox input[type="checkbox"],
+.form-inner form .field.terms-label input[type="checkbox"] {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    border: 2px solid #00FFFF;
+    background-color: transparent;
+}
+.form-inner form .field.checkbox label,
+.form-inner form .field.terms-label label {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 13px;
+}
+.form-inner form .field.checkbox input[type="checkbox"]:checked,
+.form-inner form .field.terms-label input[type="checkbox"]:checked {
+    background-color: #00FFFF;
+    background-image: url('Images/verification.png');
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Style pour le lien "Terms of Service" */
+.form-inner form .terms-link,
+.form-inner form .privacy-link {
+    color: #00FFFF;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.form-inner form .terms-link:hover,
+.form-inner form .privacy-link:hover {
+    color: #ffffff;
+}
+
+
+
+
+/* Chrome, Safari*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px rgba(101, 239, 222, 0.78) inset !important;
+}
+
+
+
+/* Style pour le texte du remplissage automatique */
+input:-webkit-autofill {
+    -webkit-text-fill-color: #161616 !important;
+}
+
+.button22{
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+
+}
+
+.button22:hover {
+    background-color: #00ffe2;
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+.button22:active {
+    transform: translateY(-1px);
+}
+
+.button23 {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin-left: 200px;
+}
+
+.button23:hover {
+    background-color: #00ffe2;
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+.button23:active {
+    transform: translateY(-1px);
+}

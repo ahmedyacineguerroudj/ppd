@@ -1910,3 +1910,16 @@ td {
 .dropdown-content2 a:hover {background-color: #ddd;}
 
 .show {display: block;}
+.user-photo {
+    position: relative;
+    margin-left: 50px;
+    margin-right: 1px;
+    user-select: none;
+
+}
+.user-photo img {
+    width: 55px;
+    height: auto;
+    border-radius: 50%;
+    user-select: none;
+}

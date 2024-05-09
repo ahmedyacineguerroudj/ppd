@@ -1,5 +1,7 @@
 recivetransction()
 
+getuserimage()
+
 async function recivetransction() {
 
     try {
@@ -15,7 +17,8 @@ async function recivetransction() {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
-       let a=JSON.stringify(data.islogin)
+        let a=JSON.stringify(data.islogin)
+
         if (a==1)
         {
             document.getElementById('after').style.display='block';
@@ -26,6 +29,33 @@ async function recivetransction() {
             document.getElementById('after').style.display='none';
             document.getElementById('before').style.display='block';
         }
+
+
+
+    } catch (error) {
+        console.error('Error sending data to backend:', error);
+    }
+}
+async function getuserimage() {
+
+    try {
+        var csrftoken = getCookie('csrftoken');
+        const response = await fetch('http://localhost:8000/senduserinfo/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        userinfo=data.user
+
+        document.getElementById("userimage").src=userinfo.image;
+
+
 
 
 
@@ -93,16 +123,13 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-function toggleNotificationModal() {
-    var modal = document.getElementById("notificationModal");
-    closeAllModalsExcept("notificationModal");
-    modal.style.display = "block";
-}
+
 
 function toggleUserModal() {
     var modal = document.getElementById("userModal");
     closeAllModalsExcept("userModal");
     modal.style.display = "block";
+    getuserimage()
 }
 
 function closeAllModalsExcept(modalId) {
@@ -112,12 +139,9 @@ function closeAllModalsExcept(modalId) {
             modal.style.display = 'none';
         }
     });
+    getuserimage()
 }
 
-function closeNotificationModal() {
-    var modal = document.getElementById("notificationModal");
-    modal.style.display = "none";
-}
 
 function closeUserModal() {
     var modal = document.getElementById("userModal");
@@ -126,20 +150,9 @@ function closeUserModal() {
 
 
 document.getElementById("userModal").parentNode.addEventListener("mouseover", toggleUserModal);
+
 document.getElementById("userModal").parentNode.addEventListener("mouseout", closeUserModal);
 
 
 
 
-async function updateUserDetails() {
-    await reciveuserinfo()
-    alert(userinfo)
-    document.getElementById('user-id').textContent = userinfo.id;
-    document.getElementById('user-first-name').textContent = userinfo.firstName;
-    document.getElementById('user-last-name').textContent = userinfo.lastName;
-    document.getElementById('user-email').textContent = userinfo.email;
-    document.getElementById('user-dob').textContent = userinfo.dob;
-}
-
-
-updateUserDetails();

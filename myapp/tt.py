@@ -44,6 +44,7 @@ def fetch_coin_data():
                 market.changenow = ((coin_info['quote']['USD']['price'] - market.Price_USD) / market.Price_USD) * 100
                 market.Price_USD = coin_info['quote']['USD']['price']
                 market.Market_Cap = coin_info['quote']['USD']['market_cap']
+                market.Circulating_Supply = coin_info['circulating_supply']
                 market.Volume_24hr = coin_info['quote']['USD']['volume_24h']
                 market.Change_24hr = coin_info['quote']['USD']['volume_change_24h']
                 market.changes_in_1h = coin_info['quote']['USD'].get('percent_change_1h')
@@ -101,30 +102,29 @@ def fetch_coin_data2():
 
 def fetch_currency_price():
     headers = {
-        'X-CMC_PRO_API_KEY': '25484775cd9d4f83b84d89ca607e23ed',
+
         'Accept': 'application/json',
     }
 
     # Define the list of currency codes to fetch
-    currency_codes = ['EUR', 'GBP', 'PKR', 'DZD', 'INR', 'CAD', 'AUD', 'SGD', 'CHF', 'NZD', 'JPY', 'CNY', 'RUB']
-
-    # Fetch latest exchange rates for the specified currencies
-    url = f'https://api.currencyfreaks.com/v2.0/rates/latest?apikey=25484775cd9d4f83b84d89ca607e23ed&symbols={",".join(currency_codes)}'
+    currency_codes = ['EUR', 'PKR',  'AUD',  'NZD', 'RUB']
+    url = f'https://api.currencyfreaks.com/v2.0/rates/latest?apikey=f0c412cab45d4edaafa41735699dcae6&symbols={",".join(currency_codes)}'
     response = requests.get(url, headers=headers)
     json_data = response.json()
 
     rates = json_data['rates']
 
     for code, rate in rates.items():
+
         currency = Currency.objects.filter(name=code).get()
         currency.price_usd = rate
         currency.save()
 
 
 def background_task():
-    schedule.every(61).seconds.do(fetch_coin_data)
+    schedule.every(5).seconds.do(fetch_coin_data)
     schedule.every(20).seconds.do(fetch_coin_data2)
-    #schedule.every(20).seconds.do(fetch_currency_price)
+    schedule.every(20).seconds.do(fetch_currency_price)
 
 
     while True:

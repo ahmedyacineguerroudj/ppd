@@ -1,18 +1,34 @@
 
 
-
-
-
-
-
-
-
-
-
-
 let allcrypto=[]
+getuserimage()
+async function getuserimage() {
+
+    try {
+        var csrftoken = getCookie('csrftoken');
+        const response = await fetch('http://localhost:8000/senduserinfo/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        userinfo=data.user
+
+        document.getElementById("userimage").src=userinfo.image;
 
 
+
+
+
+    } catch (error) {
+        console.error('Error sending data to backend:', error);
+    }
+}
 async function reciveallcrypto() {
     try {
         var csrftoken = getCookie('csrftoken');
@@ -35,6 +51,59 @@ async function reciveallcrypto() {
     } catch (error) {
         console.error('Error sending data to backend:', error);
     }
+}
+function reciveinfo(data) {
+    console.log('Sending data to backend:', data);
+    var csrftoken = getCookie('csrftoken');
+    fetch('http://localhost:8000/sendtrideinfo/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken
+        },
+        body: JSON.stringify({ data: data})
+    })
+
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+
+            const secondUl = document.createElement('ul');
+            data.coininfo.forEach(item => {
+
+                const li = document.createElement('li');
+                const p = document.createElement('p');
+                p.textContent = formatLargeNumber(item)
+                li.appendChild(p);
+                secondUl.appendChild(li);
+            });
+            menuContainer.appendChild(secondUl);
+        })
+        .catch(error => {
+            // Handle errors
+            console.error('Error sending data to backend:', error);
+        });
+}
+
+function formatLargeNumber(number) {
+    const abbreviations = {
+        T: 1000000000000,
+        B: 1000000000,
+        M: 1000000,
+        K: 1000
+    };
+
+    for (const abbreviation in abbreviations) {
+        if (number >= abbreviations[abbreviation]) {
+            return (number / abbreviations[abbreviation]).toFixed(2) + abbreviation;
+        }
+    }
+
+    return formatPrice(number)
 }
 
 let allcurreny=[]
@@ -104,6 +173,7 @@ let select1
 let select2
 let select3
 let select4
+let select5
 var Field2 = document.getElementById('fild2');
 var Sell2 = document.getElementById('Sell2');
 var Buy2 = document.getElementById('Buy2');
@@ -341,37 +411,6 @@ function sendDataTofild4(data) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 recivetransction()
 
 async function recivetransction() {
@@ -420,23 +459,24 @@ function removeChart() {
 h1.addEventListener("click", function() {
     removeChart()
     var data = {
-        operation:'1m',
+        operation:'1h',
         time:'1000',
+        coin:select5,
     };
-    var data2 = {
-        operation:'1m',
+    var data3 = {
+        operation:'1h',
         time:'1',
+        coin:select5,
     };
     reivedata(data);
-    setInterval(function() {
-        addNewCandles(data2);
-    }, 60 * 1000);
+
 });
 h24.addEventListener("click", function() {
     removeChart()
     var data = {
         operation:'1D',
         time:'365',
+        coin:select5,
     };
     reivedata(data);
 });
@@ -445,6 +485,7 @@ W1.addEventListener("click", function() {
     var data = {
         operation:'1W',
         time:'52',
+        coin:select5,
     };
     reivedata(data);
 });
@@ -453,6 +494,7 @@ M1.addEventListener("click", function() {
     var data = {
         operation:'1M',
         time:'12',
+        coin:select5,
     };
     reivedata(data);
 });
@@ -523,96 +565,95 @@ function reivedata(data) {
             }
             return response.json();
         })
+
         .then(data => {
+                data=data.data
+                var dataTable = anychart.data.table();
+                dataTable.addData(data);
 
-
-            data=data.data
-            var dataTable = anychart.data.table();
-            dataTable.addData(data);
-            // map the loaded data for the candlestick series
-            var mapping = dataTable.mapAs({
-                'open': 1,
-                'high': 3,
-                'low': 4,
-                'close': 2,
-                'x': 0
-
-            });
-            var chart = anychart.stock();
-            anychart.theme('darkGlamour');
-
-            var plot = chart.plot(0);
-
-            plot
-                .yGrid(true)
-                .xGrid(true)
-                .yMinorGrid(true)
-                .xMinorGrid(true);
-
-            var series = plot.candlestick(mapping);
-            series.name('TSMC');
-            series.legendItem().iconType('rising-falling');
-            // create a range picker
-            var rangePicker = anychart.ui.rangePicker();
-            rangePicker.render(chart);
-            // create a range selector
-            var rangeSelector = anychart.ui.rangeSelector();
-            rangeSelector.render(chart);
-            // modify the color of the candlesticks
-            series.fallingFill("#FF0D0D");
-            series.fallingStroke("#FF0D0D");
-            series.risingFill("#43FF43");
-            series.risingStroke("#43FF43");
-
-            // set the event markers
-            var eventMarkers = plot.eventMarkers();
-            // set the symbol of the event markers
-            plot.eventMarkers().format(function() {
-                return this.getData("symbol");
-            });
-            // set the event markers data
-
-            // create an annotation
-            var annotation = plot.annotations();
-            // create a rectangle
-
-            // create a text label
-            annotation
-                .label()
-                .xAnchor('2020-03-11')
-                .valueAnchor(75)
-                .anchor('left-top')
-                .offsetY(5)
-                .padding(6)
-                .text('Global Lockdowns — Rise in demand for semiconductor chips')
-                .fontColor('rgba(0,255,226,0.73)')
-                .background({
-                    fill: '#098209 0.75',
-                    stroke: '0.5 #098209',
-                    corners: 2
+                var mapping = dataTable.mapAs({
+                    'open': 1,
+                    'high': 3,
+                    'low': 4,
+                    'close': 2,
+                    'x': 0
                 });
 
-            // add a second plot to show macd values
-            var indicatorPlot = chart.plot(1);
-            // map the macd values
-            var macdIndicator = indicatorPlot.macd(mapping);
-            // set the histogram series
-            macdIndicator.histogramSeries('area');
-            macdIndicator
-                .histogramSeries().normal().fill('green .3').stroke('green');
-            macdIndicator
-                .histogramSeries().normal().negativeFill('red .3').negativeStroke('red');
-            // set the second plot's height
-            indicatorPlot.height('30%');
-            // set the chart display for the selected date/time range
+                var chart = anychart.stock();
+                anychart.theme('darkGlamour');
 
-            // Set the title of the chart
-            chart.title('TSMC Stock Chart');
-            chart.background().fill('#161616');
-            // Set the container id for the chart
-            chart.container('container');
-            // Initiate the chart drawing
-            chart.draw();
+                var plot = chart.plot(0);
+
+                plot
+                    .yGrid(true)
+                    .xGrid(true)
+                    .yMinorGrid(true)
+                    .xMinorGrid(true);
+
+                var series = plot.candlestick(mapping);
+                series.name('');
+                series.legendItem().iconType('rising-falling');
+                // create a range picker
+                var rangePicker = anychart.ui.rangePicker();
+                rangePicker.render(chart);
+                // create a range selector
+                var rangeSelector = anychart.ui.rangeSelector();
+                rangeSelector.render(chart);
+                // modify the color of the candlesticks
+                series.fallingFill("#FF0D0D");
+                series.fallingStroke("#FF0D0D");
+                series.risingFill("#43FF43");
+                series.risingStroke("#43FF43");
+
+                // set the event markers
+                var eventMarkers = plot.eventMarkers();
+                // set the symbol of the event markers
+                plot.eventMarkers().format(function() {
+                    return this.getData("symbol");
+                });
+                // set the event markers data
+
+                // create an annotation
+                var annotation = plot.annotations();
+                // create a rectangle
+
+                // create a text label
+                annotation
+                    .label()
+                    .xAnchor('2020-03-11')
+                    .valueAnchor(75)
+                    .anchor('left-top')
+                    .offsetY(5)
+                    .padding(6)
+                    .text('Global Lockdowns — Rise in demand for semiconductor chips')
+                    .fontColor('rgba(0,255,226,0.73)')
+                    .background({
+                        fill: '#098209 0.75',
+                        stroke: '0.5 #098209',
+                        corners: 2
+                    });
+
+
+                var indicatorPlot = chart.plot(1);
+                // map the macd values
+                var macdIndicator = indicatorPlot.macd(mapping);
+                // set the histogram series
+                macdIndicator.histogramSeries('area');
+                macdIndicator
+                    .histogramSeries().normal().fill('green .3').stroke('green');
+                macdIndicator
+                    .histogramSeries().normal().negativeFill('red .3').negativeStroke('red');
+                // set the second plot's height
+                indicatorPlot.height('30%');
+                // set the chart display for the selected date/time range
+
+                // Set the title of the chart
+                chart.title('CryptoCurrency Chart');
+                chart.background().fill('#161616');
+                // Set the container id for the chart
+                chart.container('container');
+                // Initiate the chart drawing
+                chart.draw();
             }
         )
 
@@ -1189,7 +1230,7 @@ document.addEventListener("click", function(event) {
     }
 });
 
- function filterOptions5() {
+function filterOptions5() {
 
     const input = document.getElementById("dropdownSearch").value.toUpperCase();
     const dropdownContent = document.getElementById("myDropdown5");
@@ -1234,15 +1275,29 @@ async function selectItem5(itemName) {
     const selectedContent = `<div style="display: flex; align-items: center;">
                                 <img src="${selectedPhoto}" alt="${selectedName}" id="selectedPhoto" style="width: 50px; height: 50px;">
                                 <p>${selectedName}</p>
-                                <p>/USDT</p>
+                  
                              </div>`;
 
     // Add the selected content to the desired location
     document.getElementById("selectedItem5").innerHTML = selectedContent;
 
 
+
     // Close the dropdown
     document.getElementById("myDropdown5").classList.remove("show");
+    select5 = document.getElementById('selectedItem5').textContent.trim();
+
+    var data = {
+        operation:'1h',
+        time:'1000',
+        coin:select5,
+    };
+
+    removeChart()
+    reivedata(data);
+
+    reciveinfo(select5)
+
 
 
 }
@@ -1254,8 +1309,8 @@ document.addEventListener('DOMContentLoaded', function () {
     generateDropdownContent3();
 });
 
- async function generateDropdownContent3() {
-     await reciveallcrypto()
+async function generateDropdownContent3() {
+    await reciveallcrypto()
     const dropdownContent = document.getElementById('myDropdown5');
 
     // Clear existing content
@@ -1298,11 +1353,10 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 
 const firstUlData = ["24H Change", "24H High", "24H Low", "24H Volume"];
-const secondUlData = ["+128.05", "65,513.99", "63,340.00", "63,340.00"];
+
 
 const menuContainer = document.getElementById('menuContainer');
 
-// Create and populate the first <ul>
 const firstUl = document.createElement('ul');
 firstUlData.forEach(item => {
     const li = document.createElement('li');
@@ -1314,21 +1368,13 @@ firstUlData.forEach(item => {
 menuContainer.appendChild(firstUl);
 
 // Create and populate the second <ul>
-const secondUl = document.createElement('ul');
-secondUlData.forEach(item => {
-    const li = document.createElement('li');
-    const p = document.createElement('p');
-    p.textContent = item;
-    li.appendChild(p);
-    secondUl.appendChild(li);
-});
-menuContainer.appendChild(secondUl);
+
 
 
 
 
 async function table1() {
-   await recivetrade()
+    await recivetrade()
 
     const table = document.getElementById('myTable');
 
@@ -1395,3 +1441,33 @@ async function updateTables() {
     });
 }
 setInterval(updateTables, 4*1000);
+
+function toggleUserModal() {
+    var modal = document.getElementById("userModal");
+    closeAllModalsExcept("userModal");
+    modal.style.display = "block";
+    getuserimage()
+}
+
+function closeAllModalsExcept(modalId) {
+    var modals = document.querySelectorAll('.modal');
+    modals.forEach(function(modal) {
+        if (modal.id !== modalId) {
+            modal.style.display = 'none';
+        }
+    });
+    getuserimage()
+}
+
+
+function closeUserModal() {
+    var modal = document.getElementById("userModal");
+    modal.style.display = "none";
+}
+
+
+
+
+document.getElementById("userModal").parentNode.addEventListener("mouseover", toggleUserModal);
+document.getElementById("userModal").parentNode.addEventListener("mouseout", closeUserModal);
+

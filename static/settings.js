@@ -1,3 +1,33 @@
+
+getuserimage()
+
+async function getuserimage() {
+
+    try {
+        var csrftoken = getCookie('csrftoken');
+        const response = await fetch('http://localhost:8000/senduserinfo/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        userinfo=data.user
+
+        document.getElementById("userimage").src=userinfo.image;
+
+
+
+
+
+    } catch (error) {
+        console.error('Error sending data to backend:', error);
+    }
+}
 var firstname = document.getElementById('first-name');
 var emaile = document.getElementById('emaile');
 var lastname = document.getElementById('last-name');
@@ -5,7 +35,7 @@ var changefirstname = document.getElementById('changefirstname');
 var changeemail = document.getElementById('changeemail');
 var changelastname = document.getElementById('changelastname');
 var DisableAccount = document.getElementById('DisableAccount');
-
+document.getElementById("confirmation-popup").style.display = 'none';
 let visacards=[]
 async function recivevisacars() {
 
@@ -25,7 +55,7 @@ async function recivevisacars() {
         const data = await response.json();
         visacards=JSON.stringify(data.visacads)
         visacards = JSON.parse(visacards)
-        alert(visacards)
+
 
 
     } catch (error) {
@@ -118,9 +148,8 @@ function checkpassword(data) {
             'Content-Type': 'application/json',
             'X-CSRFToken': csrftoken
         },
-        body: JSON.stringify({ data: data})
+        body: JSON.stringify(data)
     })
-
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -129,6 +158,7 @@ function checkpassword(data) {
         })
         .then(data => {
            var p=data.message
+
             if (p) {
 
                 var nextButton = document.getElementById('next-button');
@@ -215,13 +245,11 @@ window.addEventListener('load', function() {
 });
 
 
-function toggleNotificationModal() {
-    var modal = document.getElementById("notificationModal");
-    closeAllModalsExcept("notificationModal");
-    modal.style.display = "block";
-}
+
+
 
 function toggleUserModal() {
+    getuserimage()
     var modal = document.getElementById("userModal");
     closeAllModalsExcept("userModal");
     modal.style.display = "block";
@@ -234,12 +262,10 @@ function closeAllModalsExcept(modalId) {
             modal.style.display = 'none';
         }
     });
+    getuserimage()
 }
 
-function closeNotificationModal() {
-    var modal = document.getElementById("notificationModal");
-    modal.style.display = "none";
-}
+
 
 function closeUserModal() {
     var modal = document.getElementById("userModal");
@@ -247,45 +273,14 @@ function closeUserModal() {
 }
 
 // Gestionnaires d'événements pour le survol de souris
-document.getElementById("notificationModal").parentNode.addEventListener("mouseover", toggleNotificationModal);
-document.getElementById("notificationModal").parentNode.addEventListener("mouseout", closeNotificationModal);
+
 
 document.getElementById("userModal").parentNode.addEventListener("mouseover", toggleUserModal);
 document.getElementById("userModal").parentNode.addEventListener("mouseout", closeUserModal);
 
 
 // Fonction pour remplir le tableau de notifications
-function fillNotificationTable(notifications) {
-    const tableBody = document.querySelector('#notificationTable tbody');
-    tableBody.innerHTML = '';
-    // Parcourir les notifications et ajouter chaque entrée au tableau
-    notifications.forEach(function (notification) {
-        var row = '<tr>';
-        row += '<td>' + notification.date + '</td>';
-        row += '<td>' + notification.message + '</td>';
-        row += '</tr>';
-        tableBody.innerHTML += row;
-    });
-}
 
-// Exemple
-const notificationsData = [
-    {date: '2024-04-07', message: 'Notification 1 '},
-    {date: '2024-04-06', message: 'Notification 2'},
-    {date: '2024-04-05', message: 'Notification 3'},
-    {date: '2024-04-07', message: 'Notification 1 '},
-    {date: '2024-04-06', message: 'Notification 2'},
-    {date: '2024-04-05', message: 'Notification 3'},
-    {date: '2024-04-07', message: 'Notification 1 '},
-    {date: '2024-04-06', message: 'Notification 2'},
-    {date: '2024-04-05', message: 'Notification 3'},
-    {date: '2024-04-07', message: 'Notification 1 '},
-    {date: '2024-04-06', message: 'Notification 2'},
-    {date: '2024-04-05', message: 'Notification 3'},
-];
-
-// Remplir le tableau avec les données de notification
-fillNotificationTable(notificationsData);
 
 
 function toggleNotifications2() {
@@ -495,27 +490,63 @@ function verifyConfirmationCode() {
     var oldPasswordInput = document.getElementById('old-password');
 
     var oldPassword = oldPasswordInput.value.trim();
+
     var data = {
         edit:'oldpassword',
-        oldpassword: oldPasswordInput.value,
+        oldpassword: oldPassword,
     };
 
      checkpassword(data);
+}
+function sendcodebackend(data) {
+    console.log('Sending data to backend:', data);
+    var csrftoken = getCookie('csrftoken');
+    fetch('http://localhost:8000/settings/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken
+        },
+        body: JSON.stringify( data)
+    })
+
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+             alert(data.message)
+        })
+        .catch(error => {
+            // Handle errors
+            console.error('Error sending data to backend:', error);
+        });
+}
+
+function sendcode() {
+    var code = document.getElementById('confirmation-codeC');
+    var data = {
+        edit:'codeemail',
+        code: code.value,
+    };
+
+    sendcodebackend(data);
 
 
 
 }
-
-
 function saveNewPassword() {
-    alert(2)
+
+
     var newPasswordInput = document.getElementById('new-password').value;
     var confirmpasswordInput = document.getElementById('confirm-password').value;
     var popupMessage = document.getElementById('popup-message');
 
     if (confirmpasswordInput==newPasswordInput)
     {
-        alert(1)
+
 
         var data = {
             edit:'changepassword',
@@ -531,7 +562,7 @@ function saveNewPassword() {
     {
         popupMessage.textContent = 'the password dont match';
         popupMessage.style.display = 'block';
-        alert(fuck)
+
     }
 
 
@@ -573,17 +604,27 @@ function closeModal6() {
     var popup = document.getElementById('popup6');
     popup.classList.remove('active');
 }
+function openPopup10(popupId) {
+    document.getElementById(popupId).style.display = 'block';
+}
 
+// JavaScript pour fermer un popup
+function closePopup10(popupId) {
+    document.getElementById(popupId).style.display = 'none';
+}
 
 // Fonction pour sauvegarder les changements
 function saveChanges3(popupId) {
-    // Récupérer la valeur du last name depuis l'input
-    var emailInput = document.getElementById('emaile');
-    var lastNameValue = emailInput.value.trim();
-    // Vous pouvez ajouter des vérifications ou des traitements supplémentaires ici
 
-    // Fermer le popup
-    closeModal3();
+
+    document.getElementById("popup3").style.display = 'none';
+    document.getElementById("confirmation-popup").style.display = 'block';
+
+
+
+
+
+
 }// Fonction pour sauvegarder les changements
 
 
@@ -629,7 +670,7 @@ var isCardContainerVisible = false;
 
 async function showCards() {
     await recivevisacars()
-    alert(visacards)
+
     var cardContainer = document.getElementById('cardContainer');
 
     if (isCardContainerVisible) {

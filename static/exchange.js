@@ -1,7 +1,34 @@
 // Event listener to close both dropdowns when clicking outside
 
 recivetransction()
+getuserimage()
+async function getuserimage() {
 
+    try {
+        var csrftoken = getCookie('csrftoken');
+        const response = await fetch('http://localhost:8000/senduserinfo/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        userinfo=data.user
+
+        document.getElementById("userimage").src=userinfo.image;
+
+
+
+
+
+    } catch (error) {
+        console.error('Error sending data to backend:', error);
+    }
+}
 async function recivetransction() {
 
     try {
@@ -49,7 +76,7 @@ var exchange = document.getElementById('exchange_button');
 let allcrypto=[]
 
 exchange.addEventListener('click', function(event) {
-    alert(1)
+   
     event.preventDefault();
     var data = {
         feild1: feild1.value,
@@ -80,7 +107,7 @@ function sendtobackend(data) {
             return response.json();
         })
         .then(data => {
-
+           alert(data.message)
         })
         .catch(error => {
             // Handle errors
@@ -350,8 +377,8 @@ async function selectItem2(itemName) {
     });
 
 
-     const dropdown1SelectedItem = document.getElementById('selectedItem').textContent;
-     const dropdown1SelectedItem2 = document.getElementById('selectedItem2').textContent;
+    const dropdown1SelectedItem = document.getElementById('selectedItem').textContent;
+    const dropdown1SelectedItem2 = document.getElementById('selectedItem2').textContent;
 
     if (dropdown1SelectedItem.trim() === selectedName) {
         // If the selected item in the first dropdown matches the current selection, reset the first dropdown
@@ -696,16 +723,12 @@ cloneLogosSlide();
 
 
 
-function toggleNotificationModal() {
-    var modal = document.getElementById("notificationModal");
-    closeAllModalsExcept("notificationModal");
-    modal.style.display = "block";
-}
 
 function toggleUserModal() {
     var modal = document.getElementById("userModal");
     closeAllModalsExcept("userModal");
     modal.style.display = "block";
+    getuserimage()
 }
 
 function closeAllModalsExcept(modalId) {
@@ -715,11 +738,7 @@ function closeAllModalsExcept(modalId) {
             modal.style.display = 'none';
         }
     });
-}
-
-function closeNotificationModal() {
-    var modal = document.getElementById("notificationModal");
-    modal.style.display = "none";
+    getuserimage()
 }
 
 function closeUserModal() {
@@ -727,9 +746,6 @@ function closeUserModal() {
     modal.style.display = "none";
 }
 
-// Gestionnaires d'événements pour le survol de souris
-document.getElementById("notificationModal").parentNode.addEventListener("mouseover", toggleNotificationModal);
-document.getElementById("notificationModal").parentNode.addEventListener("mouseout", closeNotificationModal);
 
 document.getElementById("userModal").parentNode.addEventListener("mouseover", toggleUserModal);
 document.getElementById("userModal").parentNode.addEventListener("mouseout", closeUserModal);
@@ -737,40 +753,19 @@ document.getElementById("userModal").parentNode.addEventListener("mouseout", clo
 
 
 
-// Fonction pour remplir le tableau de notifications
-function fillNotificationTable(notifications) {
-    const tableBody = document.querySelector('#notificationTable tbody');
-    tableBody.innerHTML = '';
-    // Parcourir les notifications et ajouter chaque entrée au tableau
-    notifications.forEach(function(notification) {
-        var row = '<tr>';
-        row += '<td>' + notification.date + '</td>';
-        row += '<td>' + notification.message + '</td>';
-        row += '</tr>';
-        tableBody.innerHTML += row;
-    });
+async function updateUserDetails() {
+    await reciveuserinfo()
+
+
+    document.getElementById('user-id').textContent = userinfo.id;
+    document.getElementById('user-first-name').textContent = userinfo.firstName;
+    document.getElementById('user-last-name').textContent = userinfo.lastName;
+    document.getElementById('user-email').textContent = userinfo.email;
+    document.getElementById('user-dob').textContent = userinfo.dob;
 }
 
 
-const notificationsData = [
-    {date: '2024-04-07', message: 'Notification 1 '},
-    {date: '2024-04-06', message: 'Notification 2'},
-    {date: '2024-04-05', message: 'Notification 3'},
-    {date: '2024-04-07', message: 'Notification 1 '},
-    {date: '2024-04-06', message: 'Notification 2'},
-    {date: '2024-04-05', message: 'Notification 3'},
-    {date: '2024-04-07', message: 'Notification 1 '},
-    {date: '2024-04-06', message: 'Notification 2'},
-    {date: '2024-04-05', message: 'Notification 3'},
-    {date: '2024-04-07', message: 'Notification 1 '},
-    {date: '2024-04-06', message: 'Notification 2'},
-    {date: '2024-04-05', message: 'Notification 3'},
-];
-
-
-fillNotificationTable(notificationsData);
-
-
+updateUserDetails();
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -901,10 +896,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // Afficher les transactions sur la première page lors du chargement de la page
     displayTransactions(currentPage);
 });
-
-
-
-
-
-
 

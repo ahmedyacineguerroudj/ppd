@@ -1,8 +1,3 @@
-
-
-
-
-
 let market=[]
 let hotcrypto=[]
 let topvaluecrypto=[]
@@ -54,8 +49,34 @@ async function recivehotcrypto() {
         console.error('Error sending data to backend:', error);
     }
 }
+getuserimage()
+async function getuserimage() {
+
+    try {
+        var csrftoken = getCookie('csrftoken');
+        const response = await fetch('http://localhost:8000/senduserinfo/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        userinfo=data.user
+
+        document.getElementById("userimage").src=userinfo.image;
 
 
+
+
+
+    } catch (error) {
+        console.error('Error sending data to backend:', error);
+    }
+}
 async function recivetopvaluecryotolist() {
 
     try {
@@ -168,6 +189,7 @@ function toggleUserModal() {
     var modal = document.getElementById("userModal");
     closeAllModalsExcept("userModal");
     modal.style.display = "block";
+    getuserimage()
 }
 
 function closeAllModalsExcept(modalId) {
@@ -177,12 +199,10 @@ function closeAllModalsExcept(modalId) {
             modal.style.display = 'none';
         }
     });
+    getuserimage()
 }
 
-function closeNotificationModal() {
-    var modal = document.getElementById("notificationModal");
-    modal.style.display = "none";
-}
+
 
 function closeUserModal() {
     var modal = document.getElementById("userModal");
@@ -353,7 +373,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         updatePagination();
-       setInterval(accessAndModifyElements, 5000);
+       setInterval(accessAndModifyElements, 30*1000);
     }
 
     // Fonction pour mettre à jour l'affichage de la pagination
@@ -577,14 +597,6 @@ function changeColorForTwoSeconds(element, color) {
 }
 
 
-// Fonction pour remplir le tableau de notifications
-
-
-// Exemple (remplacer p
-
-
-
-
 
 
 
@@ -645,7 +657,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
             // Créer la cellule pour le prix
             const priceCell = document.createElement('td');
-            priceCell.textContent = '$'+item.price;
+            priceCell.textContent = '$'+formatLargeNumber(item.price);
             priceCell.id=priceid
 
             // Créer la cellule pour le changement
@@ -772,9 +784,6 @@ async function recive() {
             document.getElementById('after').style.display='none';
             document.getElementById('before').style.display='block';
         }
-
-
-
     } catch (error) {
         console.error('Error sending data to backend:', error);
     }

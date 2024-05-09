@@ -6,6 +6,19 @@
     margin: 0;
     padding: 0;
 }
+.user-photo {
+    position: relative;
+    margin-left: 50px;
+    margin-right: 1px;
+    user-select: none;
+
+}
+.user-photo img {
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+    user-select: none;
+}
 
 body {
     font-family: 'Inter', sans-serif;

@@ -1,29 +1,100 @@
 
 
 
+getuserimage()
+async function getuserimage() {
+
+    try {
+        var csrftoken = getCookie('csrftoken');
+        const response = await fetch('http://localhost:8000/senduserinfo/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        userinfo=data.user
+
+        document.getElementById("userimage2").src=userinfo.image;
 
 
 
 
 
-
+    } catch (error) {
+        console.error('Error sending data to backend:', error);
+    }
+}
 
 
 let transction=[]
 let assists=[]
 let userinfo
 
+
 var Field1 = document.getElementById('destWalletId');
 var Field2 = document.getElementById('amount');
 var select1 = document.getElementById('currency');
 var send = document.getElementById('send');
+var Withdraw = document.getElementById('Withdraw');
+var Deposit = document.getElementById('Deposit');
+
+
+reciveallcrypto()
+async function reciveallcrypto() {
+
+    try {
+        var csrftoken = getCookie('csrftoken');
+        const response = await fetch('http://localhost:8000/sendallcrypto/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        let a=JSON.stringify(data.allcrypto)
+        var select1 = document.getElementById('currency');
+
+        select1.innerHTML = '';
+
+        data.allcrypto.forEach(function(crypto) {
+            var option = document.createElement('option');
+            option.value = crypto.name;
+            option.text = crypto.name;
+            select1.appendChild(option);
+        });
+
+
+
+    } catch (error) {
+        console.error('Error sending data to backend:', error);
+    }
+}
+Withdraw.addEventListener('click', function() {
+
+    window.location.href = new URL("/depost&withdraw",window.location.href)
+
+});
+Deposit.addEventListener('click', function() {
+    window.location.href = new URL("/depost&withdraw",window.location.href)
+
+});
 send.addEventListener('click', function() {
     var data = {
         field1: Field1.value,
         field2: Field2.value,
         select: select1.value,
     };
-   alert(5)
+
     sendDataTobackend(data);
 
 });
@@ -48,7 +119,7 @@ function sendDataTobackend(data) {
             return response.json();
         })
         .then(data => {
-
+        alert(data.message)
         })
         .catch(error => {
             // Handle errors
@@ -154,16 +225,13 @@ function getCookie(name) {
 
 
 
-function toggleNotificationModal() {
-    var modal = document.getElementById("notificationModal");
-    closeAllModalsExcept("notificationModal");
-    modal.style.display = "block";
-}
+
 
 function toggleUserModal() {
     var modal = document.getElementById("userModal");
     closeAllModalsExcept("userModal");
     modal.style.display = "block";
+    getuserimage()
 }
 
 function closeAllModalsExcept(modalId) {
@@ -173,21 +241,16 @@ function closeAllModalsExcept(modalId) {
             modal.style.display = 'none';
         }
     });
+    getuserimage()
 }
 
-function closeNotificationModal() {
-    var modal = document.getElementById("notificationModal");
-    modal.style.display = "none";
-}
 
 function closeUserModal() {
     var modal = document.getElementById("userModal");
     modal.style.display = "none";
 }
 
-// Gestionnaires d'événements pour le survol de souris
-document.getElementById("notificationModal").parentNode.addEventListener("mouseover", toggleNotificationModal);
-document.getElementById("notificationModal").parentNode.addEventListener("mouseout", closeNotificationModal);
+
 
 document.getElementById("userModal").parentNode.addEventListener("mouseover", toggleUserModal);
 document.getElementById("userModal").parentNode.addEventListener("mouseout", closeUserModal);
@@ -196,58 +259,11 @@ document.getElementById("userModal").parentNode.addEventListener("mouseout", clo
 
 
 // Fonction pour remplir le tableau de notifications
-function fillNotificationTable(notifications) {
-    const tableBody = document.querySelector('#notificationTable tbody');
-    tableBody.innerHTML = '';
-    // Parcourir les notifications et ajouter chaque entrée au tableau
-    notifications.forEach(function(notification) {
-        var row = '<tr>';
-        row += '<td>' + notification.date + '</td>';
-        row += '<td>' + notification.message + '</td>';
-        row += '</tr>';
-        tableBody.innerHTML += row;
-    });
-}
-
-// Exemple
-const notificationsData = [
-    {date: '2024-04-07', message: 'Notification 1 '},
-    {date: '2024-04-06', message: 'Notification 2'},
-    {date: '2024-04-05', message: 'Notification 3'},
-    {date: '2024-04-07', message: 'Notification 1 '},
-    {date: '2024-04-06', message: 'Notification 2'},
-    {date: '2024-04-05', message: 'Notification 3'},
-    {date: '2024-04-07', message: 'Notification 1 '},
-    {date: '2024-04-06', message: 'Notification 2'},
-    {date: '2024-04-05', message: 'Notification 3'},
-    {date: '2024-04-07', message: 'Notification 1 '},
-    {date: '2024-04-06', message: 'Notification 2'},
-    {date: '2024-04-05', message: 'Notification 3'},
-];
-// Remplir le tableau avec les données de notification
-fillNotificationTable(notificationsData);
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Récupère tous les liens de la barre de navigation
-    const navbarLinks = document.querySelectorAll('#navbar a');
-    // Fonction pour déplacer la page jusqu'à la section correspondante
-    function scrollToSection(event) {
-        event.preventDefault();
-        const targetId = this.getAttribute('href').substring(1); // Récupère l'ID de la section cible
-        const targetSection = document.getElementById(targetId); // Sélectionne la section cible
-        const offset = targetSection.offsetTop; // Récupère la position verticale de la section par rapport au haut de la page
-        window.scrollTo({
-            top: offset,
-            behavior: 'smooth' // Défilement vers la section
-        });
-    }
 
-    // Ajoute un gestionnaire d'événements de clic à chaque lien de la barre de navigation
-    navbarLinks.forEach(link => {
-        link.addEventListener('click', scrollToSection);
-    });
-});
+
+
 
 
 
@@ -257,6 +273,16 @@ document.addEventListener('DOMContentLoaded',   async function() {
     await reciveassists()
 
     // Données d'actifs (juste un exemple)
+    const assets = [
+        { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'Images Crypto/BTC.png' },
+        { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'Images Crypto/BTC.png' },
+        { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'Images Crypto/BTC.png' },
+        { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'Images Crypto/BTC.png' },
+        { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'Images Crypto/BTC.png' },
+        { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'Images Crypto/BTC.png' },
+        { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'Images Crypto/BTC.png' },
+        { coin: 'Bitcoin', amount: 0.5, price: 50000, image: 'Images Crypto/BTC.png' },
+    ];
 
     // Sélection de l'élément de la table des actifs
     const assetTable = document.getElementById('asset-items');
@@ -285,7 +311,7 @@ document.addEventListener('DOMContentLoaded',   async function() {
                 const coinCell = document.createElement('td');
                 const coinSpan = document.createElement('span');
                 const coinImage = document.createElement('img');
-                coinImage.src = asset.image || 'default_icon.png';
+                coinImage.src = asset.image ;
                 coinImage.alt = asset.coin;
                 coinImage.width = 20;
                 const coinText = document.createTextNode(asset.coin);
@@ -339,7 +365,22 @@ document.addEventListener('DOMContentLoaded',   async function() {
 
 
 
+function formatLargeNumber(number) {
+    const abbreviations = {
+        T: 1000000000000,
+        B: 1000000000,
+        M: 1000000,
+        K: 1000
+    };
 
+    for (const abbreviation in abbreviations) {
+        if (number >= abbreviations[abbreviation]) {
+            return (number / abbreviations[abbreviation]).toFixed(2) + abbreviation;
+        }
+    }
+
+    return formatPrice(number) // Fallback to default formatting
+}
 
 
 
@@ -456,37 +497,22 @@ function deleteTransaction(index) {
 // Fonction pour mettre à jour les informations de l'utilisateur
 async function updateUserDetails() {
     await reciveuserinfo()
-    alert(userinfo)
+
     document.getElementById('user-id').textContent = userinfo.id;
     document.getElementById('user-first-name').textContent = userinfo.firstName;
     document.getElementById('user-last-name').textContent = userinfo.lastName;
     document.getElementById('user-email').textContent = userinfo.email;
     document.getElementById('user-dob').textContent = userinfo.dob;
+    document.getElementById('userimage').src = userinfo.image;
+    document.getElementById('balance-value').innerText=formatLargeNumber(userinfo.Balance_Total)
+    document.getElementById('walletid').textContent=userinfo.walletid;
 }
 
 
 updateUserDetails();
 
 
-function updateCryptoValue() {
-    const cryptoSelect = document.getElementById('crypto-select');
-    const selectedCrypto = cryptoSelect.value;
-    const balanceCryptoValueSpan = document.getElementById('balance-crypto-value');
 
-    // Ici mettre en place la logique pour récupérer la valeur de la crypto-monnaie
-    // Par exemple
-    const cryptoValues = {
-        'BTC': '0.0123 ',
-        'USD': '1000 ',
-        'ETH': '0.4567 ',
-        'BNB': '2 '
-    };
-
-    balanceCryptoValueSpan.textContent = cryptoValues[selectedCrypto];
-}
-
-// Appeler la fonction une fois au chargement de la page pour afficher la valeur initiale
-updateCryptoValue();
 
 
 
@@ -509,36 +535,19 @@ function toggleTransferModal() {
 
 document.querySelector('.balance-buttons button:nth-child(3)').addEventListener('click', toggleTransferModal);
 
-// Liste des devises avec leur nom, valeur et montant maximal autorisé
-const currencies = [
-    { name: "BTC", value: "BTC", maxAmount: 10 },
-    { name: "ETH", value: "ETH", maxAmount: 20 },
-    { name: "BNB", value: "BNB", maxAmount: 30 }
-];
-// Sélectionner l'élément select pour la devise
-const currencySelect = document.getElementById('currency');
-// Générer les options de la liste déroulante
-currencies.forEach(currency => {
-    const option = document.createElement('option');
-    option.value = currency.value;
-    option.textContent = currency.name;
-    currencySelect.appendChild(option);
-});
-// Obtenir la valeur maximale autorisée pour la devise sélectionnée
-currencySelect.addEventListener('change', function() {
-    const selectedCurrency = currencies.find(currency => currency.value === this.value);
-    document.getElementById('amount').setAttribute('max', selectedCurrency.maxAmount);
-});
-// Valider et soumettre le formulaire de transfert
+
+
+
+
+
+
+
 document.getElementById('transferForm').addEventListener('submit', function(event) {
     event.preventDefault();
     var destWalletId = document.getElementById('destWalletId').value;
     var amount = document.getElementById('amount').value;
     if (amount <= 0 || destWalletId.trim() === '') {
         alert('Please enter valid destination and amount');
-    } else {
-        alert('Transfer successful to ' + destWalletId + ' for ' + amount + ' ' + document.getElementById('currency').value);
-        toggleTransferModal();
     }
 });
 

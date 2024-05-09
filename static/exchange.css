@@ -614,7 +614,7 @@ tr:hover {
 
 .logos-slide {
     display: inline-block;
-    animation: 70s slide infinite linear;
+    animation: 100s slide infinite linear;
 }
 
 /* Remove fixed width from the button */
@@ -1069,4 +1069,17 @@ p:hover {
     right: 700px;
     color: white;
     font-size: 30px;
+}
+.user-photo {
+    position: relative;
+    margin-left: 50px;
+    margin-right: 1px;
+    user-select: none;
+
+}
+.user-photo img {
+    width: 55px;
+    height: auto;
+    border-radius: 50%;
+    user-select: none;
 }

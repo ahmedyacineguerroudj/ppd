@@ -5,6 +5,7 @@
 
 
 let users=[]
+let cryptos=[]
 
 async function reciveusers() {
 
@@ -24,6 +25,30 @@ async function reciveusers() {
         const data = await response.json();
         users=JSON.stringify(data.users)
         users = JSON.parse(users)
+
+
+    } catch (error) {
+        console.error('Error sending data to backend:', error);
+    }
+}
+async function reciveCryptos() {
+
+    try {
+        var csrftoken = getCookie('csrftoken');
+        const response = await fetch('http://localhost:8000/sendallcryptoinfo/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        cryptos=JSON.stringify(data.cryptoslist)
+        cryptos = JSON.parse(cryptos)
 
 
     } catch (error) {
@@ -104,7 +129,7 @@ window.addEventListener('load', function() {
 
 async function displayUserList() {
     await reciveusers()
-    alert(users)
+
     const userListElement = document.getElementById('userList');
     userListElement.innerHTML = ''; // Clear previous list
 
@@ -277,3 +302,92 @@ function searchUser() {
 
 // Sélectionner le bouton de recherche
 const searchButton = document.getElementById('searchButton');
+document.addEventListener('DOMContentLoaded', function() {
+    var cryptoModal = document.getElementById('cryptoInfoModal');
+    var cryptoCloseBtn = cryptoModal.querySelector('.close');
+    cryptoCloseBtn.addEventListener('click', function() {
+        cryptoModal.style.display = 'none';
+    });
+    displayCryptoList();
+    const searchCryptoBtn = document.getElementById('searchCryptoButton');
+    searchCryptoBtn.addEventListener('click', function() {
+        searchCrypto();
+    });
+});
+
+
+async function displayCryptoList() {
+    await reciveCryptos()
+
+    const cryptoListElement = document.getElementById('cryptoList');
+    cryptoListElement.innerHTML = ''; // Clear previous list
+    cryptos.forEach(crypto => {
+        const cryptoElement = document.createElement('div');
+        cryptoElement.classList.add('crypto');
+
+        const cryptoName = document.createElement('span');
+        cryptoName.textContent = crypto.name;
+        cryptoName.style.overflow = 'hidden';
+        cryptoName.style.textOverflow = 'ellipsis';
+        cryptoName.style.whiteSpace = 'nowrap'; // This ensures the text doesn't wrap to the next line
+        cryptoElement.appendChild(cryptoName);
+        const infoButton = document.createElement('button');
+        infoButton.textContent = 'Info';
+        infoButton.classList.add('info');
+        infoButton.addEventListener('click', () => {
+            displayCryptoInfo(crypto);
+        });
+        cryptoElement.appendChild(infoButton);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.classList.add('delete');
+        deleteButton.addEventListener('click', () => {
+            deleteCrypto(crypto, cryptoElement);
+        });
+        cryptoElement.appendChild(deleteButton);
+
+        cryptoListElement.appendChild(cryptoElement);
+    });
+}
+
+function displayCryptoInfo(crypto) {
+    const modal = document.getElementById('cryptoInfoModal');
+    const cryptoInfoContent = document.getElementById('cryptoInfoContent');
+    cryptoInfoContent.innerHTML = `
+        <p><span class="info-label">Name:</span> <span class="info-value">${crypto.name}</span></p>
+        <p><span class="info-label">Price:</span> <span class="info-value">${crypto.price}</span></p>
+        <p><span class="info-label">Available Supply:</span> <span class="info-value">${crypto.availableSupply}</span></p>
+        <p><span class="info-label">Market Cap:</span> <span class="info-value">${crypto.marketCap}</span></p>
+        <p><span class="info-label">Change (24h):</span> <span class="info-value">${crypto.change24h}</span></p>
+    `;
+    modal.style.display = 'block';
+}
+
+async function deleteCrypto(crypto, cryptoElement) {
+    await reciveCryptos()
+    const index = cryptos.indexOf(crypto);
+    cryptos.splice(index, 1);
+    cryptoElement.remove();
+
+    var data ={
+        action:'Delete',
+        name:crypto.name,
+    }
+    senddata(data)
+}
+
+function searchCrypto() {
+    const input = document.getElementById("cryptoSearchInput");
+    const filter = input.value.toUpperCase();
+    const cryptoList = document.getElementById("cryptoList");
+    const cryptos = cryptoList.getElementsByClassName("crypto");
+    for (let i = 0; i < cryptos.length; i++) {
+        const txtValue = cryptos[i].textContent || cryptos[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            cryptos[i].style.display = "";
+        } else {
+            cryptos[i].style.display = "none";
+        }
+    }
+}

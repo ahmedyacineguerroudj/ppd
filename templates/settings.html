@@ -33,53 +33,33 @@
         </div>
         <!-- Menu de navigation -->
         <div class="menu">
-            <a href="#" class="menu-item active" onclick="markActive(this)">Home</a>
-            <a href="#" class="menu-item" onclick="markActive(this)">Buy & Sell</a>
-            <a href="#" class="menu-item" onclick="markActive(this)">Market</a>
-            <a href="#" class="menu-item" onclick="markActive(this)">About Us</a>
+            <a href="{% url 'home' %}" class="menu-item">Home</a>
+            <a href="{% url 'buyandsell' %}" class="menu-item">Buy & Sell</a>
+            <a href="{% url 'Marketpage' %}" class="menu-item">Market</a>
+            <a href="{% url 'trade' %}" class="menu-item">Trade</a>
+            <a href="{% url 'exchange' %}" class="menu-item">Exchange</a>
         </div>
 
         <!-- Bouton de notifications -->
-        <div class="notification-button">
-            <a href="#" onclick="toggleNotificationModal()"><img  src="{% static 'notification_icon.png' %}"  alt="Notifications"></a>
-            <div id="notificationModal" class="modal" style="display: none;">
-                <div class="modal-content">
-                    <span class="close" onclick="toggleNotificationModal()">&times;</span>
-                    <h2>Your Notifications</h2>
-                    <!-- Tableau de notifications -->
-                    <table id="notificationTable">
-                        <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Message</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <!-- Les notifications seront ajoutées dynamiquement -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
+       
 
         <div class="user-button">
-            <a href="#" onclick="toggleUserModal()"><img  src="{% static 'user_icon.png' %}"alt="Utilisateur"></a>
+            <div class="user-photo">
+                <img  id="userimage" >
+            </div>
             <div id="userModal" class="modal" style="display: none;">
+
                 <div class="modal-content">
+
                     <span class="close" onclick="toggleUserModal()">&times;</span>
-                    <h2 id="userName">User Information</h2>
-                    <div>
-                        <p><strong>First Name :</strong> <span id="firstName"></span></p>
-                        <p><strong>Last Name :</strong> <span id="lastName"></span></p>
-                        <p><strong>Email :</strong> <span id="email"></span></p>
-                        <p><strong>Date of Birth :</strong> <span id="dob"></span></p>
+                    <!-- Barre de navigation -->
+                    <div id="navbar">
+                        <a href="{% url 'walletpage' %}" >account</a>
+                        <a href="{% url 'depost&withdraw' %}">depost&withdraw</a>
+                        <a href="{% url 'settings' %}">settings</a>
+                        <a href="{% url 'signout' %}">signout</a>
                     </div>
-                    <div>
-                        <button class="settings-button">
-                            Modify your information
-                        </button>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -120,16 +100,27 @@
         <button type="button" class="edit-button3" onclick="openPopup3('popup3')">Edit</button>
     </span>
 
-        <!-- Popup for Email Address -->
+        
         <div class="popup3" id="popup3">
             <img  src="{% static 'achievement.png' %}">
             <input type="text" id="emaile" placeholder="Enter your email address">
             <div class="buttons">
-                <button type="button" id="changeemail" value="email" onclick="saveChanges3('popup3')">Save</button>
+                <button type="button" id="changeemail" value="email" onclick="saveChanges3('popup3')">Confirm</button>
                 <button onclick="closeModal3('popup3')">Cancel</button>
             </div>
             <div id="validation-popup3" class="validation-popup"></div>
 
+        </div>
+
+        <div class="confirmation-popup" id="confirmation-popup">
+            <img src="{% static 'achievement.png' %}">
+            <h1>*####*</h1>
+            <input type="text" id="confirmation-codeC" placeholder="Enter confirmation code">
+            <div class="buttons">
+                <button type="button" onclick="sendcode()">save</button>
+                <button onclick="closePopup10('confirmation-popup')">Cancel</button>
+            </div>
+            <div id="confirmation-popup-message" class="popup-message"></div>
         </div>
 
         <span>
@@ -141,7 +132,7 @@
         <!-- Popup for Last Name -->
         <div class="popup2" id="popup2">
             <span class="close" onclick="closeModal2()">&times;</span> <!-- Ajout d'un bouton de fermeture -->
-            <img src="images/achievement.png">
+            <img src="{% static 'achievement.png' %}">
             <input type="text" id="last-name" placeholder="Enter your last name">
             <div class="buttons">
                 <button type="button" id="changelastname" value="lastname" onclick="saveChanges2()">Save</button>
@@ -160,7 +151,7 @@
     </div>
 
     <div class="popup4" id="popup4">
-        <img src="images/achievement.png">
+        <img src="{% static 'achievement.png' %}">
         <input type="password" id="old-password" placeholder="Enter your old password">
         <div class="buttons">
             <button type="button" id="next-button" onclick="checkOldPassword()">Next</button>
@@ -174,7 +165,7 @@
 
     <!-- Popup pour saisir le code de confirmation -->
     <div class="popup5" id="popup5">
-        <img src="images/achievement.png">
+        <img  src="{% static 'achievement.png' %}">
         <h1>*####*</h1>
         <input type="text" id="confirmation-code" placeholder="Enter confirmation code">
         <div class="buttons">
@@ -187,7 +178,7 @@
     <!-- Popup pour saisir le nouveau mot de passe -->
     <div class="popup6" id="popup6">
         <h3>New Password</h3>
-        <img src="images/achievement.png">
+        <img  src="{% static 'achievement.png' %}">
         <input type="password" id="new-password" placeholder="Enter your new password">
         <input type="password" id="confirm-password" placeholder="Confirm your new password">
         <div class="buttons">
@@ -213,8 +204,8 @@
 
     <div class="containerC" id="cardContainer">
 
-        <img src="images/visa.png"  class="card-icon" alt="Icon">
-        <!-- Les cartes seront ajoutées dynamiquement ici -->
+        <img  src="{% static 'visa.png' %}"  class="card-icon" alt="Icon">
+        
     </div>
 
 

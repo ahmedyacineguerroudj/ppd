@@ -35,8 +35,34 @@ async function recivetransction() {
         console.error('Error sending data to backend:', error);
     }
 }
+getuserimage()
+async function getuserimage() {
+
+    try {
+        var csrftoken = getCookie('csrftoken');
+        const response = await fetch('http://localhost:8000/senduserinfo/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        userinfo=data.user
+
+        document.getElementById("userimage").src=userinfo.image;
 
 
+
+
+
+    } catch (error) {
+        console.error('Error sending data to backend:', error);
+    }
+}
 let allcrypto=[]
 
 
@@ -154,111 +180,113 @@ async function recivecurrency() {
 
 
 
-   let select1
-   let select2
-   let select3
-   let select4
-    var Field2 = document.getElementById('fild2');
-    var Sell2 = document.getElementById('Sell2');
-    var Buy2 = document.getElementById('Buy2');
+let select1
+let select2
+let select3
+let select4
+var Field2 = document.getElementById('fild2');
+var Sell2 = document.getElementById('Sell2');
+var Buy2 = document.getElementById('Buy2');
 
 
 
 
 
 
-    Buy2.addEventListener("click", function() {
+Buy2.addEventListener("click", function() {
 
-        var data = {
-            operation:Buy2.value,
-            field1:Field1.value,
-            field2: Field2.value,
-            select1: select1,
-            select2: select2,
+    var data = {
+        operation:Buy2.value,
+        field1:Field1.value,
+        field2: Field2.value,
+        select1: select1,
+        select2: select2,
 
-        };
-        sendselldata(data);
-    });
+    };
+    sendselldata(data);
+});
 
-    Sell2.addEventListener("click", function() {
+Sell2.addEventListener("click", function() {
 
-        var data = {
-            operation:Sell2.value,
-            field1:Field3.value,
-            field2: Field4.value,
-            select1: select3,
-            select2: select4,
+    var data = {
+        operation:Sell2.value,
+        field1:Field3.value,
+        field2: Field4.value,
+        select1: select3,
+        select2: select4,
 
-        };
-        sendselldata(data);
-    });
-    Field2.addEventListener('input', function() {
-        var data = {
-            field2: Field2.value,
-            select1: select1,
-            select2: select2,
-        };
-        sendDataTofild1(data);
-    });
+    };
+    sendselldata(data);
+});
+Field2.addEventListener('input', function() {
+    var data = {
+        field2: Field2.value,
+        select1: select1,
+        select2: select2,
+    };
+    sendDataTofild1(data);
+});
 
-    var Field1 = document.getElementById('fild1');
-    Field1.addEventListener('input', function() {
-        var data = {
-            field1: Field1.value,
-            select1: select1,
-            select2: select2,
-        };
+var Field1 = document.getElementById('fild1');
+Field1.addEventListener('input', function() {
+    var data = {
+        field1: Field1.value,
+        select1: select1,
+        select2: select2,
+    };
 
-        sendDataTofild2(data);
+    sendDataTofild2(data);
 
-    });
-    var Field3 = document.getElementById('fild3');
-    Field3.addEventListener('input', function() {
-        var data = {
-            field1: Field3.value,
-            select1: select3,
-            select2: select4,
-        };
+});
+var Field3 = document.getElementById('fild3');
+Field3.addEventListener('input', function() {
+    var data = {
+        field1: Field3.value,
+        select1: select3,
+        select2: select4,
+    };
 
-        sendDataTofild4(data);
-    });
-    var Field4 = document.getElementById('fild4');
-    Field4.addEventListener('input', function() {
-        var data = {
-            field2: Field4.value,
-            select1: select3,
-            select2: select4,
-        };
+    sendDataTofild4(data);
+});
+var Field4 = document.getElementById('fild4');
+Field4.addEventListener('input', function() {
+    var data = {
+        field2: Field4.value,
+        select1: select3,
+        select2: select4,
+    };
 
-        sendDataTofild3(data);
-    });
+    sendDataTofild3(data);
+});
 
-    function sendselldata(data) {
-        console.log('Sending data to backend:', data);
-        var csrftoken = getCookie('csrftoken');
-        fetch('http://localhost:8000/butandsell/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrftoken
-            },
-            body: JSON.stringify({ data: data})
+function sendselldata(data) {
+    console.log('Sending data to backend:', data);
+    var csrftoken = getCookie('csrftoken');
+    fetch('http://localhost:8000/butandsell/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken
+        },
+        body: JSON.stringify({ data: data})
+    })
+
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
         })
-
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-
-            })
-            .catch(error => {
-                // Handle errors
-                console.error('Error sending data to backend:', error);
-            });
-    }
+        .then(data => {
+         alert(
+             data.message
+         )
+        })
+        .catch(error => {
+            // Handle errors
+            console.error('Error sending data to backend:', error);
+        });
+}
 
 
 
@@ -496,8 +524,8 @@ function generateCardHTML2(data) {
                     <p> BTC to ${data.name}</p>
                 </div>
                 <div class="card-back"> 
-                    <p> 1 BTC = ${data.price} </p>
-                    <p>${data.name}</p>
+                    <p> 1 BTC = ${data.price} ${ data.name} </p>
+                   
                     
                 </div>
             </div>
@@ -521,10 +549,11 @@ window.onload = async function() {
             imageid = 'cryptoimage' + i;
             styleid = 'style' + i;
 
-
+            item.price=formatLargeNumber(item.price)
             if (item.percentage < 0) {
+
                 item.percntage = item.percentage * (-1)
-                item.price=formatLargeNumber(item.price)
+
 
                 container5.innerHTML += generateCardHTML(item, 'card3', 'percent', 'range', pathData, color2, imageid, nameid, percentid, priceid, styleid);
             } else if (item.percentage > 0) {
@@ -537,8 +566,8 @@ window.onload = async function() {
     });
 
 
-
-   currency.forEach(function (item) {
+    currency.forEach(function (item) {
+        item.price=formatLargeNumber(item.price)
         container6.innerHTML += generateCardHTML2(item);
     })
 
@@ -563,12 +592,12 @@ async function updatePrices() {
 
 
 
-            priceElement.textContent = item.price + " €";
+        priceElement.textContent = formatLargeNumber(item.price) + " €";
 
-                if (item.percentage <0) {
-                    item.percentage=item.percentage*(-1)
+        if (item.percentage <0) {
+            item.percentage=item.percentage*(-1)
 
-                    percentElement.innerHTML = `
+            percentElement.innerHTML = `
                 <svg width="20" height="20" fill="${color2}" viewBox="0 0 1792 1792" xmlns=""> 
                     <path d="${pathData}"></path> 
                 </svg>  
@@ -577,24 +606,24 @@ async function updatePrices() {
             `;
 
 
-                } else if (item.percentage >0) {
-                    percentElement.innerHTML = `
+        } else if (item.percentage >0) {
+            percentElement.innerHTML = `
                 <svg width="20" height="20" fill="${color}" viewBox="0 0 1792 1792" xmlns=""> 
                     <path d="${pathData2}"></path> 
                 </svg>  
                 ${item.percentage}%
               
             `;
-                } else {
-                    percentElement.innerHTML = `
+        } else {
+            percentElement.innerHTML = `
                 <svg width="20" height="20" fill="${color3}" viewBox="0 0 1792 1792" xmlns=""> 
                     <path d="${pathData}"></path> 
                 </svg>  
                 ${item.percentage2}%
               
             `;
-                }
-            console.log( item.price, item.percentage)
+        }
+        console.log( item.price, item.percentage)
 
 
 
@@ -616,6 +645,7 @@ function toggleUserModal() {
     var modal = document.getElementById("userModal");
     closeAllModalsExcept("userModal");
     modal.style.display = "block";
+    getuserimage()
 }
 
 function closeAllModalsExcept(modalId) {
@@ -625,6 +655,7 @@ function closeAllModalsExcept(modalId) {
             modal.style.display = 'none';
         }
     });
+    getuserimage()
 }
 
 
