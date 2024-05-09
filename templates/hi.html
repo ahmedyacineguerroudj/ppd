@@ -1,0 +1,274 @@
+
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript Candlestick Chart</title>
+    <link rel="stylesheet" href="./home.css">
+    <link href="https://cdn.anychart.com/releases/8.11.0/css/anychart-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.anychart.com/releases/8.11.0/fonts/css/anychart-font.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-stock.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/themes/dark_glamour.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-data-adapter.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-annotations.min.js"></script>
+    <link rel="stylesheet" href=" {% static 'tradepage.css' %}">
+    <style type="text/css">
+        #container {
+            width: 820px;
+            height: 600px;
+            margin-top: -580PX;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+
+    <div id="before">
+        <section class="top-bar">
+            <img src="{% static 'ded334d3e708bcefd545c8677ccc142ab7db1aa7.png' %}" alt="Logo">
+            <div class="platform-name">
+                <span class="whales">whales</span>
+                <span class="Cap">Cap</span>
+            </div>
+            <!-- Menu de navigation -->
+            <div class="menu">
+                <a href="{% url 'home' %}" class="menu-item">Home</a>
+                <a href="{% url 'buyandsell' %}" class="menu-item">Buy & Sell</a>
+                <a href="{% url 'Marketpage' %}" class="menu-item">Market</a>
+                <a href="{% url 'trade' %}" class="menu-item">Trade</a>
+                <a href="{% url 'exchange' %}" class="menu-item">Exchange</a>
+
+            </div>
+
+
+            <div class="buttonsSingUp">
+                <button id="signup" class="signup-btn1">Sign up</button>
+            </div>
+            <script>
+                document.getElementById('signup').addEventListener('click', function() {
+                    var dataToSend = { key1: false };
+                    localStorage.setItem('myData', JSON.stringify(dataToSend));
+                    window.location.href = "{% url 'sign' %}";
+                });
+            </script>
+            <div class="buttons1Login">
+                <button id="login" class="login-btn1">Login</button>
+            </div>
+            <script>
+                document.getElementById('login').addEventListener('click', function() {
+                    var dataToSend = { key1: true };
+                    localStorage.setItem('myData', JSON.stringify(dataToSend));
+                    window.location.href = "{% url 'sign' %}";
+                });
+            </script>
+        </section>
+
+    </div>
+
+
+    <div id="after">
+        <section class="top-bar">
+            <img src="{% static 'ded334d3e708bcefd545c8677ccc142ab7db1aa7.png' %}" alt="Logo">
+            <div class="platform-name">
+                <span class="whales">whales</span>
+                <span class="Cap">Cap</span>
+            </div>
+
+            <div class="menu">
+                <a href="{% url 'home' %}" class="menu-item">Home</a>
+                <a href="{% url 'buyandsell' %}" class="menu-item">Buy & Sell</a>
+                <a href="{% url 'Marketpage' %}" class="menu-item">Market</a>
+                <a href="{% url 'trade' %}" class="menu-item">Trade</a>
+                <a href="{% url 'exchange' %}" class="menu-item">Exchange</a>
+
+            </div>
+
+            <div class="user-button">
+                <a href="#" onclick="toggleUserModal()"><img src="{% static '019a1405383a6e702bee43bea0f5f715841c705a.png' %}" alt="Utilisateur"></a>
+                <div id="userModal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close" onclick="toggleUserModal()">&times;</span>
+                        <!-- Barre de navigation -->
+                        <div id="navbar">
+                            <a href="{% url 'walletpage' %}" >account</a>
+                            <a href="{% url 'depost&withdraw' %}">depost&withdraw</a>
+                            <a href="{% url 'settings' %}">settings</a>
+                            <a href="{% url 'signout' %}">signout</a>
+                        </div>
+                        <div>
+                            <button
+                                    class="logout-button">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <div class="topnav">
+
+        <div class="dropdown3">
+            <button type="button" onclick="myFunction5()" class="dropbtn2" id="selectedItem5">Select</button>
+            <div id="myDropdown5" class="dropdown-content3"></div>
+        </div>
+
+        <menu id="menuContainer"></menu>
+        <menu>
+            <ul>
+                <li><button id="1h">1h</button></li>
+                <li><button id="24h">24h</button></li>
+                <li><button id="1W">1W</button></li>
+                <li><button id="1M">1M</button></li>
+            </ul>
+        </menu>
+    </div>
+    <div class="wrapper">
+
+        <div class="card-switch">
+            <section class="recent-transactions">
+                <table id="myTable" class="Redtable">
+                    <tr>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Total</th>
+                    </tr>
+                </table>
+<hr>
+                <table id="myTable2" class="Greentable">
+                    <tr>
+                        
+                    </tr>
+                </table>
+            </section>
+
+            <label for="toggle" class="switch">
+
+                <input id="toggle" class="toggle" type="checkbox">
+                <div class="buttons">
+
+                    <button id="Buy" class="button3">Buy Crypto</button>
+                    <button id="Sell" class="button8">Sell Crypto</button>
+                </div>
+
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const toggleInput = document.getElementById('toggle');
+                        const button = document.getElementById('Buy');
+                        const button2 = document.getElementById('Sell');
+                        const flipCard = document.querySelector('.flip-card__inner');
+                        const button3 = document.querySelector('.button3');
+                        const button8 = document.querySelector('.button8');
+                        const Buy = () => {
+                            toggleInput.checked = false;
+                            flipCard.classList.remove('flipped');
+                            button3.classList.add('active');
+                            document.getElementById('Buy2').style.display = 'block';
+                            document.getElementById('Buy2').disabled = false;
+                            document.getElementById('fild1').disabled = false;
+                            button8.classList.remove('active');
+                        };
+
+                        const Sell = () => {
+                            toggleInput.checked = true;
+                            flipCard.classList.add('flipped');
+                            button3.classList.remove('active');
+                            button8.classList.add('active');
+                            document.getElementById('Buy2').style.display = 'none';
+                            document.getElementById('Buy2').disabled = true;
+                            document.getElementById('fild1').disabled = true;
+                        };
+
+                        button.addEventListener('click', Buy);
+                        button2.addEventListener('click', Sell);
+
+
+                        document.querySelector('.switch').addEventListener('click', function(event) {
+                            if (event.target.tagName.toLowerCase() !== 'input') {
+                                event.preventDefault();
+                            }
+                        });
+                    });
+                </script>
+
+                <div class="flip-card__inner">
+                    <div class="flip-card__front">
+
+                        <button class="button" data-text="Awesome">
+                            <span class="actual-text">&nbsp;BUY Crypto&nbsp;</span>
+                            <span aria-hidden="true" class="hover-text">&nbsp;BUY Crypto&nbsp;</span>
+                        </button>
+
+                        <form id="formBuy" method=" " action="" class="flip-card__form">
+
+                            <div class="input-container1">
+                                <input type="float" id='fild1' name="fild1" class="form-input"
+                                       placeholder="Enter the amount" >
+                                <div class="dropdown">
+                                    <button type="button" onclick="myFunction2()" class="dropbtn" id="selectedItem2">Select</button>
+                                    <div id="myDropdown2" class="dropdown-content2"></div>
+                                </div>
+                            </div>
+
+                            <div class="input-container2">
+                                <input type="float" id='fild2' name="fild2" class="form-input"
+                                       placeholder="Enter the amount" >
+                                <div class="dropdown">
+                                    <button type="button" onclick="myFunction1()" class="dropbtn" id="selectedItem">Select</button>
+                                    <div id="myDropdown" class="dropdown-content"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <button id="Buy2"  value="buy" class="button2" name='buy'>
+                                    <span class='buy-crypto'>Buy crypto</span>
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="flip-card__back">
+                        <button class="button" data-text="Awesome">
+                            <span class="actual-text">&nbsp;SELL Crypto&nbsp;</span>
+                            <span aria-hidden="true" class="hover-text">&nbsp;SELL Crypto&nbsp;</span>
+                        </button>
+                        <form id="formSell" method="POST" action="" class="flip-card__form">
+                            <div class="input-container3">
+                                <input id='fild3' name='fild3' type="float" class="form-input "
+                                       placeholder="Enter the amount you want to Sell" min="1" >
+                                <div class="dropdown">
+                                    <button type="button" onclick="myFunction3()" class="dropbtn" id="selectedItem3">Select</button>
+                                    <div id="myDropdown3" class="dropdown-content2"></div>
+                                </div>
+                            </div>
+                            <div class="input-container4">
+                                <input id='fild4' name="fild4" type="float" class="form-input"
+                                       placeholder="0.00"  >
+                                <div class="dropdown">
+                                    <button type="button" onclick="myFunction4()" class="dropbtn" id="selectedItem4">Select</button>
+                                    <div id="myDropdown4" class="dropdown-content"></div>
+                                </div>
+                            </div>
+                            <button id="Sell2" value="sell" class="button12" name='sell'>
+                                <span class='buy-crypto'>Sell crypto</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </label>
+        </div>
+    </div>
+
+</div>
+<div id="container"></div>
+<script src="{% static 'tradepage.js' %}"></script>
+</body>
+</html>

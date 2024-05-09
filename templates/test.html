@@ -1,0 +1,83 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+<h1>Payment Form</h1>
+<form id="paymentForm">
+    <div>
+        <label for="cardholderName">Cardholder's Name</label>
+        <input type="text" id="cardholderName" name="cardholderName" required>
+    </div>
+    <div>
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" name="cardNumber" required>
+    </div>
+    <div>
+        <label for="expiryMonth">Expiry Month</label>
+        <input type="text" id="expiryMonth" name="expiryMonth" required>
+    </div>
+    <div>
+        <label for="expiryYear">Expiry Year</label>
+        <input type="text" id="expiryYear" name="expiryYear" required>
+    </div>
+    <div>
+        <label for="cvc">CVC</label>
+        <input type="text" id="cvc" name="cvc" required>
+    </div>
+    <div>
+        <label for="amount">Amount</label>
+        <input type="text" id="amount" name="amount" required>
+    </div>
+    <button type="submit">Submit Payment</button>
+</form>
+
+<div id="paymentResponse"></div>
+
+<script>
+    var stripe = Stripe('pk_test_51P9zNhE0hfTjBOZod9fjBkWEeHNyk6qslhaoZrQDGkFS0Oud7sk3M6DY7CeQQYe9786PPecj3RHlmL1SbHBEeVcJ00PXIMeJmJ');
+    document.getElementById('paymentForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var formData = new FormData(this);
+        import(stripe)
+        stripe.createPaymentMethod('card', {
+            card: {
+                name: formData.get('cardholderName'),
+                number: formData.get('cardNumber'),
+                exp_month: formData.get('expiryMonth'),
+                exp_year: formData.get('expiryYear'),
+                cvc: formData.get('cvc')
+            }
+        }).then(function(result) {
+            if (result.error) {
+                document.getElementById('paymentResponse').textContent = result.error.message;
+            } else {
+                fetch('http://localhost:8080/aaaa', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        
+                    },
+                    body: JSON.stringify({
+                        token: result.token.id,
+                        amount: formData.get('amount')
+                    })
+                }).then(function(response) {
+                    return response.json();
+                }).then(function(data) {
+                    document.getElementById('paymentResponse').textContent = data.message || data.error || 'Unknown error occurred';
+                }).catch(function(error) {
+                    document.getElementById('paymentResponse').textContent = 'Failed to submit payment';
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+/* Ajout de la police Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+
+/* Réinitialisation des styles par défaut */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Style pour le corps de la page */
+html,body {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    place-items: center;
+    background-color: #161616;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Style pour la sélection de texte */
+::selection {
+    background: #ffffff;
+    color: #161616;
+}
+
+.background-image {
+    position: fixed;
+    left: 50%;
+    width: 60%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* Style pour le conteneur principal */
+.wrapper {
+    overflow: hidden;
+    width: 35vw;
+    height: 87vh;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 20px;
+    border-radius: 100px;
+    box-shadow: 0 0 100px 50px rgba(255, 255, 255, 0.35) inset;
+    position: fixed;
+    top: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* Style pour la taille de l'image walesCap logo */
+.title img {
+    width: 90px;
+    height: auto;
+}
+
+
+/* Style pour le titre */
+.title {
+    display: flex;
+    justify-content: flex-end;
+    margin-right : 60px;
+    font-weight: bold;
+    font-size: 35px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+
+/* Style pour "whales" */
+.title .whales {
+    color: #ffffff; /* Couleur pour "whales" */
+    user-select: none;
+}
+
+
+/* Style pour "Cap" */
+.title .Cap {
+    color: #00FFFF; /* Couleur pour "Cap" */
+    user-select: none;
+}
+
+
+/* Style pour les contrôles de diapositives */
+.wrapper .slide-controls {
+    position: relative;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 0 20px 0;
+    box-shadow: 0 0 100px 50px rgba(255, 255, 255, 0.5) inset;
+    border-radius: 15px;
+}
+
+
+/* Style pour les diapositives */
+.slide-controls .slide {
+    height: 100%;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 1000;
+    text-align: center;
+    line-height: 50px;
+    z-index: 1;
+}
+
+
+/* Style pour le curseur de diapositive */
+.slide-controls .slider-tab {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    left: 0;
+    z-index: 0;
+    border-radius: 15px;
+    background-color: #161616;
+    transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+
+
+/* Style pour les boutons radio (cachés none) */
+input[type="radio"] {
+    display: none;
+}
+
+
+/* Style lorsque le bouton d'inscription est coché */
+#signup:checked ~ .slider-tab {
+    left: 50%;
+}
+#signup:checked ~ label.signup {
+    color: #00FFFF;
+    cursor: default;
+    user-select: none;
+}
+#signup:checked ~ label.login {
+    color: #161616;
+    user-select: none;
+}
+
+
+/* Style lorsque le bouton de connexion est coché */
+#login:checked ~ label.signup {
+    color: #161616;
+    user-select: none;
+}
+#login:checked ~ label.login {
+    color: #00FFFF;
+    cursor: default;
+    user-select: none;
+}
+
+
+/* Style pour le conteneur de formulaire */
+.wrapper .form-container {
+    width: 100%;
+    color : #ffffff;
+    overflow: hidden;
+    position: relative;
+}
+
+
+/* Style pour le conteneur interne du formulaire */
+.form-container .form-inner {
+    display: flex;
+    width: 200%;
+    position: relative;
+}
+
+
+/* Style pour chaque formulaire */
+.form-container .form-inner form {
+    width: 50%;
+    transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+
+
+/* Style pour chaque champ de formulaire */
+.form-inner form .field {
+    height: 45px;
+    width: 100%;
+    margin-top: 3px;
+}
+
+
+/* Style pour chaque champ de saisie */
+.form-inner form .field input {
+    height: 80%;
+    width: 100%;
+    outline: none;
+    padding-left: 15px;
+    border-radius: 15px;
+    border: 1px solid lightgrey;
+    border-bottom-width: 2px;
+    font-size: 17px;
+    transition: all 0.3s ease;
+}
+
+
+/* Style lorsque le champ de saisie est en focus */
+.form-inner form .field input:focus {
+    border-color: #00FFFF;
+    border-width: 4px;
+    color : #161616;
+}
+
+
+/* Style pour le texte de l'attribut placeholder */
+.form-inner form .field input::placeholder {
+    color: #999;
+    transition: all 0.3s ease;
+}
+
+
+/* Style lorsque le champ de saisie est en focus */
+form .field input:focus::placeholder {
+    color: #ffffff;
+}
+
+
+/* Style pour le lien d'inscription */
+.form-inner form .signup-link {
+    text-align: center;
+    margin-top: 20px;
+}
+.form-inner form .pass-link a,
+.form-inner form .signup-link a {
+    color: #00FFFF;
+    text-decoration: none;
+    font-weight: 900;
+}
+.form-inner form .pass-link a:hover,
+.form-inner form .signup-link a:hover {
+    text-decoration: underline;
+}
+
+
+/* Style pour le bouton */
+form .btn {
+    height: 50px;
+    width: 100%;
+    border-radius: 15px;
+    position: relative;
+}
+.form-container .form-inner form .field.btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+form .btn input[type="submit"] {
+    height: 100%;
+    width: 50%;
+    z-index: 1;
+    position: relative;
+    background: linear-gradient(135deg, #00FFFF, #161616);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+
+/* Animation au survol */
+form .btn input[type="submit"]:hover {
+    font-weight: bold;
+    font-size: 20px;
+    background: linear-gradient(135deg, #999999, #161616);
+    color: #fff; /* Couleur du texte */
+}
+
+
+/* Style pour le conteneur de la case à cocher */
+.form-inner form .field.checkbox,
+.form-inner form .field.terms-label {
+    text-align: center;
+}
+.form-inner form .field.checkbox input[type="checkbox"],
+.form-inner form .field.terms-label input[type="checkbox"] {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    border: 2px solid #00FFFF;
+    background-color: transparent;
+}
+.form-inner form .field.checkbox label,
+.form-inner form .field.terms-label label {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 13px;
+}
+.form-inner form .field.checkbox input[type="checkbox"]:checked,
+.form-inner form .field.terms-label input[type="checkbox"]:checked {
+    background-color: #00FFFF;
+    background-image: url('Images/verification.png');
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Style pour le lien "Terms of Service" */
+.form-inner form .terms-link,
+.form-inner form .privacy-link {
+    color: #00FFFF;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.form-inner form .terms-link:hover,
+.form-inner form .privacy-link:hover {
+    color: #ffffff;
+}
