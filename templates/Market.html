@@ -1,0 +1,256 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market.WhalesCap</title>
+    <link rel="stylesheet" href="{% static 'Market.css' %}?v={{ version_number }}">
+</head>
+<body>
+
+<div class="container">
+
+        <div id="before">
+            <section class="top-bar">
+                <img src="{% static 'ded334d3e708bcefd545c8677ccc142ab7db1aa7.png' %}" alt="Logo">
+                <div class="platform-name">
+                    <span class="whales">whales</span>
+                    <span class="Cap">Cap</span>
+                </div>
+                <!-- Menu de navigation -->
+                <div class="menu">
+                    <a href="{% url 'home' %}" class="menu-item">Home</a>
+                    <a href="{% url 'buyandsell' %}" class="menu-item">Buy & Sell</a>
+                    <a href="{% url 'Marketpage' %}" class="menu-item">Market</a>
+                    <a href="{% url 'trade' %}" class="menu-item">Trade</a>
+                    <a href="{% url 'exchange' %}" class="menu-item">Exchange</a>
+
+                </div>
+
+
+                <div class="buttons">
+                    <button id="signup" class="signup-btn1">Sign up</button>
+                </div>
+                <script>
+                    document.getElementById('signup').addEventListener('click', function() {
+                        var dataToSend = { key1: false };
+                        localStorage.setItem('myData', JSON.stringify(dataToSend));
+                        window.location.href = "{% url 'sign' %}";
+                    });
+                </script>
+                <div class="buttons1">
+                    <button id="login" class="login-btn1">Login</button>
+                </div>
+                <script>
+                    document.getElementById('login').addEventListener('click', function() {
+                        var dataToSend = { key1: true };
+                        localStorage.setItem('myData', JSON.stringify(dataToSend));
+                        window.location.href = "{% url 'sign' %}";
+                    });
+                </script>
+            </section>
+
+        </div>
+
+
+        <div id="after">
+            <section class="top-bar">
+                <img src="{% static 'ded334d3e708bcefd545c8677ccc142ab7db1aa7.png' %}" alt="Logo">
+                <div class="platform-name">
+                    <span class="whales">whales</span>
+                    <span class="Cap">Cap</span>
+                </div>
+
+                <div class="menu">
+                    <a href="{% url 'home' %}" class="menu-item">Home</a>
+                    <a href="{% url 'buyandsell' %}" class="menu-item">Buy & Sell</a>
+                    <a href="{% url 'Marketpage' %}" class="menu-item">Market</a>
+                    <a href="{% url 'trade' %}" class="menu-item">Trade</a>
+                    <a href="{% url 'exchange' %}" class="menu-item">Exchange</a>
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <div class="user-button">
+                    <a href="#" onclick="toggleUserModal()"><img src="{% static '019a1405383a6e702bee43bea0f5f715841c705a.png' %}" alt="Utilisateur"></a>
+                    <div id="userModal" class="modal" style="display: none;">
+                        <div class="modal-content">
+                            <span class="close" onclick="toggleUserModal()">&times;</span>
+                            <!-- Barre de navigation -->
+                            <div id="navbar">
+                                <a href="{% url 'walletpage' %}" >account</a>
+                                <a href="{% url 'depost&withdraw' %}">depost&withdraw</a>
+                                <a href="{% url 'settings' %}">settings</a>
+                                <a href="{% url 'signout' %}">signout</a>
+                            </div>
+                            <div>
+                                <button
+                                        class="logout-button">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="title"></section>
+        </div>
+
+
+
+
+    <section class="search-section">
+        <div class="search-box">
+            <label for="searchInput"></label>
+            <input type="text" id="searchInput" placeholder="Enter your search...">
+
+            <button class="search-button" onclick="search()">Search</button>
+        </div>
+        <div id="searchResults">
+            <!-- Search results  -->
+        </div>
+    </section>
+
+
+
+    <section class="top-section">
+        <h2>Market Overview</h2>
+        <div class="market-info">
+            <div class="info-item">
+                <h3>Hot Coin</h3>
+                <table id="HotCoinTable">
+                    <thead>
+                    <tr>
+                        <th>NAME</th>
+                        <th>PRICE</th>
+                        <th>CHANGE%</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Les données seront remplies dynamiquement -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="info-item">
+                <h3>New Listing</h3>
+                <table id="NewListingTable">
+                    <thead>
+                    <tr>
+                        <th>NAME</th>
+                        <th>PRICE</th>
+                        <th>CHANGE%</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Les données seront remplies dynamiquement -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="info-item">
+                <h3>Top Gainer Coin</h3>
+                <table id="TopGainerTable">
+                    <thead>
+                    <tr>
+                        <th>NAME</th>
+                        <th>PRICE</th>
+                        <th>CHANGE%</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Les données seront remplies dynamiquement -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="info-item">
+                <h3>Top Volume Coin</h3>
+                <table id="TopVolumeCoinTable">
+                    <thead>
+                    <tr>
+                        <th>NAME</th>
+                        <th>PRICE</th>
+                        <th>CHANGE%</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Les données seront remplies dynamiquement -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <section class="market-insights">
+        <h2>Explore Market Insights with WhelesCap</h2>
+        <p>Unlock the potential of over 10,000 cryptocurrencies with WhelesCap. Stay updated on real-time price movements and trends in euros/dollars. Keep track of Bitcoin, Ethereum, and your favorite cryptocurrencies effortlessly.</p>
+        <p>You're on the page featuring cryptocurrencies ranked in the top 100.</p>
+    </section>
+
+
+
+
+
+    <section class="table-section">
+        <table id="cryptoTable">
+            <thead>
+            <tr>
+                <th>Rank</th>
+                <th>NAME</th>
+                <th>PRICE</th>
+                <th>1h%</th>
+                <th>24h%</th>
+                <th>7d%</th>
+                <th>MARKET CAP</th>
+                <th>Volume24h</th>
+                <th>CIRCULATING SUPPLY</th>
+               
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Les données seront remplies dynamiquement -->
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <button id="previousPage">&lt;</button>
+            <span id="currentPage">1</span>
+            <button id="nextPage">&gt;</button>
+        </div>
+    </section>
+
+
+
+
+
+    <section class="market-JoinUs">
+        <h2>Join Us for Buying and Selling Crypto</h2>
+        <p>Explore our comprehensive market insights and take</p>
+        <p>control of your cryptocurrency trading journey.</p>
+        <p>you're a seasoned investor or just getting started,</p>
+        <p>WhelesCap provides you with the tools and resources</p>
+        <p>to navigate the crypto market with confidence.</p>
+        <p>Join our community today and unlock endless possibilities.</p>
+        <div class="cta-buttons">
+            <button class="signup-btn">Sign up</button>
+            <button class="login-btn">Login</button>
+        </div>
+    </section>
+
+   
+</div>
+
+<script src="{% static 'Market.js' %}?v={{ version_number }}"></script>
+</body>
+
+</html>

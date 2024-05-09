@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Signup Form</title>
+    <link rel="stylesheet" href=" {% static 'sign.css' %}">
+
+</head>
+<body>
+
+<img src="Images/background.png" alt="Background Image" class="background-image">
+
+<div class="wrapper">
+    <!-- Titre du formulaire avec le logo -->
+    <div class="title">
+        <!-- Logo whalesCap -->
+        <img src="Images/logo_whalesCap.png" alt="Logo">
+        <!-- Texte "whalesCap" -->
+        <span class="whales">whales</span><span class="Cap">Cap</span>
+    </div>
+    <!-- Conteneur du formulaire -->
+    <div class="form-container">
+        <!-- Contrôles de diapositives pour basculer entre Login et Signup -->
+        <div class="slide-controls">
+            <input type="radio" name="slide" id="login" checked>
+            <input type="radio" name="slide" id="signup">
+            <label for="login" class="slide login">Login</label>
+            <label for="signup" class="slide signup">Signup</label>
+            <div class="slider-tab"></div>
+        </div>
+
+
+        <div class="form-inner">
+            <form action="" class="login" method="get">
+                {% csrf_token %}
+                <div class="field">
+                    <label>
+                        <input type="email" id="login_email" name="login_email" placeholder="Email Address" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address">
+                    </label>
+                </div>
+                <!-- Champ Mot de passe -->
+                <div class="field">
+                    <label>
+                        <input type="password" id="login_password" name="login_password" placeholder="Password" >
+                    </label>
+                </div>
+                <!-- Checkbox "Remember me" -->
+                <div class="field checkbox">
+                    <label>
+                        <input type="checkbox"  name="login_remember" style="transform: scale(0.8); vertical-align: middle;"> Remember me
+                    </label>
+                </div>
+              
+                <div class="field btn">
+                    <div class="btn-layer"></div>
+                    <button type="button"  id="signin1"  name="signin_submit"></button>
+                </div>
+
+            </form>
+
+          
+            <form action="" class="signup" method="get">
+                {% csrf_token %}
+                <div class="field">
+                    <label>
+                        <input type="text" id="signup_first_name" name="signup_first_name" placeholder="First Name" required pattern="[A-Za-z]{1,45}" title="Please enter a valid first name (up to 45 characters, letters only)">
+                    </label>
+                </div>
+                <!-- Champ Nom -->
+                <div class="field">
+                    <label>
+                        <input type="text" id="signup_last_name" name="signup_last_name" placeholder="Last Name" required pattern="[A-Za-z]{1,45}" title="Please enter a valid last name (up to 45 characters, letters only)">
+                    </label>
+                </div>
+                <!-- Champ Email -->
+                <div class="field">
+                    <label>
+                        <input type="email" id="signup_email" name="signup_email" placeholder="Email Address" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address">
+                    </label>
+                </div>
+                <!-- Champ Date de naissance -->
+                <div class="field">
+                    <label>
+                        <input type="text" id="birthdate" name="signup_birthdate" placeholder="Date of Birth" onfocus="(this.type='date')" onblur="(this.type='text')" max="2005-12-31" pattern="(19[4-9][0-9]|200[0-5])-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])" required title="Please enter a date before 2005">
+                    </label>
+                </div>
+                <!-- Champ Mot de passe -->
+                <div class="field">
+                    <label>
+                        <input type="password" name="signup_password" placeholder="Password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character">
+                    </label>
+                </div>
+                <!-- Champ Confirmation du mot de passe -->
+                <div class="field">
+                    <label>
+                        <input type="password" name="signup_confirm_password" placeholder="Confirm password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Passwords must match">
+                    </label>
+                </div>
+                <!-- Checkbox "Terms of Service" et "Privacy Policy" -->
+                <div class="field terms-label">
+                    <label>
+                        <input type="checkbox" name="signup_agree_terms" required> You agree to our <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="privacy-link">Privacy Policy</a>
+                    </label>
+                </div>
+
+                    <button type="button" id="signup2" class="buttonSubmit"  name="signup_submit"></button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'sign.js' %}?v={{ version_number }}"></script>
+
+</body>
+</head>
+</html>

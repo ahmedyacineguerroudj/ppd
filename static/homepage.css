@@ -1,0 +1,925 @@
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #161616;
+    color: #ffffff;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.fade-in {
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.app {
+    opacity: 0;
+}
+
+::selection {
+    background: #ffffff;
+    color: #161616;
+}
+
+/* Style Pour la barre de défilement */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background-color: rgb(80, 77, 77);
+}
+::-webkit-scrollbar-thumb {
+    background-color: #007F7F;
+    border-radius: 5px;
+}
+.top-bar img {
+    width: 80px;
+    height: auto;
+}
+
+/* Style pour la barre supérieure */
+.top-bar {
+    display: flex;
+    background-color: #1E1E1E;
+    padding: 15px 10px;
+    user-select: none;
+    border-bottom: 5px solid #00FFFF;
+}
+
+/* Style pour le nom de la plateforme */
+.platform-name {
+    display: flex;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 15px;
+    margin-bottom: 3px;
+}
+
+/* Style pour les parties "whales" et "Cap" du nom de la plateforme */
+.platform-name .whales {
+    color: #ffffff;
+    user-select: none;
+}
+.platform-name .Cap {
+    color: #00FFFF;
+    user-select: none;
+}
+
+/* Style pour le menu */
+.menu {
+    display: flex;
+    margin-bottom: 3px;
+    margin-left: 100px;
+}
+
+/* Style pour les éléments du menu */
+.menu-item {
+    font-weight: bold;
+    margin-right: 50px;
+    margin-top: 15px;
+    font-size: 22px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: transform 0.2s ease;
+}
+
+/* Style pour le survol des éléments du menu */
+.menu-item:hover {
+    transform: scale(1.2);
+    color: #00FFFF;
+}
+
+/* Style pour le bouton de notification */
+.notification-button img {
+    width: 30px;
+    height: auto;
+    margin-left: 20px;
+    transition: opacity 0.3s;
+}
+.notification-button {
+    display: flex;
+    position: absolute;
+    right: 5.5%;
+    top: 20px;
+}
+
+/* Style pour le bouton d'utilisateur */
+.user-button img {
+    width: 30px;
+    height: auto;
+    margin-left: 20px;
+    transition: opacity 0.3s;
+}
+.user-button {
+    display: flex;
+    position: absolute;
+    right: 0.5%;
+    top: 20px;
+}
+
+
+/* Styles pour les boutons de model */
+.notification-button,
+.user-button {
+    display: inline-block;
+}
+.notification-button .modal,
+.user-button .modal {
+    position: absolute;
+    left: -300px;
+    width: 300px;
+    max-height: 300px;
+    background-color: #161616;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 4px rgb(9, 248, 248);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: auto;
+    z-index: 100;
+}
+
+/* Style pour le bouton de fermeture de la boîte modale */
+.close {
+    display: none;
+}
+
+/* Styles pour la barre de navigation */
+#navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+#navbar a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 14px;
+    font-weight: bold;
+    position: relative;
+}
+#navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: transparent;
+    transition: width 0.3s ease;
+}
+#navbar a.active::after,
+#navbar a:hover::after {
+    width: 100%;
+    background-color: #09f8f8;
+}
+
+/* Style pour le bouton "Logout" */
+.logout-button {
+    background-color: #161616;
+    background-image: url("images/out.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.logout-button:hover {
+    background-image: url("images/out2.png");
+}
+
+/* Style pour le tableau de notifications */
+#notificationTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Style pour les cellules du tableau */
+#notificationTable td {
+    padding: 8px;
+    border: 1px  solid #ffffff;
+    word-wrap: break-word;
+}
+
+/* Style pour la première colonne du tableau */
+#notificationTable td:first-child {
+    font-size: 10px;
+    color: #00FFFF;
+    text-align: center;
+}
+
+/* Style pour les boutons */
+.buttons {
+    position: absolute;
+    right: 10px;
+}
+.buttons1 {
+    position: absolute;
+    right: 120px;
+}
+
+.signup-btn1,
+.login-btn1 {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #09f8f8;
+    background-color: transparent;
+    border: 1px solid #00FFFF;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-weight: bold;
+    transition: transform 0.6s ease;
+    margin-top: 8px;
+}
+.signup-btn1:hover,
+.login-btn1:hover {
+    color: #161616;
+    background-color: #09f8f8;
+    font-weight: bold;
+}
+
+/* Media query pour les petits écrans */
+@media only screen and (max-width: 1100px) {
+    .top-section {
+        display: none;
+    }
+    .menu {
+        display: none;
+    }
+}
+
+
+
+
+.section {
+    margin: 1rem;
+    color: #ffffff;
+}
+
+.container {
+    margin: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+    justify-content: center;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.icon-earth-lock {
+    width: 3rem;
+    height: 3rem;
+}
+
+.icon-bitcoin {
+    width: 3rem;
+    height: 3rem;
+}
+
+.icon-headset {
+    width: 3rem;
+    height: 3rem;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.title-secondary {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.content {
+    text-align: center;
+}
+
+p {
+    margin: 0;
+}
+
+
+/* General styles */
+.dark-text {
+    color: #ffffff; /* Dark text color */
+}
+
+.container {
+    max-width: 60rem; /* Equivalent to max-w-xl */
+    padding: 1.5rem; /* Equivalent to p-6 */
+    margin: 0 auto; /* Equivalent to mx-auto */
+}
+
+/* Large screens */
+@media (min-width: 64rem) {
+    .container {
+        padding-left: 2rem; /* Equivalent to lg:px-8 */
+        padding-right: 2rem; /* Equivalent to lg:px-8 */
+        max-width: 75rem; /* Equivalent to lg:max-w-7xl */
+    }
+}
+
+/* Section titles */
+.section-title {
+    font-size: 2.875rem; /* Equivalent to text-3xl */
+    font-weight: 700; /* Equivalent to font-bold */
+    line-height: 2rem   ; /* Equivalent to leading-tight */
+    text-align: center; /* Equivalent to text-center */
+    color: white;
+}
+
+/* Subsection titles */
+.subsection-title {
+    font-size: 1.5rem; /* Equivalent to text-lg */
+    font-weight: 500; /* Equivalent to font-medium */
+}
+/* Subsection titles */
+.subsection-title2 {
+    font-size: 2.5rem; /* Equivalent to text-lg */
+    font-weight: 500; /* Equivalent to font-medium */
+}
+/* Paragraphs */
+.paragraph {
+    margin-top: 1rem; /* Equivalent to mt-2 */
+}
+
+/* Images */
+.image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0.5rem; /* Equivalent to rounded-lg */
+}
+.image {
+    width: 550px; /* Adjust the width as needed */
+    height: auto; /* Maintain the aspect ratio */
+}
+
+/* Grid */
+/* Grid */
+.grid {
+    display: grid;
+    gap: 12rem; /* Adjust the gap as needed */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    align-items: center; /* Align items vertically */
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Adjust the gap between flex items */
+}
+
+.flex-item {
+    display: flex;
+    gap: 1rem; /* Adjust the gap between icon and text */
+}
+
+
+
+
+/* Flex item text */
+.flex-item-text {
+    margin-left: 1rem;
+    margin-top: 1.3rem;
+}
+
+
+.flex-item-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+    height: 3rem;
+    border-radius: 0.375rem;
+}
+.flex-item-icon2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6rem; /* Equivalent to w-12 */
+    height: 3rem; /* Equivalent to h-12 */
+    border-radius: 0.375rem; /* Equivalent to rounded-md */
+}
+
+.custom-image {
+    object-fit: contain;
+    height: 8rem; /* Default height */
+}
+
+@media (min-width: 640px) {
+    .custom-image {
+        height: 8rem; /* Small screen height */
+    }
+}
+
+@media (min-width: 768px) {
+    .custom-image {
+        height: 8rem; /* Medium screen height */
+    }
+}
+
+@media (min-width: 1024px) {
+    .custom-image {
+        height: 8rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .custom-image {
+        height: 26rem; /* Extra-large screen height */
+
+
+        margin-left: 50rem;
+        margin-top: 3rem;
+    }
+}
+
+.custom-input {
+    width: 10%;
+    padding: 0.75rem;
+    padding-right: 5rem;
+    border-radius: 0.375rem; ]
+font-size: 1.125rem;
+    background-color: #1f2937;
+    color: #ffffff;
+    ::placeholder {
+        color: #9ca3af;
+    }
+    position: absolute;
+    top: 400px;
+    right: 1140px;
+}
+
+.custom-button {
+    position: absolute;
+    top: 400px;
+    right: 1050px;
+    padding: 0.75rem;
+    width: 7.6%;
+    font-weight: 600;
+    border-radius: 0.375rem;
+    font-size: 1.125rem;
+    background-image: linear-gradient(
+            to right,
+            #00ffe2,
+            #00ffe2,
+            #00ffe2
+    );
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.5); /* Shadow */
+}
+
+.custom-button:hover {
+    background-image: linear-gradient(
+            to bottom right,
+            #00ffe2,
+            rgba(0, 255, 226, 0.8),
+            rgba(0, 255, 226, 0.8)
+    );
+}
+
+.custom-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(156, 163, 175, 0.5);
+}
+
+.custom-button:focus-visible {
+    box-shadow: 0 0 0 0.25rem rgba(0, 255, 226, 0.8);
+}
+
+.custom-button.dark:focus-visible {
+    box-shadow: 0 0 0 0.25rem rgba(0, 255, 226, 0.8);
+}
+
+.custom-heading {
+    font-size: 2.5em; /* Adjust font size as needed */
+    margin: 20px; /* Example margin */
+    position: absolute;
+    top: 200px;
+    left: 120px;
+    color: #fff; /* White color for the text */
+    font-family: 'Arial Black', sans-serif;
+}
+
+.custom-heading span {
+    color: #00ffe2; /* Red color for Crypto */
+    font-weight: bold;
+    font-family: 'Arial Black', sans-serif;
+}
+
+/* Footer container */
+footer {
+    padding-top: 3.5rem; /* Adjust as needed */
+    color: #f8f8f8; /* Light gray text color for dark mode */
+}
+
+/* Divider lines */
+/* Divider lines */footer > div > div:nth-child(2) {
+                       margin-bottom: 20px;
+                       color: #00bcd4; /* Cyan color for links */
+                   }
+
+/* Line between social media icons */
+footer .grid .flex a:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    height: 1.5rem; /* Adjust as needed */
+    width: 1px; /* Thickness of the line */
+    background-color: rgba(209, 213, 219, 0.5); /* Dark gray */
+    right: calc(-50% - 0.25rem); /* Adjust to center line */
+    top: 50%; /* Align to the vertical center */
+    transform: translateY(-50%); /* Center the line vertically */
+}
+
+/* Copyright and links container */
+footer .grid {
+    display: grid;
+    justify-content: center;
+    padding-top: 1.5rem; /* Adjust as needed */
+}
+
+/* Copyright and links */
+footer .grid .flex-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.875rem; /* 14px */
+}
+
+/* Copyright and links spacing */
+footer .grid .flex-col:not(:last-child) {
+    margin-bottom: 0.75rem; /* Adjust as needed */
+}
+
+/* Social media icons container */
+/* Social media icons */
+footer .grid .flex a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem; /* Adjust as needed */
+    height: 3rem; /* Adjust as needed */
+    border-radius: 50%; /* Circular */
+    background-color: rgba(0, 255, 226, 0.8); /* Purple */
+    margin-right: 0.5rem; /* Adjust as needed */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+    position: relative; /* Positioning for image */
+}
+
+/* Social media icon SVG */
+footer .grid .flex a svg {
+    width: 1.5rem; /* 20px */
+    height: 1.5rem; /* 20px */
+    fill: #ffffff; /* White */
+    position: absolute; /* Position the SVG */
+    top: 50%; /* Align to the vertical center */
+    left: 50%; /* Align to the horizontal center */
+    transform: translate(-50%, -50%); /* Center the SVG */
+}
+
+
+/* Social media icon SVG */
+footer .grid .flex a svg {
+    width: 1.5rem; /* 20px */
+    height: 1.5rem; /* 20px */
+    fill: #ffffff; /* White */
+}
+
+/* Social media icon hover state */
+footer .grid .flex a:hover {
+    background-color: #00ffe2; /* Darker purple on hover */
+}
+.line-container {
+    text-align: center;
+}
+
+.line {
+    border: none;
+    border-top: 2px solid #ccc; /* You can adjust the color and thickness */
+    width: 105%;
+    margin: 1rem auto; /* Adjust margin as needed */
+
+}
+
+
+.text-container {
+    text-align: center;
+}
+
+.heading {  /* Class for the heading */
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: #242424;
+}
+
+.paragraph { /* Class for the paragraph */
+    font-size: 1.2em;
+    color: #707070;
+}
+
+
+/* Line separator */
+.line-container {
+    margin-bottom: 20px;
+}
+
+.line {
+    border: 0;
+    height: 1px;
+    background-color: #ccc;
+}
+
+footer > div > div:nth-child(2) {
+    margin-bottom: 20px;
+    color: #00bcd4; /* Cyan color for links */
+}
+footer span {
+    margin-right: 10px;
+}
+.color{
+    color: #00ffe2;
+}
+/* Social media icons */
+footer .grid {
+    display: grid;
+}
+
+footer .grid a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer .grid a:hover {
+    opacity: 0.8;
+}
+
+/* Social media icons container */
+/* Social media icons container */
+footer .flex {
+    justify-content: flex-end; /* Align icons to the right */
+}
+
+/* Adjusting icons */
+footer .flex a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /*left: revert;*/
+    left: 1160px;
+    top: -60px;
+}
+
+
+/* Adjusting icons */
+footer .flex svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Social media icon specific styles */
+/* Social media icon specific styles with cyan color */
+footer .flex a[href="#"]:nth-child(1) {
+    background: linear-gradient(to right, #00bcd4, #00d2ff, #00bcd4);
+}
+
+footer .flex a[href="#"]:nth-child(2) {
+    background: linear-gradient(to right, #00bcd4, #00d2ff, #00bcd4);
+}
+
+footer .flex a[href="#"]:nth-child(3) {
+    background: linear-gradient(to right, #00bcd4, #00d2ff, #00bcd4);
+}
+.link{
+    position: revert;
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
+
+
+.FAQ{
+    position: relative;
+    right: 700px;
+    color: white;
+    font-size: 30px;
+}
+.container12 {
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: revert;
+
+
+}
+
+.accordion-item {
+    background-color: #1E1E1E;
+    border-radius: 0.4rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Add border-bottom */
+}
+
+.accordion-item hr {
+    display: none; /* Remove the existing hr */
+}
+
+/* Adjusted styles for the button to look like links */
+.accordion-link {
+    font-size: 15px; /* Set font size back to 20px */
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none; /* Remove underline */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border: none; /* Remove button border */
+    background: none; /* Remove button background */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Adjusted styles for the answer */
+.answer {
+    max-height: 0;
+    overflow: hidden;
+    position: relative;
+    background-color: #1E1E1E;
+    transition: max-height 650ms;
+    padding: 0 2rem; /* Adjust padding */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Add border-bottom */
+}
+
+.answer p {
+    color: #fff;
+    font-size: 15px;
+    padding: 1rem 0;
+}
+
+/* Targeting the answer when accordion item is active */
+.accordion-item:target .answer {
+    max-height: 20rem;
+}
+
+/* Targeting the arrow icons when accordion item is active */
+.accordion-item:target .accordion-link .ion-md-arrow-forward {
+    display: none;
+}
+
+.accordion-item:target .accordion-link .ion-md-arrow-down {
+    display: block;
+}
+
+/* Add transition for smoother animation */
+.accordion-item .answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+.user-button img {
+    width: 30px;
+    height: auto;
+    margin-left: 20px;
+    transition: opacity 0.3s;
+}
+.user-button {
+    display: flex;
+    position: absolute;
+    right: 0.5%;
+    top: 20px;
+}
+
+/* Styles lorsque le bouton est survolé */
+.notification-button:hover img {
+    content: url('Images/notification_icon2.png');
+}
+.user-button:hover img {
+    content: url('Images/user_icon2.png');
+}
+
+/* Styles pour les boutons de model */
+.globe-button,
+.notification-button,
+.user-button {
+    display: inline-block;
+}
+.notification-button .modal,
+.user-button .modal {
+    position: absolute;
+    left: -300px;
+    width: 300px;
+    max-height: 300px;
+    background-color: #161616;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 4px rgb(9, 248, 248);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: auto;
+    z-index: 100;
+}
+
+/* Style pour le titre de la boîte modale */
+.modal-content h2 {
+    font-size: 24px;
+    color: #00FFFF;
+    margin-bottom: 10px;
+    text-align: center;
+    user-select: none;
+    font-family: 'Apple Chancery', cursive;
+}
+
+/* Style pour le bouton de fermeture de la boîte modale */
+.close {
+    display: none;
+}
+
+/* Styles pour la barre de navigation */
+#navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+#navbar a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 14px;
+    font-weight: bold;
+    position: relative;
+}
+#navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: transparent;
+    transition: width 0.3s ease;
+}
+#navbar a.active::after,
+#navbar a:hover::after {
+    width: 100%;
+    background-color: #09f8f8;
+}
+
+/* Style pour le bouton "Logout" */
+.logout-button {
+    background-color: #161616;
+    background-image: url("images/out.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.logout-button:hover {
+    background-image: url("images/out2.png");
+}
