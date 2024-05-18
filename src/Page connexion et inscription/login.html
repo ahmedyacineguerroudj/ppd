@@ -80,12 +80,6 @@
                         <input type="email" name="signup_email" placeholder="Email Address" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address">
                     </label>
                 </div>
-                <!-- Champ Confirmation du Code -->
-                <div class="field">
-                    <label>
-                        <input type="text" id="confirmationCode" name="confirmation_code" placeholder="Confirmation Code" required pattern="1234" title="Please enter the correct confirmation code">
-                    </label>
-                </div>
                 <!-- Champ Date de naissance  -->
                 <div class="field">
                     <label>
@@ -116,6 +110,24 @@
                     <input type="submit" value="Signup" name="signup_submit">
                 </div>
             </form>
+
+            <div id="verificationModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Enter the Verification Code</h2>
+                    <p>We have sent a verification code to your email. Please enter it below to complete your signup.</p>
+                    <div class="field">
+                        <label>
+                            <input type="text" id="verificationCode" placeholder="Verification Code" required pattern="[0-9]{6}" title="Please enter the 6-digit verification code">
+                        </label>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input type="submit" value="Verify" id="verifyCodeButton">
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
